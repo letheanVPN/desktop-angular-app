@@ -1,0 +1,2138 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>lethean-workstation documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">lethean-workstation documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  AppComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/app.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>lthn-app</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./app.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./app.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#currentFlag" >currentFlag</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#currentLanguage" >currentLanguage</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#currentLanguage$" >currentLanguage$</a>
+                            </li>
+                            <li>
+                                <a href="#filteredNavigationTree" >filteredNavigationTree</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#heading" >heading</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#menu" >menu</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#navExpanded" >navExpanded</a>
+                            </li>
+                            <li>
+                                <a href="#navigationTree" >navigationTree</a>
+                            </li>
+                            <li>
+                                <a href="#searchValue" >searchValue</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#sidenav" >sidenav</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#changeLanguage" >changeLanguage</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#deepCloneTree" >deepCloneTree</a>
+                            </li>
+                            <li>
+                                <a href="#getChild" >getChild</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#startChain" >startChain</a>
+                            </li>
+                            <li>
+                                <a href="#toggleMenu" >toggleMenu</a>
+                            </li>
+                            <li>
+                                <a href="#trackByName" >trackByName</a>
+                            </li>
+                            <li>
+                                <a href="#updateMeta" >updateMeta</a>
+                            </li>
+                            <li>
+                                <a href="#updateSearchValue" >updateSearchValue</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, activatedRoute: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, titleService: <a href="https://angular.io/api/platform-browser/Title" target="_blank">Title</a>, metaService: <a href="https://angular.io/api/platform-browser/Meta" target="_blank">Meta</a>, translate: TranslateService, store: Store, fs: <a href="../injectables/FileSystemService.html" target="_self">FileSystemService</a>, chain: <a href="../injectables/BlockchainService.html" target="_self">BlockchainService</a>, wallet: <a href="../injectables/WalletService.html" target="_self">WalletService</a>, drawerMngr: DrawerService, loadingService: LoadingService)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/app.component.ts:50</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Starts the Angular framework and configures system plugins</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>activatedRoute</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>titleService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/platform-browser/Title" target="_blank" >Title</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>metaService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/platform-browser/Meta" target="_blank" >Meta</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>translate</td>
+                                                  
+                                                        <td>
+                                                                    <code>TranslateService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>store</td>
+                                                  
+                                                        <td>
+                                                                    <code>Store</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>fs</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/FileSystemService.html" target="_self" >FileSystemService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>chain</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BlockchainService.html" target="_self" >BlockchainService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>wallet</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/WalletService.html" target="_self" >WalletService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>drawerMngr</td>
+                                                  
+                                                        <td>
+                                                                    <code>DrawerService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>loadingService</td>
+                                                  
+                                                        <td>
+                                                                    <code>LoadingService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changeLanguage"></a>
+                    <span class="name">
+                        <span ><b>changeLanguage</b></span>
+                        <a href="#changeLanguage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>changeLanguage(lang: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="137"
+                            class="link-to-prism">src/app/app.component.ts:137</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Dispatch a language change request</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>lang</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deepCloneTree"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>deepCloneTree</b></span>
+                        <a href="#deepCloneTree"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>deepCloneTree()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="240"
+                            class="link-to-prism">src/app/app.component.ts:240</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{}</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getChild"></a>
+                    <span class="name">
+                        <span ><b>getChild</b></span>
+                        <a href="#getChild"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getChild(activatedRoute: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="212"
+                            class="link-to-prism">src/app/app.component.ts:212</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Angular router helper</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>activatedRoute</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="123"
+                            class="link-to-prism">src/app/app.component.ts:123</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Setup watcher for sidenav menu user setting</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="105"
+                            class="link-to-prism">src/app/app.component.ts:105</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Start loading overlay
+Setup language setting watcher
+Update View Meta data</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="startChain"></a>
+                    <span class="name">
+                        <span ><b>startChain</b></span>
+                        <a href="#startChain"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>startChain()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="194"
+                            class="link-to-prism">src/app/app.component.ts:194</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Start chain daemon and wallet service
+unblock UI</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleMenu"></a>
+                    <span class="name">
+                        <span ><b>toggleMenu</b></span>
+                        <a href="#toggleMenu"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleMenu()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="144"
+                            class="link-to-prism">src/app/app.component.ts:144</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Dispatch a Menu toggle request</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="trackByName"></a>
+                    <span class="name">
+                        <span ><b>trackByName</b></span>
+                        <a href="#trackByName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>trackByName(_index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, item: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="236"
+                            class="link-to-prism">src/app/app.component.ts:236</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>_index</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>item</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateMeta"></a>
+                    <span class="name">
+                        <span ><b>updateMeta</b></span>
+                        <a href="#updateMeta"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateMeta()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="151"
+                            class="link-to-prism">src/app/app.component.ts:151</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>creates subscriptions for multi lingual page meta</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateSearchValue"></a>
+                    <span class="name">
+                        <span ><b>updateSearchValue</b></span>
+                        <a href="#updateSearchValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateSearchValue(updatedVal: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="220"
+                            class="link-to-prism">src/app/app.component.ts:220</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>updatedVal</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentFlag"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>currentFlag</b></span>
+                        <a href="#currentFlag"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/app.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentLanguage"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>currentLanguage</b></span>
+                        <a href="#currentLanguage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/app.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentLanguage$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>currentLanguage$</b></span>
+                        <a href="#currentLanguage$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/app.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filteredNavigationTree"></a>
+                    <span class="name">
+                        <span ><b>filteredNavigationTree</b></span>
+                        <a href="#filteredNavigationTree"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/app.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="heading"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>heading</b></span>
+                        <a href="#heading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/app.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="menu"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>menu</b></span>
+                        <a href="#menu"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/app.component.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="navExpanded"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>navExpanded</b></span>
+                        <a href="#navExpanded"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/app.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="navigationTree"></a>
+                    <span class="name">
+                        <span ><b>navigationTree</b></span>
+                        <a href="#navigationTree"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+		{
+			name: &#x27;menu.text.dashboard&#x27;,
+			route: &#x27;dashboard&#x27;,
+			icon: &#x27;circles&#x27;,
+
+		},
+		{
+			name: &#x27;menu.text.blockchain&#x27;,
+			route: &#x27;chain&#x27;,
+			icon: &#x27;assets&#x27;
+		},
+		{
+			name: &#x27;menu.text.wallet&#x27;,
+			route: &#x27;wallet&#x27;,
+			icon: &#x27;circuit-board&#x27;
+		}
+	]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/app.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchValue"></a>
+                    <span class="name">
+                        <span ><b>searchValue</b></span>
+                        <a href="#searchValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/app.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sidenav"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>sidenav</b></span>
+                        <a href="#sidenav"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatSidenav</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;sidenav&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/app.component.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {AfterViewInit, Component, OnInit, ViewChild} from &#x27;@angular/core&#x27;;
+import {MatSidenav} from &#x27;@angular/material/sidenav&#x27;;
+import {ActivatedRoute, NavigationEnd, NavigationStart, Event, Router} from &#x27;@angular/router&#x27;;
+import {Meta, Title} from &#x27;@angular/platform-browser&#x27;;
+import {filter} from &#x27;rxjs/operators&#x27;;
+import {TranslateService} from &#x27;@ngx-translate/core&#x27;;
+import {select, Store} from &#x27;@ngrx/store&#x27;;
+import {changeLanguage, selectLanguage, selectMenuVisibility, toggleHideNavigation} from &#x27;@module/settings/data&#x27;;
+import {Subscription} from &#x27;rxjs&#x27;;
+import {FileSystemService} from &#x27;@service/filesystem/file-system.service&#x27;;
+import {BlockchainService} from &#x27;@plugin/lthn/chain/blockchain.service&#x27;;
+import {WalletService} from &#x27;@plugin/lthn/wallet/wallet.service&#x27;;
+import {DrawerService, LoadingService} from &#x27;@swimlane/ngx-ui&#x27;;
+import Prism from &#x27;prismjs&#x27;;
+import &#x27;prismjs/plugins/custom-class/prism-custom-class&#x27;;
+@Component({
+	selector: &#x27;lthn-app&#x27;,
+	templateUrl: &#x27;./app.component.html&#x27;,
+	styleUrls: [&#x27;./app.component.scss&#x27;]
+})
+export class AppComponent implements OnInit, AfterViewInit {
+	public menu: boolean;
+	public heading &#x3D; &#x27;&#x27;;
+
+	@ViewChild(&#x27;sidenav&#x27;) public sidenav: MatSidenav;
+	public currentFlag: any;
+	public currentLanguage$: Subscription;
+	public currentLanguage: string;
+	public navExpanded: boolean &#x3D; true;
+	searchValue &#x3D; &#x27;&#x27;;
+	filteredNavigationTree: any[];
+
+	navigationTree: any[] &#x3D; [
+		{
+			name: &#x27;menu.text.dashboard&#x27;,
+			route: &#x27;dashboard&#x27;,
+			icon: &#x27;circles&#x27;,
+
+		},
+		{
+			name: &#x27;menu.text.blockchain&#x27;,
+			route: &#x27;chain&#x27;,
+			icon: &#x27;assets&#x27;
+		},
+		{
+			name: &#x27;menu.text.wallet&#x27;,
+			route: &#x27;wallet&#x27;,
+			icon: &#x27;circuit-board&#x27;
+		}
+	];
+
+	/**
+	 * Starts the Angular framework and configures system plugins
+	 *
+	 * @param {Router} router
+	 * @param {ActivatedRoute} activatedRoute
+	 * @param {Title} titleService
+	 * @param {Meta} metaService
+	 * @param {TranslateService} translate
+	 * @param {Store} store
+	 * @param {FileSystemService} fs
+	 * @param {BlockchainService} chain
+	 * @param {WalletService} wallet
+	 * @param drawerMngr
+	 * @param loadingService
+	 */
+	constructor(
+		private router: Router,
+		private activatedRoute: ActivatedRoute,
+		private titleService: Title,
+		private metaService: Meta,
+		private translate: TranslateService,
+		private store: Store,
+		private fs: FileSystemService,
+		private chain: BlockchainService,
+		private wallet: WalletService,
+		private drawerMngr: DrawerService,
+		private loadingService: LoadingService
+	) {
+
+		translate.setDefaultLang(&#x27;en&#x27;);
+		let lang &#x3D; translate.getBrowserLang()
+		// the lang to use, if the lang isn&#x27;t available, it will use the current loader to get them
+		translate.use(lang ? lang : &#x27;en&#x27;);
+		Prism.plugins.customClass.prefix(&#x27;prism--&#x27;);
+
+		// Adding loading component in router
+		this.router.events.subscribe((event: Event) &#x3D;&gt; {
+			if (event instanceof NavigationStart) {
+				this.loadingService.start();
+			} else if (event instanceof NavigationEnd) {
+				this.loadingService.complete();
+				this.drawerMngr.destroyAll();
+			}
+		});
+
+		this.filteredNavigationTree &#x3D; this.deepCloneTree();
+	}
+
+	/**
+	 * Start loading overlay
+	 * Setup language setting watcher
+	 * Update View Meta data
+	 */
+	ngOnInit(): void {
+
+//		this.translate.get(&#x27;words.states.loading&#x27;).subscribe((res: string) &#x3D;&gt; {
+//			//this.blockUI.start(res);
+//		});
+
+		// setup language watcher
+		this.currentLanguage$ &#x3D; this.store.pipe(select(selectLanguage)).subscribe((lang) &#x3D;&gt; {
+			this.currentLanguage &#x3D; lang;
+			this.translate.use(lang)
+		})
+
+		this.updateMeta();
+	}
+
+	/**
+	 * Setup watcher for sidenav menu user setting
+	 */
+	ngAfterViewInit() {
+		this.store.pipe(select(selectMenuVisibility)).subscribe((opened) &#x3D;&gt; {
+			this.menu &#x3D; opened
+			this.sidenav.toggle();
+		})
+		this.startChain();
+
+	}
+
+	/**
+	 * Dispatch a language change request
+	 *
+	 * @param {string} lang
+	 */
+	changeLanguage(lang: string){
+		this.store.dispatch(changeLanguage({language: lang}))
+	}
+
+	/**
+	 * Dispatch a Menu toggle request
+	 */
+	toggleMenu() {
+		this.store.dispatch(toggleHideNavigation())
+	}
+
+	/**
+	 * creates subscriptions for multi lingual page meta
+	 */
+	updateMeta() {
+		this.router.events
+			.pipe(filter((event) &#x3D;&gt; event instanceof NavigationEnd))
+			.subscribe(() &#x3D;&gt; {
+				const rt &#x3D; this.getChild(this.activatedRoute);
+				rt.data.subscribe((data) &#x3D;&gt; {
+					this.translate.get(data.title).subscribe((res: string) &#x3D;&gt; {
+						this.titleService.setTitle(res)
+					});
+
+					this.heading &#x3D; data.heading;
+					if (data.description) {
+
+						this.translate.get(data.description).subscribe(() &#x3D;&gt; {
+							this.metaService.updateTag({
+								name: &#x27;description&#x27;,
+								content: data.description
+							});
+						});
+
+					} else {
+						this.metaService.removeTag(&quot;name&#x3D;&#x27;description&#x27;&quot;);
+					}
+
+					if (!data.robots) {
+						this.metaService.updateTag({
+							name: &#x27;robots&#x27;,
+							content: &#x27;nofollow,noindex&#x27;
+						});
+					} else {
+						this.metaService.updateTag({
+							name: &#x27;robots&#x27;,
+							content: &#x27;follow,index&#x27;
+						});
+					}
+				});
+			});
+	}
+
+	/**
+	 * Start chain daemon and wallet service
+	 * unblock UI
+	 */
+	startChain() {
+		this.fs.listFiles(&#x27;/cli&#x27;).then((dat: any) &#x3D;&gt; {
+			if(dat.length &gt; 2){
+				this.chain.startDaemon().then(() &#x3D;&gt; {
+					//this.blockUI.stop();
+					this.wallet.startWallet().then(r &#x3D;&gt; r);
+				})
+			}
+
+		});
+	}
+
+	/**
+	 * Angular router helper
+	 *
+	 * @param {ActivatedRoute} activatedRoute
+	 * @returns {any}
+	 */
+	getChild(activatedRoute: ActivatedRoute) {
+		if (activatedRoute.firstChild) {
+			return this.getChild(activatedRoute.firstChild);
+		} else {
+			return activatedRoute;
+		}
+	}
+
+	updateSearchValue(updatedVal: string) {
+		if (!updatedVal) {
+			this.filteredNavigationTree &#x3D; this.deepCloneTree();
+		}
+
+		updatedVal &#x3D; updatedVal.toLowerCase();
+		this.filteredNavigationTree &#x3D; this.navigationTree.map(nav &#x3D;&gt; {
+			return {
+				...nav,
+				children: nav.children?.length
+					? nav.children.filter((child: any) &#x3D;&gt; child.name.toLowerCase().includes(updatedVal))
+					: undefined
+			};
+		});
+	}
+
+	trackByName(_index: number, item: any): string {
+		return item.name;
+	}
+
+	private deepCloneTree() {
+		return [
+			...this.navigationTree.map(nav &#x3D;&gt; {
+				return {
+					...nav,
+					children: nav.children ? [...nav.children] : undefined
+				};
+			})
+		];
+	}
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;app&quot;&gt;
+    &lt;div class&#x3D;&quot;navigation&quot;&gt;
+        &lt;ngx-nav-menu [expanded]&#x3D;&quot;navExpanded&quot; class&#x3D;&quot;navigation&quot;&gt;
+            &lt;div class&#x3D;&quot;nav-logo&quot;&gt;
+
+                &lt;img alt&#x3D;&quot;Lethean Logo&quot; style&#x3D;&quot;width: 100%&quot; class&#x3D;&quot;&quot; src&#x3D;&quot;../assets/images/logo.png&quot;/&gt;
+
+                &lt;ngx-icon *ngIf&#x3D;&quot;!navExpanded&quot; svgSrc&#x3D;&quot;slide-right&quot; (click)&#x3D;&quot;navExpanded &#x3D; true&quot; class&#x3D;&quot;expand-icon&quot;&gt;&lt;/ngx-icon&gt;
+                &lt;ngx-icon *ngIf&#x3D;&quot;navExpanded&quot; svgSrc&#x3D;&quot;slide-left&quot; (click)&#x3D;&quot;navExpanded &#x3D; false&quot; class&#x3D;&quot;expand-icon&quot;&gt;&lt;/ngx-icon&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;search-box&quot; *ngIf&#x3D;&quot;navExpanded&quot;&gt;
+                &lt;ngx-input
+                    #searchInput
+                    type&#x3D;&quot;text&quot;
+                    [autofocus]&#x3D;&quot;true&quot;
+                    [(ngModel)]&#x3D;&quot;searchValue&quot;
+                    [placeholder]&#x3D;&quot;&#x27;Search&#x27;&quot;
+                    (ngModelChange)&#x3D;&quot;updateSearchValue(searchValue)&quot;
+                &gt;
+                    &lt;ngx-input-prefix&gt; &lt;ngx-icon fontIcon&#x3D;&quot;search&quot;&gt;&lt;/ngx-icon&gt; &lt;/ngx-input-prefix&gt;
+                    &lt;ngx-input-suffix&gt;
+                        &lt;button class&#x3D;&quot;btn btn-link&quot; [hidden]&#x3D;&quot;!searchValue.length&quot; (click)&#x3D;&quot;searchValue &#x3D; searchInput.value &#x3D; &#x27;&#x27;&quot;&gt;
+                            &lt;ngx-icon class&#x3D;&quot;search-box__clear-btn&quot; fontIcon&#x3D;&quot;x&quot;&gt;&lt;/ngx-icon&gt;
+                        &lt;/button&gt;
+                    &lt;/ngx-input-suffix&gt;
+                &lt;/ngx-input&gt;
+            &lt;/div&gt;
+            &lt;ul class&#x3D;&quot;nav-items nav-main vertical-list ngx-scroll-muted&quot;&gt;
+                &lt;li *ngFor&#x3D;&quot;let item of filteredNavigationTree; trackBy:trackByName&quot; class&#x3D;&quot;nav-item-container&quot;&gt;
+                    &lt;a
+                            *ngIf&#x3D;&quot;!item.children&quot;
+                            class&#x3D;&quot;nav-item&quot;
+                            ngx-tooltip
+                            tooltipPlacement&#x3D;&quot;right&quot;
+                            [tooltipTitle]&#x3D;&quot;item.name | translate&quot;
+                            routerLink&#x3D;&quot;{{ item.route }}&quot;
+                            routerLinkActive&#x3D;&quot;active&quot;
+                    &gt;
+                        &lt;ngx-icon [fontIcon]&#x3D;&quot;item.icon&quot;&gt;&lt;/ngx-icon&gt;
+                        &lt;span class&#x3D;&quot;nav-label&quot;&gt;{{ item.name | translate }}&lt;/span&gt;
+                    &lt;/a&gt;
+
+                    &lt;div
+                            *ngIf&#x3D;&quot;item.children&quot;
+                            class&#x3D;&quot;nav-item&quot;
+                            ngx-tooltip
+                            ngx-tooltip
+                            [tooltipContext]&#x3D;&quot;item.children&quot;
+                            [tooltipCssClass]&#x3D;&quot;&#x27;nav-popover&#x27;&quot;
+                            tooltipType&#x3D;&quot;popover&quot;
+                            tooltipPlacement&#x3D;&quot;right&quot;
+                            [tooltipTemplate]&#x3D;&quot;!navExpanded ? childrenTemplate : undefined&quot;
+                            [tooltipShowCaret]&#x3D;&quot;false&quot;
+                            tooltipAlignment&#x3D;&quot;top&quot;
+                            [tooltipSpacing]&#x3D;&quot;1&quot;
+                            (click)&#x3D;&quot;item.expanded &#x3D; !item.expanded&quot;
+                    &gt;
+                        &lt;ngx-icon [fontIcon]&#x3D;&quot;item.icon&quot;&gt;&lt;/ngx-icon&gt;
+                        &lt;span class&#x3D;&quot;nav-label&quot;&gt;{{ item.name }}&lt;/span&gt;
+                    &lt;/div&gt;
+
+                    &lt;ng-template #childrenTemplate let-model&#x3D;&quot;model&quot;&gt;
+                        &lt;div class&#x3D;&quot;title&quot;&gt;{{ item.name }}&lt;/div&gt;
+                        &lt;ul *ngIf&#x3D;&quot;item.children&quot; class&#x3D;&quot;sub-nav ngx-scroll-muted&quot;&gt;
+                            &lt;a
+                                    *ngFor&#x3D;&quot;let child of item.children&quot;
+                                    class&#x3D;&quot;sub-nav-item&quot;
+                                    routerLink&#x3D;&quot;{{ child.route }}&quot;
+                                    routerLinkActive&#x3D;&quot;active&quot;
+                            &gt;
+                                &lt;span class&#x3D;&quot;subnav-label&quot;&gt;{{ child.name }}&lt;/span&gt;
+                                &lt;ngx-icon fontIcon&#x3D;&quot;check&quot; class&#x3D;&quot;active-indicator&quot;&gt;&lt;/ngx-icon&gt;
+                            &lt;/a&gt;
+                        &lt;/ul&gt;
+                    &lt;/ng-template&gt;
+
+                    &lt;ul *ngIf&#x3D;&quot;item.children &amp;&amp; navExpanded&quot; class&#x3D;&quot;sub-nav ngx-scroll-muted&quot;&gt;
+                        &lt;a
+                                *ngFor&#x3D;&quot;let child of item.children&quot;
+                                class&#x3D;&quot;sub-nav-item&quot;
+                                routerLink&#x3D;&quot;{{ child.route }}&quot;
+                                routerLinkActive&#x3D;&quot;active&quot;
+                        &gt;
+                            &lt;span class&#x3D;&quot;subnav-label&quot;&gt;{{ child.name }}&lt;/span&gt;
+                            &lt;ngx-icon fontIcon&#x3D;&quot;check&quot; class&#x3D;&quot;active-indicator&quot;&gt;&lt;/ngx-icon&gt;
+                        &lt;/a&gt;
+                    &lt;/ul&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/ngx-nav-menu&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;main main-container&quot;&gt;
+        &lt;div class&#x3D;&quot;page&quot;&gt;
+            &lt;router-outlet&gt;&lt;/router-outlet&gt;
+        &lt;/div&gt;
+        &lt;ngx-hotkeys&gt;&lt;/ngx-hotkeys&gt;
+        &lt;ngx-toolbar  class&#x3D;&quot;main-toolbar&quot;&gt;
+            &lt;ngx-toolbar-content&gt;
+                &lt;!-- &lt;a href&#x3D;&quot;#{{state}}&quot; [class.active]&#x3D;&quot;currentTheme &#x3D;&#x3D;&#x3D; &#x27;day&#x27;&quot; (click)&#x3D;&quot;setTheme(&#x27;day&#x27;)&quot;&gt;Day&lt;/a&gt; |
+                &lt;a href&#x3D;&quot;#{{state}}&quot; [class.active]&#x3D;&quot;currentTheme &#x3D;&#x3D;&#x3D; &#x27;night&#x27;&quot; (click)&#x3D;&quot;setTheme(&#x27;night&#x27;)&quot;&gt;Night&lt;/a&gt; |
+                &lt;a href&#x3D;&quot;#{{state}}&quot; [class.active]&#x3D;&quot;currentTheme &#x3D;&#x3D;&#x3D; &#x27;moonlight&#x27;&quot; (click)&#x3D;&quot;setTheme(&#x27;moonlight&#x27;)&quot;&gt;Moonlight&lt;/a&gt; | --&gt;
+                &lt;mat-menu #appMenu&#x3D;&quot;matMenu&quot;&gt;
+                    &lt;ng-template let-name&#x3D;&quot;name&quot; matMenuContent&gt;
+                        &lt;mat-list-item&gt;
+                            &lt;button (click)&#x3D;&quot;changeLanguage(&#x27;en&#x27;)&quot; mat-button color&#x3D;&quot;accent&quot;&gt;
+                                &lt;img src&#x3D;&quot;assets/flags/1x1/en.svg&quot; width&#x3D;&quot;16&quot; alt&#x3D;&quot;{{ &#x27;lang.en&#x27; | translate }}&quot;&gt;&amp;nbsp;&amp;nbsp;{{ &#x27;lang.en&#x27; | translate }}
+                            &lt;/button&gt;
+                        &lt;/mat-list-item&gt;
+                        &lt;mat-list-item&gt;
+                            &lt;button (click)&#x3D;&quot;changeLanguage(&#x27;ru&#x27;)&quot; mat-button color&#x3D;&quot;accent&quot;&gt;
+                                &lt;img src&#x3D;&quot;assets/flags/1x1/ru.svg&quot; width&#x3D;&quot;16&quot; alt&#x3D;&quot;{{ &#x27;lang.ru&#x27; | translate }}&quot;&gt;&amp;nbsp;&amp;nbsp;{{ &#x27;lang.ru&#x27; | translate }}
+                            &lt;/button&gt;
+                        &lt;/mat-list-item&gt;
+                        &lt;mat-list-item&gt;
+                            &lt;button (click)&#x3D;&quot;changeLanguage(&#x27;zh&#x27;)&quot; mat-button color&#x3D;&quot;accent&quot;&gt;
+                                &lt;img src&#x3D;&quot;assets/flags/1x1/zh.svg&quot; width&#x3D;&quot;16&quot; alt&#x3D;&quot;{{ &#x27;lang.zh&#x27; | translate }}&quot;&gt;&amp;nbsp;&amp;nbsp;{{ &#x27;lang.zh&#x27; | translate }}
+                            &lt;/button&gt;
+                        &lt;/mat-list-item&gt;
+                        &lt;mat-list-item&gt;
+                            &lt;button (click)&#x3D;&quot;changeLanguage(&#x27;es&#x27;)&quot; mat-button color&#x3D;&quot;accent&quot;&gt;
+                                &lt;img src&#x3D;&quot;assets/flags/1x1/es.svg&quot; width&#x3D;&quot;16&quot; alt&#x3D;&quot;{{ &#x27;lang.es&#x27; | translate }}&quot;&gt;&amp;nbsp;&amp;nbsp;{{ &#x27;lang.es&#x27; | translate }}
+                            &lt;/button&gt;
+                        &lt;/mat-list-item&gt;
+                        &lt;mat-list-item&gt;
+                            &lt;button (click)&#x3D;&quot;changeLanguage(&#x27;de&#x27;)&quot; mat-button color&#x3D;&quot;accent&quot;&gt;
+                                &lt;img src&#x3D;&quot;assets/flags/1x1/de.svg&quot; width&#x3D;&quot;16&quot; alt&#x3D;&quot;{{ &#x27;lang.de&#x27; | translate }}&quot;&gt;&amp;nbsp;&amp;nbsp;{{ &#x27;lang.de&#x27; | translate }}
+                            &lt;/button&gt;
+                        &lt;/mat-list-item&gt;
+                        &lt;mat-list-item&gt;
+                            &lt;button (click)&#x3D;&quot;changeLanguage(&#x27;fr&#x27;)&quot; mat-button color&#x3D;&quot;accent&quot;&gt;
+                                &lt;img src&#x3D;&quot;assets/flags/1x1/fr.svg&quot; width&#x3D;&quot;16&quot; alt&#x3D;&quot;{{ &#x27;lang.fr&#x27; | translate }}&quot;&gt;&amp;nbsp;&amp;nbsp;{{ &#x27;lang.fr&#x27; | translate }}
+                            &lt;/button&gt;
+                        &lt;/mat-list-item&gt;
+
+
+                    &lt;/ng-template&gt;
+                &lt;/mat-menu&gt;
+
+                &lt;button [matMenuTriggerFor]&#x3D;&quot;appMenu&quot;
+                        mat-icon-button&gt;
+                    &lt;img src&#x3D;&quot;assets/flags/1x1/{{ this.currentLanguage }}.svg&quot; width&#x3D;&quot;24&quot;&gt;
+                &lt;/button&gt;
+            &lt;/ngx-toolbar-content&gt;
+        &lt;/ngx-toolbar&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./app.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">// Base
+$color-white: #fff;
+$color-black: #000;
+
+// Blue
+$color-blue: #2aabb0;
+$color-blue-100: lighten($color-blue, 30%);
+$color-blue-200: lighten($color-blue, 25%);
+$color-blue-300: lighten($color-blue, 20%);
+$color-blue-400: lighten($color-blue, 10%);
+$color-blue-500: $color-blue;
+$color-blue-600: darken($color-blue, 10%);
+$color-blue-700: darken($color-blue, 20%);
+$color-blue-800: darken($color-blue, 30%);
+$color-blue-900: darken($color-blue, 35%);
+
+// Light Blue
+$color-light-blue: #79d4d6;
+$color-light-blue-100: lighten($color-light-blue, 30%);
+$color-light-blue-200: lighten($color-light-blue, 25%);
+$color-light-blue-300: lighten($color-light-blue, 20%);
+$color-light-blue-400: lighten($color-light-blue, 10%);
+$color-light-blue-500: $color-light-blue;
+$color-light-blue-600: darken($color-light-blue, 10%);
+$color-light-blue-700: darken($color-light-blue, 20%);
+$color-light-blue-800: darken($color-light-blue, 30%);
+$color-light-blue-900: darken($color-light-blue, 35%);
+
+// Green
+$color-green: #1c9ea3;
+$color-green-100: lighten($color-green, 30%);
+$color-green-200: lighten($color-green, 25%);
+$color-green-300: lighten($color-green, 20%);
+$color-green-400: lighten($color-green, 10%);
+$color-green-500: $color-green;
+$color-green-600: darken($color-green, 10%);
+$color-green-700: darken($color-green, 20%);
+$color-green-800: darken($color-green, 30%);
+$color-green-900: darken($color-green, 35%);
+
+// Red
+$color-red: #ff4514;
+$color-red-100: lighten($color-red, 30%);
+$color-red-200: lighten($color-red, 25%);
+$color-red-300: lighten($color-red, 20%);
+$color-red-400: lighten($color-red, 10%);
+$color-red-500: $color-red;
+$color-red-600: darken($color-red, 10%);
+$color-red-700: darken($color-red, 20%);
+$color-red-800: darken($color-red, 30%);
+$color-red-900: darken($color-red, 35%);
+
+// Orange
+$color-orange: #ffa814;
+$color-orange-100: lighten($color-orange, 30%);
+$color-orange-200: lighten($color-orange, 25%);
+$color-orange-300: lighten($color-orange, 20%);
+$color-orange-400: lighten($color-orange, 10%);
+$color-orange-500: $color-orange;
+$color-orange-600: darken($color-orange, 10%);
+$color-orange-700: darken($color-orange, 20%);
+$color-orange-800: darken($color-orange, 30%);
+$color-orange-900: darken($color-orange, 35%);
+
+// Purple
+$color-purple: #8a65e8;
+$color-purple-100: lighten($color-purple, 30%);
+$color-purple-200: lighten($color-purple, 25%);
+$color-purple-300: lighten($color-purple, 20%);
+$color-purple-400: lighten($color-purple, 10%);
+$color-purple-500: $color-purple;
+$color-purple-600: darken($color-purple, 10%);
+$color-purple-700: darken($color-purple, 20%);
+$color-purple-800: darken($color-purple, 30%);
+$color-purple-900: darken($color-purple, 35%);
+
+// Blue Grey
+$color-blue-grey: #5a6884;
+$color-blue-grey-050: lighten($color-blue-grey, 50%);
+$color-blue-grey-100: lighten($color-blue-grey, 40%);
+$color-blue-grey-150: lighten($color-blue-grey, 35%);
+$color-blue-grey-200: lighten($color-blue-grey, 30%);
+$color-blue-grey-250: lighten($color-blue-grey, 25%);
+$color-blue-grey-300: lighten($color-blue-grey, 20%);
+$color-blue-grey-350: lighten($color-blue-grey, 15%);
+$color-blue-grey-400: lighten($color-blue-grey, 10%);
+$color-blue-grey-450: lighten($color-blue-grey, 5%);
+$color-blue-grey-500: $color-blue-grey;
+$color-blue-grey-550: darken($color-blue-grey, 5%);
+$color-blue-grey-600: darken($color-blue-grey, 10%);
+$color-blue-grey-650: darken($color-blue-grey, 15%);
+$color-blue-grey-700: darken($color-blue-grey, 20%);
+$color-blue-grey-725: darken($color-blue-grey, 22.5%);
+$color-blue-grey-750: darken($color-blue-grey, 25%);
+$color-blue-grey-775: darken($color-blue-grey, 27.5%);
+$color-blue-grey-800: darken($color-blue-grey, 30%);
+$color-blue-grey-825: darken($color-blue-grey, 32.5%);
+$color-blue-grey-850: darken($color-blue-grey, 35%);
+$color-blue-grey-875: darken($color-blue-grey, 37.5%);
+$color-blue-grey-900: darken($color-blue-grey, 40%);
+
+// Light Grey
+$color-grey: #696969;
+$color-grey-050: lighten($color-grey, 50%);
+$color-grey-100: lighten($color-grey, 40%);
+$color-grey-150: lighten($color-grey, 35%);
+$color-grey-200: lighten($color-grey, 30%);
+$color-grey-250: lighten($color-grey, 25%);
+$color-grey-300: lighten($color-grey, 20%);
+$color-grey-350: lighten($color-grey, 15%);
+$color-grey-400: lighten($color-grey, 10%);
+$color-grey-450: lighten($color-grey, 5%);
+$color-grey-500: $color-grey;
+$color-grey-550: darken($color-grey, 5%);
+$color-grey-600: darken($color-grey, 10%);
+$color-grey-650: darken($color-grey, 15%);
+$color-grey-700: darken($color-grey, 20%);
+$color-grey-725: darken($color-grey, 22.5%);
+$color-grey-750: darken($color-grey, 25%);
+$color-grey-775: darken($color-grey, 27.5%);
+$color-grey-800: darken($color-grey, 30%);
+$color-grey-825: darken($color-grey, 32.5%);
+$color-grey-850: darken($color-grey, 35%);
+$color-grey-875: darken($color-grey, 37.5%);
+$color-grey-900: darken($color-grey, 40%);
+
+$colors: (
+        &#x27;blue&#x27;: $color-blue,
+        &#x27;light-blue&#x27;: $color-light-blue,
+        &#x27;green&#x27;: $color-green,
+        &#x27;orange&#x27;: $color-orange,
+        &#x27;red&#x27;: $color-red,
+        &#x27;purple&#x27;: $color-purple,
+        &#x27;blue-grey&#x27;: $color-blue-grey,
+        &#x27;grey&#x27;: $color-grey
+);
+
+$palette: (
+        050: 50%,
+        100: 40%,
+        150: 35%,
+        200: 30%,
+        250: 25%,
+        300: 20%,
+        350: 15%,
+        400: 10%,
+        450: 5%,
+        500: 0,
+        550: 5%,
+        600: 10%,
+        650: 15%,
+        700: 20%,
+        725: 22.5%,
+        750: 25%,
+        775: 27.5%,
+        800: 30%,
+        825: 32.5%,
+        850: 35%,
+        875: 37.5%,
+        900: 40%
+);
+
+// error state color
+$color-error: $color-red-500;
+
+
+:host {
+  .main-container {
+    height: 100vh;
+    width: 100%;
+    min-height: calc(99vh - 54px);
+    overflow: hidden;
+    background: radial-gradient(circle, rgba(8, 242, 181, 1) 0%, rgba(21, 130, 151, 1) 100%);
+
+  }
+
+
+}
+
+
+/**
+ * Theme Styles
+ */
+
+.app {
+  display: flex;
+  flex-flow: row nowrap;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .navigation {
+    display: flex;
+    flex-shrink: 0;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+
+    .search-box {
+      border: 1px solid transparent;
+      color: $color-blue-grey-400;
+      background: $color-blue-grey-700;
+      height: 40px;
+      padding: 8px;
+      line-height: 1em;
+      margin: 0;
+
+      ngx-input-suffix .btn {
+        color: $color-blue-grey-400;
+
+        &amp;:hover {
+          color: #ffffff;
+        }
+      }
+
+      ngx-input {
+        margin-top: -3px;
+        padding-top: 0;
+
+        .ngx-input-underline {
+          display: none;
+        }
+
+        .ngx-input-flex-wrap {
+          align-items: center;
+
+          ngx-input-prefix {
+            margin-top: 1px;
+          }
+
+          ngx-input-suffix {
+            height: 25px;
+            margin-top: -4px;
+          }
+        }
+
+        .ngx-input-wrap .ngx-input-box-wrap .ngx-input-box {
+          &amp;::placeholder {
+            font-size: 14px !important;
+          }
+        }
+      }
+    }
+
+    .logo-text svg {
+      height: 1.5rem;
+    }
+  }
+
+  .main {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+    width: 100%;
+    padding-top: 50px;
+
+    .main-toolbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .page {
+      width: 100%;
+      padding: 0.8em;
+    }
+  }
+}
+
+.app .ngx-toolbar a.active {
+  font-weight: 900;
+}
+
+/**
+ * Header
+ */
+.style-header {
+  text-transform: uppercase;
+  color: $color-grey-300;
+  font-size: 1rem;
+  position: relative;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  font-weight: 600;
+
+  &amp;:after {
+    content: &#x27;&#x27;;
+    width: 25px;
+    height: 1px;
+    background: $color-grey-300;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+.CodeMirror {
+  margin-top: 20px;
+}
+
+.fa,
+.fa:before {
+  font-family: FontAwesome !important;
+  vertical-align: top;
+}
+
+
+@each $name, $hex in $colors {
+  @each $weight, $percentage in $palette {
+    @if $weight &lt; 100 {
+      .color-#{&#x27;&#x27; + $name}-#{&#x27;0&#x27; + $weight} {
+        background-color: lighten($hex, $percentage);
+      }
+    } @else if $weight &lt; 500 {
+      .color-#{&#x27;&#x27; + $name}-#{$weight} {
+        background-color: lighten($hex, $percentage);
+      }
+    } @else if $weight &gt; 500 {
+      .color-#{&#x27;&#x27; + $name}-#{$weight} {
+        background-color: darken($hex, $percentage);
+      }
+    } @else {
+      .color-#{&#x27;&#x27; + $name}-#{$weight} {
+        background-color: $hex;
+      }
+    }
+  }
+}
+
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+.glow-demo {
+  background: $color-blue-grey-850;
+  margin: 20px;
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.badge {
+  clear: both;
+  margin-top: 30px;
+  display: block;
+  background-color: blue;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  user-select: none;
+}
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="app">    <div class="navigation">        <ngx-nav-menu [expanded]="navExpanded" class="navigation">            <div class="nav-logo">                <img alt="Lethean Logo" style="width: 100%" class="" src="../assets/images/logo.png"/>                <ngx-icon *ngIf="!navExpanded" svgSrc="slide-right" (click)="navExpanded = true" class="expand-icon"></ngx-icon>                <ngx-icon *ngIf="navExpanded" svgSrc="slide-left" (click)="navExpanded = false" class="expand-icon"></ngx-icon>            </div>            <div class="search-box" *ngIf="navExpanded">                <ngx-input                    #searchInput                    type="text"                    [autofocus]="true"                    [(ngModel)]="searchValue"                    [placeholder]="\'Search\'"                    (ngModelChange)="updateSearchValue(searchValue)"                >                    <ngx-input-prefix> <ngx-icon fontIcon="search"></ngx-icon> </ngx-input-prefix>                    <ngx-input-suffix>                        <button class="btn btn-link" [hidden]="!searchValue.length" (click)="searchValue = searchInput.value = \'\'">                            <ngx-icon class="search-box__clear-btn" fontIcon="x"></ngx-icon>                        </button>                    </ngx-input-suffix>                </ngx-input>            </div>            <ul class="nav-items nav-main vertical-list ngx-scroll-muted">                <li *ngFor="let item of filteredNavigationTree; trackBy:trackByName" class="nav-item-container">                    <a                            *ngIf="!item.children"                            class="nav-item"                            ngx-tooltip                            tooltipPlacement="right"                            [tooltipTitle]="item.name | translate"                            routerLink="{{ item.route }}"                            routerLinkActive="active"                    >                        <ngx-icon [fontIcon]="item.icon"></ngx-icon>                        <span class="nav-label">{{ item.name | translate }}</span>                    </a>                    <div                            *ngIf="item.children"                            class="nav-item"                            ngx-tooltip                            ngx-tooltip                            [tooltipContext]="item.children"                            [tooltipCssClass]="\'nav-popover\'"                            tooltipType="popover"                            tooltipPlacement="right"                            [tooltipTemplate]="!navExpanded ? childrenTemplate : undefined"                            [tooltipShowCaret]="false"                            tooltipAlignment="top"                            [tooltipSpacing]="1"                            (click)="item.expanded = !item.expanded"                    >                        <ngx-icon [fontIcon]="item.icon"></ngx-icon>                        <span class="nav-label">{{ item.name }}</span>                    </div>                    <ng-template #childrenTemplate let-model="model">                        <div class="title">{{ item.name }}</div>                        <ul *ngIf="item.children" class="sub-nav ngx-scroll-muted">                            <a                                    *ngFor="let child of item.children"                                    class="sub-nav-item"                                    routerLink="{{ child.route }}"                                    routerLinkActive="active"                            >                                <span class="subnav-label">{{ child.name }}</span>                                <ngx-icon fontIcon="check" class="active-indicator"></ngx-icon>                            </a>                        </ul>                    </ng-template>                    <ul *ngIf="item.children && navExpanded" class="sub-nav ngx-scroll-muted">                        <a                                *ngFor="let child of item.children"                                class="sub-nav-item"                                routerLink="{{ child.route }}"                                routerLinkActive="active"                        >                            <span class="subnav-label">{{ child.name }}</span>                            <ngx-icon fontIcon="check" class="active-indicator"></ngx-icon>                        </a>                    </ul>                </li>            </ul>        </ngx-nav-menu>    </div>    <div class="main main-container">        <div class="page">            <router-outlet></router-outlet>        </div>        <ngx-hotkeys></ngx-hotkeys>        <ngx-toolbar  class="main-toolbar">            <ngx-toolbar-content>                <!-- <a href="#{{state}}" [class.active]="currentTheme === \'day\'" (click)="setTheme(\'day\')">Day</a> |                <a href="#{{state}}" [class.active]="currentTheme === \'night\'" (click)="setTheme(\'night\')">Night</a> |                <a href="#{{state}}" [class.active]="currentTheme === \'moonlight\'" (click)="setTheme(\'moonlight\')">Moonlight</a> | -->                <mat-menu #appMenu="matMenu">                    <ng-template let-name="name" matMenuContent>                        <mat-list-item>                            <button (click)="changeLanguage(\'en\')" mat-button color="accent">                                <img src="assets/flags/1x1/en.svg" width="16" alt="{{ \'lang.en\' | translate }}">&nbsp;&nbsp;{{ \'lang.en\' | translate }}                            </button>                        </mat-list-item>                        <mat-list-item>                            <button (click)="changeLanguage(\'ru\')" mat-button color="accent">                                <img src="assets/flags/1x1/ru.svg" width="16" alt="{{ \'lang.ru\' | translate }}">&nbsp;&nbsp;{{ \'lang.ru\' | translate }}                            </button>                        </mat-list-item>                        <mat-list-item>                            <button (click)="changeLanguage(\'zh\')" mat-button color="accent">                                <img src="assets/flags/1x1/zh.svg" width="16" alt="{{ \'lang.zh\' | translate }}">&nbsp;&nbsp;{{ \'lang.zh\' | translate }}                            </button>                        </mat-list-item>                        <mat-list-item>                            <button (click)="changeLanguage(\'es\')" mat-button color="accent">                                <img src="assets/flags/1x1/es.svg" width="16" alt="{{ \'lang.es\' | translate }}">&nbsp;&nbsp;{{ \'lang.es\' | translate }}                            </button>                        </mat-list-item>                        <mat-list-item>                            <button (click)="changeLanguage(\'de\')" mat-button color="accent">                                <img src="assets/flags/1x1/de.svg" width="16" alt="{{ \'lang.de\' | translate }}">&nbsp;&nbsp;{{ \'lang.de\' | translate }}                            </button>                        </mat-list-item>                        <mat-list-item>                            <button (click)="changeLanguage(\'fr\')" mat-button color="accent">                                <img src="assets/flags/1x1/fr.svg" width="16" alt="{{ \'lang.fr\' | translate }}">&nbsp;&nbsp;{{ \'lang.fr\' | translate }}                            </button>                        </mat-list-item>                    </ng-template>                </mat-menu>                <button [matMenuTriggerFor]="appMenu"                        mat-icon-button>                    <img src="assets/flags/1x1/{{ this.currentLanguage }}.svg" width="24">                </button>            </ngx-toolbar-content>        </ngx-toolbar>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AddComponent', 'selector': 'lthn-wallet-add'},{'name': 'AppComponent', 'selector': 'lthn-app'},{'name': 'BlockchainComponent', 'selector': 'lthn-chain'},{'name': 'ConsoleComponent', 'selector': 'lthn-app-console'},{'name': 'LoginComponent', 'selector': 'lthn-login'},{'name': 'LogsComponent', 'selector': 'lthn-app-logs'},{'name': 'NewComponent', 'selector': 'lthn-wallet-new'},{'name': 'NoDaemonRunningDialog', 'selector': 'lthn-app-status-no-daemon'},{'name': 'OpenComponent', 'selector': 'lthn-wallet-open'},{'name': 'PostComponent', 'selector': 'lthn-app-post'},{'name': 'ProfileComponent', 'selector': 'lthn-user-profile'},{'name': 'RestoreComponent', 'selector': 'lthn-wallet-restore'},{'name': 'RootComponent', 'selector': 'lthn-root'},{'name': 'SettingsComponent', 'selector': 'lthn-settings'},{'name': 'SettingsComponent', 'selector': 'lthn-app-settings'},{'name': 'StatusComponent', 'selector': 'lthn-app-status'},{'name': 'TransactionsComponent', 'selector': 'lthn-wallet-transactions'},{'name': 'UserComponent', 'selector': 'lthn-user'},{'name': 'VpnComponent', 'selector': 'lthn-vpn'},{'name': 'WalletComponent', 'selector': 'lthn-app-wallet'}];
+    var DIRECTIVES = [{'name': 'ChartDirective', 'selector': '[lthnChart]'}];
+    var ACTUAL_COMPONENT = {'name': 'AppComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AppComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
