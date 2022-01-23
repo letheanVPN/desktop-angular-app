@@ -1,0 +1,29 @@
+name: API Documentation
+
+on:
+  push:
+    branches: [ main ]
+    paths:  
+      - Dockerfile
+      - .github/workflows/angular-build.yml
+  pull_request:
+    branches: [ main ]
+    paths:  
+      - Dockerfile
+      - .github/workflows/angular-build.yml
+
+jobs:
+  angular-doc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+      - run: npm install --legacy-peer-deps
+      - run: npm run doc
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./documentation

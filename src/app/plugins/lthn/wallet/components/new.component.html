@@ -1,0 +1,20 @@
+<mat-card>
+    <mat-card-title>{{ 'plugin.lthn.wallet.titles.new-wallet' | translate }}</mat-card-title>
+    <mat-card-content>
+
+        <mat-form-field class="full_width"  appearance="standard">
+            <mat-label>{{ 'plugin.lthn.wallet.label.filename' | translate }}</mat-label>
+            <input [formControl]="wallet_name" matInput type="text">
+			<mat-error *ngIf="wallet_name.errors?.['nameTaken']">Wallet already exists</mat-error>
+        </mat-form-field>
+        <mat-form-field  class="full_width" appearance="standard">
+            <mat-label>{{ 'plugin.lthn.wallet.label.wallet-password' | translate }}</mat-label>
+            <input [formControl]="password" matInput type="password">
+        </mat-form-field>
+        <mat-form-field  class="full_width" appearance="standard">
+            <mat-label>{{ 'plugin.lthn.wallet.label.wallet-password-confirm' | translate }}</mat-label>
+            <input [formControl]="password_confirm" matInput type="password">
+        </mat-form-field>
+        <button mat-button (click)="createWallet()">{{ 'plugin.lthn.wallet.button.create-wallet' | translate }}</button>
+    </mat-card-content>
+</mat-card>
