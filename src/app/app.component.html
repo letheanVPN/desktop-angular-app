@@ -1,0 +1,147 @@
+<div class="app">
+    <div class="navigation">
+        <ngx-nav-menu [expanded]="navExpanded" class="navigation">
+            <div class="nav-logo">
+
+                <img alt="Lethean Logo" style="width: 100%" class="" src="../assets/images/logo.png"/>
+
+                <ngx-icon *ngIf="!navExpanded" svgSrc="slide-right" (click)="navExpanded = true" class="expand-icon"></ngx-icon>
+                <ngx-icon *ngIf="navExpanded" svgSrc="slide-left" (click)="navExpanded = false" class="expand-icon"></ngx-icon>
+            </div>
+            <div class="search-box" *ngIf="navExpanded">
+                <ngx-input
+                    #searchInput
+                    type="text"
+                    [autofocus]="true"
+                    [(ngModel)]="searchValue"
+                    [placeholder]="'Search'"
+                    (ngModelChange)="updateSearchValue(searchValue)"
+                >
+                    <ngx-input-prefix> <ngx-icon fontIcon="search"></ngx-icon> </ngx-input-prefix>
+                    <ngx-input-suffix>
+                        <button class="btn btn-link" [hidden]="!searchValue.length" (click)="searchValue = searchInput.value = ''">
+                            <ngx-icon class="search-box__clear-btn" fontIcon="x"></ngx-icon>
+                        </button>
+                    </ngx-input-suffix>
+                </ngx-input>
+            </div>
+            <ul class="nav-items nav-main vertical-list ngx-scroll-muted">
+                <li *ngFor="let item of filteredNavigationTree; trackBy:trackByName" class="nav-item-container">
+                    <a
+                            *ngIf="!item.children"
+                            class="nav-item"
+                            ngx-tooltip
+                            tooltipPlacement="right"
+                            [tooltipTitle]="item.name | translate"
+                            routerLink="{{ item.route }}"
+                            routerLinkActive="active"
+                    >
+                        <ngx-icon [fontIcon]="item.icon"></ngx-icon>
+                        <span class="nav-label">{{ item.name | translate }}</span>
+                    </a>
+
+                    <div
+                            *ngIf="item.children"
+                            class="nav-item"
+                            ngx-tooltip
+                            ngx-tooltip
+                            [tooltipContext]="item.children"
+                            [tooltipCssClass]="'nav-popover'"
+                            tooltipType="popover"
+                            tooltipPlacement="right"
+                            [tooltipTemplate]="!navExpanded ? childrenTemplate : undefined"
+                            [tooltipShowCaret]="false"
+                            tooltipAlignment="top"
+                            [tooltipSpacing]="1"
+                            (click)="item.expanded = !item.expanded"
+                    >
+                        <ngx-icon [fontIcon]="item.icon"></ngx-icon>
+                        <span class="nav-label">{{ item.name }}</span>
+                    </div>
+
+                    <ng-template #childrenTemplate let-model="model">
+                        <div class="title">{{ item.name }}</div>
+                        <ul *ngIf="item.children" class="sub-nav ngx-scroll-muted">
+                            <a
+                                    *ngFor="let child of item.children"
+                                    class="sub-nav-item"
+                                    routerLink="{{ child.route }}"
+                                    routerLinkActive="active"
+                            >
+                                <span class="subnav-label">{{ child.name }}</span>
+                                <ngx-icon fontIcon="check" class="active-indicator"></ngx-icon>
+                            </a>
+                        </ul>
+                    </ng-template>
+
+                    <ul *ngIf="item.children && navExpanded" class="sub-nav ngx-scroll-muted">
+                        <a
+                                *ngFor="let child of item.children"
+                                class="sub-nav-item"
+                                routerLink="{{ child.route }}"
+                                routerLinkActive="active"
+                        >
+                            <span class="subnav-label">{{ child.name }}</span>
+                            <ngx-icon fontIcon="check" class="active-indicator"></ngx-icon>
+                        </a>
+                    </ul>
+                </li>
+            </ul>
+        </ngx-nav-menu>
+    </div>
+
+    <div class="main main-container">
+        <div class="page">
+            <router-outlet></router-outlet>
+        </div>
+        <ngx-hotkeys></ngx-hotkeys>
+        <ngx-toolbar  class="main-toolbar">
+            <ngx-toolbar-content>
+                <!-- <a href="#{{state}}" [class.active]="currentTheme === 'day'" (click)="setTheme('day')">Day</a> |
+                <a href="#{{state}}" [class.active]="currentTheme === 'night'" (click)="setTheme('night')">Night</a> |
+                <a href="#{{state}}" [class.active]="currentTheme === 'moonlight'" (click)="setTheme('moonlight')">Moonlight</a> | -->
+                <mat-menu #appMenu="matMenu">
+                    <ng-template let-name="name" matMenuContent>
+                        <mat-list-item>
+                            <button (click)="changeLanguage('en')" mat-button color="accent">
+                                <img src="assets/flags/1x1/en.svg" width="16" alt="{{ 'lang.en' | translate }}">&nbsp;&nbsp;{{ 'lang.en' | translate }}
+                            </button>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <button (click)="changeLanguage('ru')" mat-button color="accent">
+                                <img src="assets/flags/1x1/ru.svg" width="16" alt="{{ 'lang.ru' | translate }}">&nbsp;&nbsp;{{ 'lang.ru' | translate }}
+                            </button>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <button (click)="changeLanguage('zh')" mat-button color="accent">
+                                <img src="assets/flags/1x1/zh.svg" width="16" alt="{{ 'lang.zh' | translate }}">&nbsp;&nbsp;{{ 'lang.zh' | translate }}
+                            </button>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <button (click)="changeLanguage('es')" mat-button color="accent">
+                                <img src="assets/flags/1x1/es.svg" width="16" alt="{{ 'lang.es' | translate }}">&nbsp;&nbsp;{{ 'lang.es' | translate }}
+                            </button>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <button (click)="changeLanguage('de')" mat-button color="accent">
+                                <img src="assets/flags/1x1/de.svg" width="16" alt="{{ 'lang.de' | translate }}">&nbsp;&nbsp;{{ 'lang.de' | translate }}
+                            </button>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <button (click)="changeLanguage('fr')" mat-button color="accent">
+                                <img src="assets/flags/1x1/fr.svg" width="16" alt="{{ 'lang.fr' | translate }}">&nbsp;&nbsp;{{ 'lang.fr' | translate }}
+                            </button>
+                        </mat-list-item>
+
+
+                    </ng-template>
+                </mat-menu>
+
+                <button [matMenuTriggerFor]="appMenu"
+                        mat-icon-button>
+                    <img src="assets/flags/1x1/{{ this.currentLanguage }}.svg" width="24">
+                </button>
+            </ngx-toolbar-content>
+        </ngx-toolbar>
+    </div>
+</div>

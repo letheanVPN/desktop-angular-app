@@ -1,0 +1,20 @@
+<ngx-section
+        [sectionTitle]="'login' | translate"
+        [sectionCollapsible]="false"
+>
+
+
+    <div *ngIf="error.length > 0">{{error}}</div>
+    <mat-form-field appearance="standard">
+        <mat-label>Username</mat-label>
+        <input [formControl]="username" (keyup)="inputChanged()" matInput type="text">
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+        <mat-label>Password</mat-label>
+        <input [formControl]="password" (keyup)="inputChanged()" matInput type="password">
+    </mat-form-field>
+
+    <ngx-button (click)="submit()">Login</ngx-button>
+
+</ngx-section>
+

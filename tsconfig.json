@@ -1,0 +1,62 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "sourceMap": true,
+    "strict": false,
+    "declaration": false,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "target": "es2015",
+    "module": "es2020",
+    "lib": [
+      "es2019",
+      "es2018",
+      "dom"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "paths": {
+      "@service/*": [
+        "src/app/services/*"
+      ],
+      "@module/*": [
+        "src/app/modules/*"
+      ],
+      "@plugin/*": [
+        "src/app/plugins/*"
+      ],
+      "@interface/*": [
+        "src/app/interfaces/*"
+      ],
+      "@data/*": [
+        "src/app/data/*"
+      ],
+      "@pipe/*": [
+        "src/app/pipes/*"
+      ],
+      "@env/*": [
+        "src/environments/*"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": false,
+    "strictInputAccessModifiers": false,
+    "strictTemplates": false,
+    "preserveWhitespaces": true,
+    "resolveJsonModule": true,
+    "enableIvy": true
+  }
+}
