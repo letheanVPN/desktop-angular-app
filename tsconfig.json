@@ -54,9 +54,9 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": false,
     "strictInputAccessModifiers": false,
+    "flatModulePrivateSymbolPrefix": "lthn_",
     "strictTemplates": false,
     "preserveWhitespaces": true,
-    "resolveJsonModule": true,
-    "enableIvy": true
+    "resolveJsonModule": true
   }
 }
