@@ -19,7 +19,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {AuthModule} from '@module/auth/auth.module';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {NgxUIModule} from '@swimlane/ngx-ui';
 
 export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http);
@@ -41,7 +40,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 			}
 		}),
 		AppRoutingModule,
-		NgxUIModule,
 		DataModule,
 		StatusModule,
 		MatSidenavModule,

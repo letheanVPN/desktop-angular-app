@@ -1,7 +1,5 @@
-<ngx-toolbar
-        [mainTitle]="'plugin.lthn.chain.table.title.blockchain-explorer' | translate"
->
-    <ngx-toolbar-content *ngIf="chainInfo | ngrxPush as info">
+<mat-toolbar>
+    <mat-toolbar-content *ngIf="chainInfo | ngrxPush as info">
         <ul class="horizontal-list">
             <li>{{'plugin.lthn.chain.words.height' | translate }}: {{info.height | number }}</li>
             <li>{{'plugin.lthn.chain.words.target_height' | translate }}: {{info.target_height | number }}</li>
@@ -20,12 +18,10 @@
                 </mat-menu>
             </li>
         </ul>
-    </ngx-toolbar-content>
-</ngx-toolbar>
+    </mat-toolbar-content>
+</mat-toolbar>
 
-<ngx-section
-        [sectionCollapsible]="false"
->
+
     <ngx-datatable
             class="material"
             [rows]="(blocks | ngrxPush)?.headers"
@@ -62,6 +58,6 @@
         </ngx-datatable-column>
 
     </ngx-datatable>
-</ngx-section>
+
 
 

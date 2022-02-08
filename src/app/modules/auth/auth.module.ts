@@ -5,7 +5,6 @@ import {MatCardModule} from '@angular/material/card';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
-import {ButtonModule, SectionModule} from '@swimlane/ngx-ui';
 import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
@@ -16,9 +15,7 @@ import {TranslateModule} from '@ngx-translate/core';
 		ReactiveFormsModule,
 		MatInputModule,
 		MatButtonModule,
-		SectionModule,
-		TranslateModule,
-		ButtonModule
+		TranslateModule
 	]
 })
 export class AuthModule {

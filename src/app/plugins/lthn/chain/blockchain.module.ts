@@ -16,7 +16,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatMenuModule} from '@angular/material/menu';
 import {PipesModule} from '@pipe/pipes.module';
 import {HashRatePipe} from '@pipe/crypto/hashrate.pipe';
-import {SectionModule, ToolbarModule} from '@swimlane/ngx-ui';
 
 const routes: Routes = [
 	{
@@ -49,8 +48,6 @@ const routes: Routes = [
 		MatToolbarModule,
 		MatTooltipModule,
 		MatMenuModule,
-		ToolbarModule,
-		SectionModule
 	],
 	exports: [RouterModule],
 	providers: [HashRatePipe]

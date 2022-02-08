@@ -10,7 +10,6 @@ import {Subscription} from 'rxjs';
 import {FileSystemService} from '@service/filesystem/file-system.service';
 import {BlockchainService} from '@plugin/lthn/chain/blockchain.service';
 import {WalletService} from '@plugin/lthn/wallet/wallet.service';
-import {DrawerService, LoadingService} from '@swimlane/ngx-ui';
 import Prism from 'prismjs';
 import 'prismjs/plugins/custom-class/prism-custom-class';
 @Component({
@@ -73,9 +72,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 		private store: Store,
 		private fs: FileSystemService,
 		private chain: BlockchainService,
-		private wallet: WalletService,
-		private drawerMngr: DrawerService,
-		private loadingService: LoadingService
+		private wallet: WalletService
 	) {
 
 		translate.setDefaultLang('en');
@@ -87,10 +84,10 @@ export class AppComponent implements OnInit, AfterViewInit {
 		// Adding loading component in router
 		this.router.events.subscribe((event: Event) => {
 			if (event instanceof NavigationStart) {
-				this.loadingService.start();
+				//this.loadingService.start();
 			} else if (event instanceof NavigationEnd) {
-				this.loadingService.complete();
-				this.drawerMngr.destroyAll();
+				//this.loadingService.complete();
+				//this.drawerMngr.destroyAll();
 			}
 		});
 

@@ -1,4 +1,4 @@
-<ngx-section
+<mat-card
         *ngIf="!hasCLI"
         class="shadow"
         [sectionTitle]="'words.states.not_installed' | translate"
@@ -6,21 +6,21 @@
 >
     <p *ngIf="!downloadingCLI">{{ 'words.states.not_installed_desc' | translate }}</p>
     <p *ngIf="downloadingCLI">{{ 'words.states.installing_desc' | translate }}</p>
-    <ngx-button *ngIf="!downloadingCLI" (click)="downloadCLI()">{{ 'plugin.lthn.chain.words.install-blockchain' | translate }}</ngx-button>
-    <ngx-progress-spinner
+    <button mat-button *ngIf="!downloadingCLI" (click)="downloadCLI()">{{ 'plugin.lthn.chain.words.install-blockchain' | translate }}</button>
+    <mat-progress-spinner
             *ngIf="downloadingCLI"
             appearance="icon"
-    ></ngx-progress-spinner>
-</ngx-section>
+    ></mat-progress-spinner>
+</mat-card>
 
 
-<ngx-section
+<mat-card
         *ngIf="hasCLI"
         class="shadow"
         [sectionTitle]="'plugin.lthn.chain.table.title.chain-status' | translate"
         [sectionCollapsible]="false">
 
-        <ngx-card-section *ngIf="chainInfo | ngrxPush as info">
+        <mat-card-section *ngIf="chainInfo | ngrxPush as info">
             <div *ngIf="info.height" fxLayout="column, wrap" fxLayoutGap="18px">
                 <div fxFlex="30" fxLayout="row" fxLayoutAlign="space-between">
                     <h5>{{'plugin.lthn.chain.words.height' | translate }}</h5>
@@ -139,11 +139,11 @@
                     <ngx-card-placeholder></ngx-card-placeholder>
                 </div>
             </div>
-        </ngx-card-section>
+        </mat-card-section>
 
-    </ngx-section>
+    </mat-card>
 
-<ngx-section
+<mat-card
         *ngIf="hasCLI"
         class="shadow"
         [sectionTitle]="'plugin.lthn.chain.table.title.recent-blocks' | translate"
@@ -189,7 +189,7 @@
                     </ng-template>
                 </ngx-datatable-column>
             </ngx-datatable>
-    </ngx-section>
+    </mat-card>
 
 
 
