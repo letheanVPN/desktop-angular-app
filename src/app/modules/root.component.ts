@@ -77,7 +77,7 @@ export class RootComponent implements OnInit, OnDestroy {
 	}
 
 	renderFirstRunView() {
-		this.router.navigateByUrl('/user');
+		//this.router.navigateByUrl('/user');
 	}
 
 	async downloadCLI() {

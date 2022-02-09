@@ -15,6 +15,7 @@ import {FlexModule} from '@angular/flex-layout';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {AuthModule} from '@module/auth/auth.module';
 
 const routes: Routes = [
 	{
@@ -46,7 +47,8 @@ const routes: Routes = [
 		FlexModule,
 		MatCheckboxModule,
 		ReactiveFormsModule,
-		MatProgressBarModule
+		MatProgressBarModule,
+		AuthModule
 	]
 })
 export class UserModule {

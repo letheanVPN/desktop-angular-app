@@ -9,6 +9,9 @@ import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
 	declarations: [LoginComponent],
+	exports: [
+		LoginComponent
+	],
 	imports: [
 		CommonModule,
 		MatCardModule,

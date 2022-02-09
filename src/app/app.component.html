@@ -1,19 +1,23 @@
-<mat-drawer-container class="app">
-    <mat-drawer mode="side" opened>
-        <div class="nav-logo">
-            <img alt="Lethean Logo" style="width: 150px;" class="" src="../assets/images/logo.png"/>
+<mat-sidenav-container class="main-container">
+    <mat-sidenav mode="side" opened>
+        <div fxLayout="row">
+            <a [routerLink]="['dashboard']">
+                <img alt="Lethean Logo" class="logo" src="../assets/images/logo.png"/>
+            </a>
         </div>
-        <mat-list>
-            <mat-list-item>
-                <mat-icon>cloud</mat-icon>
-                <span class="nav-label">test</span>
-            </mat-list-item>
-        </mat-list>
-    </mat-drawer>
-    <mat-drawer-content  class="main-container">
-            <div class="page">
-                <router-outlet></router-outlet>
-            </div>
+
+        <mat-divider></mat-divider>
+        <mat-nav-list>
+            <a [routerLink]="['dashboard'] " mat-list-item >{{ 'menu.text.dashboard' | translate }}</a>
+            <a [routerLink]="['chain'] " mat-list-item>{{ 'menu.text.blockchain' | translate }}</a>
+            <!--            <a [routerLink]="['wallets'] " mat-list-item>{{ 'menu.text.wallet' | translate }}</a>-->
+            <!--            <a [routerLink]="['settings'] " mat-list-item>{{ 'menu.text.settings' | translate }}</a>-->
+        </mat-nav-list>
+        <span class="flex-spacer"></span>
+        <lthn-app-status></lthn-app-status>
+    </mat-sidenav>
+    <mat-sidenav-content >
+
 
             <mat-toolbar  class="main-toolbar">
 
@@ -63,80 +67,9 @@
                 </button>
 
             </mat-toolbar>
-    </mat-drawer-content>
-</mat-drawer-container>
-
-<div class="app">
-
-    <div class="navigation">
-        <mat-sidenav class="navigation">
-            <ul class="nav-items nav-main vertical-list mat-scroll-muted">
-                <li class="nav-item-container">
-                    <a
-                            class="nav-item"
-
-                    >
-                        <mat-icon [fontIcon]="'cloud'"></mat-icon>
-                        <span class="nav-label">test</span>
-                    </a>
-
-                </li>
-            </ul>
-        </mat-sidenav>
-    </div>
-
-    <div class="main main-container">
         <div class="page">
             <router-outlet></router-outlet>
         </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
 
-        <mat-toolbar  class="main-toolbar">
-
-                <!-- <a href="#{{state}}" [class.active]="currentTheme === 'day'" (click)="setTheme('day')">Day</a> |
-                <a href="#{{state}}" [class.active]="currentTheme === 'night'" (click)="setTheme('night')">Night</a> |
-                <a href="#{{state}}" [class.active]="currentTheme === 'moonlight'" (click)="setTheme('moonlight')">Moonlight</a> | -->
-                <mat-menu #appMenu="matMenu">
-                    <ng-template let-name="name" matMenuContent>
-                        <mat-list-item>
-                            <button (click)="changeLanguage('en')" mat-button color="accent">
-                                <img src="assets/flags/1x1/en.svg" width="16" alt="{{ 'lang.en' | translate }}">&nbsp;&nbsp;{{ 'lang.en' | translate }}
-                            </button>
-                        </mat-list-item>
-                        <mat-list-item>
-                            <button (click)="changeLanguage('ru')" mat-button color="accent">
-                                <img src="assets/flags/1x1/ru.svg" width="16" alt="{{ 'lang.ru' | translate }}">&nbsp;&nbsp;{{ 'lang.ru' | translate }}
-                            </button>
-                        </mat-list-item>
-                        <mat-list-item>
-                            <button (click)="changeLanguage('zh')" mat-button color="accent">
-                                <img src="assets/flags/1x1/zh.svg" width="16" alt="{{ 'lang.zh' | translate }}">&nbsp;&nbsp;{{ 'lang.zh' | translate }}
-                            </button>
-                        </mat-list-item>
-                        <mat-list-item>
-                            <button (click)="changeLanguage('es')" mat-button color="accent">
-                                <img src="assets/flags/1x1/es.svg" width="16" alt="{{ 'lang.es' | translate }}">&nbsp;&nbsp;{{ 'lang.es' | translate }}
-                            </button>
-                        </mat-list-item>
-                        <mat-list-item>
-                            <button (click)="changeLanguage('de')" mat-button color="accent">
-                                <img src="assets/flags/1x1/de.svg" width="16" alt="{{ 'lang.de' | translate }}">&nbsp;&nbsp;{{ 'lang.de' | translate }}
-                            </button>
-                        </mat-list-item>
-                        <mat-list-item>
-                            <button (click)="changeLanguage('fr')" mat-button color="accent">
-                                <img src="assets/flags/1x1/fr.svg" width="16" alt="{{ 'lang.fr' | translate }}">&nbsp;&nbsp;{{ 'lang.fr' | translate }}
-                            </button>
-                        </mat-list-item>
-
-
-                    </ng-template>
-                </mat-menu>
-
-                <button [matMenuTriggerFor]="appMenu"
-                        mat-icon-button>
-                    <img src="assets/flags/1x1/{{ this.currentLanguage }}.svg" width="24">
-                </button>
-
-        </mat-toolbar>
-    </div>
-</div>

@@ -33,6 +33,7 @@ export class AuthGuard implements CanActivate {
 	canActivate(
 
 	): boolean | Promise<boolean> {
+		return true
 		let isAuthenticated = this.authService.getAuthStatus();
 		if (!isAuthenticated) {
 			try {
@@ -40,7 +41,7 @@ export class AuthGuard implements CanActivate {
 					if (dat.length > 0) {
 						this.router.navigate(['/login']);
 					} else {
-						this.router.navigate(['/user']);
+						//this.router.navigate(['/user']);
 					}
 				});
 			}catch (e) {

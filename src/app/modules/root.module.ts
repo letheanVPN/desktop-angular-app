@@ -14,11 +14,10 @@ import {ReactiveComponentModule} from '@ngrx/component';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {MatIconModule} from '@angular/material/icon';
 import {PipesModule} from '@pipe/pipes.module';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
 	declarations: [RootComponent],
-	exports: [
-	],
 	imports: [
 		CommonModule,
 		MatButtonModule,
@@ -33,7 +32,8 @@ import {PipesModule} from '@pipe/pipes.module';
 		ReactiveComponentModule,
 		PipesModule,
 		NgxDatatableModule,
-		MatIconModule
+		MatIconModule,
+		MatCardModule
 	]
 })
 export class RootModule {

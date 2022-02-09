@@ -36,40 +36,12 @@
                 </mat-card-content>
             </mat-card>
 
-            <mat-card fxFlex="60">
-                <mat-card-title>Data Handling Declaration</mat-card-title>
+            <mat-card>
+                <mat-card-title>Login</mat-card-title>
                 <mat-card-content>
-                    <p>
-                        Lethean's designed to protect your digital security; We encrypt as much as we can.
-                    </p>
-                    <p>
-                        Our software is Free to Own, Free to use, Free to modify; we impose no limitations on how you
-                        use your
-                        software and never will.
-                    </p>
-                    <p>
-                        Below is a highlight of some of the steps we take to protect you.
-                    </p>
-                    <h2>Data Confidentiality</h2>
-                    <ul>
-                        <li>User accounts don't hold cleartext data.</li>
-                        <li>Application data is encrypted & meaningless without User authentication.</li>
-                        <li>Transactions on our network are Encrypted, with a secret decryption key per transaction;
-                            confidentiality
-                            is standard.
-                        </li>
-                        <li>There is no method to expose VPN purchase history to anyone but you.</li>
-                        <li>There is no magic key; we can not under any circumstances decrypt or recover your data; it's
-                            just not
-                            possible, dont forget your login details.
-                        </li>
-                    </ul>
-                    <h2>Data Privacy</h2>
-                    <ul>
-                        <li>Application data is locked to user accounts with military-grade encryption.</li>
-                        <li>You will be informed when you wish to perform an action that will expose data.</li>
-                    </ul>
+                    <lthn-login></lthn-login>
                 </mat-card-content>
+
             </mat-card>
         </div>
         <div *ngIf="processingForm" fxLayout="row" fxLayoutGap="2px">

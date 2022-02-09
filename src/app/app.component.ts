@@ -5,7 +5,7 @@ import {Meta, Title} from '@angular/platform-browser';
 import {filter} from 'rxjs/operators';
 import {TranslateService} from '@ngx-translate/core';
 import {select, Store} from '@ngrx/store';
-import {changeLanguage, selectLanguage, selectMenuVisibility, toggleHideNavigation} from '@module/settings/data';
+import {changeLanguage, selectLanguage, toggleHideNavigation} from '@module/settings/data';
 import {Subscription} from 'rxjs';
 import {FileSystemService} from '@service/filesystem/file-system.service';
 import {BlockchainService} from '@plugin/lthn/chain/blockchain.service';
@@ -118,12 +118,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 	 * Setup watcher for sidenav menu user setting
 	 */
 	ngAfterViewInit() {
-		this.store.pipe(select(selectMenuVisibility)).subscribe((opened) => {
-			this.menu = opened
-			this.sidenav.toggle();
-		})
 		this.startChain();
-
 	}
 
 	/**
