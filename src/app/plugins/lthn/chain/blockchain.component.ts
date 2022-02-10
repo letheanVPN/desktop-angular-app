@@ -24,7 +24,7 @@ export class BlockchainComponent implements OnInit, OnDestroy {
 		{ prop: 'difficulty', name: 'plugin.lthn.chain.table.th.difficulty', default: true },
 		{ prop: 'hash', name: 'plugin.lthn.chain.table.th.hash', default: true  },
 		{ prop: 'orphan_status', name: 'plugin.lthn.chain.table.th.orphan_status', default: true },
-		{ prop: 'reward', name: 'plugin.lthn.chain.table.th.reward', default: true },
+		//{ prop: 'reward', name: 'plugin.lthn.chain.table.th.reward', default: true },
 		{ prop: 'timestamp', name: 'plugin.lthn.chain.table.th.timestamp', default: true },
 	//	{ prop: 'block_size', name: 'Block Size', default: true },
 		{ prop: 'depth', name: 'plugin.lthn.chain.table.th.depth', default: true },
