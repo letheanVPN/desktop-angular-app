@@ -4,10 +4,9 @@ import {ChainGetInfo} from '@plugin/lthn/chain/interfaces/props/get_info';
 import {BlockchainService} from '@plugin/lthn/chain/blockchain.service';
 import {select, Store} from '@ngrx/store';
 import {getChainBlocks, getChainInfo} from '@plugin/lthn/chain/data';
-import {interval, Observable, Subscription} from 'rxjs';
+import { Observable, Subscription} from 'rxjs';
 import {BlockHeader} from '@plugin/lthn/chain/interfaces/types/blockHeader';
 import {ColumnMode} from '@swimlane/ngx-datatable';
-import {FileSystemService} from '@service/filesystem/file-system.service';
 import {HashRatePipe} from '@pipe/crypto/hashrate.pipe';
 
 @Component({
@@ -18,6 +17,7 @@ import {HashRatePipe} from '@pipe/crypto/hashrate.pipe';
 export class BlockchainComponent implements OnInit, OnDestroy {
 
 	columns: any = []
+
 
 	public allColumns = [
 		{ prop: 'height', name: 'plugin.lthn.chain.table.th.height', default: true},
@@ -42,7 +42,7 @@ export class BlockchainComponent implements OnInit, OnDestroy {
 	public buildType: string;
 	private sub: Subscription;
 
-	constructor(private fileSystem: FileSystemService, private store: Store, private chain: BlockchainService,
+	constructor( private store: Store, private chain: BlockchainService,
 				public pipeHashrate: HashRatePipe) {
 
 		this.allColumns.forEach((col) => {
@@ -58,19 +58,15 @@ export class BlockchainComponent implements OnInit, OnDestroy {
 
 	ngOnInit(): void {
 
-		this.chain.getInfo()
 
-		this.fileSystem.listFiles('/cli').then(() => {
-			this.chain.getInfo()
-			interval(600000).subscribe(() => {
-				this.chain.getInfo()
-			});
 
-		});
 
 		this.sub = this.store.pipe(select(getChainInfo)).subscribe((data) => {
-			if(data) this.chain.getBlocks(data.height-25, data.height-1)
+			if(data) {
+				this.chain.getBlocks(data.height-25, data.height-1)
+			}
 		})
+		this.chain.getInfo()
 		this.chainInfo = this.store.pipe(select(getChainInfo))
 		this.blocks = this.store.pipe(select(getChainBlocks))
 

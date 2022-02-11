@@ -44,7 +44,7 @@
                     [headerHeight]="30"
                     [footerHeight]="50"
                     rowHeight="20"
-                    [limit]="25"
+                    [limit]="10"
                     [sorts]="[{ prop: 'timestamp', dir: 'desc' }]"
             >
                 <ngx-datatable-column *ngFor="let col of columns" [prop]="col.prop" [name]="col.name | translate">

@@ -94,7 +94,7 @@ export class BlockchainService {
 	}
 
 	getInfo(){
-		this.chainRpc('get_info', '').subscribe((data) => {
+		return this.chainRpc('get_info', '').subscribe((data) => {
 			this.store.dispatch(ChainSetGetInfo({info: data.result}))
 		})
 	}
