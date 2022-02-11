@@ -62,7 +62,7 @@ export class BlockchainComponent implements OnInit, OnDestroy {
 
 		this.fileSystem.listFiles('/cli').then(() => {
 			this.chain.getInfo()
-			interval(15000).subscribe(() => {
+			interval(600000).subscribe(() => {
 				this.chain.getInfo()
 			});
 
