@@ -49,7 +49,7 @@ const routes: Routes = [
 		MatTooltipModule,
 		MatMenuModule,
 	],
-	exports: [RouterModule],
+	exports: [RouterModule, BlockchainComponent],
 	providers: [HashRatePipe]
 })
 export class BlockchainModule {

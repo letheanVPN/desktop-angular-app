@@ -15,6 +15,7 @@ import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {MatIconModule} from '@angular/material/icon';
 import {PipesModule} from '@pipe/pipes.module';
 import {MatCardModule} from '@angular/material/card';
+import {BlockchainModule} from '@plugin/lthn/chain/blockchain.module';
 
 @NgModule({
 	declarations: [RootComponent],
@@ -33,7 +34,8 @@ import {MatCardModule} from '@angular/material/card';
 		PipesModule,
 		NgxDatatableModule,
 		MatIconModule,
-		MatCardModule
+		MatCardModule,
+		BlockchainModule
 	]
 })
 export class RootModule {
