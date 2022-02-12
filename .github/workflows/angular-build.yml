@@ -4,12 +4,12 @@ on:
   push:
     branches: [ main ]
     paths:
-      - Dockerfile
+      - src/
       - .github/workflows/angular-build.yml
   pull_request:
     branches: [ main ]
     paths:
-      - Dockerfile
+      - src/
       - .github/workflows/angular-build.yml
 jobs:
   build:
@@ -21,3 +21,19 @@ jobs:
         node-version: 16.x
     - run: npm install --legacy-peer-deps
     - run: npm run build
+    - run: npm install anti-trojan-source
+    - name: Unicode bidi attack check
+      run: npx anti-trojan-source --files='/runner/work/gui-interface/gui-interface/dist/**/*.js'
+    - name: run auditjs
+      run: npx --loglevel=error auditjs@beta ossi --json > auditjs.json || exit 0
+    - name: Sensitive File Check
+      run: npx ban-sensitive-files -- --all
+    - uses: returntocorp/semgrep-action@v1
+        with:
+          config: >- # more at semgrep.dev/explore
+            p/security-audit
+            p/secrets
+    - uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: ${{ github.workspace }}/dist/lethean-workstation/browser
