@@ -25,6 +25,7 @@ import {AddComponent} from 'src/app/modules/wallet/components/add.component';
 import {PipesModule} from '@pipe/pipes.module';
 
 
+
 const routes: Routes = [
 	{
 		path: 'wallets',
