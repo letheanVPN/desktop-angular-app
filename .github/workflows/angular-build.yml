@@ -7,8 +7,6 @@ on:
       - 'v*'
     tags:
       - 'v*'
-    paths-ignore:
-      - '**.md'
     paths:
       - src/
       - .github/workflows/angular-build.yml
@@ -16,8 +14,6 @@ on:
     branches:
       - 'main'
       - 'v*'
-    paths-ignore:
-      - '**.md'
     paths:
       - src/
       - .github/workflows/angular-build.yml
@@ -44,6 +40,6 @@ jobs:
           p/security-audit
           p/secrets
     - uses: actions/upload-artifact@v2
-        with:
-          name: dist
-          path: ${{ github.workspace }}/dist/lethean-workstation/browser
+      with:
+        name: dist
+        path: ${{ github.workspace }}/dist/lethean-workstation/browser
