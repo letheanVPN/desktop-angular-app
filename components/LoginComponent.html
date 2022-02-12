@@ -468,25 +468,18 @@ export class LoginComponent {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;ngx-section
-        [sectionTitle]&#x3D;&quot;&#x27;login&#x27; | translate&quot;
-        [sectionCollapsible]&#x3D;&quot;false&quot;
-&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;div *ngIf&#x3D;&quot;error.length &gt; 0&quot;&gt;{{error}}&lt;/div&gt;
+&lt;mat-form-field appearance&#x3D;&quot;standard&quot;&gt;
+    &lt;mat-label&gt;Username&lt;/mat-label&gt;
+    &lt;input [formControl]&#x3D;&quot;username&quot; (keyup)&#x3D;&quot;inputChanged()&quot; matInput type&#x3D;&quot;text&quot;&gt;
+&lt;/mat-form-field&gt;
+&lt;mat-form-field appearance&#x3D;&quot;standard&quot;&gt;
+    &lt;mat-label&gt;Password&lt;/mat-label&gt;
+    &lt;input [formControl]&#x3D;&quot;password&quot; (keyup)&#x3D;&quot;inputChanged()&quot; matInput type&#x3D;&quot;password&quot;&gt;
+&lt;/mat-form-field&gt;
 
+&lt;button mat-button (click)&#x3D;&quot;submit()&quot;&gt;Login&lt;/button&gt;
 
-    &lt;div *ngIf&#x3D;&quot;error.length &gt; 0&quot;&gt;{{error}}&lt;/div&gt;
-    &lt;mat-form-field appearance&#x3D;&quot;standard&quot;&gt;
-        &lt;mat-label&gt;Username&lt;/mat-label&gt;
-        &lt;input [formControl]&#x3D;&quot;username&quot; (keyup)&#x3D;&quot;inputChanged()&quot; matInput type&#x3D;&quot;text&quot;&gt;
-    &lt;/mat-form-field&gt;
-    &lt;mat-form-field appearance&#x3D;&quot;standard&quot;&gt;
-        &lt;mat-label&gt;Password&lt;/mat-label&gt;
-        &lt;input [formControl]&#x3D;&quot;password&quot; (keyup)&#x3D;&quot;inputChanged()&quot; matInput type&#x3D;&quot;password&quot;&gt;
-    &lt;/mat-form-field&gt;
-
-    &lt;ngx-button (click)&#x3D;&quot;submit()&quot;&gt;Login&lt;/ngx-button&gt;
-
-&lt;/ngx-section&gt;
 
 </code></pre>
     </div>
@@ -517,8 +510,8 @@ export class LoginComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ngx-section        [sectionTitle]="\'login\' | translate"        [sectionCollapsible]="false">    <div *ngIf="error.length > 0">{{error}}</div>    <mat-form-field appearance="standard">        <mat-label>Username</mat-label>        <input [formControl]="username" (keyup)="inputChanged()" matInput type="text">    </mat-form-field>    <mat-form-field appearance="standard">        <mat-label>Password</mat-label>        <input [formControl]="password" (keyup)="inputChanged()" matInput type="password">    </mat-form-field>    <ngx-button (click)="submit()">Login</ngx-button></ngx-section></div>'
-    var COMPONENTS = [{'name': 'AddComponent', 'selector': 'lthn-wallet-add'},{'name': 'AppComponent', 'selector': 'lthn-app'},{'name': 'BlockchainComponent', 'selector': 'lthn-chain'},{'name': 'ConsoleComponent', 'selector': 'lthn-app-console'},{'name': 'LoginComponent', 'selector': 'lthn-login'},{'name': 'LogsComponent', 'selector': 'lthn-app-logs'},{'name': 'NewComponent', 'selector': 'lthn-wallet-new'},{'name': 'NoDaemonRunningDialog', 'selector': 'lthn-app-status-no-daemon'},{'name': 'OpenComponent', 'selector': 'lthn-wallet-open'},{'name': 'PostComponent', 'selector': 'lthn-app-post'},{'name': 'ProfileComponent', 'selector': 'lthn-user-profile'},{'name': 'RestoreComponent', 'selector': 'lthn-wallet-restore'},{'name': 'RootComponent', 'selector': 'lthn-root'},{'name': 'SettingsComponent', 'selector': 'lthn-settings'},{'name': 'SettingsComponent', 'selector': 'lthn-app-settings'},{'name': 'StatusComponent', 'selector': 'lthn-app-status'},{'name': 'TransactionsComponent', 'selector': 'lthn-wallet-transactions'},{'name': 'UserComponent', 'selector': 'lthn-user'},{'name': 'VpnComponent', 'selector': 'lthn-vpn'},{'name': 'WalletComponent', 'selector': 'lthn-app-wallet'}];
+        var COMPONENT_TEMPLATE = '<div><div *ngIf="error.length > 0">{{error}}</div><mat-form-field appearance="standard">    <mat-label>Username</mat-label>    <input [formControl]="username" (keyup)="inputChanged()" matInput type="text"></mat-form-field><mat-form-field appearance="standard">    <mat-label>Password</mat-label>    <input [formControl]="password" (keyup)="inputChanged()" matInput type="password"></mat-form-field><button mat-button (click)="submit()">Login</button></div>'
+    var COMPONENTS = [{'name': 'AddComponent', 'selector': 'lthn-wallet-add'},{'name': 'AppComponent', 'selector': 'lthn-app'},{'name': 'BackupComponent', 'selector': 'lthn-app-backup'},{'name': 'BlockchainComponent', 'selector': 'lthn-chain'},{'name': 'LoginComponent', 'selector': 'lthn-login'},{'name': 'LogsComponent', 'selector': 'lthn-app-logs'},{'name': 'ModalComponent', 'selector': 'modal'},{'name': 'NewComponent', 'selector': 'lthn-wallet-new'},{'name': 'NoDaemonRunningDialog', 'selector': 'lthn-app-status-no-daemon'},{'name': 'OpenComponent', 'selector': 'lthn-wallet-open'},{'name': 'PostComponent', 'selector': 'lthn-app-post'},{'name': 'ProfileComponent', 'selector': 'lthn-user-profile'},{'name': 'RestoreComponent', 'selector': 'lthn-wallet-restore'},{'name': 'RootComponent', 'selector': 'lthn-root'},{'name': 'SettingsComponent', 'selector': 'lthn-settings'},{'name': 'SettingsComponent', 'selector': 'lthn-app-settings'},{'name': 'StatusComponent', 'selector': 'lthn-app-status'},{'name': 'TransactionsComponent', 'selector': 'lthn-wallet-transactions'},{'name': 'UserComponent', 'selector': 'lthn-user'},{'name': 'VpnComponent', 'selector': 'lthn-vpn'},{'name': 'WalletComponent', 'selector': 'lthn-app-wallet'}];
     var DIRECTIVES = [{'name': 'ChartDirective', 'selector': '[lthnChart]'}];
     var ACTUAL_COMPONENT = {'name': 'LoginComponent'};
 </script>

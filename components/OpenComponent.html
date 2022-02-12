@@ -61,7 +61,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/plugins/lthn/wallet/components/open.component.ts</code>
+    <code>src/app/modules/wallet/components/open.component.ts</code>
 </p>
 
 
@@ -191,7 +191,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/plugins/lthn/wallet/components/open.component.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/modules/wallet/components/open.component.ts:22</a></div>
                             </td>
                         </tr>
 
@@ -264,7 +264,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/plugins/lthn/wallet/components/open.component.ts:13</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/modules/wallet/components/open.component.ts:13</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -299,7 +299,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="32"
-                            class="link-to-prism">src/app/plugins/lthn/wallet/components/open.component.ts:32</a></div>
+                            class="link-to-prism">src/app/modules/wallet/components/open.component.ts:32</a></div>
                 </td>
             </tr>
 
@@ -338,7 +338,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="41"
-                            class="link-to-prism">src/app/plugins/lthn/wallet/components/open.component.ts:41</a></div>
+                            class="link-to-prism">src/app/modules/wallet/components/open.component.ts:41</a></div>
                 </td>
             </tr>
 
@@ -412,7 +412,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/plugins/lthn/wallet/components/open.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/modules/wallet/components/open.component.ts:15</a></div>
                         </td>
                     </tr>
 
@@ -437,7 +437,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/plugins/lthn/wallet/components/open.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/modules/wallet/components/open.component.ts:16</a></div>
                         </td>
                     </tr>
 
@@ -464,7 +464,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/plugins/lthn/wallet/components/open.component.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/modules/wallet/components/open.component.ts:22</a></div>
                         </td>
                     </tr>
 
@@ -486,8 +486,8 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component, Input, OnInit} from &#x27;@angular/core&#x27;;
 
 import {FormControl} from &#x27;@angular/forms&#x27;;
-import {WalletService} from &#x27;@plugin/lthn/wallet/wallet.service&#x27;;
-import {openWallet} from &#x27;@plugin/lthn/wallet/data&#x27;;
+import {WalletService} from &#x27;@module/wallet/wallet.service&#x27;;
+import {openWallet} from &#x27;@module/wallet/data&#x27;;
 import {Store} from &#x27;@ngrx/store&#x27;;
 
 @Component({
@@ -586,7 +586,7 @@ export class OpenComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><mat-card>    <mat-card-title>{{ \'plugin.lthn.wallet.titles.unlock-wallet\' | translate }}</mat-card-title>    <mat-card-content>        <div fxLayout="row, wrap">            <div  fxFlex="20" *ngFor="let wall of wallets">            <mat-card>                <mat-card-title>{{wall}}</mat-card-title>                <mat-card-content>                    <mat-form-field  class="full_width" appearance="standard">                        <mat-label>{{ \'plugin.lthn.wallet.label.wallet-password\' | translate }}</mat-label>                        <input [id]="wall+\'-pass\'" matInput type="password">                    </mat-form-field>                    <button mat-button (click)="unlockWallet(wall)" color="accent">{{ \'plugin.lthn.wallet.button.unlock-wallet\' | translate }}</button>                </mat-card-content>            </mat-card>            </div>        </div>    </mat-card-content></mat-card></div>'
-    var COMPONENTS = [{'name': 'AddComponent', 'selector': 'lthn-wallet-add'},{'name': 'AppComponent', 'selector': 'lthn-app'},{'name': 'BlockchainComponent', 'selector': 'lthn-chain'},{'name': 'ConsoleComponent', 'selector': 'lthn-app-console'},{'name': 'LoginComponent', 'selector': 'lthn-login'},{'name': 'LogsComponent', 'selector': 'lthn-app-logs'},{'name': 'NewComponent', 'selector': 'lthn-wallet-new'},{'name': 'NoDaemonRunningDialog', 'selector': 'lthn-app-status-no-daemon'},{'name': 'OpenComponent', 'selector': 'lthn-wallet-open'},{'name': 'PostComponent', 'selector': 'lthn-app-post'},{'name': 'ProfileComponent', 'selector': 'lthn-user-profile'},{'name': 'RestoreComponent', 'selector': 'lthn-wallet-restore'},{'name': 'RootComponent', 'selector': 'lthn-root'},{'name': 'SettingsComponent', 'selector': 'lthn-settings'},{'name': 'SettingsComponent', 'selector': 'lthn-app-settings'},{'name': 'StatusComponent', 'selector': 'lthn-app-status'},{'name': 'TransactionsComponent', 'selector': 'lthn-wallet-transactions'},{'name': 'UserComponent', 'selector': 'lthn-user'},{'name': 'VpnComponent', 'selector': 'lthn-vpn'},{'name': 'WalletComponent', 'selector': 'lthn-app-wallet'}];
+    var COMPONENTS = [{'name': 'AddComponent', 'selector': 'lthn-wallet-add'},{'name': 'AppComponent', 'selector': 'lthn-app'},{'name': 'BackupComponent', 'selector': 'lthn-app-backup'},{'name': 'BlockchainComponent', 'selector': 'lthn-chain'},{'name': 'LoginComponent', 'selector': 'lthn-login'},{'name': 'LogsComponent', 'selector': 'lthn-app-logs'},{'name': 'ModalComponent', 'selector': 'modal'},{'name': 'NewComponent', 'selector': 'lthn-wallet-new'},{'name': 'NoDaemonRunningDialog', 'selector': 'lthn-app-status-no-daemon'},{'name': 'OpenComponent', 'selector': 'lthn-wallet-open'},{'name': 'PostComponent', 'selector': 'lthn-app-post'},{'name': 'ProfileComponent', 'selector': 'lthn-user-profile'},{'name': 'RestoreComponent', 'selector': 'lthn-wallet-restore'},{'name': 'RootComponent', 'selector': 'lthn-root'},{'name': 'SettingsComponent', 'selector': 'lthn-settings'},{'name': 'SettingsComponent', 'selector': 'lthn-app-settings'},{'name': 'StatusComponent', 'selector': 'lthn-app-status'},{'name': 'TransactionsComponent', 'selector': 'lthn-wallet-transactions'},{'name': 'UserComponent', 'selector': 'lthn-user'},{'name': 'VpnComponent', 'selector': 'lthn-vpn'},{'name': 'WalletComponent', 'selector': 'lthn-app-wallet'}];
     var DIRECTIVES = [{'name': 'ChartDirective', 'selector': '[lthnChart]'}];
     var ACTUAL_COMPONENT = {'name': 'OpenComponent'};
 </script>

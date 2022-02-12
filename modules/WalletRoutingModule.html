@@ -55,7 +55,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/plugins/lthn/wallet/wallet-routing.module.ts</code>
+            <code>src/app/modules/wallet/wallet-routing.module.ts</code>
         </p>
 
 
@@ -75,21 +75,18 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {NgModule} from &#x27;@angular/core&#x27;;
 import {CommonModule} from &#x27;@angular/common&#x27;;
 import {RouterModule, Routes} from &#x27;@angular/router&#x27;;
-import {AuthGuard} from &#x27;@module/auth/route.guard&#x27;;
 
 const routes: Routes &#x3D; [
 	{
 		path: &#x27;wallet&#x27;,
-		canActivate: [AuthGuard],
 		loadChildren: () &#x3D;&gt;
-			&quot;import(&#x27;./wallet.module&#x27;).then((m) &#x3D;&gt; m.WalletModule)&quot;
+			&quot;import(&#x27;src/app/modules/wallet/wallet.module&#x27;).then((m) &#x3D;&gt; m.WalletModule)&quot;
 	}
 ];
 
 @NgModule({
 	declarations: [],
 	imports: [CommonModule, RouterModule.forChild(routes)],
-	providers: [AuthGuard],
 	exports: [RouterModule]
 })
 export class WalletRoutingModule {

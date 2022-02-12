@@ -58,7 +58,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/plugins/lthn/wallet/data/effects.ts</code>
+            <code>src/app/modules/wallet/data/effects.ts</code>
         </p>
 
 
@@ -117,7 +117,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">src/app/plugins/lthn/wallet/data/effects.ts:102</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">src/app/modules/wallet/data/effects.ts:102</a></div>
                             </td>
                         </tr>
 
@@ -216,7 +216,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">src/app/plugins/lthn/wallet/data/effects.ts:102</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">src/app/modules/wallet/data/effects.ts:102</a></div>
                         </td>
                     </tr>
 
@@ -253,7 +253,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/plugins/lthn/wallet/data/effects.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/modules/wallet/data/effects.ts:15</a></div>
                         </td>
                     </tr>
 
@@ -285,7 +285,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/app/plugins/lthn/wallet/data/effects.ts:85</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/app/modules/wallet/data/effects.ts:85</a></div>
                         </td>
                     </tr>
 
@@ -317,7 +317,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/app/plugins/lthn/wallet/data/effects.ts:93</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/app/modules/wallet/data/effects.ts:93</a></div>
                         </td>
                     </tr>
 
@@ -394,7 +394,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/plugins/lthn/wallet/data/effects.ts:30</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/modules/wallet/data/effects.ts:30</a></div>
                         </td>
                     </tr>
 
@@ -410,14 +410,14 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Injectable} from &#x27;@angular/core&#x27;;
 import {Actions, createEffect, ofType} from &#x27;@ngrx/effects&#x27;;
 import {catchError, map, switchMap, takeWhile, withLatestFrom} from &#x27;rxjs/operators&#x27;;
-import {WalletService} from &#x27;@plugin/lthn/wallet/wallet.service&#x27;;
+import {WalletService} from &#x27;@module/wallet/wallet.service&#x27;;
 import {select, Store} from &#x27;@ngrx/store&#x27;;
-import * as WalletActions from &#x27;./actions&#x27;;
-import * as WalletSelectors from &#x27;./selectors&#x27;;
+import * as WalletActions from &#x27;src/app/modules/wallet/data/actions&#x27;;
+import * as WalletSelectors from &#x27;src/app/modules/wallet/data/selectors&#x27;;
 import {merge, of, timer} from &#x27;rxjs&#x27;;
 import {HttpClient} from &#x27;@angular/common/http&#x27;;
 import {rpcBody} from &#x27;@service/json-rpc&#x27;;
-import {Balance, GetTransfersIn, GetTransfersOut} from &#x27;@plugin/lthn/wallet/interfaces&#x27;;
+import {Balance, GetTransfersIn, GetTransfersOut} from &#x27;@module/wallet/interfaces&#x27;;
 
 @Injectable()
 export class WalletEffects {

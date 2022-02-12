@@ -18,13 +18,13 @@
 <title>cluster_WalletModule_imports</title>
 <polygon fill="none" stroke="black" points="851,-40.8 851,-92.8 979,-92.8 979,-40.8 851,-40.8"/>
 </g>
-<g id="clust2" class="cluster">
-<title>cluster_WalletModule_declarations</title>
-<polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 843,-92.8 843,-40.8 16,-40.8"/>
-</g>
 <g id="clust10" class="cluster">
 <title>cluster_WalletModule_exports</title>
 <polygon fill="none" stroke="black" points="144,-170.8 144,-222.8 850,-222.8 850,-170.8 144,-170.8"/>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_WalletModule_declarations</title>
+<polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 843,-92.8 843,-40.8 16,-40.8"/>
 </g>
 <!-- AddComponent -->
 <g id="node1" class="node">

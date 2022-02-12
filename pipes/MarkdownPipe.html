@@ -28,7 +28,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content interface">
+               <div class="content pipe">
                    <div class="content-data">
 
 
@@ -41,13 +41,9 @@
 
 
 
-
-
 <ol class="breadcrumb">
-  <li>Interfaces</li>
-  <li
-  >
-  ParseUri</li>
+  <li>Pipes</li>
+  <li >MarkdownPipe</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -61,128 +57,141 @@
 
 <div class="tab-content">
     <div class="tab-pane fade active in" id="c-info">
+
         <p class="comment">
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/modules/wallet/interfaces/wallet.ts</code>
+            <code>src/app/pipes/content/markdown.pipe.ts</code>
         </p>
 
 
 
 
         <section>
-            <h3 id="index">Index</h3>
-            <table class="table table-sm table-bordered index-table">
+            <h3>Metadata</h3>
+            <table class="table table-sm table-hover metadata">
                 <tbody>
                     <tr>
-                        <td class="col-md-4">
-                            <h6><b>Properties</b></h6>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <ul class="index-list">
-                                <li>
-                                        <a href="#uri" 
->
-                                            uri
-                                        </a>
-                                </li>
-                            </ul>
-                        </td>
+                        <td class="col-md-3">Name</td>
+                        <td class="col-md-9">markdown</td>
                     </tr>
                 </tbody>
             </table>
         </section>
 
-
-
             <section>
-                <h3 id="inputs">Properties</h3>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="transform"></a>
+                    <span class="name">
+                        <span ><b>transform</b></span>
+                        <a href="#transform"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>transform(value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, args?: any[])</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="8"
+                            class="link-to-prism">src/app/pipes/content/markdown.pipe.ts:8</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
                                 <tr>
-                                    <td class="col-md-4">
-                                        <a name="uri"></a>
-                                        <span class="name "><b>uri</b>
-                                            <a href="#uri">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
                                     </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
                                 </tr>
                                 <tr>
-                                    <td class="col-md-4">
-                                        <code>uri:         <code><a href="../interfaces/MakeUriIn.html" target="_self" >MakeUriIn</a></code>
-</code>
+                                    <td>args</td>
+                                    <td>
+                                            <code>any[]</code>
                                     </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
                                 </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
 
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="../interfaces/MakeUriIn.html" target="_self" >MakeUriIn</a></code>
-
-                                        </td>
-                                    </tr>
-
-
-
-
-
-                        </tbody>
-                    </table>
-            </section>
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import Big from &#x27;big.js&#x27;;
-import {Destination} from &#x27;src/app/modules/wallet/interfaces/types/destination&#x27;;
-import {MakeUriIn} from &#x27;src/app/modules/wallet/interfaces/dto/makeUriIn&#x27;;
-import Random from &#x27;random-js&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Pipe, PipeTransform } from &#x27;@angular/core&#x27;;
+import {marked} from &#x27;marked&#x27;;
 
-export const generatePaymentId &#x3D; (length: 16 | 64) &#x3D;&gt;
-	Random.hex(false)(Random.nativeMath, length);
-
-export class LTHN extends Big {
-	toAtomic &#x3D; (): Atomic &#x3D;&gt; new Atomic(this.times(1e8));
+@Pipe({
+	name: &#x27;markdown&#x27;
+})
+export class MarkdownPipe implements PipeTransform {
+	transform(value: any, args?: any[]): any {
+		if (value &amp;&amp; value.length &gt; 0) {
+			return marked(value);
+		}
+		return value;
+	}
 }
-
-export class Atomic extends Big {
-	toLTHN &#x3D; (): LTHN &#x3D;&gt; new LTHN(this.div(1e8));
-	toNumber &#x3D; (): number &#x3D;&gt; Number(this);
-}
-
-export interface TransferSplitIn {
-	destinations: Destination[];
-	fee?: number; // - unsigned int; Ignored, will be automatically calculated.
-	mixin: number; // - unsigned int; Number of outpouts from the blockchain to mix with (0 means no mixing).
-	unlock_time: number; // - unsigned int; Number of blocks before the monero can be spent (0 to not add a lock).
-	payment_id?: string; // - string; (Optional) Random 32-byte/64-character hex string to identify a transaction.
-	get_tx_key?: boolean; // - boolean; (Optional) Return the transaction key after sending. – Ignored
-	new_algorithm?: boolean; // - boolean; True to use the new transaction construction algorithm, defaults to false.
-}
-
-export interface ParseUri {
-	uri: MakeUriIn;
-}
-
-export interface OpenWallet {
-	filename: string;
-	password: string;
-}
-
-export interface CreateWallet {
-	filename: string;
-	password: string;
-	language: string; // Language for your wallets&#x27; seed.
-}
-
 </code></pre>
     </div>
+
 </div>
+
+
 
 
 
@@ -215,8 +224,8 @@ export interface CreateWallet {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
-            var COMPODOC_CURRENT_PAGE_URL = 'ParseUri.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'pipe';
+            var COMPODOC_CURRENT_PAGE_URL = 'MarkdownPipe.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

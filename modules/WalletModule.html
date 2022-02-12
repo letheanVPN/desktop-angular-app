@@ -60,13 +60,13 @@
 <title>cluster_WalletModule_imports</title>
 <polygon fill="none" stroke="black" points="851,-40.8 851,-92.8 979,-92.8 979,-40.8 851,-40.8"/>
 </g>
-<g id="clust2" class="cluster">
-<title>cluster_WalletModule_declarations</title>
-<polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 843,-92.8 843,-40.8 16,-40.8"/>
-</g>
 <g id="clust10" class="cluster">
 <title>cluster_WalletModule_exports</title>
 <polygon fill="none" stroke="black" points="144,-170.8 144,-222.8 850,-222.8 850,-170.8 144,-170.8"/>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_WalletModule_declarations</title>
+<polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 843,-92.8 843,-40.8 16,-40.8"/>
 </g>
 <!-- AddComponent -->
 <g id="node1" class="node">
@@ -248,7 +248,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/plugins/lthn/wallet/wallet.module.ts</code>
+            <code>src/app/modules/wallet/wallet.module.ts</code>
         </p>
 
 
@@ -321,7 +321,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {NgModule} from &#x27;@angular/core&#x27;;
 import {CommonModule} from &#x27;@angular/common&#x27;;
-import {WalletComponent} from &#x27;./wallet.component&#x27;;
+import {WalletComponent} from &#x27;src/app/modules/wallet/wallet.component&#x27;;
 import {MatCardModule} from &#x27;@angular/material/card&#x27;;
 import {FlexModule} from &#x27;@angular/flex-layout&#x27;;
 import {MatListModule} from &#x27;@angular/material/list&#x27;;
@@ -333,16 +333,16 @@ import {MatToolbarModule} from &#x27;@angular/material/toolbar&#x27;;
 import {MatIconModule} from &#x27;@angular/material/icon&#x27;;
 import {MatTooltipModule} from &#x27;@angular/material/tooltip&#x27;;
 import {MatTabsModule} from &#x27;@angular/material/tabs&#x27;;
-import {NewComponent} from &#x27;./components/new.component&#x27;;
-import {RestoreComponent} from &#x27;./components/restore.component&#x27;;
+import {NewComponent} from &#x27;src/app/modules/wallet/components/new.component&#x27;;
+import {RestoreComponent} from &#x27;src/app/modules/wallet/components/restore.component&#x27;;
 import {MatInputModule} from &#x27;@angular/material/input&#x27;;
 import {ReactiveFormsModule} from &#x27;@angular/forms&#x27;;
 import {TranslateModule} from &#x27;@ngx-translate/core&#x27;;
-import {OpenComponent} from &#x27;@plugin/lthn/wallet/components/open.component&#x27;;
-import {TransactionsComponent} from &#x27;@plugin/lthn/wallet/components/transactions.component&#x27;;
+import {OpenComponent} from &#x27;@module/wallet/components/open.component&#x27;;
+import {TransactionsComponent} from &#x27;@module/wallet/components/transactions.component&#x27;;
 import {NgxDatatableModule} from &#x27;@swimlane/ngx-datatable&#x27;;
 import {MatSelectModule} from &#x27;@angular/material/select&#x27;;
-import {AddComponent} from &#x27;./components/add.component&#x27;;
+import {AddComponent} from &#x27;src/app/modules/wallet/components/add.component&#x27;;
 import {PipesModule} from &#x27;@pipe/pipes.module&#x27;;
 
 

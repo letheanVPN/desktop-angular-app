@@ -86,6 +86,9 @@
                                 <a href="#createSalt" >createSalt</a>
                             </li>
                             <li>
+                                <a href="#createSaltV2" >createSaltV2</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Async</span>
                                 <a href="#decryptPGPSingle" >decryptPGPSingle</a>
                             </li>
@@ -107,6 +110,20 @@
 
 
 
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#keyMap" >keyMap</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
         </tbody>
     </table>
 </section>
@@ -199,8 +216,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="71"
-                            class="link-to-prism">src/app/services/crypt.service.ts:71</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="102"
+                            class="link-to-prism">src/app/services/crypt.service.ts:102</a></div>
                 </td>
             </tr>
 
@@ -275,8 +292,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">src/app/services/crypt.service.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">src/app/services/crypt.service.ts:36</a></div>
                 </td>
             </tr>
 
@@ -287,6 +304,77 @@
 this will always give you the same salt, im aware of the issues here
 Please start a GitHub issue if you have a good idea for knowledge-less reproducible salts</p>
 <p>Maybe allow people to set a custom salter? something for later.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>input</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createSaltV2"></a>
+                    <span class="name">
+                        <span ><b>createSaltV2</b></span>
+                        <a href="#createSaltV2"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createSaltV2(input: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="55"
+                            class="link-to-prism">src/app/services/crypt.service.ts:55</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>lighter quasi-entropy salt, to test, when on on a markdown editor</p>
 </div>
 
                     <div class="io-description">
@@ -351,8 +439,8 @@ Please start a GitHub issue if you have a good idea for knowledge-less reproduci
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="121"
-                            class="link-to-prism">src/app/services/crypt.service.ts:121</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="152"
+                            class="link-to-prism">src/app/services/crypt.service.ts:152</a></div>
                 </td>
             </tr>
 
@@ -458,8 +546,8 @@ they are like sub accounts, but not, multiple personality syndrome with split br
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="92"
-                            class="link-to-prism">src/app/services/crypt.service.ts:92</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="123"
+                            class="link-to-prism">src/app/services/crypt.service.ts:123</a></div>
                 </td>
             </tr>
 
@@ -550,8 +638,8 @@ they are like sub accounts, but not, multiple personality syndrome with split br
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="56"
-                            class="link-to-prism">src/app/services/crypt.service.ts:56</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="87"
+                            class="link-to-prism">src/app/services/crypt.service.ts:87</a></div>
                 </td>
             </tr>
 
@@ -617,8 +705,8 @@ they are like sub accounts, but not, multiple personality syndrome with split br
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="44"
-                            class="link-to-prism">src/app/services/crypt.service.ts:44</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="75"
+                            class="link-to-prism">src/app/services/crypt.service.ts:75</a></div>
                 </td>
             </tr>
 
@@ -666,6 +754,33 @@ they are like sub accounts, but not, multiple personality syndrome with split br
     </table>
 </section>
 
+            <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="keyMap"></a>
+                        <span class="name"><b>keyMap</b><a href="#keyMap"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>keyMap()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/services/crypt.service.ts:15</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
     </div>
 
 
@@ -684,6 +799,17 @@ export class CryptService {
 	) {
 	}
 
+	get keyMap() {
+		return {
+			&#x27;o&#x27;: &#x27;0&#x27;,
+			&#x27;l&#x27;: &quot;1&quot;,
+			&#x27;e&#x27;: &quot;3&quot;,
+			&#x27;a&#x27;: &quot;4&quot;,
+			&#x27;s&#x27;: &quot;z&quot;,
+			&#x27;t&#x27;: &quot;7&quot;,
+		}
+	}
+	
 	/**
 	 * Transforms the input string with a lite l337 conversion
 	 * this will always give you the same salt, im aware of the issues here
@@ -705,6 +831,26 @@ export class CryptService {
 			.replace(/a/gi, &#x27;4&#x27;)
 			.replace(/s/gi, &#x27;z&#x27;)
 			.replace(/t/gi, &#x27;7&#x27;);
+	}
+	
+	/**
+	 * lighter quasi-entropy salt, to test, when on on a markdown editor
+	 * 
+	 * @param {string} input
+	 * @returns {string}
+	 */
+	createSaltV2(input: string): string {
+		if (!input) {
+			return &#x27;&#x27;;
+		}
+
+		let i: number &#x3D; input.length;
+		let salt:string[] &#x3D; []
+		while (i--) {
+			salt.push(input[i] &#x3D;&#x3D;&#x3D; this.keyMap[i] ? this.keyMap[i] : input[i]);
+		}
+
+		return salt.join(&#x27;&#x27;);
 	}
 
 	/**

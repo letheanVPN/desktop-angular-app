@@ -55,7 +55,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/plugins/hive/post/post-routing.module.ts</code>
+            <code>src/app/modules/content/post/post-routing.module.ts</code>
         </p>
 
 
@@ -79,7 +79,7 @@ import {CommonModule} from &#x27;@angular/common&#x27;;
 const routes: Routes &#x3D; [
 	{
 		path: &#x27;p&#x27;,
-		loadChildren: () &#x3D;&gt; &quot;import(&#x27;./post.module&#x27;).then((m) &#x3D;&gt; m.PostModule)&quot;
+		loadChildren: () &#x3D;&gt; &quot;import(&#x27;src/app/modules/content/post/post.module&#x27;).then((m) &#x3D;&gt; m.PostModule)&quot;
 	}
 ];
 
