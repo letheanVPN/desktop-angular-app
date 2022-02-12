@@ -7,16 +7,10 @@ on:
       - 'v*'
     tags:
       - 'v*'
-    paths:
-      - src/
-      - .github/workflows/angular-build.yml
   pull_request:
     branches:
       - 'main'
       - 'v*'
-    paths:
-      - src/
-      - .github/workflows/angular-build.yml
 jobs:
   build:
     runs-on: ubuntu-latest
