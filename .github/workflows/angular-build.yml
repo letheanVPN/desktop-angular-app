@@ -39,10 +39,10 @@ jobs:
     - name: Sensitive File Check
       run: npx ban-sensitive-files -- --all
     - uses: returntocorp/semgrep-action@v1
-        with:
-          config: >- # more at semgrep.dev/explore
-            p/security-audit
-            p/secrets
+      with:
+        config: >- # more at semgrep.dev/explore
+          p/security-audit
+          p/secrets
     - uses: actions/upload-artifact@v2
         with:
           name: dist
