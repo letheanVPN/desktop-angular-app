@@ -2,15 +2,25 @@ name: API Documentation
 
 on:
   push:
-    branches: [ main ]
-    paths:  
-      - Dockerfile
-      - .github/workflows/angular-build.yml
+    branches:
+      - 'main'
+      - 'v*'
+    tags:
+      - 'v*'
+    paths-ignore:
+      - '**.md'
+    paths:
+      - src/
+      - .github/workflows/angular-docs.yml
   pull_request:
-    branches: [ main ]
-    paths:  
-      - Dockerfile
-      - .github/workflows/angular-build.yml
+    branches:
+      - 'main'
+      - 'v*'
+    paths-ignore:
+      - '**.md'
+    paths:
+      - src/
+      - .github/workflows/angular-docs.yml
 
 jobs:
   angular-doc:

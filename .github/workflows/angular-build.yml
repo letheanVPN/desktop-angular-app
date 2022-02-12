@@ -1,13 +1,23 @@
-name: Gui Build
+name: Angular Build
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - 'main'
+      - 'v*'
+    tags:
+      - 'v*'
+    paths-ignore:
+      - '**.md'
     paths:
       - src/
       - .github/workflows/angular-build.yml
   pull_request:
-    branches: [ main ]
+    branches:
+      - 'main'
+      - 'v*'
+    paths-ignore:
+      - '**.md'
     paths:
       - src/
       - .github/workflows/angular-build.yml
