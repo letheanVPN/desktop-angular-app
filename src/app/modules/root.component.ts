@@ -1,15 +1,14 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FileSystemService} from '@service/filesystem/file-system.service';
-import {BlockchainService} from '@plugin/lthn/chain/blockchain.service';
-import {WalletService} from '@plugin/lthn/wallet/wallet.service';
 import {select, Store} from '@ngrx/store';
-import {getChainBlocks, getChainInfo} from '@plugin/lthn/chain/data';
-import {ChainGetInfo} from '@plugin/lthn/chain/interfaces/props/get_info';
 import {interval, Observable, Subscription} from 'rxjs';
 import {ColumnMode} from '@swimlane/ngx-datatable';
-import {BlockHeader} from '@plugin/lthn/chain/interfaces/types/blockHeader';
-
+import {ChainGetInfo} from '@module/chain/interfaces/props/get_info';
+import {BlockHeader} from '@module/chain/interfaces/types/blockHeader';
+import {BlockchainService} from '@module/chain/blockchain.service';
+import {WalletService} from '@module/wallet/wallet.service';
+import {getChainBlocks, getChainInfo} from '@module/chain/data';
 @Component({
 	selector: 'lthn-root',
 	templateUrl: './root.component.html'

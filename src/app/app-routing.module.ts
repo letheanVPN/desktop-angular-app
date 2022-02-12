@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {BlockchainRoutingModule} from '@plugin/lthn/chain/blockchain-routing.module';
 import {RootRoutingModule} from '@module/root-routing.module';
 import {LoginComponent} from '@module/auth/login.component';
-import {WalletRoutingModule} from '@plugin/lthn/wallet/wallet-routing.module';
 import {UserRoutingModule} from '@module/user/user-routing.module';
+import {BlockchainRoutingModule} from '@module/chain/blockchain-routing.module';
+import {WalletRoutingModule} from '@module/wallet/wallet-routing.module';
 
 const routes: Routes = [
 	{

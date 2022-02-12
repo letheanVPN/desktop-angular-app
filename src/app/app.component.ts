@@ -7,7 +7,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {select, Store} from '@ngrx/store';
 import {changeLanguage, selectLanguage, toggleHideNavigation} from '@module/settings/data';
 import {Subscription} from 'rxjs';
-import {BlockchainService} from '@plugin/lthn/chain/blockchain.service';
+import {BlockchainService} from '@module/chain/blockchain.service';
 
 @Component({
 	selector: 'lthn-app',

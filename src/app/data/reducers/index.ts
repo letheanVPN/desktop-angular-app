@@ -4,8 +4,8 @@ import * as Settings from '../../modules/settings/data';
 import * as User from '../../modules/user/data/user';
 import {localStorageSync} from 'ngrx-store-localstorage';
 import * as Chart from '../../modules/chart/data';
-import * as Wallet from '../../plugins/lthn/wallet/data';
-import * as Chain from '../../plugins/lthn/chain/data';
+import * as Wallet from '../../modules/wallet/data';
+import * as Chain from '../../modules/chain/data';
 import * as Logs from '../logs';
 
 export interface AppState {

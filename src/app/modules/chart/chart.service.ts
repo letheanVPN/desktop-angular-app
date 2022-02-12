@@ -5,7 +5,7 @@ import {select, Store} from '@ngrx/store';
 import colorLib from '@kurkle/color';
 import {isPlatformBrowser, isPlatformServer} from '@angular/common';
 import {selectChartData} from './data';
-import {NetworkHashrateChart} from '@plugin/hashvault/charts/network-hashrate.chart';
+import {NetworkHashrateChart} from './charts/network-hashrate.chart';
 
 @Injectable({
 	providedIn: 'root'
