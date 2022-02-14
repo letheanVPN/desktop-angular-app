@@ -11,7 +11,7 @@
     "clean": "rimraf node_modules",
     "test:watch": "jest --watch",
     "test:ci": "jest --runInBand",
-    "dev": "run-p ng:serve be:serve",
+    "dev": "run-p serve be:serve",
     "dev:setup": "rimraf server && git clone https://github.com/letheanVPN/server.git server",
     "doc": "npx @compodoc/compodoc -p tsconfig.json",
     "doc:serve": "npx @compodoc/compodoc -s",
