@@ -40,3 +40,9 @@ html, body {
   }
 }
 
+.datatable-row-wrapper:nth-child(odd){
+  margin-top: 1px;
+  margin-bottom: 1px;
+  background: rgba(26,26,26,0.9);
+}
+

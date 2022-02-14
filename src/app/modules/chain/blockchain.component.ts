@@ -1,13 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ChartService} from '@module/chart/chart.service';
 import {ChainGetInfo} from '@module/chain/interfaces/props/get_info';
-import {BlockchainService} from '@module/chain/blockchain.service';
 import {select, Store} from '@ngrx/store';
 import {getChainBlocks, getChainInfo} from '@module/chain/data';
-import { Observable, Subscription} from 'rxjs';
+import { Observable} from 'rxjs';
 import {BlockHeader} from '@module/chain/interfaces/types/blockHeader';
 import {ColumnMode} from '@swimlane/ngx-datatable';
-import {HashRatePipe} from '@pipe/crypto/hashrate.pipe';
 
 @Component({
 	selector: 'lthn-chain',
@@ -27,7 +25,7 @@ export class BlockchainComponent implements OnInit, OnDestroy {
 		//{ prop: 'reward', name: 'plugin.lthn.chain.table.th.reward', default: true },
 		{ prop: 'timestamp', name: 'plugin.lthn.chain.table.th.timestamp', default: true },
 	//	{ prop: 'block_size', name: 'Block Size', default: true },
-		{ prop: 'depth', name: 'plugin.lthn.chain.table.th.depth', default: true },
+		//{ prop: 'depth', name: 'plugin.lthn.chain.table.th.depth', default: true },
 		//{ prop: 'major_version', name: 'Block Major Version', default: true },
 	//	{ prop: 'minor_version', name: 'Block Minor Version', default: false },
 	//	{ prop: 'nonce', name: 'Block Nonce', default: false },
@@ -40,10 +38,7 @@ export class BlockchainComponent implements OnInit, OnDestroy {
 
 	public recentTxs: any;
 	public buildType: string;
-	private sub: Subscription;
-
-	constructor( private store: Store, private chain: BlockchainService,
-				public pipeHashrate: HashRatePipe) {
+	constructor( private store: Store) {
 
 		this.allColumns.forEach((col) => {
 			if (col.default){
@@ -58,18 +53,9 @@ export class BlockchainComponent implements OnInit, OnDestroy {
 
 	ngOnInit(): void {
 
-
-
-
-		this.sub = this.store.pipe(select(getChainInfo)).subscribe((data) => {
-			if(data) {
-				this.chain.getBlocks(data.height-25, data.height-1)
-			}
-		})
-		this.chain.getInfo()
+		//this.chain.getInfo()
 		this.chainInfo = this.store.pipe(select(getChainInfo))
 		this.blocks = this.store.pipe(select(getChainBlocks))
-
 	}
 
 	toggle(col) {
@@ -93,7 +79,6 @@ export class BlockchainComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnDestroy(): void {
-		this.sub.unsubscribe()
 		console.log('BlockchainComponent DESTROY');
 	}
 }

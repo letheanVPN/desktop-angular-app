@@ -35,8 +35,9 @@
     <mat-card>
         <mat-card-title>Recent Blocks</mat-card-title>
         <mat-card-content>
+            <p>This is using the local daemon, as you syn the chain the data shown will reflect the current network data</p>
             <ngx-datatable
-                    class="material"
+                    class=" ngx-datatable"
                     [rows]="(blocks | ngrxPush)?.headers"
                     [loadingIndicator]="false"
                     [columns]="columns"
@@ -44,7 +45,7 @@
                     [headerHeight]="30"
                     [footerHeight]="50"
                     rowHeight="20"
-                    [limit]="10"
+                    [limit]="25"
                     [sorts]="[{ prop: 'timestamp', dir: 'desc' }]"
             >
                 <ngx-datatable-column *ngFor="let col of columns" [prop]="col.prop" [name]="col.name | translate">
@@ -57,7 +58,7 @@
                             <mat-icon style="color: green" *ngIf="!value">done</mat-icon>
                             <mat-icon style="color: red" *ngIf="value">close</mat-icon>
                           </span>
-                        <span *ngIf="col.prop === 'timestamp'">{{ value | timeAgo }}</span>
+                        <span *ngIf="col.prop === 'timestamp'">{{ value | amFromUnix }}</span>
                         <span *ngIf="col.prop === 'block_size'">{{ value | number }}</span>
                         <span *ngIf="col.prop === 'depth'">{{ value | number }}</span>
                         <span *ngIf="col.prop === 'major_version'">{{ value  }}</span>
