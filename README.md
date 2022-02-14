@@ -18,7 +18,7 @@
 ## Development Build
 
 ```shell
-npm install
+npm install --legacy-peer-deps
 npm run dev:setup
 npm run dev
 ```
@@ -26,14 +26,14 @@ npm run dev
 ## Production Build
 
 ```shell
-npm install
+npm install --legacy-peer-deps
 npm run build
 ```
 
 ## Documentation
 
 ```shell
-npm install
+npm install --legacy-peer-deps
 npm run doc
 npm run doc:serve
 ```
