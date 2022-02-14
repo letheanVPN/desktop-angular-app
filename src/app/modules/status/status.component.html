@@ -2,20 +2,13 @@
     <mat-card style="padding-right: 8px!important;">
         <div>
             <button *ngIf="status_daemon" mat-button matTooltip="Daemon ON - Thank you <3"
-                    style="color:green;">
+                    [style]="{'color': status_daemon === 1 ? 'orange' : 'green'}">
                 <mat-icon>cloud</mat-icon>
             </button>
             <button *ngIf="!status_daemon" mat-button
                     matTooltip="Daemon OFF - Sharing is Caring"
                     style="color:red;">
                 <mat-icon>cloud_off</mat-icon>
-            </button>
-            <button *ngIf="status_secure" mat-button matTooltip="VPN ON - Secured Connection"
-                    style="color:green;">
-                <mat-icon>lock</mat-icon>
-            </button>
-            <button *ngIf="!status_secure" mat-button matTooltip="VPN OFF - Not Secure" style="color:red;">
-                <mat-icon>lock_open</mat-icon>
             </button>
             <button *ngIf="!status_private" mat-button matTooltip="Privacy not protected" style="color:red;">
                 <mat-icon>visibility_off</mat-icon>

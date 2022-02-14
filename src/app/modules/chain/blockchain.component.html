@@ -1,35 +1,4 @@
-<div class="container-fluid p-2" fxLayoutGap="8px">
-    <mat-toolbar>
-        <mat-toolbar-row>
-            <span class="lthn-brand">Blockchain Explorer</span>
 
-            <span class="flex-spacer"></span>
-            <ng-container *ngIf="chainInfo | ngrxPush as info">
-                <div><span class="lthn-brand">{{'plugin.lthn.chain.words.height' | translate }}
-                    :</span> {{info.height | number }}</div>
-
-                <div><span class="lthn-brand">{{'plugin.lthn.chain.words.target_height' | translate }}
-                    :</span> {{info.target_height | number}}</div>
-                <div><span class="lthn-brand">{{'plugin.lthn.chain.words.grey_peerlist_size' | translate }}
-                    :</span> {{info.grey_peerlist_size | number}}</div>
-
-                <span class="flex-spacer"></span>
-            </ng-container>
-
-
-            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-                <mat-icon>view_column</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu">
-                <button mat-menu-item *ngFor="let col of allColumns" (click)="toggle(col)">
-                    <input type="checkbox" [id]="col.name" (click)="toggle(col)" [checked]="isChecked(col)" disabled/>&nbsp;
-                    <label [attr.for]="col.name">{{ col.name }}</label>
-                </button>
-            </mat-menu>
-
-        </mat-toolbar-row>
-    </mat-toolbar>
-</div>
 <div class="container-fluid p-2">
 
     <mat-card>
@@ -72,7 +41,15 @@
 
             </ngx-datatable>
 
-
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>view_column</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item *ngFor="let col of allColumns" (click)="toggle(col)">
+                    <input type="checkbox" [id]="col.name" (click)="toggle(col)" [checked]="isChecked(col)" disabled/>&nbsp;
+                    <label [attr.for]="col.name">{{ col.name }}</label>
+                </button>
+            </mat-menu>
         </mat-card-content>
     </mat-card>
 </div>

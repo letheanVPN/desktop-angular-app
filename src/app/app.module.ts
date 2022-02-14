@@ -19,6 +19,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AuthModule} from '@module/auth/auth.module';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {ReactiveComponentModule} from '@ngrx/component';
 
 export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http);
@@ -51,7 +52,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 		MatButtonModule,
 		MatTooltipModule,
 		FlexModule,
-		AuthModule
+		AuthModule,
+		ReactiveComponentModule
 
 	],
 	providers: [],

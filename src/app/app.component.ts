@@ -6,8 +6,10 @@ import {filter} from 'rxjs/operators';
 import {TranslateService} from '@ngx-translate/core';
 import {select, Store} from '@ngrx/store';
 import {changeLanguage, selectLanguage, toggleHideNavigation} from '@module/settings/data';
-import {Subscription} from 'rxjs';
+import {interval, Subscription} from 'rxjs';
 import {BlockchainService} from '@module/chain/blockchain.service';
+import {getChainInfo} from '@module/chain/data';
+import {ChainGetInfo} from '@module/chain/interfaces/props/get_info';
 
 @Component({
 	selector: 'lthn-app',
@@ -25,7 +27,8 @@ export class AppComponent implements OnInit {
 	public navExpanded: boolean = true;
 	searchValue = '';
 	filteredNavigationTree: any[];
-
+	private sub: Subscription[] = [];
+	public chainInfo: ChainGetInfo;
 	navigationTree: any[] = [
 		{
 			name: 'menu.text.dashboard',
@@ -163,6 +166,15 @@ export class AppComponent implements OnInit {
 			//this.wallet.startWallet().then(r => r);
 		});
 
+		this.chain.getInfo()
+		this.sub['interval'] = interval(5000).subscribe(() => this.chain.getInfo());
+		this.sub['info'] = this.store.pipe(select(getChainInfo)).subscribe((data) => {
+			if (data) {
+				this.chainInfo = data
+				this.chain.getBlocks(data.height - 50, data.height - 1);
+			}
+		});
+
 	}
 
 	/**
@@ -178,5 +190,10 @@ export class AppComponent implements OnInit {
 			return activatedRoute;
 		}
 	}
+
+	public ngOnDestroy() {
+		this.sub.forEach((s) => s.unsubscribe());
+	}
+
 
 }
