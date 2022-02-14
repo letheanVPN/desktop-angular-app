@@ -40,7 +40,7 @@ html, body {
   }
 }
 
-.datatable-row-wrapper:nth-child(odd){
+.datatable-row-wrapper:nth-child(odd), .mat-list-item:nth-last-child(odd){
   margin-top: 1px;
   margin-bottom: 1px;
   background: rgba(26,26,26,0.9);

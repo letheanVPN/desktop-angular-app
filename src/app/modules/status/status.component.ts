@@ -26,7 +26,7 @@ export class StatusComponent implements OnInit {
 			if(data){
 				// we have chain data, and it talks to us set to amber
 				this.status_daemon = 1
-				console.log(data)
+				//console.log(data)
 				// if chain height + 4 to give 2~ blocks to be considered healthy
 				if(data.height + 4 > data.target_height){
 					this.status_daemon = 2

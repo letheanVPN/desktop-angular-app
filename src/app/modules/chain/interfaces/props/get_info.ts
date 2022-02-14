@@ -13,4 +13,7 @@ export interface ChainGetInfo {
 	tx_count: number;
 	tx_pool_size: number;
 	white_peerlist_size: number;
+	start_time: number;
+	cumulative_difficulty: number;
+	block_size_limit: number;
 }
