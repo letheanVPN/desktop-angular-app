@@ -33,7 +33,8 @@
 <!--            </button>-->
 <!--        </mat-card-actions>-->
         <mat-card-content>
-            <p>This is using the local daemon, as you sync the chain the data shown will reflect the current network data</p>
+            <p>The data shown here comes from your local data, accurate to the point in time you have synced;</p>
+            <p>Advanced users can "pop off" blocks from their local chain to see the work at particular heights</p>
             <ngx-datatable
                     class=" ngx-datatable"
                     [rows]="(blocks | ngrxPush)?.headers"
