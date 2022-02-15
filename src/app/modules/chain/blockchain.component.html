@@ -8,19 +8,18 @@
                 <mat-list-item>Status: {{info.status }}</mat-list-item>
                 <mat-list-item>Daemon Start: {{info.start_time * 1000 | amTimeAgo }}</mat-list-item>
                 <mat-list-item>Height: {{info.height }}</mat-list-item>
+                <mat-list-item>Target Height: {{info.target_height }}</mat-list-item>
                 <mat-list-item>Top:&nbsp;<span [innerHTML]="info.top_block_hash | hashLink | keepHtml" ></span></mat-list-item>
+                <mat-list-item>White Peers: {{info.white_peerlist_size }}</mat-list-item>
+                <mat-list-item>Grey Peers: {{info.grey_peerlist_size }}</mat-list-item>
                 <mat-list-item>Difficulty: {{info.difficulty | hashrate }}</mat-list-item>
                 <mat-list-item>Cumulative: {{info.cumulative_difficulty | hashrate }}</mat-list-item>
                 <mat-list-item>Connect INC: {{info.incoming_connections_count }}</mat-list-item>
                 <mat-list-item>Connect OUT: {{info.outgoing_connections_count }}</mat-list-item>
                 <mat-list-item>TX Count: {{info.tx_count }}</mat-list-item>
                 <mat-list-item>TX Pool Size: {{info.tx_pool_size }}</mat-list-item>
-                <mat-list-item>Target Height: {{info.target_height }}</mat-list-item>
                 <mat-list-item>Testnet: {{info.testnet }}</mat-list-item>
                 <mat-list-item>Block Time: {{info.target }}</mat-list-item>
-
-                <mat-list-item>White Peers: {{info.white_peerlist_size }}</mat-list-item>
-                <mat-list-item>Grey Peers: {{info.grey_peerlist_size }}</mat-list-item>
                 <mat-list-item>Alt Blocks: {{info.alt_blocks_count }}</mat-list-item>
                 <mat-list-item>Block Size Limit: {{info.block_size_limit }}</mat-list-item>
             </mat-list>
