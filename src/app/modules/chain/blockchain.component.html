@@ -1,5 +1,16 @@
 
 <div class="container-fluid" fxLayout="row">
+    <ng-container *ngIf="status_daemon === 0">
+        <mat-card fxFill="100">
+            <mat-card-title>Lethean Blockchain Loading</mat-card-title>
+            <mat-card-content>
+                <p>
+                    This should only take a few seconds, for support visit <code>sparta.lt.hn</code>
+                </p>
+            </mat-card-content>
+        </mat-card>
+    </ng-container>
+    <ng-container *ngIf="status_daemon > 0">
     <mat-card fxFlex="25" style="padding: 0;">
         <mat-card-title style="padding: 16px;">Information</mat-card-title>
         <mat-card-content style="padding: 0;">
@@ -26,7 +37,18 @@
         </mat-card-content>
     </mat-card>
     <mat-card fxFlex="75">
-        <mat-card-title>Confidential Ledger Records</mat-card-title>
+        <mat-card-title>
+            Chain Status:
+            <ng-container *ngIf="chainInfo | ngrxPush as info">&nbsp;
+                <span *ngIf="info.target_height > 0" style="font-family: monospace; font-size: 12px;">
+                    ({{info.height | number }}/{{info.target_height | number}} = {{ (info.height/info.target_height) | percent:'1.2-3' }})
+                </span>
+                <span *ngIf="info.target_height === 0" style="color: green; font-size: 14px;">
+                    Synchronized
+                </span>
+            </ng-container>
+
+        </mat-card-title>
 <!--        <mat-card-actions>-->
 <!--            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">-->
 <!--                <mat-icon>view_column</mat-icon>-->
@@ -52,7 +74,7 @@
                     <ng-template let-value="value" ngx-datatable-cell-template>
                         <span *ngIf="col.prop === 'difficulty'">{{ value | hashrate}}</span>
                         <span *ngIf="col.prop === 'height'">{{ value | number }}</span>
-                        <span *ngIf="col.prop === 'hash'" [innerHTML]="value | hashLink:'txn' | keepHtml"></span>
+                        <span *ngIf="col.prop === 'hash'" [innerHTML]="value | hashLink | keepHtml"></span>
                         <span *ngIf="col.prop === 'orphan_status'">
                             <mat-icon style="color: green" *ngIf="!value">done</mat-icon>
                             <mat-icon style="color: red" *ngIf="value">close</mat-icon>
@@ -80,4 +102,5 @@
 <!--            </mat-menu>-->
         </mat-card-content>
     </mat-card>
+    </ng-container>
 </div>

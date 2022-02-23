@@ -1,5 +1,5 @@
 {
-  "name": "lethean-workstation",
+  "name": "gui-interface",
   "version": "0.0.2",
   "scripts": {
     "ng": "ng",
@@ -16,9 +16,7 @@
     "doc": "npx @compodoc/compodoc -p tsconfig.json",
     "doc:serve": "npx @compodoc/compodoc -s",
     "be:serve": "cd server && $HOME/.deno/bin/deno run --allow-net --allow-env --allow-run --allow-read --allow-write --unstable src/server.ts backend start",
-    "dev:ssr": "ng run lethean-workstation:serve-ssr",
-    "build:ssr": "ng build && ng run lethean-workstation:server",
-    "sec:scan": "run-p sec:auditjs",
+    "sec:scan": "run-p sec:auditjs sec:bidi",
     "sec:auditjs": "npx auditjs@beta ossi",
     "sec:bidi": "npx anti-trojan-source --files='./dist/**/*.js'"
   },

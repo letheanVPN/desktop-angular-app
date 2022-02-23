@@ -20,12 +20,16 @@
   }
 
   mat-sidenav {
-    width: 240px;
-
+    width: 74px;
+    align-items: center;
     .logo {
-      border: 0;
-      padding: 9px;
-      width: 210px;
+      padding: 10%;
+      width: 85%;
+    }
+    .mat-nav-list {
+      .mat-icon{
+        margin: 0 auto;
+      }
     }
   }
 

@@ -3,9 +3,10 @@ import {ChartService} from '@module/chart/chart.service';
 import {ChainGetInfo} from '@module/chain/interfaces/props/get_info';
 import {select, Store} from '@ngrx/store';
 import {getChainBlocks, getChainInfo} from '@module/chain/data';
-import { Observable} from 'rxjs';
+import {interval, Observable, Subscription} from 'rxjs';
 import {BlockHeader} from '@module/chain/interfaces/types/blockHeader';
 import {ColumnMode} from '@swimlane/ngx-datatable';
+import {BlockchainService} from '@module/chain/blockchain.service';
 
 @Component({
 	selector: 'lthn-chain',
@@ -36,9 +37,12 @@ export class BlockchainComponent implements OnInit, OnDestroy {
 	public blocks: Observable<{ headers: BlockHeader[]}>;
 	public chainInfo: Observable<ChainGetInfo>;
 
+	private sub: Subscription[] = [];
 	public recentTxs: any;
 	public buildType: string;
-	constructor( private store: Store) {
+	public status_daemon: number = 0;
+	constructor( private store: Store,
+				 private chain: BlockchainService) {
 
 		this.allColumns.forEach((col) => {
 			if (col.default){
@@ -56,6 +60,22 @@ export class BlockchainComponent implements OnInit, OnDestroy {
 		//this.chain.getInfo()
 		this.chainInfo = this.store.pipe(select(getChainInfo))
 		this.blocks = this.store.pipe(select(getChainBlocks))
+
+		this.sub['interval'] = interval(5000).subscribe(() => this.chain.getInfo());
+		this.sub['info'] = this.store.pipe(select(getChainInfo)).subscribe((data) => {
+			if(data){
+				// we have chain data, and it talks to us set to amber
+				this.status_daemon = 1
+				//console.log(data)
+				// if chain height + 4 to give 2~ blocks to be considered healthy
+				if(data.height + 4 > data.target_height){
+					this.status_daemon = 2
+				}
+				this.chain.getBlocks(data.height - 50, data.height - 1);
+			}else{
+				this.status_daemon = 0
+			}
+		});
 	}
 
 	toggle(col) {
@@ -78,7 +98,8 @@ export class BlockchainComponent implements OnInit, OnDestroy {
 		);
 	}
 
-	ngOnDestroy(): void {
-		console.log('BlockchainComponent DESTROY');
+	public ngOnDestroy() {
+		this.sub.forEach((s) => s.unsubscribe());
 	}
+
 }

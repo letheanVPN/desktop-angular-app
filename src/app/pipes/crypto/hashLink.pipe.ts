@@ -4,7 +4,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 export class HashLinkPipe implements PipeTransform {
   constructor() {}
 
-  transform(content, type: string = 'txn') {
+  transform(content, type: string = 'block') {
     let url = `/chain/${type}/${content}`;
 
     return content === undefined

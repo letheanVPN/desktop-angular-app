@@ -15,9 +15,6 @@ const routes: Routes = [
 			description: 'view.dashboard.description',
 			robots: true
 		}
-	},
-	{
-		path: "", redirectTo: 'dashboard'
 	}
 
 ];

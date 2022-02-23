@@ -15,6 +15,8 @@ import {PipesModule} from '@pipe/pipes.module';
 import {MatCardModule} from '@angular/material/card';
 import {WalletModule} from '@module/wallet/wallet.module';
 import {BlockchainModule} from '@module/chain/blockchain.module';
+import {PostModule} from '@module/content/post/post.module';
+import {SpartaModule} from '@module/content/sparta/sparta.module';
 
 @NgModule({
 	declarations: [RootComponent],
@@ -33,7 +35,9 @@ import {BlockchainModule} from '@module/chain/blockchain.module';
 		NgxDatatableModule,
 		MatIconModule,
 		MatCardModule,
-		BlockchainModule
+		BlockchainModule,
+		PostModule,
+		SpartaModule
 	]
 })
 export class RootModule {
