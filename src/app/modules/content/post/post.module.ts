@@ -1,28 +1,26 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {PostComponent} from 'src/app/modules/content/post/post.component';
-import {RouterModule, Routes} from '@angular/router';
 import {MatCardModule} from '@angular/material/card';
 import {PipesModule} from '@pipe/pipes.module';
+import {MatListModule} from '@angular/material/list';
+import {ReactiveComponentModule} from '@ngrx/component';
+import {MatButtonModule} from '@angular/material/button';
 
-const routes: Routes = [
-	{
-		path: '',
-		component: PostComponent
-	},
-	{
-		path: '**',
-		component: PostComponent
-	}
-];
+
 
 @NgModule({
 	declarations: [PostComponent],
+	exports: [
+		PostComponent
+	],
 	imports: [
 		CommonModule,
-		RouterModule.forChild(routes),
 		MatCardModule,
-		PipesModule
+		PipesModule,
+		MatListModule,
+		ReactiveComponentModule,
+		MatButtonModule
 	]
 })
 export class PostModule {

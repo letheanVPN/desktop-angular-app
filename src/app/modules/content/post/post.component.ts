@@ -1,39 +1,35 @@
-import {Component, OnInit} from '@angular/core';
-import {Client} from '@hiveio/dhive';
-import {Router} from '@angular/router';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
 	selector: 'lthn-app-post',
 	templateUrl: './post.component.html',
 	styleUrls: ['./post.component.scss']
 })
-export class PostComponent implements OnInit {
-	public post = {};
-	public title = '';
-	public content = '';
-	public author = '';
-	private subs: any = {};
+export class PostComponent implements OnInit, OnDestroy {
+	public posts:any;
+	private sub;
 
-	constructor(private router: Router) {}
+	constructor(private http: HttpClient) {}
 
 	ngOnInit(): void {
-		const client = new Client([
-			'https://api.hive.blog',
-			'https://api.hivekings.com',
-			'https://anyx.io',
-			'https://api.openhive.network'
-		]);
-		const slug = this.router.routerState.snapshot.url.replace('/p/', '');
-		const that = this;
-		console.log(this.router.routerState.snapshot.url);
 
-		client.database.getState(`/hive-179211/@${slug}`).then(function (post) {
-			that.post = post;
+		this.sub = this.getLatestPosts()
+			.subscribe((data: any) => this.posts = data);
+	}
 
-			that.content = post.content[slug].body;
-			that.title = post.content[slug].title;
-			that.author = post.content[slug].author;
-			console.log(post);
+
+	getLatestPosts() {
+		return this.http.get<any>("https://sparta.lt.hn/latest.json");
+	}
+
+	loadPost(slug, id){
+		this.http.get<any>(`https://sparta.lt.hn/${slug}/${id}.json`).subscribe((data: any) => {
+			this.posts = data
 		});
+	}
+
+	public ngOnDestroy(): void {
+		this.sub.unsubscribe();
 	}
 }
