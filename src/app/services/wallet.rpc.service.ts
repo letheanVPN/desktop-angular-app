@@ -9,7 +9,7 @@ import {RestoreWallet} from '@plugin/../modules/wallet/interfaces/requests/resto
 	providedIn: 'root'
 })
 export class WalletRpcService {
-	private url = 'https://localhost:36911/daemon/wallet/json_rpc';
+	private url = 'http://localhost:36911/daemon/wallet/json_rpc';
 
 	constructor(private http: HttpClient) {
 	}
@@ -31,7 +31,7 @@ export class WalletRpcService {
 
 		return this.http
 			.post<any>(
-				`https://localhost:36911/daemon/wallet/rpc`,
+				`http://localhost:36911/daemon/wallet/rpc`,
 				request,
 				options
 			)

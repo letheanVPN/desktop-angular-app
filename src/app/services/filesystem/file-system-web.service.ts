@@ -6,7 +6,7 @@ import {FileSystemInterface} from '@interface/file-system.interface';
 	providedIn: 'root'
 })
 export class FileSystemWebService implements FileSystemInterface {
-	private apiUrl = 'https://localhost:36911/filesystem';
+	private apiUrl = 'http://localhost:36911/filesystem';
 
 	constructor(private http: HttpClient) {
 	}

@@ -19,7 +19,7 @@ export class BlockchainService {
 		};
 		return this.http
 			.post<any>(
-				`https://localhost:36911/daemon/chain/start`,
+				`http://localhost:36911/daemon/chain/start`,
 				{},
 				options
 			)
@@ -40,7 +40,7 @@ export class BlockchainService {
 		};
 		return this.http
 			.post<any>(
-				`https://localhost:36911/daemon/chain/export`,
+				`http://localhost:36911/daemon/chain/export`,
 				{},
 				options
 			)
@@ -61,7 +61,7 @@ export class BlockchainService {
 		};
 		return this.http
 			.post<any>(
-				`https://localhost:36911/daemon/chain/import`,
+				`http://localhost:36911/daemon/chain/import`,
 				{},
 				options
 			)
@@ -71,7 +71,7 @@ export class BlockchainService {
 
 	chainRpc(method: string, params: any) {
 		return this.http
-			.post<any>('https://localhost:36911/daemon/chain/json_rpc', JSON.stringify(rpcBody(method)(params)));
+			.post<any>('http://localhost:36911/daemon/chain/json_rpc', JSON.stringify(rpcBody(method)(params)));
 	}
 
 	getInfo(){
