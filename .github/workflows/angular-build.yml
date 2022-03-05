@@ -23,7 +23,7 @@ jobs:
     - run: npm run build
     - run: npm install anti-trojan-source
     - name: Unicode bidi attack check
-      run: npx anti-trojan-source --files='/runner/work/gui-interface/gui-interface/dist/**/*.js'
+      run: npx anti-trojan-source --files='${{ github.workspace }}/dist/**/*.js'
     - name: run auditjs
       run: npx --loglevel=error auditjs@beta ossi --json > auditjs.json || exit 0
     - name: Sensitive File Check
@@ -36,4 +36,15 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: dist
-        path: ${{ github.workspace }}/dist/lethean-workstation/browser
+        path: ${{ github.workspace }}/dist/lethean-desktop/browser
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: ${{ github.workspace }}/dist/lethean-desktop/browser
+    - name: Release Branch
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/heads/main')
+      with:
+        prerelease: true
+        files: ${{ github.workspace }}/dist/lethean-desktop/browser
