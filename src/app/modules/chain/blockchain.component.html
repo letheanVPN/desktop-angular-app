@@ -1,4 +1,17 @@
+<div class="container-fluid" fxLayout="row">
+    <mat-card fxFlex="100">
 
+            <mat-form-field fxFlex="25" appearance="fill">
+                <mat-label>View Block by Hash</mat-label>
+                <input type="text" matInput [formControl]="blockSearch"
+                       placeholder="Block Hash. ">
+                <mat-hint></mat-hint>
+            </mat-form-field>
+            <button [routerLink]="['/','chain', 'block', blockSearch.value]" mat-button>Go</button>
+
+
+    </mat-card>
+</div>
 <div class="container-fluid" fxLayout="row">
     <ng-container *ngIf="status_daemon === 0">
         <mat-card fxFill="100">
@@ -74,7 +87,7 @@
                     <ng-template let-value="value" ngx-datatable-cell-template>
                         <span *ngIf="col.prop === 'difficulty'">{{ value | hashrate}}</span>
                         <span *ngIf="col.prop === 'height'">{{ value | number }}</span>
-                        <span *ngIf="col.prop === 'hash'" [innerHTML]="value | hashLink | keepHtml"></span>
+                        <a class="lthn-brand" *ngIf="col.prop === 'hash'" [routerLink]="['/', 'chain', 'block', value]">{{ value | hashLink }}</a>
                         <span *ngIf="col.prop === 'orphan_status'">
                             <mat-icon style="color: green" *ngIf="!value">done</mat-icon>
                             <mat-icon style="color: red" *ngIf="value">close</mat-icon>

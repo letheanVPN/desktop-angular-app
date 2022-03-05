@@ -7,6 +7,7 @@ import {interval, Observable, Subscription} from 'rxjs';
 import {BlockHeader} from '@module/chain/interfaces/types/blockHeader';
 import {ColumnMode} from '@swimlane/ngx-datatable';
 import {BlockchainService} from '@module/chain/blockchain.service';
+import {FormControl, Validators} from "@angular/forms";
 
 @Component({
 	selector: 'lthn-chain',
@@ -41,6 +42,7 @@ export class BlockchainComponent implements OnInit, OnDestroy {
 	public recentTxs: any;
 	public buildType: string;
 	public status_daemon: number = 0;
+	 blockSearch: FormControl;
 	constructor( private store: Store,
 				 private chain: BlockchainService) {
 
@@ -56,6 +58,7 @@ export class BlockchainComponent implements OnInit, OnDestroy {
 
 
 	ngOnInit(): void {
+		this.blockSearch = new FormControl('', [Validators.required]);
 
 		//this.chain.getInfo()
 		this.chainInfo = this.store.pipe(select(getChainInfo))

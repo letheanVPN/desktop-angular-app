@@ -17,27 +17,36 @@ import {PipesModule} from '@pipe/pipes.module';
 import {HashRatePipe} from '@pipe/crypto/hashrate.pipe';
 import {MomentModule} from 'ngx-moment';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { BlockdetailsComponent } from './blockdetails/blockdetails.component';
+import {RouterModule} from "@angular/router";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
-	declarations: [BlockchainComponent],
-	imports: [
-		CommonModule,
-		ChartModule,
-		MatCardModule,
-		MatListModule,
-		MatButtonModule,
-		FlexModule,
-		TranslateModule,
-		NgxDatatableModule,
-		ReactiveComponentModule,
-		PipesModule,
-		MatIconModule,
-		MatToolbarModule,
-		MatTooltipModule,
-		MatMenuModule,
-		MomentModule,
-		MatProgressBarModule
-	],
+	declarations: [BlockchainComponent, BlockdetailsComponent],
+    imports: [
+        CommonModule,
+        ChartModule,
+        MatCardModule,
+        MatListModule,
+        MatButtonModule,
+        FlexModule,
+        TranslateModule,
+        NgxDatatableModule,
+        ReactiveComponentModule,
+        PipesModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatTooltipModule,
+        MatMenuModule,
+        MomentModule,
+        MatProgressBarModule,
+        RouterModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule
+    ],
 	exports: [ BlockchainComponent],
 	providers: [HashRatePipe]
 })
