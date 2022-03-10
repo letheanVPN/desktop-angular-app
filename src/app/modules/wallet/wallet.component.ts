@@ -1,7 +1,6 @@
 import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {WalletService} from '@module/wallet/wallet.service';
 import {Balance} from '@module/wallet/interfaces';
-import {PluginDefinition, PluginStatus} from '@data/plugins';
 import {select, Store} from '@ngrx/store';
 import * as WalletActions from '@module/wallet/data';
 import {Subscription} from 'rxjs';
@@ -12,13 +11,6 @@ import {Subscription} from 'rxjs';
 	styleUrls: ['./wallet.component.scss']
 })
 export class WalletComponent implements OnInit, OnDestroy, AfterViewInit {
-	public pluginConfig: PluginDefinition = {
-		description_short: 'test',
-		git_repo: 'https://github.com/Snider/plugin-bootstrap.git',
-		name: 'test',
-		readme_list: 'https://github.com/Snider/plugin-bootstrap#readme',
-		status: PluginStatus.ACTIVE
-	}
 	public balance:  Balance | Promise<Balance>;
 
 	public wallets: string[] = [];
@@ -40,6 +32,8 @@ export class WalletComponent implements OnInit, OnDestroy, AfterViewInit {
 
 	ngOnInit() {
 
+
+
 		this.subs$['wallets'] = this.store.pipe(select(WalletActions.selectWallets)).subscribe((data) => {
 			if(data && data.length > 0) {
 				this.wallets = data
@@ -56,7 +50,8 @@ export class WalletComponent implements OnInit, OnDestroy, AfterViewInit {
 	 }
 
 	public ngAfterViewInit() {
-
+		console.log('hi')
+		this.wallet.startWalletService()
 	}
 
 	ngOnDestroy(): void {

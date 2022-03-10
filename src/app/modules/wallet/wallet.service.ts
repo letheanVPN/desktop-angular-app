@@ -20,8 +20,10 @@ export class WalletService {
 	 *
 	 * @returns {Promise<void>}
 	 */
-	startWallet() {
-		return this.rpc.startWallet();
+	startWalletService() {
+		return this.rpc.startWalletService().subscribe((data) => {
+			console.log(data)
+		});
 	}
 
 	/**

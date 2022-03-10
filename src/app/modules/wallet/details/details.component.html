@@ -1,0 +1,54 @@
+<div class="container-fluid" fxLayout="column">
+    <div fxLayout="column">
+        <div fxFlex="100" style="padding: 12px 12px 3px 12px;">
+            <mat-toolbar>
+                <mat-toolbar-row>
+                    <span class="lthn-brand">Wallet Manager</span>
+<!--                    <mat-select [(value)]="openedWallet" [placeholder]="openedWallet">-->
+<!--                        <mat-option *ngFor="let wallet of wallets"-->
+<!--                                    value="{{wallet}}"-->
+<!--                                    (click)="this.openWallet(wallet)">{{wallet}}</mat-option>-->
+<!--                    </mat-select>-->
+                    <span class="flex-spacer"></span>
+                    <button [routerLink]="['/', 'wallet', 'new']" mat-button matTooltip="New Wallet">
+                        <mat-icon>account_balance_wallet</mat-icon>
+                    </button>
+                    <button [routerLink]="['/', 'wallet', 'backup']" mat-button matTooltip="Backup">
+                        <mat-icon>cloud_download</mat-icon>
+                    </button>
+                    <button [routerLink]="['/', 'wallet', 'restore']" mat-button matTooltip="Restore">
+                        <mat-icon>cloud_upload</mat-icon>
+                    </button>
+                    <button [routerLink]="['/', 'wallet', 'settings']" mat-button matTooltip="Settings">
+                        <mat-icon>settings</mat-icon>
+                    </button>
+                </mat-toolbar-row>
+            </mat-toolbar>
+            <div fxLayout="row">
+                <div fxFlex="20" style="padding: 6px 3px 6px 0;">
+                    <mat-card>
+                        <mat-list>
+                            <mat-list-item [routerLink]="['/', 'wallet']" >Details</mat-list-item>
+                            <mat-list-item>View Transactions</mat-list-item>
+                            <mat-list-item>Transfer</mat-list-item>
+                        </mat-list>
+                    </mat-card>
+
+                </div>
+                <div fxFlex="80" style="padding: 6px 0 6px 3px;">
+<!--                    <ng-container *ngIf="openedWallet.length > 1">-->
+<!--                        <lthn-wallet-transactions [opts]="txnSelection"></lthn-wallet-transactions>-->
+<!--                    </ng-container>-->
+<!--                    <ng-container *ngIf="openedWallet.length === 0">-->
+
+<!--                        <lthn-wallet-add targetAddForm="open">-->
+<!--                        </lthn-wallet-add>-->
+
+<!--                    </ng-container>-->
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
