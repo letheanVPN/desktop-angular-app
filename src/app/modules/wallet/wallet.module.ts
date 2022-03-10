@@ -17,9 +17,9 @@ import {TranslateModule} from '@ngx-translate/core';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {MatSelectModule} from '@angular/material/select';
 import {PipesModule} from '@pipe/pipes.module';
-import { DetailsComponent } from './details/details.component';
 import {NewComponent} from '@module/wallet/components/new.component';
 import {RouterModule} from '@angular/router';
+import {DetailsComponent} from '@module/wallet/details/details.component';
 
 
 

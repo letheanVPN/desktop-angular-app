@@ -136,9 +136,18 @@ $lethean-theme: mat.define-dark-theme((
 
 @include mat.all-component-themes($lethean-theme);
 
+.no-pad {
+  padding:0!important;
+  mat-card-title {
+    padding: 16px;
+  }
+}
 
 .mat-button {
   background: rgba(33, 33, 33);
+}
+.mat-card {
+  background: rgba(44, 44, 44);
 }
 
 .mat-drawer {
@@ -150,6 +159,12 @@ $lethean-theme: mat.define-dark-theme((
 
 }
 
+.mat-list-item:nth-child(odd){
+  background-color: rgba(33, 33, 33, 0.6)!important;
+}
+.mat-list-item:nth-child(even){
+  background-color: rgb(33, 33, 33)!important;
+}
 .lthn-brand {
   color: map_get($md-lethean, 900);
 }
