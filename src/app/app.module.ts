@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import { NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -56,7 +56,14 @@ export function HttpLoaderFactory(http: HttpClient) {
 		ReactiveComponentModule
 
 	],
-	providers: [],
+	providers: [
+//		{
+//			provide : APP_INITIALIZER,
+//			multi : true,
+//			deps : [AppConfigService],
+//			useFactory : (appConfigService : AppConfigService) =>  () => appConfigService.loadConfig('conf/lethean.ini')
+//		}
+	],
 	exports: [
 	],
 	bootstrap: [AppComponent]
@@ -65,4 +72,5 @@ export function HttpLoaderFactory(http: HttpClient) {
  * Application shell/bootstrap
  */
 export class AppModule {
+
 }

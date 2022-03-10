@@ -1,25 +1,30 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {request} from '@service/json-rpc';
 import {AddAddressBook, Address, Balance, CreateWallet, GetAddressBookOut, GetBulkPaymentsIn, GetBulkPaymentsOut, GetPaymentsIn, GetPaymentsOut, GetTransfersIn, GetTransfersOut, Height, IncomingTransfersIn, IncomingTransfersOut, IntegratedAddress, MakeIntegratedAddressIn, MakeUriIn, OpenWallet, QueryKeyIn, QueryKeyOut, SplitIntegratedAddressOut, StoreOut, SweepAllIn, SweepAllOut, Transfer, TransferIn, TransferOut, TransferSplitIn, TransferSplitOut, Uri} from '@plugin/../modules/wallet/interfaces';
 import {RestoreWallet} from '@plugin/../modules/wallet/interfaces/requests/restoreWallet';
+import {AppConfigService} from 'src/app/app-config.service';
 
 
 @Injectable({
 	providedIn: 'root'
 })
-export class WalletRpcService {
-	private url = 'http://localhost:36911/daemon/wallet/json_rpc';
+export class WalletRpcService implements OnInit {
+	private url = 'https://localhost:36911/daemon/wallet/json_rpc';
 
 	constructor(private http: HttpClient) {
+
 	}
+
+	ngOnInit(): void {
+		this.url = AppConfigService.config.get('lethean-server', 'apiURL') + '/daemon/wallet/json_rpc'
+    }
 
 	/**
 	 * Send Wallet Service start POST req
 	 *
-	 * @returns {Promise<void>}
 	 */
-	startWallet() {
+	startWalletService() {
 		const options = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/x-www-form-urlencoded'
@@ -28,15 +33,12 @@ export class WalletRpcService {
 		};
 
 		const request = {rpcBindPort: '36963', disableRpcLogin: false};
-
 		return this.http
 			.post<any>(
-				`http://localhost:36911/daemon/wallet/rpc`,
+				`${AppConfigService.config.get('lethean-server', 'apiURL')}/daemon/wallet/rpc`,
 				request,
 				options
-			)
-			.toPromise()
-			.then((dat) => console.log(dat));
+			);
 	}
 
 	/**

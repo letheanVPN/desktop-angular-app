@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {RootRoutingModule} from '@module/root-routing.module';
 import {LoginComponent} from '@module/auth/login.component';
 import {BlockchainRoutingModule} from '@module/chain/blockchain-routing.module';
+import {WalletRoutingModule} from '@module/wallet/wallet-routing.module';
 
 const routes: Routes = [
 	{
@@ -27,7 +28,7 @@ const routes: Routes = [
 		BlockchainRoutingModule,
 //		UserRoutingModule,
 		//SettingsRoutingModule,
-//		WalletRoutingModule,
+		WalletRoutingModule,
 		// Make sure Root is the last in the list, it has a catch all
 		RootRoutingModule
 	],

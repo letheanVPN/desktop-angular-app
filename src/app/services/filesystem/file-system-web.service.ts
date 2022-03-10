@@ -3,12 +3,15 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {FileSystemInterface} from '@interface/file-system.interface';
 
 @Injectable({
-	providedIn: 'root'
+	providedIn: 'any'
 })
 export class FileSystemWebService implements FileSystemInterface {
-	private apiUrl = 'http://localhost:36911/filesystem';
+
+	public apiUrl: string = 'https://localhost:36911';
+
 
 	constructor(private http: HttpClient) {
+		this.apiUrl = this.apiUrl + '/filesystem'
 	}
 
 	public exists(pathname): boolean {

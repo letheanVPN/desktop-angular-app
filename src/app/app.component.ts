@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterContentInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatSidenav} from '@angular/material/sidenav';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Meta, Title} from '@angular/platform-browser';
@@ -9,13 +9,14 @@ import {changeLanguage, selectLanguage, toggleHideNavigation} from '@module/sett
 import { Subscription} from 'rxjs';
 import {BlockchainService} from '@module/chain/blockchain.service';
 import {ChainGetInfo} from '@module/chain/interfaces/props/get_info';
+import {AppConfigService} from 'src/app/app-config.service';
 
 @Component({
 	selector: 'lthn-app',
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterContentInit {
 	public menu: boolean;
 	public heading = '';
 
@@ -56,11 +57,8 @@ export class AppComponent implements OnInit {
 	 * @param {Meta} metaService
 	 * @param {TranslateService} translate
 	 * @param {Store} store
-	 * @param {FileSystemService} fs
 	 * @param {BlockchainService} chain
-	 * @param {WalletService} wallet
-	 * @param drawerMngr
-	 * @param loadingService
+	 * @param app
 	 */
 	constructor(
 		private router: Router,
@@ -69,13 +67,15 @@ export class AppComponent implements OnInit {
 		private metaService: Meta,
 		private translate: TranslateService,
 		private store: Store,
-		private chain: BlockchainService
+		private chain: BlockchainService,
+		private app: AppConfigService
 	) {
 
 		translate.setDefaultLang('en');
 		let lang = translate.getBrowserLang();
 		// the lang to use, if the lang isn't available, it will use the current loader to get them
 		translate.use(lang ? lang : 'en');
+
 
 	}
 
@@ -93,6 +93,15 @@ export class AppComponent implements OnInit {
 		});
 
 		this.updateMeta();
+		this.app.loadConfig('conf/lethean.ini')
+	}
+
+
+	public ngOnDestroy() {
+		this.sub.forEach((s) => s.unsubscribe());
+	}
+
+	public ngAfterContentInit(): void {
 		this.startChain();
 	}
 
@@ -182,10 +191,5 @@ export class AppComponent implements OnInit {
 			return activatedRoute;
 		}
 	}
-
-	public ngOnDestroy() {
-		this.sub.forEach((s) => s.unsubscribe());
-	}
-
 
 }

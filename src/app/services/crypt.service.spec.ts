@@ -2,7 +2,7 @@ import {TestBed} from '@angular/core/testing';
 
 import {CryptService} from './crypt.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {AppService} from '../app.service';
+import {AppConfigService} from 'src/app/app-config.service';
 
 describe('CryptService', () => {
 	let service: CryptService;
@@ -10,7 +10,7 @@ describe('CryptService', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			imports: [HttpClientTestingModule],
-			providers: [ AppService]
+			providers: [ AppConfigService]
 		});
 		service = TestBed.inject(CryptService);
 	});

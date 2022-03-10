@@ -22,11 +22,14 @@
   mat-sidenav {
     width: 74px;
     align-items: center;
+    border: none;
     .logo {
-      padding: 10%;
-      width: 85%;
+      padding-left: 11px;
+      padding-top: 2px;
+      height: 58px;
     }
     .mat-nav-list {
+      padding-top: 0;
       .mat-icon{
         margin: 0 auto;
       }

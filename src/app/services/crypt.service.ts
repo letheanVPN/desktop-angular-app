@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {AppService} from '../app.service';
+import {AppConfigService} from 'src/app/app-config.service';
 import {FileSystemService} from './filesystem/file-system.service';
 
 @Injectable({
@@ -7,7 +7,7 @@ import {FileSystemService} from './filesystem/file-system.service';
 })
 export class CryptService {
 	constructor(
-		private appService: AppService,
+		private appService: AppConfigService,
 		private fileSystem: FileSystemService
 	) {
 	}
@@ -22,7 +22,7 @@ export class CryptService {
 			't': "7",
 		}
 	}
-	
+
 	/**
 	 * Transforms the input string with a lite l337 conversion
 	 * this will always give you the same salt, im aware of the issues here
@@ -45,10 +45,10 @@ export class CryptService {
 			.replace(/s/gi, 'z')
 			.replace(/t/gi, '7');
 	}
-	
+
 	/**
 	 * lighter quasi-entropy salt, to test, when on on a markdown editor
-	 * 
+	 *
 	 * @param {string} input
 	 * @returns {string}
 	 */
