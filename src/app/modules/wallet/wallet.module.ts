@@ -21,6 +21,8 @@ import {RouterModule} from '@angular/router';
 import {DetailsComponent} from '@module/wallet/details/details.component';
 import {WalletNewComponent} from '@module/wallet/components/wallet-new.component';
 import {TransactionsComponent} from '@module/wallet/components/transactions.component';
+import {SettingsComponent} from '@module/wallet/components/settings.component';
+import {RestoreComponent} from '@module/wallet/components/restore.component';
 
 
 
@@ -29,7 +31,9 @@ import {TransactionsComponent} from '@module/wallet/components/transactions.comp
 		WalletComponent,
 		DetailsComponent,
 		WalletNewComponent,
-		TransactionsComponent
+		TransactionsComponent,
+		SettingsComponent,
+		RestoreComponent
 	],
 	exports: [
 	],
