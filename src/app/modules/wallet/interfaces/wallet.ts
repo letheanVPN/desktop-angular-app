@@ -1,4 +1,3 @@
-import Big from 'big.js';
 import {Destination} from 'src/app/modules/wallet/interfaces/types/destination';
 import {MakeUriIn} from 'src/app/modules/wallet/interfaces/dto/makeUriIn';
 import Random from 'random-js';
@@ -6,14 +5,7 @@ import Random from 'random-js';
 export const generatePaymentId = (length: 16 | 64) =>
 	Random.hex(false)(Random.nativeMath, length);
 
-export class LTHN extends Big {
-	toAtomic = (): Atomic => new Atomic(this.times(1e8));
-}
 
-export class Atomic extends Big {
-	toLTHN = (): LTHN => new LTHN(this.div(1e8));
-	toNumber = (): number => Number(this);
-}
 
 export interface TransferSplitIn {
 	destinations: Destination[];
