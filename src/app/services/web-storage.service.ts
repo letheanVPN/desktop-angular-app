@@ -7,7 +7,7 @@ export class WebStorageService implements Storage {
 
 	private items = {};
 	private count = 0
-	private apiUrl = 'http://localhost:36911/object';
+	private apiUrl = 'https://localhost:36911/object';
 
 	get length() {
 		return this.count;

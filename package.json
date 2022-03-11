@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "serve": "ng serve -c development -o ",
+    "serve": "ng serve -c development -o --ssl --ssl-key ~/Lethean/conf/private.pem --ssl-cert ~/Lethean/conf/public.pem",
     "watch": "ng build --watch --configuration development",
     "clean": "rimraf node_modules",
     "dev": "npm run be:serve",

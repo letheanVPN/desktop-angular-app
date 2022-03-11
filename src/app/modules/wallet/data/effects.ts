@@ -39,7 +39,7 @@ export class WalletEffects {
 								takeWhile(() => this.isPollingActiveStats),
 								switchMap(() =>
 									merge(
-										this.http.post<any>(`http://localhost:36911/daemon/wallet/json_rpc`,
+										this.http.post<any>(`https://localhost:36911/daemon/wallet/json_rpc`,
 											JSON.stringify(rpcBody('getbalance')('')))
 											.pipe(
 												map((res: any) => {
@@ -50,7 +50,7 @@ export class WalletEffects {
 													}
 												)
 											),
-										this.http.post<any>(`http://localhost:36911/daemon/wallet/json_rpc`,
+										this.http.post<any>(`https://localhost:36911/daemon/wallet/json_rpc`,
 											JSON.stringify(rpcBody('get_transfers')({in: true, out: true, failed: true, pending: true } as GetTransfersIn)))
 											.pipe(
 												map((res: any) => {
