@@ -25,13 +25,10 @@ export class AppConfigService {
 	loadConfig(filename: string = '') {
 		console.log(`Load Config: ${filename}`)
 		if( filename === ''){ return false }
+		AppConfigService.apiUrl = AppConfigService.config.get('lethean-server', 'api_url', 'https://localhost:36911')
+
 		this.fs.readFile(filename).then((data) => {
 			AppConfigService.config.parse(data)
-			console.log(filename)
-			if(filename === 'conf/lethean.ini') {
-				AppConfigService.apiUrl = AppConfigService.config.get('lethean-server', 'apiURL')
-			}
-			console.log(AppConfigService.apiUrl)
 		}).catch((err) => {
 			console.log(err)
 		})

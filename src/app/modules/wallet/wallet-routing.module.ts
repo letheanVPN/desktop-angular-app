@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {WalletComponent} from '@module/wallet/wallet.component';
 import {DetailsComponent} from '@module/wallet/details/details.component';
+import {WalletNewComponent} from '@module/wallet/components/wallet-new.component';
 
 const routes: Routes = [
 	{
@@ -12,7 +13,17 @@ const routes: Routes = [
 			title: 'view.wallets.title',
 			heading: 'view.wallets.heading',
 			description: 'view.wallets.description',
-			robots: true
+			robots: false
+		}
+	},
+	{
+		path: 'wallet/new/:id',
+		component: WalletNewComponent,
+		data: {
+			title: 'view.wallets.new.title',
+			heading: 'view.wallets.new.heading',
+			description: 'view.wallets.new.description',
+			robots: false
 		}
 	},
 	{
@@ -22,7 +33,7 @@ const routes: Routes = [
 			title: 'view.wallets.title',
 			heading: 'view.wallets.heading',
 			description: 'view.wallets.description',
-			robots: true
+			robots: false
 		}
 	}
 ];

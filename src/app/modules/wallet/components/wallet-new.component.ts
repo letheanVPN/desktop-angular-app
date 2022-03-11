@@ -5,16 +5,17 @@ import {WalletRpcService} from '@service/wallet.rpc.service';
 
 import {nameNotTakenValidator} from 'src/app/modules/wallet/validators';
 import {WalletService} from 'src/app/modules/wallet/wallet.service';
+import {Router} from '@angular/router';
 
 @Component({
 	selector: 'lthn-wallet-new',
-	templateUrl: './new.component.html'
+	templateUrl: './wallet-new.component.html'
 })
-export class NewComponent implements OnInit {
+export class WalletNewComponent implements OnInit {
 	wallet_name: FormControl;
 	password: FormControl;
 	password_confirm: FormControl;
-	constructor(private walletRpc: WalletRpcService, private wallet: WalletService) {}
+	constructor(private walletRpc: WalletRpcService, private wallet: WalletService, private router: Router) {}
 
 	ngOnInit(): void {
 		this.wallet_name = new FormControl('', [nameNotTakenValidator(this.wallet.walletList())]);
@@ -24,13 +25,17 @@ export class NewComponent implements OnInit {
 
 	createWallet() {
 		if (this.password.value === this.password_confirm.value) {
-			console.log(
+
 				this.walletRpc.createWallet({
 					filename: this.wallet_name.value,
 					password: this.password.value,
 					language: 'English'
+				}).then((data) => {
+					if(data.status === 200){
+						this.router.navigate(['/', 'wallet', this.wallet_name.value]).catch(console.error)
+					}
 				})
-			);
+
 		}
 	}
 }

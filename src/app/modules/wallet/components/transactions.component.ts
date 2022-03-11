@@ -25,7 +25,7 @@ export class TransactionsComponent implements OnInit {
 	filename = new FormControl('');
 	password = new FormControl('');
 
-	rows: GetTransfersOut[];
+	rows: GetTransfersOut[] = [];
 
 
 

@@ -17,9 +17,10 @@ import {TranslateModule} from '@ngx-translate/core';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {MatSelectModule} from '@angular/material/select';
 import {PipesModule} from '@pipe/pipes.module';
-import {NewComponent} from '@module/wallet/components/new.component';
 import {RouterModule} from '@angular/router';
 import {DetailsComponent} from '@module/wallet/details/details.component';
+import {WalletNewComponent} from '@module/wallet/components/wallet-new.component';
+import {TransactionsComponent} from '@module/wallet/components/transactions.component';
 
 
 
@@ -27,7 +28,8 @@ import {DetailsComponent} from '@module/wallet/details/details.component';
 	declarations: [
 		WalletComponent,
 		DetailsComponent,
-		NewComponent
+		WalletNewComponent,
+		TransactionsComponent
 	],
 	exports: [
 	],

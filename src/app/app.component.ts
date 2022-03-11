@@ -75,7 +75,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 		let lang = translate.getBrowserLang();
 		// the lang to use, if the lang isn't available, it will use the current loader to get them
 		translate.use(lang ? lang : 'en');
-
+		this.app.loadConfig('conf/lethean.ini')
 
 	}
 
@@ -93,7 +93,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 		});
 
 		this.updateMeta();
-		this.app.loadConfig('conf/lethean.ini')
+
 	}
 
 

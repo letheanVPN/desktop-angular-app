@@ -1,24 +1,18 @@
-import {Injectable, OnInit} from '@angular/core';
+import { Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {request} from '@service/json-rpc';
 import {AddAddressBook, Address, Balance, CreateWallet, GetAddressBookOut, GetBulkPaymentsIn, GetBulkPaymentsOut, GetPaymentsIn, GetPaymentsOut, GetTransfersIn, GetTransfersOut, Height, IncomingTransfersIn, IncomingTransfersOut, IntegratedAddress, MakeIntegratedAddressIn, MakeUriIn, OpenWallet, QueryKeyIn, QueryKeyOut, SplitIntegratedAddressOut, StoreOut, SweepAllIn, SweepAllOut, Transfer, TransferIn, TransferOut, TransferSplitIn, TransferSplitOut, Uri} from '@plugin/../modules/wallet/interfaces';
-import {RestoreWallet} from '@plugin/../modules/wallet/interfaces/requests/restoreWallet';
+import {RestoreWallet} from '@module/wallet/interfaces/requests/restoreWallet';
 import {AppConfigService} from 'src/app/app-config.service';
 
 
 @Injectable({
 	providedIn: 'root'
 })
-export class WalletRpcService implements OnInit {
-	private url = 'https://localhost:36911/daemon/wallet/json_rpc';
+export class WalletRpcService {
+	private url = AppConfigService.config.get('lethean-server', 'api_url', 'https://localhost:36911') + '/daemon/wallet/json_rpc'
 
-	constructor(private http: HttpClient) {
-
-	}
-
-	ngOnInit(): void {
-		this.url = AppConfigService.config.get('lethean-server', 'apiURL') + '/daemon/wallet/json_rpc'
-    }
+	constructor(private http: HttpClient) {}
 
 	/**
 	 * Send Wallet Service start POST req
@@ -35,7 +29,7 @@ export class WalletRpcService implements OnInit {
 		const request = {rpcBindPort: '36963', disableRpcLogin: false};
 		return this.http
 			.post<any>(
-				`${AppConfigService.config.get('lethean-server', 'apiURL')}/daemon/wallet/rpc`,
+				`${AppConfigService.config.get('lethean-server', 'api_url', 'https://localhost:36911')}/daemon/wallet/rpc`,
 				request,
 				options
 			);
@@ -280,4 +274,6 @@ export class WalletRpcService implements OnInit {
 	other(method: string, arg?: any): Promise<any> {
 		return request(this.url)(method, arg);
 	}
+
+
 }
