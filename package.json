@@ -63,7 +63,7 @@
     "chartjs-adapter-moment": "^1.0.0",
     "config-ini-parser": "^1.5.9",
     "crypto-js": "^4.1.1",
-    "codemirror": "5.42.0",
+    "codemirror": "5.58.2",
     "jszmq": "^0.1.2",
     "localstorage-polyfill": "^1.0.1",
     "moment": "^2.29.1",
