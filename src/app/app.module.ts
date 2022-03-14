@@ -20,6 +20,7 @@ import {AuthModule} from '@module/auth/auth.module';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {ReactiveComponentModule} from '@ngrx/component';
+import {IconModule, NgxUIModule} from '@swimlane/ngx-ui';
 
 export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http);
@@ -53,24 +54,14 @@ export function HttpLoaderFactory(http: HttpClient) {
 		MatTooltipModule,
 		FlexModule,
 		AuthModule,
-		ReactiveComponentModule
+		ReactiveComponentModule,
+		NgxUIModule,
+		IconModule
 
-	],
-	providers: [
-//		{
-//			provide : APP_INITIALIZER,
-//			multi : true,
-//			deps : [AppConfigService],
-//			useFactory : (appConfigService : AppConfigService) =>  () => appConfigService.loadConfig('conf/lethean.ini')
-//		}
-	],
-	exports: [
 	],
 	bootstrap: [AppComponent]
 })
 /**
  * Application shell/bootstrap
  */
-export class AppModule {
-
-}
+export class AppModule {}

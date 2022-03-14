@@ -9,6 +9,7 @@ export class RootComponent {
 	public hasCLI: boolean;
 	public loaded: boolean = false;
 	public downloadingCLI: boolean;
+	public code: any;
 
 	constructor() {}
 

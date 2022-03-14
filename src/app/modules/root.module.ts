@@ -17,6 +17,8 @@ import {WalletModule} from '@module/wallet/wallet.module';
 import {BlockchainModule} from '@module/chain/blockchain.module';
 import {PostModule} from '@module/content/post/post.module';
 import {SpartaModule} from '@module/content/sparta/sparta.module';
+import {CodeEditorModule} from '@swimlane/ngx-ui';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
 	declarations: [RootComponent],
@@ -37,7 +39,9 @@ import {SpartaModule} from '@module/content/sparta/sparta.module';
 		MatCardModule,
 		BlockchainModule,
 		PostModule,
-		SpartaModule
+		SpartaModule,
+		CodeEditorModule,
+		FormsModule
 	]
 })
 export class RootModule {

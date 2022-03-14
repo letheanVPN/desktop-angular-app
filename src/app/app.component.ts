@@ -1,6 +1,6 @@
 import {AfterContentInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatSidenav} from '@angular/material/sidenav';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, NavigationStart, Router} from '@angular/router';
 import {Meta, Title} from '@angular/platform-browser';
 import {filter} from 'rxjs/operators';
 import {TranslateService} from '@ngx-translate/core';
@@ -10,6 +10,7 @@ import { Subscription} from 'rxjs';
 import {BlockchainService} from '@module/chain/blockchain.service';
 import {ChainGetInfo} from '@module/chain/interfaces/props/get_info';
 import {AppConfigService} from 'src/app/app-config.service';
+import { LoadingService } from '@swimlane/ngx-ui';
 
 @Component({
 	selector: 'lthn-app',
@@ -59,6 +60,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 	 * @param {Store} store
 	 * @param {BlockchainService} chain
 	 * @param app
+	 * @param loadingService
 	 */
 	constructor(
 		private router: Router,
@@ -68,7 +70,8 @@ export class AppComponent implements OnInit, AfterContentInit {
 		private translate: TranslateService,
 		private store: Store,
 		private chain: BlockchainService,
-		private app: AppConfigService
+		private app: AppConfigService,
+		private loadingService: LoadingService
 	) {
 
 		translate.setDefaultLang('en');
@@ -76,6 +79,13 @@ export class AppComponent implements OnInit, AfterContentInit {
 		// the lang to use, if the lang isn't available, it will use the current loader to get them
 		translate.use(lang ? lang : 'en');
 		this.app.loadConfig('conf/lethean.ini')
+		this.router.events.subscribe((event) => {
+			if(event instanceof NavigationStart) {
+				this.loadingService.start();
+			} else if(event instanceof NavigationEnd) {
+				loadingService.complete();
+			}
+		});
 
 	}
 
