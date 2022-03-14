@@ -1,84 +1,36 @@
-<div class="container-fluid" fxLayout="column">
-    <div fxLayout="column">
-        <div fxFlex="100" style="padding: 12px 12px 3px 12px;">
-            <mat-toolbar>
-                <mat-toolbar-row>
-                    <span class="lthn-brand">Wallet: {{ name }}</span>
-                    <!--                    <mat-select [(value)]="openedWallet" [placeholder]="openedWallet">-->
-                    <!--                        <mat-option *ngFor="let wallet of wallets"-->
-                    <!--                                    value="{{wallet}}"-->
-                    <!--                                    (click)="this.openWallet(wallet)">{{wallet}}</mat-option>-->
-                    <!--                    </mat-select>-->
-                    <span class="flex-spacer"></span>
-                    <button [routerLink]="['/', 'wallet', 'new']" mat-button matTooltip="New Wallet">
-                        <mat-icon>account_balance_wallet</mat-icon>
-                    </button>
-                    <button [routerLink]="['/', 'wallet', 'backup']" mat-button matTooltip="Backup">
-                        <mat-icon>cloud_download</mat-icon>
-                    </button>
-                    <button [routerLink]="['/', 'wallet', 'restore']" mat-button matTooltip="Restore">
-                        <mat-icon>cloud_upload</mat-icon>
-                    </button>
-                    <button [routerLink]="['/', 'wallet', 'settings']" mat-button matTooltip="Settings">
-                        <mat-icon>settings</mat-icon>
-                    </button>
-                </mat-toolbar-row>
-            </mat-toolbar>
-            <div fxLayout="row">
-                <div fxFlex="20" style="padding: 6px 3px 6px 0;">
-                    <mat-card class="no-pad">
-                        <mat-nav-list>
-                            <mat-list-item [routerLink]="['/', 'wallet', 'details', name ]">Details</mat-list-item>
-                            <mat-list-item [routerLink]="['/', 'wallet', 'transactions', name ]">View Transactions</mat-list-item>
-                            <mat-list-item [routerLink]="['/', 'wallet', 'transfer', name ]">Transfer</mat-list-item>
-                        </mat-nav-list>
-                    </mat-card>
-
-                </div>
-                <div fxFlex="80" style="padding: 6px 0 6px 3px;">
-<mat-card>
-    <mat-card-title>{{ 'plugin.lthn.wallet.titles.wallet-transactions' | translate }}</mat-card-title>
-    <mat-card-content>
-<ng-container *ngIf="rows.length > 0">
-    <ngx-datatable
-            class="material"
-            [rows]="rows"
-            [loadingIndicator]="true"
-            [columnMode]="ColumnMode.force"
-            [headerHeight]="50"
-            [footerHeight]="50"
-            [rowHeight]="25"
-            [limit]="10"
-            [trackByProp]="'timestamp'"
-            [sorts]="[{ prop: 'timestamp', dir: 'desc' }]"
-    >
-        <ngx-datatable-column name="Type"></ngx-datatable-column>
-        <ngx-datatable-column name="Txid">
-            <ng-template let-value="value"  ngx-datatable-cell-template>
-                <span [innerHTML]="value | hashLink:'txn' | keepHtml"></span>
-            </ng-template>
-        </ngx-datatable-column>
-        <ngx-datatable-column name="Amount">
-            <ng-template let-value="value" ngx-datatable-cell-template>
-                {{ value | toCoin | number:'1.0-8'}}
-            </ng-template>
-        </ngx-datatable-column>
-        <ngx-datatable-column name="Timestamp">
-            <ng-template let-value="value" ngx-datatable-cell-template>
-                {{ value | timeAgo }}
-            </ng-template>
-        </ngx-datatable-column>
-    </ngx-datatable>
-</ng-container>
-<ng-container *ngIf="rows.length < 1">
-    <h2>You have no transactions, you need to send LTHN to your wallet</h2>
-</ng-container>
-
-
-    </mat-card-content>
-</mat-card>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<ngx-section>
+    <ng-container *ngIf="rows.length > 0">
+        <ngx-datatable
+                class="material"
+                [rows]="rows"
+                [loadingIndicator]="true"
+                [columnMode]="ColumnMode.force"
+                [headerHeight]="50"
+                [footerHeight]="50"
+                [rowHeight]="25"
+                [limit]="10"
+                [trackByProp]="'timestamp'"
+                [sorts]="[{ prop: 'timestamp', dir: 'desc' }]"
+        >
+            <ngx-datatable-column name="Type"></ngx-datatable-column>
+            <ngx-datatable-column name="Txid">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                    <span [innerHTML]="value | hashLink:'txn' | keepHtml"></span>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Amount">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                    {{ value | toCoin | number:'1.0-8'}}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Timestamp">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                    {{ value | timeAgo }}
+                </ng-template>
+            </ngx-datatable-column>
+        </ngx-datatable>
+    </ng-container>
+    <ng-container *ngIf="rows.length < 1">
+        <h2>You have no transactions, you need to send LTHN to your wallet</h2>
+    </ng-container>
+</ngx-section>
