@@ -2,8 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 
 import {FormControl} from '@angular/forms';
 import {WalletService} from '@module/wallet/wallet.service';
-import {openWallet} from '@module/wallet/data';
-import {Store} from '@ngrx/store';
+import {NotificationService, NotificationStyleType, NotificationType} from '@swimlane/ngx-ui';
 
 @Component({
 	selector: 'lthn-wallet-open',
@@ -22,7 +21,7 @@ export class OpenComponent implements OnInit {
 	public wallets: string[];
 
 
-	constructor(private wallet: WalletService, private store: Store) {
+	constructor(private wallet: WalletService, private notificationService: NotificationService) {
 
 	}
 
@@ -39,11 +38,16 @@ export class OpenComponent implements OnInit {
 	 * @returns {Promise<AxiosResponse<any>>}
 	 */
 	unlockWallet(name: string) {
-		this.store.dispatch(openWallet({address: name, password: (<HTMLInputElement>document.getElementById(name + '-pass')).value}))
-//		return this.wallet.openWallet({
-//			filename: name,
-//			password:
-//		}).then(() => this.notifierService.notify('success', 'Loaded Wallet: ' + name));
+		//this.store.dispatch(openWallet({address: name, password: (<HTMLInputElement>document.getElementById(name + '-pass')).value}))
+		return this.wallet.openWallet({
+			filename: name,
+			password: (<HTMLInputElement>document.getElementById(name + '-pass')).value
+		}).then(() => this.notificationService.create({
+			type: NotificationType.html,
+			styleType: NotificationStyleType.success,
+			title: 'Loaded Wallet!',
+			body: name
+		}))
 
 	}
 }

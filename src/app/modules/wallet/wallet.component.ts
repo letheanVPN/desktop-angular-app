@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {WalletService} from '@module/wallet/wallet.service';
-import {Router} from '@angular/router';
+import {AlertService} from '@swimlane/ngx-ui';
 
 @Component({
 	selector: 'lthn-app-wallet',
@@ -10,8 +10,9 @@ import {Router} from '@angular/router';
 export class WalletComponent implements OnInit, AfterViewInit {
 
 	public wallets: string[] = [];
-
-	constructor(private wallet: WalletService, private router: Router) {}
+	name: string = ''
+	balance:any = {}
+	constructor(public wallet: WalletService, public alertService: AlertService) {}
 
 
 	public ngAfterViewInit() {
@@ -23,7 +24,25 @@ export class WalletComponent implements OnInit, AfterViewInit {
 	}
 
 	public openWallet(name: string){
-		this.router.navigate(['/','wallet','details', name]).catch((err) => console.log(err))
+		console.log(name)
+		const subject = this.alertService.prompt({
+			title: 'Wallet Password',
+			content: 'Please enter the wallet password.'
+		});
+
+		subject.subscribe({
+			next: (v) => {
+				this.wallet.openWallet({filename: name, password: v.data}).then(async (data) => {
+					console.log(data)
+					this.name = name;
+					this.balance = await this.wallet.getBalance()
+				}).catch((err) => console.error(err));
+			},
+			error: (err) => console.log('Prompt err', err)
+		});
+
+
+		//this.router.navigate(['/','wallet','details', name]).catch((err) => console.log(err))
 	}
 
 }

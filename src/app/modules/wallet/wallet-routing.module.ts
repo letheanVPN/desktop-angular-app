@@ -2,9 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {WalletComponent} from '@module/wallet/wallet.component';
-import {DetailsComponent} from '@module/wallet/details/details.component';
 import {WalletNewComponent} from '@module/wallet/components/wallet-new.component';
-import {TransactionsComponent} from '@module/wallet/components/transactions.component';
 import {RestoreComponent} from '@module/wallet/components/restore.component';
 import {SettingsComponent} from '@module/wallet/components/settings.component';
 
@@ -56,36 +54,6 @@ const routes: Routes = [
 			title: 'view.wallets.settings.title',
 			heading: 'view.wallets.settings.heading',
 			description: 'view.wallets.settings.description',
-			robots: false
-		}
-	},
-	{
-		path: 'wallet/details/:id',
-		component: DetailsComponent,
-		data: {
-			title: 'view.wallets.details.title',
-			heading: 'view.wallets.details.heading',
-			description: 'view.wallets.details.description',
-			robots: false
-		}
-	},
-	{
-		path: 'wallet/transactions/:id',
-		component: TransactionsComponent,
-		data: {
-			title: 'view.wallets.transactions.title',
-			heading: 'view.wallets.transactions.heading',
-			description: 'view.wallets.transactions.description',
-			robots: false
-		}
-	},
-	{
-		path: 'wallet/transfer/:id',
-		component: TransactionsComponent,
-		data: {
-			title: 'view.wallets.transfer.title',
-			heading: 'view.wallets.transfer.heading',
-			description: 'view.wallets.transfer.description',
 			robots: false
 		}
 	}

@@ -1,24 +1,56 @@
-<div class="container-fluid" fxLayout="column">
-    <div fxLayout="row">
-        <mat-card fxFlex="50">
-            <mat-card-title>Open Wallet</mat-card-title>
+<div class="container-fluid" >
+        <div  style="padding: 12px 12px 3px 12px;">
+            <mat-toolbar>
+                <mat-toolbar-row>
+                    <span class="lthn-brand">Wallet: {{ name }}</span>
+                    <ngx-select [filterable]="true" (change)="openWallet($event[0])"  >
+                        <ngx-select-option *ngFor="let wallet of wallets"
+                                           value="{{wallet}}"
+                                           name="{{wallet}}"
+                        ></ngx-select-option>
+                    </ngx-select>
+                    <span class="flex-spacer"></span>
+                    <button [routerLink]="['/', 'wallet', 'new']" mat-button matTooltip="New Wallet">
+                        <mat-icon>account_balance_wallet</mat-icon>
+                    </button>
+                    <button [routerLink]="['/', 'wallet', 'backup']" mat-button matTooltip="Backup">
+                        <mat-icon>cloud_download</mat-icon>
+                    </button>
+                    <button [routerLink]="['/', 'wallet', 'restore']" mat-button matTooltip="Restore">
+                        <mat-icon>cloud_upload</mat-icon>
+                    </button>
+                    <button [routerLink]="['/', 'wallet', 'settings']" mat-button matTooltip="Settings">
+                        <mat-icon>settings</mat-icon>
+                    </button>
+                </mat-toolbar-row>
+            </mat-toolbar>
+            <ngx-section *ngIf="wallet.openedWallet === null">
+                <h1>Lethean Wallet Manager</h1>
+                <p>Please select a previous wallet using the dropdown above or use the forms below to get started</p>
 
-            <mat-card-content>
-                                    <mat-select placeholder="Select Wallet">
-                                        <mat-option *ngFor="let wallet of wallets"
-                                                    value="{{wallet}}"
-                                                    (click)="this.openWallet(wallet)">{{wallet}}</mat-option>
-                                    </mat-select>
+                <lthn-wallet-open></lthn-wallet-open>
 
-            </mat-card-content>
-            <mat-card-actions>
-                <button mat-button class="mat-elevation-z2">Open Last</button>
-                <button mat-button class="mat-elevation-z2">Open Wallet File</button>
-            </mat-card-actions>
-        </mat-card>
-
-        <lthn-wallet-new fxFlex="50"></lthn-wallet-new>
-
-    </div>
+            </ngx-section>
+            <ngx-section *ngIf="wallet.openedWallet !== null">
+                <ngx-tabs [vertical]="true">
+                    <ngx-tab label="Details">
+                        <div *ngxIfTabActive>
+                            <lthn-wallet-details></lthn-wallet-details>
+                        </div>
+                    </ngx-tab>
+                    <ngx-tab label="Transactions">
+                        <div *ngxIfTabActive>
+                            <lthn-wallet-transactions></lthn-wallet-transactions>
+                        </div>
+                    </ngx-tab>
+                    <ngx-tab label="Transfer" >
+                        <div *ngxIfTabActive></div>
+                    </ngx-tab>
+                    <ngx-tab label="Tab 4">
+                        <div *ngxIfTabActive></div>
+                    </ngx-tab>
+                </ngx-tabs>
+            </ngx-section>
+        </div>
 
 </div>

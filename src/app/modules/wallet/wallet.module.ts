@@ -18,11 +18,14 @@ import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {MatSelectModule} from '@angular/material/select';
 import {PipesModule} from '@pipe/pipes.module';
 import {RouterModule} from '@angular/router';
-import {DetailsComponent} from '@module/wallet/details/details.component';
 import {WalletNewComponent} from '@module/wallet/components/wallet-new.component';
 import {TransactionsComponent} from '@module/wallet/components/transactions.component';
 import {SettingsComponent} from '@module/wallet/components/settings.component';
 import {RestoreComponent} from '@module/wallet/components/restore.component';
+import {CardModule, NgxUIModule, SectionModule, SelectModule, TabsModule} from '@swimlane/ngx-ui';
+import {DetailsComponent} from '@module/wallet/components/details.component';
+import {AddComponent} from '@module/wallet/components/add.component';
+import {OpenComponent} from '@module/wallet/components/open.component';
 
 
 
@@ -33,7 +36,9 @@ import {RestoreComponent} from '@module/wallet/components/restore.component';
 		WalletNewComponent,
 		TransactionsComponent,
 		SettingsComponent,
-		RestoreComponent
+		RestoreComponent,
+		AddComponent,
+		OpenComponent
 	],
 	exports: [
 	],
@@ -55,7 +60,12 @@ import {RestoreComponent} from '@module/wallet/components/restore.component';
 		MatSelectModule,
 		MatTabsModule,
 		PipesModule,
-		RouterModule
+		RouterModule,
+		SelectModule,
+		TabsModule,
+		SectionModule,
+		CardModule,
+		NgxUIModule
 	]
 })
 export class WalletModule {}

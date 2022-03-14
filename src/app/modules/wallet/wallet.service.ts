@@ -12,6 +12,9 @@ import {FileSystemService} from '@service/filesystem/file-system.service';
 export class WalletService {
 	private wallets: string[] = [];
 
+	public openedWallet: string = null
+	balance: Balance;
+
 	constructor(private fs: FileSystemService, private rpc: WalletRpcService) {
 	}
 
@@ -43,7 +46,10 @@ export class WalletService {
 	 * @returns {Promise<AxiosResponse<any>>}
 	 */
 	openWallet(req: OpenWallet) {
-		return this.rpc.openWallet(req);
+		return this.rpc.openWallet(req).then(() => {
+			this.openedWallet = req.filename
+			this.getBalance()
+		});
 	}
 
 	/**
@@ -52,8 +58,8 @@ export class WalletService {
 	 * @param {Balance} req
 	 * @returns {Promise<Balance>}
 	 */
-	getBalance(): Promise<Balance> {
-		return this.rpc.getBalance()
+	getBalance() {
+		this.rpc.getBalance().then((data) => this.balance = data).catch((err) => console.error(err))
 	}
 	/**
 	 * Gets the list of known wallets from the file system
