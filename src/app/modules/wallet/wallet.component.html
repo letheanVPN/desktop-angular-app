@@ -3,7 +3,7 @@
             <mat-toolbar>
                 <mat-toolbar-row>
                     <span class="lthn-brand">Wallet: {{ name }}</span>
-                    <ngx-select [filterable]="true" (change)="openWallet($event[0])"  >
+                    <ngx-select [filterable]="true" placeholder="{{wallet.openedWallet}}" (change)="openWallet($event[0])"  >
                         <ngx-select-option *ngFor="let wallet of wallets"
                                            value="{{wallet}}"
                                            name="{{wallet}}"
