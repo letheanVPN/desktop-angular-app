@@ -24,13 +24,21 @@
                     </button>
                 </mat-toolbar-row>
             </mat-toolbar>
-            <ngx-section *ngIf="wallet.openedWallet === null">
-                <h1>Lethean Wallet Manager</h1>
-                <p>Please select a previous wallet using the dropdown above or use the forms below to get started</p>
+            <div>
+                <ngx-section *ngIf="wallet.openedWallet === null" fxFlex="50">
+                    <h1>Lethean Wallet Manager</h1>
+                    <p>Please select a previous wallet using the dropdown above or use the forms below to get started</p>
 
-                <lthn-wallet-open></lthn-wallet-open>
+                    <lthn-wallet-open></lthn-wallet-open>
+
+                </ngx-section>
+                <ngx-section *ngIf="wallet.openedWallet === null" fxFlex="50">
+                <h1>Make or Add Wallet</h1>
+                <lthn-wallet-add></lthn-wallet-add>
 
             </ngx-section>
+            </div>
+
             <ngx-section *ngIf="wallet.openedWallet !== null">
                 <ngx-tabs [vertical]="true">
                     <ngx-tab label="Details">
