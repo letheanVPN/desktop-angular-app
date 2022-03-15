@@ -14,7 +14,7 @@ export class WalletService {
 
 	public openedWallet: string = null
 	balance: Balance;
-	address: string;
+	address: string = null;
 
 
 	constructor(private fs: FileSystemService, private rpc: WalletRpcService) {}
@@ -50,7 +50,7 @@ export class WalletService {
 		return this.rpc.openWallet(req).then(() => {
 			this.openedWallet = req.filename
 			this.getBalance()
-			this.rpc.getAddress().then((data) => this.address = data.address)
+			this.getActiveAddress()
 		});
 	}
 
@@ -62,6 +62,13 @@ export class WalletService {
 	 */
 	getBalance() {
 		this.rpc.getBalance().then((data) => this.balance = data).catch((err) => console.error(err))
+	}
+
+	/**
+	 * Get the address of the wallet logged in.
+	 */
+	getActiveAddress(){
+		this.rpc.getAddress().then((data) => this.address = data.address)
 	}
 	/**
 	 * Gets the list of known wallets from the file system

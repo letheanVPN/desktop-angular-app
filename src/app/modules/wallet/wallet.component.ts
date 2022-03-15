@@ -21,6 +21,7 @@ export class WalletComponent implements OnInit, AfterViewInit {
 
 	public ngOnInit(): void {
 		this.wallets = this.wallet.walletList()
+		this.wallet.getActiveAddress()
 	}
 
 	public openWallet(name: string){
@@ -35,7 +36,6 @@ export class WalletComponent implements OnInit, AfterViewInit {
 				this.wallet.openWallet({filename: name, password: v.data}).then(async (data) => {
 					console.log(data)
 					this.name = name;
-					this.balance = await this.wallet.getBalance()
 				}).catch((err) => console.error(err));
 			},
 			error: (err) => console.log('Prompt err', err)
