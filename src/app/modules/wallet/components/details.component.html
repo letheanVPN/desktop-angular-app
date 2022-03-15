@@ -2,9 +2,11 @@
     <dl>
         <dt>Wallet Name</dt>
         <dd>{{wallet.openedWallet}}</dd>
+        <dt>Main Address</dt>
+        <dd>{{wallet.address}}</dd>
         <dt>Balance</dt>
-        <dd>{{ wallet.balance['balance'] }}</dd>
+        <dd>{{ wallet.balance['balance'] | toCoin }}</dd>
         <dt>Unlocked Balance</dt>
-        <dd>{{ wallet.balance['unlocked_balance'] }}</dd>
+        <dd>{{ wallet.balance['unlocked_balance'] | toCoin }}</dd>
     </dl>
 </div>

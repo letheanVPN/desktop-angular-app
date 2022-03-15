@@ -1,13 +1,11 @@
-<ngx-section>
+<ngx-section >
     <ng-container *ngIf="rows.length > 0">
         <ngx-datatable
-                class="material"
+                class="table"
+                [cssClasses]="'table'"
                 [rows]="rows"
                 [loadingIndicator]="true"
                 [columnMode]="ColumnMode.force"
-                [headerHeight]="50"
-                [footerHeight]="50"
-                [rowHeight]="25"
                 [limit]="10"
                 [trackByProp]="'timestamp'"
                 [sorts]="[{ prop: 'timestamp', dir: 'desc' }]"

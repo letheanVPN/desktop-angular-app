@@ -14,9 +14,10 @@ export class WalletService {
 
 	public openedWallet: string = null
 	balance: Balance;
+	address: string;
 
-	constructor(private fs: FileSystemService, private rpc: WalletRpcService) {
-	}
+
+	constructor(private fs: FileSystemService, private rpc: WalletRpcService) {}
 
 	/**
 	 * Start wallet service
@@ -49,6 +50,7 @@ export class WalletService {
 		return this.rpc.openWallet(req).then(() => {
 			this.openedWallet = req.filename
 			this.getBalance()
+			this.rpc.getAddress().then((data) => this.address = data.address)
 		});
 	}
 
@@ -92,5 +94,6 @@ export class WalletService {
 	loadTransfers(opts: GetTransfersIn){
 		return this.rpc.getTransfers(opts).then((data) => Object.values(data).flat());
 	}
+
 
 }
