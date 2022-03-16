@@ -1,8 +1,8 @@
 import {TestBed} from '@angular/core/testing';
 
-import {CryptService} from './crypt.service';
+import {CryptService} from '@service/crypt.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {AppConfigService} from 'src/app/app-config.service';
+import {AppConfigService} from '@service/app-config.service';
 
 describe('CryptService', () => {
 	let service: CryptService;

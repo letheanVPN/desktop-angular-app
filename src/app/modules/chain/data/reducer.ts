@@ -1,6 +1,6 @@
 import {createReducer, on} from '@ngrx/store';
 
-import * as ChainActions from 'src/app/modules/chain/data/actions';
+import * as ChainActions from '@module/chain/data/actions';
 import {ChainState} from '@module/chain/interfaces/chain';
 
 export const initialState: ChainState = new ChainState

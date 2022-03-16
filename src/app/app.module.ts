@@ -21,6 +21,7 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {ReactiveComponentModule} from '@ngrx/component';
 import {IconModule, NgxUIModule} from '@swimlane/ngx-ui';
+import {ConsoleModule} from '@module/console/console.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http);
@@ -56,7 +57,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 		AuthModule,
 		ReactiveComponentModule,
 		NgxUIModule,
-		IconModule
+		IconModule,
+		ConsoleModule
 
 	],
 	bootstrap: [AppComponent]

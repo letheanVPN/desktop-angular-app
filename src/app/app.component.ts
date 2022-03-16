@@ -9,7 +9,7 @@ import {changeLanguage, selectLanguage, toggleHideNavigation} from '@module/sett
 import { Subscription} from 'rxjs';
 import {BlockchainService} from '@module/chain/blockchain.service';
 import {ChainGetInfo} from '@module/chain/interfaces/props/get_info';
-import {AppConfigService} from 'src/app/app-config.service';
+import {AppConfigService} from '@service/app-config.service';
 import { LoadingService } from '@swimlane/ngx-ui';
 
 @Component({
