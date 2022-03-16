@@ -114,7 +114,8 @@
                     [offset]="page.pageNumber"
                     [limit]="page.size"
                     [sorts]="[{ prop: 'timestamp', dir: 'desc' }]"
-                    (page)="this.getBlocks((info.height - this.page.size) - this.page.size - (this.page.size*this.page.pageNumber), info.height - this.page.size - (this.page.size*this.page.pageNumber))">
+                    (page)="page.pageNumber = $event.offset;getBlocks();"
+                     >
 
                 <ngx-datatable-column *ngFor="let col of columns" [prop]="col.prop" [name]="col.name | translate">
 

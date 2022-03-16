@@ -49,7 +49,8 @@ export class BlockchainComponent implements OnInit, OnDestroy {
 	buildType: string;
 	status_daemon: number = 0;
 	blockSearch: FormControl;
-
+	start_height: number = null;
+	end_height: number = null;
 	constructor(private store: Store,
 				private chain: BlockchainService) {
 
@@ -74,7 +75,6 @@ export class BlockchainComponent implements OnInit, OnDestroy {
 		this.sub['interval'] = interval(5000).subscribe(() => this.chain.getInfo());
 		this.sub['info'] = this.store.pipe(select(getChainInfo)).subscribe((data) => {
 			if (data) {
-				console.log(this.page)
 				// we have chain data, and it talks to us set to amber
 				this.status_daemon = 1;
 				//console.log(data)
@@ -83,16 +83,18 @@ export class BlockchainComponent implements OnInit, OnDestroy {
 					this.status_daemon = 2;
 				}
 				this.page.totalElements = data.height
-				console.log((data.height - this.page.size ) - (this.page.size - (this.page.size*this.page.pageNumber)), data.height - (this.page.size*this.page.pageNumber)-1)
-				this.getBlocks((data.height - this.page.size ) - (this.page.size - (this.page.size*this.page.pageNumber)), data.height - (this.page.size*this.page.pageNumber)-1);
+				this.getBlocks()
 			} else {
 				this.status_daemon = 0;
 			}
 		});
 	}
 
-	getBlocks(start_height, end_height){
-		this.chain.getBlocks(start_height, end_height);
+	getBlocks(){
+		let start_height = this.page.totalElements - this.page.pageNumber * this.page.size-1
+		let end_height = this.page.totalElements - this.page.size - this.page.pageNumber * this.page.size
+
+		this.chain.getBlocks(Math.max(0,end_height),  Math.max(0,start_height));
 	}
 
 	toggle(col) {
