@@ -97,8 +97,8 @@
 <!--            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">-->
 <!--                <mat-icon>view_column</mat-icon>-->
 <!--            </button>-->
-<!--        </mat-card-actions>-->
-        <mat-card-content>
+<!--     (page)="this.getBlocks(info.height - page.size, info.height - 1)"    </mat-card-actions>-->
+        <mat-card-content *ngIf="chainInfo | ngrxPush as info">
             <p>The data shown here comes from your local data, accurate to the point in time you have synced;</p>
             <p>Advanced users can "pop off" blocks from their local chain to see the work at particular heights</p>
             <ngx-datatable
@@ -109,9 +109,13 @@
                     [columnMode]="ColumnMode.force"
                     [headerHeight]="30"
                     [footerHeight]="50"
-                    [limit]="25"
+                    [externalPaging]="true"
+                    [count]="page.totalElements"
+                    [offset]="page.pageNumber"
+                    [limit]="page.size"
                     [sorts]="[{ prop: 'timestamp', dir: 'desc' }]"
-            >
+                    (page)="this.getBlocks((info.height - this.page.size) - this.page.size - (this.page.size*this.page.pageNumber), info.height - this.page.size - (this.page.size*this.page.pageNumber))">
+
                 <ngx-datatable-column *ngFor="let col of columns" [prop]="col.prop" [name]="col.name | translate">
 
                     <ng-template let-value="value" ngx-datatable-cell-template>
