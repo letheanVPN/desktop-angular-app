@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {WalletRpcService} from '@service/wallet.rpc.service';
-import {Balance, GetTransfersIn, OpenWallet, RestoreWallet} from '@module/wallet/interfaces';
+import {Balance, GetTransfersIn, OpenWallet, RestoreWallet, TransferIn} from '@module/wallet/interfaces';
 import {FileSystemService} from '@service/filesystem/file-system.service';
 
 @Injectable({
@@ -104,6 +104,10 @@ export class WalletService {
 
 	closeWallet(){
 		return this.rpc.stopWallet()
+	}
+
+	sendTransfer(opts: TransferIn){
+		return this.rpc.transfer(opts)
 	}
 
 

@@ -64,11 +64,11 @@
             [autofocus]="false"
             [ngModel]="transfer.destinations[0].amount"
             [hint]="'Max Available ' + (wallet.balance.unlocked_balance | toCoin) "
-            (change)="transfer.destinations[0].amount = $event">
+            (change)="transfer.destinations[0].amount = $event ">
     </ngx-input>
+<h3>Press and hold to send the transaction</h3>
+    <ngx-long-press-button (longPress)="sendTransfer()" icon="upload-outline"></ngx-long-press-button>
 
-
-    <button type="button" class="btn btn-primary btn-primary-gradient large">Send</button>
 </ngx-section>
 
 

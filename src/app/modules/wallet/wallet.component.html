@@ -2,7 +2,7 @@
         <div  style="padding: 12px 12px 3px 12px;">
             <mat-toolbar>
                 <mat-toolbar-row>
-                    <span class="lthn-brand">Wallet: {{ name }}</span>
+                    Wallet: <span class="lthn-brand"> {{ wallet.address |hashLink }}</span>
 <!--                    <button (click)="wallet.closeWallet()" mat-button matTooltip="New Wallet">-->
 <!--                        <mat-icon>close</mat-icon>-->
 <!--                    </button>-->
@@ -13,17 +13,17 @@
 <!--                        ></ngx-select-option>-->
 <!--                    </ngx-select>-->
                     <span class="flex-spacer"></span>
-                    <button [routerLink]="['/', 'wallet', 'new']" mat-button matTooltip="New Wallet">
-                        <mat-icon>account_balance_wallet</mat-icon>
-                    </button>
-                    <button [routerLink]="['/', 'wallet', 'backup']" mat-button matTooltip="Backup">
-                        <mat-icon>cloud_download</mat-icon>
-                    </button>
-                    <button [routerLink]="['/', 'wallet', 'restore']" mat-button matTooltip="Restore">
-                        <mat-icon>cloud_upload</mat-icon>
-                    </button>
-                    <button [routerLink]="['/', 'wallet', 'settings']" mat-button matTooltip="Settings">
-                        <mat-icon>settings</mat-icon>
+<!--                    <button [routerLink]="['/', 'wallet', 'new']" mat-button matTooltip="New Wallet">-->
+<!--                        <mat-icon>account_balance_wallet</mat-icon>-->
+<!--                    </button>-->
+<!--                    <button [routerLink]="['/', 'wallet', 'backup']" mat-button matTooltip="Backup">-->
+<!--                        <mat-icon>cloud_download</mat-icon>-->
+<!--                    </button>-->
+<!--                    <button [routerLink]="['/', 'wallet', 'restore']" mat-button matTooltip="Restore">-->
+<!--                        <mat-icon>cloud_upload</mat-icon>-->
+<!--                    </button>-->
+                    <button (click)="wallet.closeWallet()"  mat-button matTooltip="Close Wallet">
+                        <mat-icon>close</mat-icon>
                     </button>
                 </mat-toolbar-row>
             </mat-toolbar>
