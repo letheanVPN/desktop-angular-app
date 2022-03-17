@@ -1,0 +1,76 @@
+<ngx-section >
+    <ngx-input
+            type="text"
+            [label]="'Payment Address'"
+            [autofocus]="true"
+            [ngModel]="transfer.destinations[0].address"
+            [hint]="'Destination Address'"
+            (change)="transfer.destinations[0].address = $event">
+    </ngx-input>
+
+    <ngx-input
+            type="text"
+            [label]="'Payment ID'"
+            [autofocus]="false"
+            [ngModel]="transfer.payment_id"
+            [hint]="'Optional, payments without a payment ID can result in loss of LTHN.'"
+            (change)="transfer.payment_id = $event">
+    </ngx-input>
+
+    <ngx-select
+            [label]="'Mixins'"
+            style="max-width: 300px"
+            [filterable]="false"
+            [hint]="'Adjusts transaction privacy.'"
+            [ngModel]="[transfer.mixin.toString()]">
+        <ngx-select-option name="1" value="1"></ngx-select-option>
+        <ngx-select-option name="2" value="2"></ngx-select-option>
+        <ngx-select-option name="3" value="3"></ngx-select-option>
+        <ngx-select-option name="4" value="4"></ngx-select-option>
+        <ngx-select-option name="5" value="5"></ngx-select-option>
+        <ngx-select-option name="6" value="6"></ngx-select-option>
+        <ngx-select-option name="7" value="7"></ngx-select-option>
+        <ngx-select-option name="8" value="8"></ngx-select-option>
+        <ngx-select-option name="9" value="9"></ngx-select-option>
+        <ngx-select-option name="10" value="10"></ngx-select-option>
+        <ngx-select-option name="11" value="11"></ngx-select-option>
+        <ngx-select-option name="12" value="12"></ngx-select-option>
+    </ngx-select>
+
+    <ngx-select
+            [label]="'Unlock Time'"
+            style="max-width: 300px"
+            [filterable]="false"
+            [hint]="'Sets payment in x blocks.'"
+            [ngModel]="[transfer.unlock_time.toString()]">
+        <ngx-select-option name="0" value="0"></ngx-select-option>
+        <ngx-select-option name="1" value="1"></ngx-select-option>
+        <ngx-select-option name="2" value="2"></ngx-select-option>
+        <ngx-select-option name="3" value="3"></ngx-select-option>
+        <ngx-select-option name="4" value="4"></ngx-select-option>
+        <ngx-select-option name="5" value="5"></ngx-select-option>
+        <ngx-select-option name="6" value="6"></ngx-select-option>
+        <ngx-select-option name="7" value="7"></ngx-select-option>
+        <ngx-select-option name="8" value="8"></ngx-select-option>
+        <ngx-select-option name="9" value="9"></ngx-select-option>
+        <ngx-select-option name="10" value="10"></ngx-select-option>
+        <ngx-select-option name="11" value="11"></ngx-select-option>
+        <ngx-select-option name="12" value="12"></ngx-select-option>
+    </ngx-select>
+
+    <ngx-input
+            type="text"
+            [label]="'Amount'"
+            [autofocus]="false"
+            [ngModel]="transfer.destinations[0].amount"
+            [hint]="'Max Available ' + (wallet.balance.unlocked_balance | toCoin) "
+            (change)="transfer.destinations[0].amount = $event">
+    </ngx-input>
+
+
+    <button type="button" class="btn btn-primary btn-primary-gradient large">Send</button>
+</ngx-section>
+
+
+
+

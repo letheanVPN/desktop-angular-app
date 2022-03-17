@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {WalletService} from '@module/wallet/wallet.service';
-import {AlertService} from '@swimlane/ngx-ui';
+import {AlertService, NotificationService, NotificationStyleType, NotificationType} from '@swimlane/ngx-ui';
 
 @Component({
 	selector: 'lthn-app-wallet',
@@ -12,7 +12,7 @@ export class WalletComponent implements OnInit, AfterViewInit {
 	public wallets: string[] = [];
 	name: string = ''
 	balance:any = {}
-	constructor(public wallet: WalletService, public alertService: AlertService) {}
+	constructor(public wallet: WalletService, private notificationService: NotificationService, public alertService: AlertService) {}
 
 
 	public ngAfterViewInit() {
@@ -36,7 +36,12 @@ export class WalletComponent implements OnInit, AfterViewInit {
 				this.wallet.openWallet({filename: name, password: v.data}).then(async (data) => {
 					console.log(data)
 					this.name = name;
-				}).catch((err) => console.error(err));
+				}).catch((err) => console.error(err)).then(() => this.notificationService.create({
+					type: NotificationType.html,
+					styleType: NotificationStyleType.success,
+					title: 'Loaded Wallet!',
+					body: name
+				}));
 			},
 			error: (err) => console.log('Prompt err', err)
 		});

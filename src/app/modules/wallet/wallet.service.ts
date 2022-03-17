@@ -102,5 +102,9 @@ export class WalletService {
 		return this.rpc.getTransfers(opts).then((data) => Object.values(data).flat());
 	}
 
+	closeWallet(){
+		return this.rpc.stopWallet()
+	}
+
 
 }

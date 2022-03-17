@@ -5,14 +5,10 @@
             <div  fxFlex="50" *ngFor="let wall of wallets">
             <mat-card>
                 <mat-card-title>{{wall}}</mat-card-title>
-                <mat-card-content>
-                    <mat-form-field  class="full_width" appearance="standard">
-                        <mat-label>{{ 'plugin.lthn.wallet.label.wallet-password' | translate }}</mat-label>
-                        <input [id]="wall+'-pass'" matInput type="password">
-                    </mat-form-field>
+                <mat-card-actions>
                     <button mat-button (click)="unlockWallet(wall)" color="accent">{{ 'plugin.lthn.wallet.button.unlock-wallet' | translate }}</button>
 
-                </mat-card-content>
+                </mat-card-actions>
             </mat-card>
             </div>
         </div>

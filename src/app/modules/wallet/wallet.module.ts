@@ -26,6 +26,7 @@ import {CardModule, NgxUIModule, SectionModule, SelectModule, TabsModule} from '
 import {DetailsComponent} from '@module/wallet/components/details.component';
 import {AddComponent} from '@module/wallet/components/add.component';
 import {OpenComponent} from '@module/wallet/components/open.component';
+import { TransferComponent } from './components/transfer/transfer.component';
 
 
 
@@ -38,7 +39,8 @@ import {OpenComponent} from '@module/wallet/components/open.component';
 		SettingsComponent,
 		RestoreComponent,
 		AddComponent,
-		OpenComponent
+		OpenComponent,
+  TransferComponent
 	],
 	exports: [
 	],

@@ -1,8 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 
-import {FormControl} from '@angular/forms';
 import {WalletService} from '@module/wallet/wallet.service';
-import {NotificationService, NotificationStyleType, NotificationType} from '@swimlane/ngx-ui';
+import {AlertService, NotificationService, NotificationStyleType, NotificationType} from '@swimlane/ngx-ui';
 
 @Component({
 	selector: 'lthn-wallet-open',
@@ -11,8 +10,6 @@ import {NotificationService, NotificationStyleType, NotificationType} from '@swi
 export class OpenComponent implements OnInit {
 	@Input() name?: string = '';
 
-	filename = new FormControl('');
-	password = new FormControl('');
 	/**
 	 * Lists the wallets known
 	 *
@@ -21,7 +18,7 @@ export class OpenComponent implements OnInit {
 	public wallets: string[];
 
 
-	constructor(private wallet: WalletService, private notificationService: NotificationService) {
+	constructor(private wallet: WalletService, private notificationService: NotificationService, public alertService: AlertService) {
 
 	}
 
@@ -38,16 +35,27 @@ export class OpenComponent implements OnInit {
 	 * @returns {Promise<AxiosResponse<any>>}
 	 */
 	unlockWallet(name: string) {
-		//this.store.dispatch(openWallet({address: name, password: (<HTMLInputElement>document.getElementById(name + '-pass')).value}))
-		return this.wallet.openWallet({
-			filename: name,
-			password: (<HTMLInputElement>document.getElementById(name + '-pass')).value
-		}).then(() => this.notificationService.create({
-			type: NotificationType.html,
-			styleType: NotificationStyleType.success,
-			title: 'Loaded Wallet!',
-			body: name
-		}))
+
+		const subject = this.alertService.prompt({
+			title: 'Wallet Password',
+			content: 'Please enter the wallet password.'
+		});
+		subject.subscribe({
+			next: (v) => {
+				this.wallet.openWallet({filename: name, password: v.data.data}).then(async (data) => {
+					console.log(data)
+					this.name = name;
+				}).catch((err) => console.error(err)).then(() => this.notificationService.create({
+					type: NotificationType.html,
+					styleType: NotificationStyleType.success,
+					title: 'Loaded Wallet!',
+					body: name
+				}));
+			},
+			error: (err) => console.log('Prompt err', err)
+		});
 
 	}
+
+
 }

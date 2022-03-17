@@ -3,12 +3,15 @@
             <mat-toolbar>
                 <mat-toolbar-row>
                     <span class="lthn-brand">Wallet: {{ name }}</span>
-                    <ngx-select [filterable]="true" placeholder="{{wallet.openedWallet}}" (change)="openWallet($event[0])"  >
-                        <ngx-select-option *ngFor="let wallet of wallets"
-                                           value="{{wallet}}"
-                                           name="{{wallet}}"
-                        ></ngx-select-option>
-                    </ngx-select>
+<!--                    <button (click)="wallet.closeWallet()" mat-button matTooltip="New Wallet">-->
+<!--                        <mat-icon>close</mat-icon>-->
+<!--                    </button>-->
+<!--                    <ngx-select [filterable]="true" placeholder="{{wallet.openedWallet}}" (change)="openWallet($event[0])"  >-->
+<!--                        <ngx-select-option *ngFor="let wallet of wallets"-->
+<!--                                           value="{{wallet}}"-->
+<!--                                           name="{{wallet}}"-->
+<!--                        ></ngx-select-option>-->
+<!--                    </ngx-select>-->
                     <span class="flex-spacer"></span>
                     <button [routerLink]="['/', 'wallet', 'new']" mat-button matTooltip="New Wallet">
                         <mat-icon>account_balance_wallet</mat-icon>
@@ -53,7 +56,9 @@
                         </div>
                     </ngx-tab>
                     <ngx-tab label="Transfer" >
-                        <div *ngxIfTabActive></div>
+                        <div *ngxIfTabActive>
+                            <lthn-wallet-transfer></lthn-wallet-transfer>
+                        </div>
                     </ngx-tab>
                     <ngx-tab label="Accounts">
                         <div *ngxIfTabActive></div>
