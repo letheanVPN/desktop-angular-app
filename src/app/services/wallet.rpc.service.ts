@@ -10,7 +10,7 @@ import {AppConfigService} from '@service/app-config.service';
 	providedIn: 'root'
 })
 export class WalletRpcService {
-	private url = AppConfigService.config.get('lethean-server', 'api_url', 'https://localhost:36911') + '/daemon/wallet/json_rpc'
+	private url = AppConfigService.config.get('lethean-server', 'api_url', 'http://127.0.0.1:36911') + '/daemon/wallet/json_rpc'
 
 	constructor(private http: HttpClient) {}
 
@@ -29,7 +29,7 @@ export class WalletRpcService {
 		const request = {rpcBindPort: '36963', disableRpcLogin: false};
 		return this.http
 			.post<any>(
-				`${AppConfigService.config.get('lethean-server', 'api_url', 'https://localhost:36911')}/daemon/wallet/rpc`,
+				`${AppConfigService.config.get('lethean-server', 'api_url', 'http://127.0.0.1:36911')}/daemon/wallet/rpc`,
 				request,
 				options
 			);

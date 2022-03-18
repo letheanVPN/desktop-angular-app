@@ -10,7 +10,7 @@ import {FileSystemService} from '@service/filesystem/file-system.service';
  */
 export class AppConfigService {
 
-	public static apiUrl: string = 'https://localhost:36911';
+	public static apiUrl: string = 'http://127.0.0.1:36911';
 
 	public static settings: any;
 	public static config: ConfigIniParser = new ConfigIniParser();
@@ -25,7 +25,7 @@ export class AppConfigService {
 	loadConfig(filename: string = '') {
 		console.log(`Load Config: ${filename}`)
 		if( filename === ''){ return false }
-		AppConfigService.apiUrl = AppConfigService.config.get('lethean-server', 'api_url', 'https://localhost:36911')
+		AppConfigService.apiUrl = AppConfigService.config.get('lethean-server', 'api_url', 'http://127.0.0.1:36911')
 
 		this.fs.readFile(filename).then((data) => {
 			AppConfigService.config.parse(data)
