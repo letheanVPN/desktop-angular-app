@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>lethean-workstation documentation</title>
+        <title>lethean-desktop-angular-app documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">lethean-workstation documentation</a>
+            <a href="../" class="navbar-brand">lethean-desktop-angular-app documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -75,12 +75,61 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {NgModule} from &#x27;@angular/core&#x27;;
 import {CommonModule} from &#x27;@angular/common&#x27;;
 import {RouterModule, Routes} from &#x27;@angular/router&#x27;;
+import {WalletComponent} from &#x27;@module/wallet/wallet.component&#x27;;
+import {WalletNewComponent} from &#x27;@module/wallet/components/wallet-new.component&#x27;;
+import {RestoreComponent} from &#x27;@module/wallet/components/restore.component&#x27;;
+import {SettingsComponent} from &#x27;@module/wallet/components/settings.component&#x27;;
 
 const routes: Routes &#x3D; [
 	{
 		path: &#x27;wallet&#x27;,
-		loadChildren: () &#x3D;&gt;
-			&quot;import(&#x27;src/app/modules/wallet/wallet.module&#x27;).then((m) &#x3D;&gt; m.WalletModule)&quot;
+		component: WalletComponent,
+		data: {
+			title: &#x27;view.wallets.title&#x27;,
+			heading: &#x27;view.wallets.heading&#x27;,
+			description: &#x27;view.wallets.description&#x27;,
+			robots: false
+		}
+	},
+	{
+		path: &#x27;wallet/new&#x27;,
+		component: WalletNewComponent,
+		data: {
+			title: &#x27;view.wallets.new.title&#x27;,
+			heading: &#x27;view.wallets.new.heading&#x27;,
+			description: &#x27;view.wallets.new.description&#x27;,
+			robots: false
+		}
+	},
+	{
+		path: &#x27;wallet/backup&#x27;,
+		component: RestoreComponent,
+		data: {
+			title: &#x27;view.wallets.backup.title&#x27;,
+			heading: &#x27;view.wallets.backup.heading&#x27;,
+			description: &#x27;view.wallets.backup.description&#x27;,
+			robots: false
+		}
+	},
+	{
+		path: &#x27;wallet/restore&#x27;,
+		component: RestoreComponent,
+		data: {
+			title: &#x27;view.wallets.restore.title&#x27;,
+			heading: &#x27;view.wallets.restore.heading&#x27;,
+			description: &#x27;view.wallets.restore.description&#x27;,
+			robots: false
+		}
+	},
+	{
+		path: &#x27;wallet/settings&#x27;,
+		component: SettingsComponent,
+		data: {
+			title: &#x27;view.wallets.settings.title&#x27;,
+			heading: &#x27;view.wallets.settings.heading&#x27;,
+			description: &#x27;view.wallets.settings.description&#x27;,
+			robots: false
+		}
 	}
 ];
 
@@ -94,6 +143,7 @@ export class WalletRoutingModule {
 </code></pre>
     </div>
 </div>
+
 
 
 

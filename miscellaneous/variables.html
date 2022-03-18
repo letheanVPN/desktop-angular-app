@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>lethean-workstation documentation</title>
+        <title>lethean-desktop-angular-app documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">lethean-workstation documentation</a>
+            <a href="../" class="navbar-brand">lethean-desktop-angular-app documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -30,6 +30,7 @@
                <!-- START CONTENT -->
                <div class="content miscellaneous-variables">
                    <div class="content-data">
+
 
 
 
@@ -120,6 +121,9 @@
                             <a href="#chartNetworkDifficultyStopPolling" title="src/app/modules/chart/data/actions.ts" ><b>chartNetworkDifficultyStopPolling</b>&nbsp;&nbsp;&nbsp;(src/.../actions.ts)</a>
                         </li>
                         <li>
+                            <a href="#configureTests" title="test-config.helper.ts" ><b>configureTests</b>&nbsp;&nbsp;&nbsp;(test-config.helper.ts)</a>
+                        </li>
+                        <li>
                             <a href="#debug" title="src/app/data/debug.rxjs.ts" ><b>debug</b>&nbsp;&nbsp;&nbsp;(src/.../debug.rxjs.ts)</a>
                         </li>
                         <li>
@@ -181,6 +185,9 @@
                         </li>
                         <li>
                             <a href="#metaReducers" title="src/app/data/reducers/index.ts" ><b>metaReducers</b>&nbsp;&nbsp;&nbsp;(src/.../index.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#mock" title="setup-jest.ts" ><b>mock</b>&nbsp;&nbsp;&nbsp;(setup-jest.ts)</a>
                         </li>
                         <li>
                             <a href="#openWallet" title="src/app/modules/wallet/data/actions.ts" ><b>openWallet</b>&nbsp;&nbsp;&nbsp;(src/.../actions.ts)</a>
@@ -1514,6 +1521,40 @@
         </tbody>
     </table>
 </section>
+    <h3>test-config.helper.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="configureTests"></a>
+                    <span class="name">
+                        <span ><b>configureTests</b></span>
+                        <a href="#configureTests"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(configure: ConfigureFn, compilerOptions: CompilerOptions &#x3D; {}) &#x3D;&gt; {
+  const compilerConfig: CompilerOptions &#x3D; {
+    preserveWhitespaces: false,
+    ...compilerOptions,
+  };
+
+  const configuredTestBed &#x3D; TestBed.configureCompiler(compilerConfig);
+
+  configure(configuredTestBed);
+
+  return configuredTestBed.compileComponents().then(() &#x3D;&gt; configuredTestBed);
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
     <h3>src/app/data/debug.rxjs.ts</h3>
     <section>
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -2324,6 +2365,37 @@
         </tbody>
     </table>
 </section>
+    <h3>setup-jest.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mock"></a>
+                    <span class="name">
+                        <span ><b>mock</b></span>
+                        <a href="#mock"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {
+  let storage: { [key: string]: string } &#x3D; {};
+  return {
+    getItem: (key: string) &#x3D;&gt; (key in storage ? storage[key] : null),
+    setItem: (key: string, value: string) &#x3D;&gt; (storage[key] &#x3D; value || &#x27;&#x27;),
+    removeItem: (key: string) &#x3D;&gt; delete storage[key],
+    clear: () &#x3D;&gt; (storage &#x3D; {}),
+  };
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
     <h3>src/app/modules/user/data/profile/actions.ts</h3>
     <section>
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -3106,7 +3178,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;ws://localhost:36909&#x27;</code>
+                        <i>Default value : </i><code>&#x27;ws://127.0.0.1:36909&#x27;</code>
                     </td>
                 </tr>
 

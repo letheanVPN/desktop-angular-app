@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>lethean-workstation documentation</title>
+        <title>lethean-desktop-angular-app documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">lethean-workstation documentation</a>
+            <a href="../" class="navbar-brand">lethean-desktop-angular-app documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -82,10 +82,10 @@
                                 <a href="#chainRpc" >chainRpc</a>
                             </li>
                             <li>
-                                <a href="#downloadCLI" >downloadCLI</a>
+                                <a href="#exportChain" >exportChain</a>
                             </li>
                             <li>
-                                <a href="#exportChain" >exportChain</a>
+                                <a href="#getBlock" >getBlock</a>
                             </li>
                             <li>
                                 <a href="#getBlocks" >getBlocks</a>
@@ -200,8 +200,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="91"
-                            class="link-to-prism">src/app/modules/chain/blockchain.service.ts:91</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="73"
+                            class="link-to-prism">src/app/modules/chain/blockchain.service.ts:73</a></div>
                 </td>
             </tr>
 
@@ -265,51 +265,6 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="downloadCLI"></a>
-                    <span class="name">
-                        <span ><b>downloadCLI</b></span>
-                        <a href="#downloadCLI"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>downloadCLI()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="78"
-                            class="link-to-prism">src/app/modules/chain/blockchain.service.ts:78</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Download Lethean binaries to the users home dir
-~/Lethean/cli</p>
-</div>
-
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="exportChain"></a>
                     <span class="name">
                         <span ><b>exportChain</b></span>
@@ -326,8 +281,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="34"
-                            class="link-to-prism">src/app/modules/chain/blockchain.service.ts:34</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">src/app/modules/chain/blockchain.service.ts:35</a></div>
                 </td>
             </tr>
 
@@ -340,6 +295,75 @@
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBlock"></a>
+                    <span class="name">
+                        <span ><b>getBlock</b></span>
+                        <a href="#getBlock"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getBlock(block_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="95"
+                            class="link-to-prism">src/app/modules/chain/blockchain.service.ts:95</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>block_id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -365,8 +389,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="112"
-                            class="link-to-prism">src/app/modules/chain/blockchain.service.ts:112</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="100"
+                            class="link-to-prism">src/app/modules/chain/blockchain.service.ts:100</a></div>
                 </td>
             </tr>
 
@@ -446,8 +470,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="96"
-                            class="link-to-prism">src/app/modules/chain/blockchain.service.ts:96</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="78"
+                            class="link-to-prism">src/app/modules/chain/blockchain.service.ts:78</a></div>
                 </td>
             </tr>
 
@@ -483,8 +507,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="102"
-                            class="link-to-prism">src/app/modules/chain/blockchain.service.ts:102</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="84"
+                            class="link-to-prism">src/app/modules/chain/blockchain.service.ts:84</a></div>
                 </td>
             </tr>
 
@@ -570,8 +594,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="55"
-                            class="link-to-prism">src/app/modules/chain/blockchain.service.ts:55</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">src/app/modules/chain/blockchain.service.ts:56</a></div>
                 </td>
             </tr>
 
@@ -609,8 +633,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="13"
-                            class="link-to-prism">src/app/modules/chain/blockchain.service.ts:13</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="14"
+                            class="link-to-prism">src/app/modules/chain/blockchain.service.ts:14</a></div>
                 </td>
             </tr>
 
@@ -639,122 +663,114 @@ import {ChainSetBlocks, ChainSetGetInfo, ChainSetTransactions} from &#x27;@modul
 import {Store} from &#x27;@ngrx/store&#x27;;
 
 @Injectable({
-	providedIn: &#x27;root&#x27;
+    providedIn: &#x27;root&#x27;
 })
 export class BlockchainService {
-	constructor(private http: HttpClient, private store: Store) {}
+    constructor(private http: HttpClient, private store: Store) {
+    }
 
-	startDaemon() {
-		const options &#x3D; {
-			headers: new HttpHeaders({
-				&#x27;Content-Type&#x27;: &#x27;application/x-www-form-urlencoded&#x27;
-			}),
-			responseType: &#x27;text&#x27; as &#x27;json&#x27;
-		};
-		return this.http
-			.post&lt;any&gt;(
-				&#x60;https://localhost:36911/daemon/chain/start&#x60;,
-				{},
-				options
-			)
-			.toPromise()
-			.then((dat) &#x3D;&gt; console.log(dat));
-	}
+    startDaemon() {
+        const options &#x3D; {
+            headers: new HttpHeaders({
+                &#x27;Content-Type&#x27;: &#x27;application/x-www-form-urlencoded&#x27;,
+            }),
+            responseType: &#x27;text&#x27; as &#x27;json&#x27;,
+        };
+        return this.http
+            .post&lt;any&gt;(
+                &#x60;http://127.0.0.1:36911/daemon/chain/start&#x60;,
+                {},
+                options
+            )
+            .toPromise()
+            .then((dat) &#x3D;&gt; console.log(dat));
+    }
 
-	/**
-	 * Export chain to a raw format
-	 *
-	 */
-	exportChain() {
-		const options &#x3D; {
-			headers: new HttpHeaders({
-				&#x27;Content-Type&#x27;: &#x27;application/x-www-form-urlencoded&#x27;
-			}),
-			responseType: &#x27;text&#x27; as &#x27;json&#x27;
-		};
-		return this.http
-			.post&lt;any&gt;(
-				&#x60;https://localhost:36911/daemon/chain/export&#x60;,
-				{},
-				options
-			)
-			.toPromise()
-			.then((dat) &#x3D;&gt; console.log(dat));
-	}
+    /**
+     * Export chain to a raw format
+     *
+     */
+    exportChain() {
+        const options &#x3D; {
+            headers: new HttpHeaders({
+                &#x27;Content-Type&#x27;: &#x27;application/x-www-form-urlencoded&#x27;
+            }),
+            responseType: &#x27;text&#x27; as &#x27;json&#x27;
+        };
+        return this.http
+            .post&lt;any&gt;(
+                &#x60;http://127.0.0.1:36911/daemon/chain/export&#x60;,
+                {},
+                options
+            )
+            .toPromise()
+            .then((dat) &#x3D;&gt; console.log(dat));
+    }
 
-	/**
-	 * Import raw chain data file
-	 *
-	 */
-	importChain() {
-		const options &#x3D; {
-			headers: new HttpHeaders({
-				&#x27;Content-Type&#x27;: &#x27;application/x-www-form-urlencoded&#x27;
-			}),
-			responseType: &#x27;text&#x27; as &#x27;json&#x27;
-		};
-		return this.http
-			.post&lt;any&gt;(
-				&#x60;https://localhost:36911/daemon/chain/import&#x60;,
-				{},
-				options
-			)
-			.toPromise()
-			.then((dat) &#x3D;&gt; console.log(dat));
-	}
+    /**
+     * Import raw chain data file
+     *
+     */
+    importChain() {
+        const options &#x3D; {
+            headers: new HttpHeaders({
+                &#x27;Content-Type&#x27;: &#x27;application/x-www-form-urlencoded&#x27;
+            }),
+            responseType: &#x27;text&#x27; as &#x27;json&#x27;
+        };
+        return this.http
+            .post&lt;any&gt;(
+                &#x60;http://127.0.0.1:36911/daemon/chain/import&#x60;,
+                {},
+                options
+            )
+            .toPromise()
+            .then((dat) &#x3D;&gt; console.log(dat));
+    }
 
-	/**
-	 * Download Lethean binaries to the users home dir
-	 * ~/Lethean/cli
-	 *
-	 * @returns {Promise&lt;void&gt;}
-	 */
-	downloadCLI() {
-		const options &#x3D; {
-			headers: new HttpHeaders({
-				&#x27;Content-Type&#x27;: &#x27;application/x-www-form-urlencoded&#x27;
-			}),
-			responseType: &#x27;text&#x27; as &#x27;json&#x27;
-		};
-		return this.http
-			.post&lt;any&gt;(&#x60;https://localhost:36911/update/cli&#x60;, {}, options)
-			.toPromise()
-			.then((dat) &#x3D;&gt; dat);
-	}
+    chainRpc(method: string, params: any) {
+        return this.http
+            .post&lt;any&gt;(&#x27;http://127.0.0.1:36911/daemon/chain/json_rpc&#x27;, JSON.stringify(rpcBody(method)(params)));
+    }
 
-	chainRpc(method: string, params: any) {
-		return this.http
-			.post&lt;any&gt;(&#x27;https://localhost:36911/daemon/chain/json_rpc&#x27;, JSON.stringify(rpcBody(method)(params)));
-	}
+    getInfo() {
+        return this.chainRpc(&#x27;get_info&#x27;, &#x27;&#x27;).subscribe((data) &#x3D;&gt; {
+            this.store.dispatch(ChainSetGetInfo({info: data.result}))
+        })
+    }
 
-	getInfo(){
-		return this.chainRpc(&#x27;get_info&#x27;, &#x27;&#x27;).subscribe((data) &#x3D;&gt; {
-			this.store.dispatch(ChainSetGetInfo({info: data.result}))
-		})
-	}
+    getTransactions(txsHashes: string[], decodeAsJson: boolean &#x3D; true) {
 
-	getTransactions(txsHashes: string[], decodeAsJson: boolean &#x3D; true){
+        this.chainRpc(&#x27;get_transaction&#x27;, {txs_hashes: txsHashes, decode_as_json: decodeAsJson}).subscribe((data) &#x3D;&gt; {
+            if (decodeAsJson &amp;&amp; data.hasOwnProperty(&quot;txs_as_json&quot;)) {
+                data.txs_as_json &#x3D; JSON.parse(data.txs_as_json);
+            }
+            this.store.dispatch(ChainSetTransactions({transactions: data.result}))
+        })
+    }
 
-		this.chainRpc(&#x27;get_transaction&#x27;, { txs_hashes: txsHashes, decode_as_json: decodeAsJson }).subscribe((data) &#x3D;&gt; {
-			if (decodeAsJson &amp;&amp; data.hasOwnProperty(&quot;txs_as_json&quot;)) {
-				data.txs_as_json &#x3D; JSON.parse(data.txs_as_json);
-			}
-			this.store.dispatch(ChainSetTransactions({transactions: data.result}))
-		})
-	}
 
-	getBlocks(start_height: number, end_height: number){
+    getBlock(block_id: string) {
 
-		this.chainRpc(&#x27;getblockheadersrange&#x27;, {start_height:start_height,end_height:end_height}).subscribe((data) &#x3D;&gt; {
+        return this.chainRpc(&#x27;getblock&#x27;, {hash: block_id})
+    }
 
-			this.store.dispatch(ChainSetBlocks({blocks: data.result}))
-		})
-	}
+    getBlocks(start_height: number, end_height: number) {
+
+        this.chainRpc(&#x27;getblockheadersrange&#x27;, {
+            start_height: start_height,
+            end_height: end_height
+        }).subscribe((data) &#x3D;&gt; {
+
+            this.store.dispatch(ChainSetBlocks({blocks: data.result}))
+        })
+    }
 }
 </code></pre>
     </div>
 
 </div>
+
 
 
 

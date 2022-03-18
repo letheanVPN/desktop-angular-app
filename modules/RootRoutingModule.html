@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>lethean-workstation documentation</title>
+        <title>lethean-desktop-angular-app documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">lethean-workstation documentation</a>
+            <a href="../" class="navbar-brand">lethean-desktop-angular-app documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -139,6 +139,7 @@ import {CommonModule} from &#x27;@angular/common&#x27;;
 import {RouterModule, Routes} from &#x27;@angular/router&#x27;;
 import {RootComponent} from &#x27;@module/root.component&#x27;;
 import {RootModule} from &#x27;@module/root.module&#x27;;
+import {TerminalComponent} from &#x27;@module/console/terminal.component&#x27;;
 
 const routes: Routes &#x3D; [
 	{
@@ -153,8 +154,16 @@ const routes: Routes &#x3D; [
 		}
 	},
 	{
-		path: &quot;&quot;, redirectTo: &#x27;dashboard&#x27;
-	}
+		path: &#x27;terminal&#x27;,
+		component: TerminalComponent,
+		pathMatch: &#x27;full&#x27;,
+		data: {
+			title: &#x27;view.terminal.title&#x27;,
+			heading: &#x27;view.terminal.heading&#x27;,
+			description: &#x27;view.terminal.description&#x27;,
+			robots: true
+		}
+	},
 
 ];
 
@@ -170,6 +179,7 @@ export class RootRoutingModule {
 </code></pre>
     </div>
 </div>
+
 
 
 

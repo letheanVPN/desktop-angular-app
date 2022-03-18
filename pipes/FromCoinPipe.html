@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>lethean-workstation documentation</title>
+        <title>lethean-desktop-angular-app documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">lethean-workstation documentation</a>
+            <a href="../" class="navbar-brand">lethean-desktop-angular-app documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -43,7 +43,7 @@
 
 <ol class="breadcrumb">
   <li>Pipes</li>
-  <li >MarkdownPipe</li>
+  <li >FromCoinPipe</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -62,7 +62,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/pipes/content/markdown.pipe.ts</code>
+            <code>src/app/pipes/crypto/fromCoin.pipe.ts</code>
         </p>
 
 
@@ -74,7 +74,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-3">Name</td>
-                        <td class="col-md-9">markdown</td>
+                        <td class="col-md-9">fromCoin</td>
                     </tr>
                 </tbody>
             </table>
@@ -98,15 +98,15 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>transform(value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, args?: any[])</code>
+<code>transform(content: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="8"
-                            class="link-to-prism">src/app/pipes/content/markdown.pipe.ts:8</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="7"
+                            class="link-to-prism">src/app/pipes/crypto/fromCoin.pipe.ts:7</a></div>
                 </td>
             </tr>
 
@@ -127,25 +127,13 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>value</td>
+                                    <td>content</td>
                                     <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
                                     </td>
 
                                     <td>
                                         No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>args</td>
-                                    <td>
-                                            <code>any[]</code>
-                                    </td>
-
-                                    <td>
-                                        Yes
                                     </td>
 
 
@@ -156,7 +144,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                     </div>
                     <div class="io-description">
@@ -172,24 +160,21 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Pipe, PipeTransform } from &#x27;@angular/core&#x27;;
-import {marked} from &#x27;marked&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Pipe, PipeTransform} from &#x27;@angular/core&#x27;;
 
-@Pipe({
-	name: &#x27;markdown&#x27;
-})
-export class MarkdownPipe implements PipeTransform {
-	transform(value: any, args?: any[]): any {
-		if (value &amp;&amp; value.length &gt; 0) {
-			return marked(value);
-		}
-		return value;
-	}
+@Pipe({ name: &#x27;fromCoin&#x27;, pure: false })
+export class FromCoinPipe implements PipeTransform {
+
+
+  transform (content: number):number {
+    return (content * 100000000)
+  }
 }
 </code></pre>
     </div>
 
 </div>
+
 
 
 
@@ -225,7 +210,7 @@ export class MarkdownPipe implements PipeTransform {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'pipe';
-            var COMPODOC_CURRENT_PAGE_URL = 'MarkdownPipe.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'FromCoinPipe.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>lethean-workstation documentation</title>
+        <title>lethean-desktop-angular-app documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">lethean-workstation documentation</a>
+            <a href="../" class="navbar-brand">lethean-desktop-angular-app documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -348,7 +348,7 @@
 								takeWhile(() &#x3D;&gt; this.isPollingActiveStats),
 								switchMap(() &#x3D;&gt;
 									merge(
-										this.http.post&lt;any&gt;(&#x60;https://localhost:36911/daemon/wallet/json_rpc&#x60;,
+										this.http.post&lt;any&gt;(&#x60;http://127.0.0.1:36911/daemon/wallet/json_rpc&#x60;,
 											JSON.stringify(rpcBody(&#x27;getbalance&#x27;)(&#x27;&#x27;)))
 											.pipe(
 												map((res: any) &#x3D;&gt; {
@@ -359,7 +359,7 @@
 													}
 												)
 											),
-										this.http.post&lt;any&gt;(&#x60;https://localhost:36911/daemon/wallet/json_rpc&#x60;,
+										this.http.post&lt;any&gt;(&#x60;http://127.0.0.1:36911/daemon/wallet/json_rpc&#x60;,
 											JSON.stringify(rpcBody(&#x27;get_transfers&#x27;)({in: true, out: true, failed: true, pending: true } as GetTransfersIn)))
 											.pipe(
 												map((res: any) &#x3D;&gt; {
@@ -448,7 +448,7 @@ export class WalletEffects {
 								takeWhile(() &#x3D;&gt; this.isPollingActiveStats),
 								switchMap(() &#x3D;&gt;
 									merge(
-										this.http.post&lt;any&gt;(&#x60;https://localhost:36911/daemon/wallet/json_rpc&#x60;,
+										this.http.post&lt;any&gt;(&#x60;http://127.0.0.1:36911/daemon/wallet/json_rpc&#x60;,
 											JSON.stringify(rpcBody(&#x27;getbalance&#x27;)(&#x27;&#x27;)))
 											.pipe(
 												map((res: any) &#x3D;&gt; {
@@ -459,7 +459,7 @@ export class WalletEffects {
 													}
 												)
 											),
-										this.http.post&lt;any&gt;(&#x60;https://localhost:36911/daemon/wallet/json_rpc&#x60;,
+										this.http.post&lt;any&gt;(&#x60;http://127.0.0.1:36911/daemon/wallet/json_rpc&#x60;,
 											JSON.stringify(rpcBody(&#x27;get_transfers&#x27;)({in: true, out: true, failed: true, pending: true } as GetTransfersIn)))
 											.pipe(
 												map((res: any) &#x3D;&gt; {
@@ -517,6 +517,7 @@ export class WalletEffects {
     </div>
 
 </div>
+
 
 
 

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>lethean-workstation documentation</title>
+        <title>lethean-desktop-angular-app documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">lethean-workstation documentation</a>
+            <a href="../" class="navbar-brand">lethean-desktop-angular-app documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -397,14 +397,6 @@ export class AddComponent implements OnInit {
 		&lt;/ng-template&gt;
 		&lt;lthn-wallet-restore&gt;&lt;/lthn-wallet-restore&gt;
 	&lt;/mat-tab&gt;
-	&lt;mat-tab &gt;
-		&lt;ng-template mat-tab-label&gt;
-			&lt;label matTooltip&#x3D;&quot;Load Wallet File&quot;&gt;
-				&lt;mat-icon&gt;file_open&lt;/mat-icon&gt;
-			&lt;/label&gt;
-		&lt;/ng-template&gt;
-		&lt;lthn-wallet-open&gt;&lt;/lthn-wallet-open&gt;
-	&lt;/mat-tab&gt;
 &lt;/mat-tab-group&gt;
 &lt;/div&gt;
 </code></pre>
@@ -436,12 +428,13 @@ export class AddComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="wallet-add-container"><mat-tab-group dynamicHeight [(selectedIndex)]="targetTabIndex">	<mat-tab>		<ng-template mat-tab-label>			<label matTooltip="Create new wallet">				<mat-icon>add_box</mat-icon>			</label>		</ng-template>		<lthn-wallet-new></lthn-wallet-new>	</mat-tab>	<mat-tab >		<ng-template mat-tab-label>			<label matTooltip="Restore wallet">				<mat-icon>cloud_download</mat-icon>			</label>		</ng-template>		<lthn-wallet-restore></lthn-wallet-restore>	</mat-tab>	<mat-tab >		<ng-template mat-tab-label>			<label matTooltip="Load Wallet File">				<mat-icon>file_open</mat-icon>			</label>		</ng-template>		<lthn-wallet-open></lthn-wallet-open>	</mat-tab></mat-tab-group></div></div>'
-    var COMPONENTS = [{'name': 'AddComponent', 'selector': 'lthn-wallet-add'},{'name': 'AppComponent', 'selector': 'lthn-app'},{'name': 'BackupComponent', 'selector': 'lthn-app-backup'},{'name': 'BlockchainComponent', 'selector': 'lthn-chain'},{'name': 'LoginComponent', 'selector': 'lthn-login'},{'name': 'LogsComponent', 'selector': 'lthn-app-logs'},{'name': 'ModalComponent', 'selector': 'modal'},{'name': 'NewComponent', 'selector': 'lthn-wallet-new'},{'name': 'NoDaemonRunningDialog', 'selector': 'lthn-app-status-no-daemon'},{'name': 'OpenComponent', 'selector': 'lthn-wallet-open'},{'name': 'PostComponent', 'selector': 'lthn-app-post'},{'name': 'ProfileComponent', 'selector': 'lthn-user-profile'},{'name': 'RestoreComponent', 'selector': 'lthn-wallet-restore'},{'name': 'RootComponent', 'selector': 'lthn-root'},{'name': 'SettingsComponent', 'selector': 'lthn-settings'},{'name': 'SettingsComponent', 'selector': 'lthn-app-settings'},{'name': 'StatusComponent', 'selector': 'lthn-app-status'},{'name': 'TransactionsComponent', 'selector': 'lthn-wallet-transactions'},{'name': 'UserComponent', 'selector': 'lthn-user'},{'name': 'VpnComponent', 'selector': 'lthn-vpn'},{'name': 'WalletComponent', 'selector': 'lthn-app-wallet'}];
+        var COMPONENT_TEMPLATE = '<div><div class="wallet-add-container"><mat-tab-group dynamicHeight [(selectedIndex)]="targetTabIndex">	<mat-tab>		<ng-template mat-tab-label>			<label matTooltip="Create new wallet">				<mat-icon>add_box</mat-icon>			</label>		</ng-template>		<lthn-wallet-new></lthn-wallet-new>	</mat-tab>	<mat-tab >		<ng-template mat-tab-label>			<label matTooltip="Restore wallet">				<mat-icon>cloud_download</mat-icon>			</label>		</ng-template>		<lthn-wallet-restore></lthn-wallet-restore>	</mat-tab></mat-tab-group></div></div>'
+    var COMPONENTS = [{'name': 'AddComponent', 'selector': 'lthn-wallet-add'},{'name': 'AppComponent', 'selector': 'lthn-app'},{'name': 'BlockchainComponent', 'selector': 'lthn-chain'},{'name': 'BlockdetailsComponent', 'selector': 'lthn-app-blockdetails'},{'name': 'ConsoleComponent', 'selector': 'lthn-app-console'},{'name': 'DetailsComponent', 'selector': 'lthn-wallet-details'},{'name': 'LoginComponent', 'selector': 'lthn-login'},{'name': 'LogsComponent', 'selector': 'lthn-app-logs'},{'name': 'ModalComponent', 'selector': 'modal'},{'name': 'NoDaemonRunningDialog', 'selector': 'lthn-app-status-no-daemon'},{'name': 'OpenComponent', 'selector': 'lthn-wallet-open'},{'name': 'PostComponent', 'selector': 'lthn-app-post'},{'name': 'ProfileComponent', 'selector': 'lthn-user-profile'},{'name': 'RestoreComponent', 'selector': 'lthn-wallet-restore'},{'name': 'RootComponent', 'selector': 'lthn-root'},{'name': 'SettingsComponent', 'selector': 'lthn-settings'},{'name': 'SettingsComponent', 'selector': 'lthn-app-settings'},{'name': 'SpartaComponent', 'selector': 'lthn-app-sparta'},{'name': 'StatusComponent', 'selector': 'lthn-app-status'},{'name': 'TerminalComponent', 'selector': 'lthn-app-terminal'},{'name': 'TransactionsComponent', 'selector': 'lthn-wallet-transactions'},{'name': 'TransferComponent', 'selector': 'lthn-wallet-transfer'},{'name': 'UserComponent', 'selector': 'lthn-user'},{'name': 'VpnComponent', 'selector': 'lthn-vpn'},{'name': 'WalletComponent', 'selector': 'lthn-app-wallet'},{'name': 'WalletNewComponent', 'selector': 'lthn-wallet-new'}];
     var DIRECTIVES = [{'name': 'ChartDirective', 'selector': '[lthnChart]'}];
     var ACTUAL_COMPONENT = {'name': 'AddComponent'};
 </script>
 <script src="../js/tree.js"></script>
+
 
 
 

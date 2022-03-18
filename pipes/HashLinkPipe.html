@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>lethean-workstation documentation</title>
+        <title>lethean-desktop-angular-app documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">lethean-workstation documentation</a>
+            <a href="../" class="navbar-brand">lethean-desktop-angular-app documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -89,82 +89,6 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="cutMiddle"></a>
-                    <span class="name">
-                        <span class="modifier">Private</span>
-                        <span ><b>cutMiddle</b></span>
-                        <a href="#cutMiddle"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>cutMiddle(string, maxLength)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="15"
-                            class="link-to-prism">src/app/pipes/crypto/hashLink.pipe.ts:15</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>string</td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>maxLength</td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="transform"></a>
                     <span class="name">
                         <span ><b>transform</b></span>
@@ -174,7 +98,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>transform(content, type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+<code>transform(string, maxLength: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
@@ -204,7 +128,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>content</td>
+                                    <td>string</td>
                                     <td>
                                     </td>
 
@@ -217,9 +141,9 @@
 
                                 </tr>
                                 <tr>
-                                    <td>type</td>
+                                    <td>maxLength</td>
                                     <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
                                     </td>
 
                                     <td>
@@ -227,7 +151,7 @@
                                     </td>
 
                                     <td>
-                                        <code>&#x27;txn&#x27;</code>
+                                        <code>16</code>
                                     </td>
 
                                 </tr>
@@ -237,7 +161,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                     </div>
                     <div class="io-description">
@@ -259,15 +183,7 @@
 export class HashLinkPipe implements PipeTransform {
   constructor() {}
 
-  transform(content, type: string &#x3D; &#x27;txn&#x27;) {
-    let url &#x3D; &#x60;/chain/${type}/${content}&#x60;;
-
-    return content &#x3D;&#x3D;&#x3D; undefined
-      ? &quot;¯\\_(ツ)_/¯&quot;
-      : &#x60;&lt;a class&#x3D;&quot;lthn-brand&quot; href&#x3D;&quot;${url}&quot;&gt;${this.cutMiddle(content, 16)}&lt;/a&gt;&#x60;;
-  }
-
-  private cutMiddle(string, maxLength) {
+  transform(string, maxLength &#x3D; 16) {
     if (!string) return string;
     if (maxLength &lt; 1) return string;
     if (string.length &lt;&#x3D; maxLength) return string;
@@ -279,11 +195,14 @@ export class HashLinkPipe implements PipeTransform {
     const rstrip &#x3D; toremove - lstrip;
     return &#x60;${string.substring(0, midpoint - lstrip)}...${string.substring(midpoint + rstrip)}&#x60;;
   }
+
+
 }
 </code></pre>
     </div>
 
 </div>
+
 
 
 

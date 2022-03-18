@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>lethean-workstation documentation</title>
+        <title>lethean-desktop-angular-app documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">lethean-workstation documentation</a>
+            <a href="../" class="navbar-brand">lethean-desktop-angular-app documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -369,7 +369,7 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Injectable} from &#x27;@angular/core&#x27;;
 import {webSocket, WebSocketSubject} from &#x27;rxjs/webSocket&#x27;;
 
-export const WS_ENDPOINT &#x3D; &#x27;ws://localhost:36909&#x27;;
+export const WS_ENDPOINT &#x3D; &#x27;ws://127.0.0.1:36909&#x27;;
 
 @Injectable({
 	providedIn: &#x27;root&#x27;
@@ -402,7 +402,7 @@ export class WebsocketService {
 
 	/**
 	import { webSocket } from &quot;rxjs/webSocket&quot;;
-const subject &#x3D; webSocket(&quot;ws://localhost:8081&quot;);
+const subject &#x3D; webSocket(&quot;ws://127.0.0.1:8081&quot;);
 
 subject.subscribe(
    msg &#x3D;&gt; console.log(&#x27;message received: &#x27; + msg), // Called whenever there is a message from the server.
@@ -415,6 +415,7 @@ subject.subscribe(
     </div>
 
 </div>
+
 
 
 

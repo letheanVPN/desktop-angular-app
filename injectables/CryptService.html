@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>lethean-workstation documentation</title>
+        <title>lethean-desktop-angular-app documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">lethean-workstation documentation</a>
+            <a href="../" class="navbar-brand">lethean-desktop-angular-app documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -134,7 +134,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(appService: <a href="../injectables/AppService.html" target="_self">AppService</a>, fileSystem: <a href="../injectables/FileSystemService.html" target="_self">FileSystemService</a>)</code>
+<code>constructor(appService: <a href="../injectables/AppConfigService.html" target="_self">AppConfigService</a>, fileSystem: <a href="../injectables/FileSystemService.html" target="_self">FileSystemService</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -160,7 +160,7 @@
                                                         <td>appService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/AppService.html" target="_self" >AppService</a></code>
+                                                                        <code><a href="../injectables/AppConfigService.html" target="_self" >AppConfigService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -786,15 +786,15 @@ they are like sub accounts, but not, multiple personality syndrome with split br
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Injectable} from &#x27;@angular/core&#x27;;
-import {AppService} from &#x27;../app.service&#x27;;
 import {FileSystemService} from &#x27;./filesystem/file-system.service&#x27;;
+import {AppConfigService} from &#x27;@service/app-config.service&#x27;;
 
 @Injectable({
 	providedIn: &#x27;root&#x27;
 })
 export class CryptService {
 	constructor(
-		private appService: AppService,
+		private appService: AppConfigService,
 		private fileSystem: FileSystemService
 	) {
 	}
@@ -809,7 +809,7 @@ export class CryptService {
 			&#x27;t&#x27;: &quot;7&quot;,
 		}
 	}
-	
+
 	/**
 	 * Transforms the input string with a lite l337 conversion
 	 * this will always give you the same salt, im aware of the issues here
@@ -832,10 +832,10 @@ export class CryptService {
 			.replace(/s/gi, &#x27;z&#x27;)
 			.replace(/t/gi, &#x27;7&#x27;);
 	}
-	
+
 	/**
 	 * lighter quasi-entropy salt, to test, when on on a markdown editor
-	 * 
+	 *
 	 * @param {string} input
 	 * @returns {string}
 	 */
@@ -974,6 +974,7 @@ export class CryptService {
     </div>
 
 </div>
+
 
 
 

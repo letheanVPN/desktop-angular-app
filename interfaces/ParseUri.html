@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>lethean-workstation documentation</title>
+        <title>lethean-desktop-angular-app documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">lethean-workstation documentation</a>
+            <a href="../" class="navbar-brand">lethean-desktop-angular-app documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -138,22 +138,14 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import Big from &#x27;big.js&#x27;;
-import {Destination} from &#x27;src/app/modules/wallet/interfaces/types/destination&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Destination} from &#x27;src/app/modules/wallet/interfaces/types/destination&#x27;;
 import {MakeUriIn} from &#x27;src/app/modules/wallet/interfaces/dto/makeUriIn&#x27;;
 import Random from &#x27;random-js&#x27;;
 
 export const generatePaymentId &#x3D; (length: 16 | 64) &#x3D;&gt;
 	Random.hex(false)(Random.nativeMath, length);
 
-export class LTHN extends Big {
-	toAtomic &#x3D; (): Atomic &#x3D;&gt; new Atomic(this.times(1e8));
-}
 
-export class Atomic extends Big {
-	toLTHN &#x3D; (): LTHN &#x3D;&gt; new LTHN(this.div(1e8));
-	toNumber &#x3D; (): number &#x3D;&gt; Number(this);
-}
 
 export interface TransferSplitIn {
 	destinations: Destination[];
@@ -183,6 +175,7 @@ export interface CreateWallet {
 </code></pre>
     </div>
 </div>
+
 
 
 

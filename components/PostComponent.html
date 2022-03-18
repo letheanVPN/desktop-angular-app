@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>lethean-workstation documentation</title>
+        <title>lethean-desktop-angular-app documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">lethean-workstation documentation</a>
+            <a href="../" class="navbar-brand">lethean-desktop-angular-app documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -75,6 +75,7 @@
     </p>
     <p class="comment">
                     <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
     </p>
 
 
@@ -135,23 +136,11 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#author" >author</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#content" >content</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#post" >post</a>
+                                <a href="#posts" >posts</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
-                                <a href="#subs" >subs</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#title" >title</a>
+                                <a href="#sub" >sub</a>
                             </li>
                         </ul>
                     </td>
@@ -165,6 +154,16 @@
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
+                            <li>
+                                <a href="#getLatestPosts" >getLatestPosts</a>
+                            </li>
+                            <li>
+                                <a href="#loadPost" >loadPost</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
                             <li>
                                 <a href="#ngOnInit" >ngOnInit</a>
                             </li>
@@ -186,12 +185,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+<code>constructor(http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/modules/content/post/post.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/modules/content/post/post.component.ts:11</a></div>
                             </td>
                         </tr>
 
@@ -209,10 +208,10 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>router</td>
+                                                        <td>http</td>
                                                   
                                                         <td>
-                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -242,6 +241,156 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="getLatestPosts"></a>
+                    <span class="name">
+                        <span ><b>getLatestPosts</b></span>
+                        <a href="#getLatestPosts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getLatestPosts()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="22"
+                            class="link-to-prism">src/app/modules/content/post/post.component.ts:22</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadPost"></a>
+                    <span class="name">
+                        <span ><b>loadPost</b></span>
+                        <a href="#loadPost"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadPost(slug, id)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">src/app/modules/content/post/post.component.ts:26</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>slug</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>id</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">src/app/modules/content/post/post.component.ts:32</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="ngOnInit"></a>
                     <span class="name">
                         <span ><b>ngOnInit</b></span>
@@ -258,8 +407,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">src/app/modules/content/post/post.component.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="15"
+                            class="link-to-prism">src/app/modules/content/post/post.component.ts:15</a></div>
                 </td>
             </tr>
 
@@ -285,107 +434,11 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="author"></a>
+                    <a name="posts"></a>
                     <span class="name">
                             <span class="modifier">Public</span>
-                        <span ><b>author</b></span>
-                        <a href="#author"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;&#x27;</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/content/post/post.component.ts:14</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="content"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>content</b></span>
-                        <a href="#content"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;&#x27;</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/modules/content/post/post.component.ts:13</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="post"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>post</b></span>
-                        <a href="#post"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>{}</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/modules/content/post/post.component.ts:11</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="subs"></a>
-                    <span class="name">
-                            <span class="modifier">Private</span>
-                        <span ><b>subs</b></span>
-                        <a href="#subs"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>posts</b></span>
+                        <a href="#posts"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
@@ -395,14 +448,9 @@
 
                     </td>
                 </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>{}</code>
-                    </td>
-                </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/modules/content/post/post.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/modules/content/post/post.component.ts:10</a></div>
                         </td>
                     </tr>
 
@@ -413,28 +461,17 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="title"></a>
+                    <a name="sub"></a>
                     <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>title</b></span>
-                        <a href="#title"><span class="icon ion-ios-link"></span></a>
+                            <span class="modifier">Private</span>
+                        <span ><b>sub</b></span>
+                        <a href="#sub"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;&#x27;</code>
-                    </td>
-                </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/modules/content/post/post.component.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/modules/content/post/post.component.ts:11</a></div>
                         </td>
                     </tr>
 
@@ -447,62 +484,53 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component, OnInit} from &#x27;@angular/core&#x27;;
-import {Client} from &#x27;@hiveio/dhive&#x27;;
-import {Router} from &#x27;@angular/router&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component, OnDestroy, OnInit} from &#x27;@angular/core&#x27;;
+import {HttpClient} from &#x27;@angular/common/http&#x27;;
 
 @Component({
 	selector: &#x27;lthn-app-post&#x27;,
 	templateUrl: &#x27;./post.component.html&#x27;,
 	styleUrls: [&#x27;./post.component.scss&#x27;]
 })
-export class PostComponent implements OnInit {
-	public post &#x3D; {};
-	public title &#x3D; &#x27;&#x27;;
-	public content &#x3D; &#x27;&#x27;;
-	public author &#x3D; &#x27;&#x27;;
-	private subs: any &#x3D; {};
+export class PostComponent implements OnInit, OnDestroy {
+	public posts:any;
+	private sub;
 
-	constructor(private router: Router) {}
+	constructor(private http: HttpClient) {}
 
 	ngOnInit(): void {
-		const client &#x3D; new Client([
-			&#x27;https://api.hive.blog&#x27;,
-			&#x27;https://api.hivekings.com&#x27;,
-			&#x27;https://anyx.io&#x27;,
-			&#x27;https://api.openhive.network&#x27;
-		]);
-		const slug &#x3D; this.router.routerState.snapshot.url.replace(&#x27;/p/&#x27;, &#x27;&#x27;);
-		const that &#x3D; this;
-		console.log(this.router.routerState.snapshot.url);
 
-		client.database.getState(&#x60;/hive-179211/@${slug}&#x60;).then(function (post) {
-			that.post &#x3D; post;
+		this.sub &#x3D; this.getLatestPosts()
+			.subscribe((data: any) &#x3D;&gt; this.posts &#x3D; data);
+	}
 
-			that.content &#x3D; post.content[slug].body;
-			that.title &#x3D; post.content[slug].title;
-			that.author &#x3D; post.content[slug].author;
-			console.log(post);
+
+	getLatestPosts() {
+		return this.http.get&lt;any&gt;(&quot;https://sparta.lt.hn/latest.json&quot;);
+	}
+
+	loadPost(slug, id){
+		this.http.get&lt;any&gt;(&#x60;https://sparta.lt.hn/${slug}/${id}.json&#x60;).subscribe((data: any) &#x3D;&gt; {
+			this.posts &#x3D; data
 		});
+	}
+
+	public ngOnDestroy(): void {
+		this.sub.unsubscribe();
 	}
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div style&#x3D;&quot;padding: 16px;&quot;&gt;
-  &lt;mat-card *ngIf&#x3D;&quot;author.length&gt;0&quot;&gt;
-    &lt;mat-card-header&gt;
-      &lt;div mat-card-avatar
-           style&#x3D;&quot;background-size: cover;background-image: url(https://images.hive.blog/u/{{author}}/avatar);&quot;&gt;&lt;/div&gt;
-      &lt;mat-card-title&gt;{{title}}&lt;/mat-card-title&gt;
-      &lt;mat-card-subtitle&gt;{{author}}&lt;/mat-card-subtitle&gt;
-    &lt;/mat-card-header&gt;
-    &lt;mat-card-content&gt;
-      &lt;p [innerHTML]&#x3D;&quot;content | markdown&quot;&gt;&lt;/p&gt;
-    &lt;/mat-card-content&gt;
-  &lt;/mat-card&gt;
-&lt;/div&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;mat-list *ngIf&#x3D;&quot;posts&quot; dense&gt;
+    &lt;mat-list-item *ngFor&#x3D;&quot;let post of posts[&#x27;topic_list&#x27;][&#x27;topics&#x27;]&quot;&gt;
+        &lt;button mat-button [routerLink]&#x3D;&quot;[&#x27;/&#x27;, &#x27;sparta&#x27;, post.slug, post.id]&quot;
+                class&#x3D;&quot;lthn-brand&quot;&gt;{{post.title }}&lt;/button&gt;
+    &lt;/mat-list-item&gt;
+&lt;/mat-list&gt;
+
+
 
 </code></pre>
     </div>
@@ -539,12 +567,13 @@ export class PostComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div style="padding: 16px;">  <mat-card *ngIf="author.length>0">    <mat-card-header>      <div mat-card-avatar           style="background-size: cover;background-image: url(https://images.hive.blog/u/{{author}}/avatar);"></div>      <mat-card-title>{{title}}</mat-card-title>      <mat-card-subtitle>{{author}}</mat-card-subtitle>    </mat-card-header>    <mat-card-content>      <p [innerHTML]="content | markdown"></p>    </mat-card-content>  </mat-card></div></div>'
-    var COMPONENTS = [{'name': 'AddComponent', 'selector': 'lthn-wallet-add'},{'name': 'AppComponent', 'selector': 'lthn-app'},{'name': 'BackupComponent', 'selector': 'lthn-app-backup'},{'name': 'BlockchainComponent', 'selector': 'lthn-chain'},{'name': 'LoginComponent', 'selector': 'lthn-login'},{'name': 'LogsComponent', 'selector': 'lthn-app-logs'},{'name': 'ModalComponent', 'selector': 'modal'},{'name': 'NewComponent', 'selector': 'lthn-wallet-new'},{'name': 'NoDaemonRunningDialog', 'selector': 'lthn-app-status-no-daemon'},{'name': 'OpenComponent', 'selector': 'lthn-wallet-open'},{'name': 'PostComponent', 'selector': 'lthn-app-post'},{'name': 'ProfileComponent', 'selector': 'lthn-user-profile'},{'name': 'RestoreComponent', 'selector': 'lthn-wallet-restore'},{'name': 'RootComponent', 'selector': 'lthn-root'},{'name': 'SettingsComponent', 'selector': 'lthn-settings'},{'name': 'SettingsComponent', 'selector': 'lthn-app-settings'},{'name': 'StatusComponent', 'selector': 'lthn-app-status'},{'name': 'TransactionsComponent', 'selector': 'lthn-wallet-transactions'},{'name': 'UserComponent', 'selector': 'lthn-user'},{'name': 'VpnComponent', 'selector': 'lthn-vpn'},{'name': 'WalletComponent', 'selector': 'lthn-app-wallet'}];
+        var COMPONENT_TEMPLATE = '<div><mat-list *ngIf="posts" dense>    <mat-list-item *ngFor="let post of posts[\'topic_list\'][\'topics\']">        <button mat-button [routerLink]="[\'/\', \'sparta\', post.slug, post.id]"                class="lthn-brand">{{post.title }}</button>    </mat-list-item></mat-list></div>'
+    var COMPONENTS = [{'name': 'AddComponent', 'selector': 'lthn-wallet-add'},{'name': 'AppComponent', 'selector': 'lthn-app'},{'name': 'BlockchainComponent', 'selector': 'lthn-chain'},{'name': 'BlockdetailsComponent', 'selector': 'lthn-app-blockdetails'},{'name': 'ConsoleComponent', 'selector': 'lthn-app-console'},{'name': 'DetailsComponent', 'selector': 'lthn-wallet-details'},{'name': 'LoginComponent', 'selector': 'lthn-login'},{'name': 'LogsComponent', 'selector': 'lthn-app-logs'},{'name': 'ModalComponent', 'selector': 'modal'},{'name': 'NoDaemonRunningDialog', 'selector': 'lthn-app-status-no-daemon'},{'name': 'OpenComponent', 'selector': 'lthn-wallet-open'},{'name': 'PostComponent', 'selector': 'lthn-app-post'},{'name': 'ProfileComponent', 'selector': 'lthn-user-profile'},{'name': 'RestoreComponent', 'selector': 'lthn-wallet-restore'},{'name': 'RootComponent', 'selector': 'lthn-root'},{'name': 'SettingsComponent', 'selector': 'lthn-settings'},{'name': 'SettingsComponent', 'selector': 'lthn-app-settings'},{'name': 'SpartaComponent', 'selector': 'lthn-app-sparta'},{'name': 'StatusComponent', 'selector': 'lthn-app-status'},{'name': 'TerminalComponent', 'selector': 'lthn-app-terminal'},{'name': 'TransactionsComponent', 'selector': 'lthn-wallet-transactions'},{'name': 'TransferComponent', 'selector': 'lthn-wallet-transfer'},{'name': 'UserComponent', 'selector': 'lthn-user'},{'name': 'VpnComponent', 'selector': 'lthn-vpn'},{'name': 'WalletComponent', 'selector': 'lthn-app-wallet'},{'name': 'WalletNewComponent', 'selector': 'lthn-wallet-new'}];
     var DIRECTIVES = [{'name': 'ChartDirective', 'selector': '[lthnChart]'}];
     var ACTUAL_COMPONENT = {'name': 'PostComponent'};
 </script>
 <script src="../js/tree.js"></script>
+
 
 
 
