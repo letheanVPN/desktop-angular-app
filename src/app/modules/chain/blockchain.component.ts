@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {ChartService} from '@module/chart/chart.service';
 import {ChainGetInfo} from '@module/chain/interfaces/props/get_info';
 import {select, Store} from '@ngrx/store';
@@ -8,6 +8,7 @@ import {BlockHeader} from '@module/chain/interfaces/types/blockHeader';
 import {ColumnMode} from '@swimlane/ngx-datatable';
 import {BlockchainService} from '@module/chain/blockchain.service';
 import {FormControl, Validators} from '@angular/forms';
+import {DrawerDirection, DrawerService} from '@swimlane/ngx-ui';
 
 @Component({
 	selector: 'lthn-chain',
@@ -43,7 +44,7 @@ export class BlockchainComponent implements OnInit, OnDestroy {
 	ColumnMode = ColumnMode;
 	blocks: Observable<{ headers: BlockHeader[] }>;
 	chainInfo: Observable<ChainGetInfo>;
-
+	@ViewChild('editTmpl', { static: false }) editTmpl: TemplateRef<any>;
 	private sub: Subscription[] = [];
 	recentTxs: any;
 	buildType: string;
@@ -52,7 +53,8 @@ export class BlockchainComponent implements OnInit, OnDestroy {
 	start_height: number = null;
 	end_height: number = null;
 	constructor(private store: Store,
-				private chain: BlockchainService) {
+				private chain: BlockchainService,
+				private drawerService: DrawerService) {
 
 		this.allColumns.forEach((col) => {
 			if (col.default) {
@@ -119,6 +121,15 @@ export class BlockchainComponent implements OnInit, OnDestroy {
 
 	public ngOnDestroy() {
 		this.sub.forEach((s) => s.unsubscribe());
+	}
+	openDrawer(id) {
+		this.drawerService.create({
+			direction: DrawerDirection.Left,
+			template: this.editTmpl,
+			closeOnOutsideClick: true,
+			context: { id}
+
+		});
 	}
 
 }

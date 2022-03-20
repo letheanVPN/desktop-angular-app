@@ -122,7 +122,8 @@
                     <ng-template let-value="value" ngx-datatable-cell-template>
                         <span *ngIf="col.prop === 'difficulty'">{{ value | hashrate}}</span>
                         <span *ngIf="col.prop === 'height'">{{ value | number }}</span>
-                        <a class="lthn-brand" *ngIf="col.prop === 'hash'" [routerLink]="['/', 'chain', 'block', value]">{{ value | hashLink }}</a>
+<!--                        <a class="lthn-brand" *ngIf="col.prop === 'hash'" [routerLink]="['/', 'chain', 'block', value]">{{ value | hashLink }}</a>-->
+                        <a class="lthn-brand" *ngIf="col.prop === 'hash'" (click)="$event.stopPropagation();openDrawer(value);">{{ value | hashLink }}</a>
                         <span *ngIf="col.prop === 'orphan_status'">
                             <mat-icon style="color: green" *ngIf="!value">done</mat-icon>
                             <mat-icon style="color: red" *ngIf="value">close</mat-icon>
@@ -152,3 +153,11 @@
     </mat-card>
     </ng-container>
 </div>
+<ng-template #editTmpl let-context="context">
+    <ngx-toolbar
+            [mainTitle]="'Block Information'">
+    </ngx-toolbar>
+    <section class="section">
+        <lthn-chain-blockdetails [id]="context.id"></lthn-chain-blockdetails>
+    </section>
+</ng-template>

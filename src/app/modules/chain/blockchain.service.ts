@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {rpcBody} from '@service/json-rpc';
-import {ChainSetBlocks, ChainSetGetInfo, ChainSetTransactions} from '@module/chain/data';
+import {ChainSetBlocks, ChainSetGetInfo} from '@module/chain/data';
 import {Store} from '@ngrx/store';
 
 @Injectable({
@@ -81,14 +81,9 @@ export class BlockchainService {
         })
     }
 
-    getTransactions(txsHashes: string[], decodeAsJson: boolean = true) {
+    getTransactions(txsHashes: string[]) {
 
-        this.chainRpc('get_transaction', {txs_hashes: txsHashes, decode_as_json: decodeAsJson}).subscribe((data) => {
-            if (decodeAsJson && data.hasOwnProperty("txs_as_json")) {
-                data.txs_as_json = JSON.parse(data.txs_as_json);
-            }
-            this.store.dispatch(ChainSetTransactions({transactions: data.result}))
-        })
+       return this.chainRpc('gettransactions', {txs_hashes: txsHashes});
     }
 
 
