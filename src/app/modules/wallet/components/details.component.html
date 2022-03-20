@@ -4,7 +4,7 @@
         <dd>{{wallet.address}}</dd>
         <dt>Balance</dt>
         <dd>{{ wallet.balance['balance'] | toCoin }}</dd>
-        <dt>Unlocked Balance</dt>
+        <dt>Available to spend</dt>
         <dd>{{ wallet.balance['unlocked_balance'] | toCoin }}</dd>
     </dl>
 </div>

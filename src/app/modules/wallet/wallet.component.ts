@@ -11,7 +11,6 @@ export class WalletComponent implements OnInit, AfterViewInit {
 
 	public wallets: string[] = [];
 	name: string = ''
-	balance:any = {}
 	constructor(public wallet: WalletService, private notificationService: NotificationService, public alertService: AlertService) {}
 
 
