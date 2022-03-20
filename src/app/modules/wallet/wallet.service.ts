@@ -47,10 +47,10 @@ export class WalletService {
 	 * @returns {Promise<AxiosResponse<any>>}
 	 */
 	openWallet(req: OpenWallet) {
-		return this.rpc.openWallet(req).then(() => {
+		return this.rpc.openWallet(req).then(async () => {
 			this.openedWallet = req.filename
-			this.getBalance()
-			this.getActiveAddress()
+			await this.getBalance()
+			await this.getActiveAddress()
 		});
 	}
 
@@ -103,6 +103,8 @@ export class WalletService {
 	}
 
 	closeWallet(){
+		this.address = null
+		this.balance = null
 		return this.rpc.stopWallet()
 	}
 
