@@ -26,14 +26,8 @@ jobs:
       run: npx anti-trojan-source --files='${{ github.workspace }}/dist/**/*.js'
     - name: run auditjs
       run: npx --loglevel=error auditjs@beta ossi --json > auditjs.json || exit 0
-    - name: Sensitive File Check
-      run: npx ban-sensitive-files -- --all
-    - uses: returntocorp/semgrep-action@v1
-      with:
-        config: >- # more at semgrep.dev/explore
-          p/security-audit
-          p/secrets
     - uses: actions/upload-artifact@v2
+      if: startsWith(github.ref, 'refs/tags/')
       with:
         name: lethean-ui-${{ github.ref }}
         path: ${{ github.workspace }}/dist/lethean-desktop/browser
