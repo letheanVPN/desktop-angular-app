@@ -1,4 +1,4 @@
-name: Angular Build
+name: Build
 
 on:
   push:
@@ -18,7 +18,7 @@ jobs:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
       with:
-        node-version: 16.x
+        node-version: 18.x
     - run: npm install --legacy-peer-deps
     - run: npm run build
     - run: npm install anti-trojan-source
@@ -35,17 +35,11 @@ jobs:
           p/secrets
     - uses: actions/upload-artifact@v2
       with:
-        name: dist
+        name: lethean-ui-${{ github.ref }}
         path: ${{ github.workspace }}/dist/lethean-desktop/browser
     - name: Release
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
         files: ${{ github.workspace }}/dist/lethean-desktop/browser
-    - name: Release Branch
-      uses: softprops/action-gh-release@v1
-      if: startsWith(github.ref, 'refs/heads/main')
-      with:
-        tag_name: canary
-        prerelease: true
-        files: ${{ github.workspace }}/dist/lethean-desktop/browser
+
