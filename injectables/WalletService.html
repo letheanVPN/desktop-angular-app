@@ -601,8 +601,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="109"
-                            class="link-to-prism">src/app/modules/wallet/wallet.service.ts:109</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="111"
+                            class="link-to-prism">src/app/modules/wallet/wallet.service.ts:111</a></div>
                 </td>
             </tr>
 
@@ -920,10 +920,10 @@ export class WalletService {
 	 * @returns {Promise&lt;AxiosResponse&lt;any&gt;&gt;}
 	 */
 	openWallet(req: OpenWallet) {
-		return this.rpc.openWallet(req).then(() &#x3D;&gt; {
+		return this.rpc.openWallet(req).then(async () &#x3D;&gt; {
 			this.openedWallet &#x3D; req.filename
-			this.getBalance()
-			this.getActiveAddress()
+			await this.getBalance()
+			await this.getActiveAddress()
 		});
 	}
 
@@ -976,6 +976,8 @@ export class WalletService {
 	}
 
 	closeWallet(){
+		this.address &#x3D; null
+		this.balance &#x3D; null
 		return this.rpc.stopWallet()
 	}
 

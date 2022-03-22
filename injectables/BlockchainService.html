@@ -320,8 +320,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="95"
-                            class="link-to-prism">src/app/modules/chain/blockchain.service.ts:95</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="90"
+                            class="link-to-prism">src/app/modules/chain/blockchain.service.ts:90</a></div>
                 </td>
             </tr>
 
@@ -389,8 +389,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="100"
-                            class="link-to-prism">src/app/modules/chain/blockchain.service.ts:100</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="95"
+                            class="link-to-prism">src/app/modules/chain/blockchain.service.ts:95</a></div>
                 </td>
             </tr>
 
@@ -500,7 +500,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getTransactions(txsHashes: string[], decodeAsJson: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+<code>getTransactions(txsHashes: string[])</code>
                 </td>
             </tr>
 
@@ -525,7 +525,6 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
-                                    <td>Default value</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -539,23 +538,6 @@
                                         No
                                     </td>
 
-                                    <td>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>decodeAsJson</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-                                    <td>
-                                        <code>true</code>
-                                    </td>
 
                                 </tr>
                             </tbody>
@@ -564,7 +546,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                     </div>
                     <div class="io-description">
@@ -659,7 +641,7 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Injectable} from &#x27;@angular/core&#x27;;
 import {HttpClient, HttpHeaders} from &#x27;@angular/common/http&#x27;;
 import {rpcBody} from &#x27;@service/json-rpc&#x27;;
-import {ChainSetBlocks, ChainSetGetInfo, ChainSetTransactions} from &#x27;@module/chain/data&#x27;;
+import {ChainSetBlocks, ChainSetGetInfo} from &#x27;@module/chain/data&#x27;;
 import {Store} from &#x27;@ngrx/store&#x27;;
 
 @Injectable({
@@ -739,14 +721,9 @@ export class BlockchainService {
         })
     }
 
-    getTransactions(txsHashes: string[], decodeAsJson: boolean &#x3D; true) {
+    getTransactions(txsHashes: string[]) {
 
-        this.chainRpc(&#x27;get_transaction&#x27;, {txs_hashes: txsHashes, decode_as_json: decodeAsJson}).subscribe((data) &#x3D;&gt; {
-            if (decodeAsJson &amp;&amp; data.hasOwnProperty(&quot;txs_as_json&quot;)) {
-                data.txs_as_json &#x3D; JSON.parse(data.txs_as_json);
-            }
-            this.store.dispatch(ChainSetTransactions({transactions: data.result}))
-        })
+       return this.chainRpc(&#x27;gettransactions&#x27;, {txs_hashes: txsHashes});
     }
 
 

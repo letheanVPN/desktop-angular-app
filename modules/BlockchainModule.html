@@ -254,31 +254,34 @@ import {RouterModule} from &quot;@angular/router&quot;;
 import {MatFormFieldModule} from &quot;@angular/material/form-field&quot;;
 import {MatInputModule} from &quot;@angular/material/input&quot;;
 import {ReactiveFormsModule} from &quot;@angular/forms&quot;;
+import {SectionModule, ToolbarModule} from &#x27;@swimlane/ngx-ui&#x27;;
 
 @NgModule({
 	declarations: [BlockchainComponent, BlockdetailsComponent],
-    imports: [
-        CommonModule,
-        ChartModule,
-        MatCardModule,
-        MatListModule,
-        MatButtonModule,
-        FlexModule,
-        TranslateModule,
-        NgxDatatableModule,
-        ReactiveComponentModule,
-        PipesModule,
-        MatIconModule,
-        MatToolbarModule,
-        MatTooltipModule,
-        MatMenuModule,
-        MomentModule,
-        MatProgressBarModule,
-        RouterModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ReactiveFormsModule
-    ],
+	imports: [
+		CommonModule,
+		ChartModule,
+		MatCardModule,
+		MatListModule,
+		MatButtonModule,
+		FlexModule,
+		TranslateModule,
+		NgxDatatableModule,
+		ReactiveComponentModule,
+		PipesModule,
+		MatIconModule,
+		MatToolbarModule,
+		MatTooltipModule,
+		MatMenuModule,
+		MomentModule,
+		MatProgressBarModule,
+		RouterModule,
+		MatFormFieldModule,
+		MatInputModule,
+		ReactiveFormsModule,
+		SectionModule,
+		ToolbarModule
+	],
 	exports: [ BlockchainComponent],
 	providers: [HashRatePipe]
 })

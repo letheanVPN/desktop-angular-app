@@ -52,9 +52,6 @@
             <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
         </li>
         <li >
-            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
-        </li>
-        <li >
             <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
@@ -96,13 +93,9 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>lthn-app-blockdetails</code></td>
+                <td class="col-md-9"><code>lthn-chain-blockdetails</code></td>
             </tr>
 
-            <tr>
-                <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>./blockdetails.component.scss</code></td>
-            </tr>
 
 
 
@@ -138,11 +131,10 @@
                                 <a href="#block" >block</a>
                             </li>
                             <li>
-                                <a href="#blockID" >blockID</a>
+                                <a href="#blockData" >blockData</a>
                             </li>
                             <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#chainInfo" >chainInfo</a>
+                                <a href="#blockID" >blockID</a>
                             </li>
                             <li>
                                 <a href="#sub" >sub</a>
@@ -169,6 +161,20 @@
                     </td>
                 </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#id" >id</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
 
 
@@ -183,12 +189,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(store: Store, route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, chain: <a href="../injectables/BlockchainService.html" target="_self">BlockchainService</a>)</code>
+<code>constructor(chain: <a href="../injectables/BlockchainService.html" target="_self">BlockchainService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/modules/chain/blockdetails/blockdetails.component.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/modules/chain/blockdetails/blockdetails.component.ts:16</a></div>
                             </td>
                         </tr>
 
@@ -205,30 +211,6 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                                <tr>
-                                                        <td>store</td>
-                                                  
-                                                        <td>
-                                                                    <code>Store</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>route</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
                                                 <tr>
                                                         <td>chain</td>
                                                   
@@ -250,7 +232,35 @@
         </table>
 </section>
 
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="id"></a>
+                        <b>id</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/modules/chain/blockdetails/blockdetails.component.ts:16</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
 
 
 
@@ -279,8 +289,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="36"
-                            class="link-to-prism">src/app/modules/chain/blockdetails/blockdetails.component.ts:36</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="40"
+                            class="link-to-prism">src/app/modules/chain/blockdetails/blockdetails.component.ts:40</a></div>
                 </td>
             </tr>
 
@@ -316,8 +326,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="24"
-                            class="link-to-prism">src/app/modules/chain/blockdetails/blockdetails.component.ts:24</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="22"
+                            class="link-to-prism">src/app/modules/chain/blockdetails/blockdetails.component.ts:22</a></div>
                 </td>
             </tr>
 
@@ -358,7 +368,33 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/modules/chain/blockdetails/blockdetails.component.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/chain/blockdetails/blockdetails.component.ts:14</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="blockData"></a>
+                    <span class="name">
+                        <span ><b>blockData</b></span>
+                        <a href="#blockData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/modules/chain/blockdetails/blockdetails.component.ts:15</a></div>
                         </td>
                     </tr>
 
@@ -384,34 +420,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/modules/chain/blockdetails/blockdetails.component.ts:17</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="chainInfo"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>chainInfo</b></span>
-                        <a href="#chainInfo"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../interfaces/ChainGetInfo.html" target="_self" >Observable&lt;ChainGetInfo&gt;</a></code>
-
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/modules/chain/blockdetails/blockdetails.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/modules/chain/blockdetails/blockdetails.component.ts:12</a></div>
                         </td>
                     </tr>
 
@@ -437,7 +446,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/modules/chain/blockdetails/blockdetails.component.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/modules/chain/blockdetails/blockdetails.component.ts:13</a></div>
                         </td>
                     </tr>
 
@@ -450,112 +459,75 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component, OnDestroy, OnInit} from &#x27;@angular/core&#x27;;
-import {Observable, Subscription} from &quot;rxjs&quot;;
-import {ChainGetInfo} from &quot;@module/chain/interfaces/props/get_info&quot;;
-import {select, Store} from &quot;@ngrx/store&quot;;
-import {getChainInfo} from &quot;@module/chain/data&quot;;
-import {ActivatedRoute} from &quot;@angular/router&quot;;
-import {BlockchainService} from &quot;@module/chain/blockchain.service&quot;;
-import {BlockHeader} from &quot;@module/chain/interfaces/types/blockHeader&quot;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component, Input, OnDestroy, OnInit} from &#x27;@angular/core&#x27;;
+import {Subscription} from &#x27;rxjs&#x27;;
+import {BlockchainService} from &#x27;@module/chain/blockchain.service&#x27;;
+import {BlockHeader} from &#x27;@module/chain/interfaces/types/blockHeader&#x27;;
 
 @Component({
-  selector: &#x27;lthn-app-blockdetails&#x27;,
-  templateUrl: &#x27;./blockdetails.component.html&#x27;,
-  styleUrls: [&#x27;./blockdetails.component.scss&#x27;]
+	selector: &#x27;lthn-chain-blockdetails&#x27;,
+	templateUrl: &#x27;./blockdetails.component.html&#x27;
 })
 export class BlockdetailsComponent implements OnInit, OnDestroy {
-  public chainInfo: Observable&lt;ChainGetInfo&gt;;
-  blockID: string;
-  sub: Subscription;
-  block: BlockHeader;
-  constructor( private store: Store,
-               private route:ActivatedRoute,
-               private chain: BlockchainService) { }
 
-  ngOnInit(): void {
-    this.chainInfo &#x3D; this.store.pipe(select(getChainInfo))
-    this.route.params.subscribe( params &#x3D;&gt; {
-      this.blockID &#x3D; params[&#x27;id&#x27;]
-      this.sub &#x3D; this.chain.getBlock(this.blockID).subscribe((data) &#x3D;&gt; {
-        this.block &#x3D; data.result[&#x27;block_header&#x27;]
-      })
-    }
-  )
+	blockID: string;
+	sub: Subscription;
+	block: BlockHeader;
+	blockData: any;
+	@Input() id: string &#x3D;&#x27;&#x27;;
 
-  }
 
-  ngOnDestroy(): void {
-    this.sub.unsubscribe()
-  }
+	constructor(private chain: BlockchainService) {
+	}
+
+	ngOnInit(): void {
+
+    	if(this.id.length&gt;0)
+		this.sub &#x3D; this.chain.getBlock(this.id).subscribe((data) &#x3D;&gt; {
+			this.block &#x3D; data.result[&#x27;block_header&#x27;];
+			this.blockData &#x3D; JSON.parse(data.result[&#x27;json&#x27;]);
+
+//        this.chain.getTransactions(this.blockData[&#x27;tx_hashes&#x27;]).subscribe((data) &#x3D;&gt; {
+//          console.log(data)
+//            data.txs_as_json &#x3D; JSON.parse(data.txs_as_json);
+//          this.transactions &#x3D; data
+//
+//        })
+		});
+	}
+
+
+
+	ngOnDestroy(): void {
+		this.sub.unsubscribe();
+	}
 
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container-fluid&quot; fxLayout&#x3D;&quot;row&quot;&gt;
-    &lt;mat-card fxFlex&#x3D;&quot;100&quot;&gt;
-        &lt;a class&#x3D;&quot;lthn-brand&quot; [routerLink]&#x3D;&quot;[&#x27;/&#x27;,&#x27;chain&#x27;]&quot;&gt;Back to chain page&lt;/a&gt;
-    &lt;/mat-card&gt;
-&lt;/div&gt;
-&lt;div class&#x3D;&quot;container-fluid&quot; fxLayout&#x3D;&quot;row&quot;&gt;
-    &lt;mat-card fxFlex&#x3D;&quot;25&quot; style&#x3D;&quot;padding: 0;&quot;&gt;
-        &lt;mat-card-title style&#x3D;&quot;padding: 16px;&quot;&gt;Information&lt;/mat-card-title&gt;
-        &lt;mat-card-content style&#x3D;&quot;padding: 0;&quot;&gt;
-            &lt;mat-list *ngIf&#x3D;&quot;chainInfo | ngrxPush as info&quot; dense&gt;
-
-                &lt;mat-list-item&gt;Status: {{info.status }}&lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;Daemon Start: {{info.start_time * 1000 | amTimeAgo }}&lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;Height: {{info.height }}&lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;Target Height: {{info.target_height }}&lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;Top:&amp;nbsp;&lt;span [innerHTML]&#x3D;&quot;info.top_block_hash | hashLink | keepHtml&quot;&gt;&lt;/span&gt;
-                &lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;White Peers: {{info.white_peerlist_size }}&lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;Grey Peers: {{info.grey_peerlist_size }}&lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;Difficulty: {{info.difficulty | hashrate }}&lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;Cumulative: {{info.cumulative_difficulty | hashrate }}&lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;Connect INC: {{info.incoming_connections_count }}&lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;Connect OUT: {{info.outgoing_connections_count }}&lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;TX Count: {{info.tx_count }}&lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;TX Pool Size: {{info.tx_pool_size }}&lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;Testnet: {{info.testnet }}&lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;Block Time: {{info.target }}&lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;Alt Blocks: {{info.alt_blocks_count }}&lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;Block Size Limit: {{info.block_size_limit }}&lt;/mat-list-item&gt;
-            &lt;/mat-list&gt;
-        &lt;/mat-card-content&gt;
-    &lt;/mat-card&gt;
-    &lt;mat-card fxFlex&#x3D;&quot;75&quot;&gt;
-        &lt;mat-card-title&gt;Block Details&lt;/mat-card-title&gt;
-        &lt;mat-card-content&gt;
-            &lt;mat-list &gt;
-                &lt;mat-list-item&gt;ID: &lt;span class&#x3D;&quot;lthn-brand&quot;&gt;{{ blockID }}&lt;/span&gt;&lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;Block Size: &lt;span class&#x3D;&quot;lthn-brand&quot;&gt;{{ block.block_size }}&lt;/span&gt;&lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;Depth from Top Block: &lt;span class&#x3D;&quot;lthn-brand&quot;&gt;{{ block.depth }}&lt;/span&gt;&lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;Difficulty of this block: &lt;span class&#x3D;&quot;lthn-brand&quot;&gt;{{ block.difficulty }}&lt;/span&gt;&lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;Block Height: &lt;span class&#x3D;&quot;lthn-brand&quot;&gt;{{ block.height }}&lt;/span&gt;&lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;Block Major Version: &lt;span class&#x3D;&quot;lthn-brand&quot;&gt;{{ block.major_version}}&lt;/span&gt;&lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;Block Minor Version: &lt;span class&#x3D;&quot;lthn-brand&quot;&gt;{{ block.minor_version}}&lt;/span&gt;&lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;Block Solution: &lt;span class&#x3D;&quot;lthn-brand&quot;&gt;{{ block.nonce}}&lt;/span&gt;&lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;Block Transactions: &lt;span class&#x3D;&quot;lthn-brand&quot;&gt;{{ block.num_txes}}&lt;/span&gt;&lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;Orphan Status: &lt;span class&#x3D;&quot;lthn-brand&quot;&gt;{{ block.orphan_status }}&lt;/span&gt;&lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;Minted Time: &lt;span class&#x3D;&quot;lthn-brand&quot;&gt;{{ block.timestamp  | amFromUnix }}&lt;/span&gt;&lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;Reward: &lt;span class&#x3D;&quot;lthn-brand&quot;&gt;{{ block.reward |toCoin }}&lt;/span&gt;&lt;/mat-list-item&gt;
-                &lt;mat-list-item&gt;Previous block: &lt;a [routerLink]&#x3D;&quot;[&#x27;/&#x27;, &#x27;chain&#x27;, &#x27;block&#x27;, block.prev_hash ]&quot;  class&#x3D;&quot;lthn-brand&quot;&gt;{{ block.prev_hash }}&lt;/a&gt;&lt;/mat-list-item&gt;
-            &lt;/mat-list&gt;
-        &lt;/mat-card-content&gt;
-    &lt;/mat-card&gt;
-&lt;/div&gt;
+        <pre class="line-numbers"><code class="language-html">
+    &lt;ngx-section class&#x3D;&quot;ngx-flex--col&quot;  [sectionCollapsible]&#x3D;&quot;false&quot; sectionTitle&#x3D;&quot;Block Details&quot;  &gt;
+        &lt;mat-list *ngIf&#x3D;&quot;block&quot; &gt;
+            &lt;mat-list-item&gt;ID: &lt;span class&#x3D;&quot;lthn-brand&quot;&gt;{{ id }}&lt;/span&gt;&lt;/mat-list-item&gt;
+            &lt;mat-list-item&gt;Block Size: &lt;span class&#x3D;&quot;lthn-brand&quot;&gt;{{ block.block_size }}&lt;/span&gt;&lt;/mat-list-item&gt;
+            &lt;mat-list-item&gt;Depth from Top Block: &lt;span class&#x3D;&quot;lthn-brand&quot;&gt;{{ block.depth }}&lt;/span&gt;&lt;/mat-list-item&gt;
+            &lt;mat-list-item&gt;Difficulty of this block: &lt;span class&#x3D;&quot;lthn-brand&quot;&gt;{{ block.difficulty }}&lt;/span&gt;&lt;/mat-list-item&gt;
+            &lt;mat-list-item&gt;Block Height: &lt;span class&#x3D;&quot;lthn-brand&quot;&gt;{{ block.height }}&lt;/span&gt;&lt;/mat-list-item&gt;
+            &lt;mat-list-item&gt;Block Major Version: &lt;span class&#x3D;&quot;lthn-brand&quot;&gt;{{ block.major_version}}&lt;/span&gt;&lt;/mat-list-item&gt;
+            &lt;mat-list-item&gt;Block Minor Version: &lt;span class&#x3D;&quot;lthn-brand&quot;&gt;{{ block.minor_version}}&lt;/span&gt;&lt;/mat-list-item&gt;
+            &lt;mat-list-item&gt;Block Solution: &lt;span class&#x3D;&quot;lthn-brand&quot;&gt;{{ block.nonce}}&lt;/span&gt;&lt;/mat-list-item&gt;
+            &lt;mat-list-item&gt;Block Transactions: &lt;span class&#x3D;&quot;lthn-brand&quot;&gt;{{ block.num_txes}}&lt;/span&gt;&lt;/mat-list-item&gt;
+            &lt;mat-list-item&gt;Orphan Status: &lt;span class&#x3D;&quot;lthn-brand&quot;&gt;{{ block.orphan_status }}&lt;/span&gt;&lt;/mat-list-item&gt;
+            &lt;mat-list-item&gt;Minted Time: &lt;span class&#x3D;&quot;lthn-brand&quot;&gt;{{ block.timestamp  | amFromUnix }}&lt;/span&gt;&lt;/mat-list-item&gt;
+            &lt;mat-list-item&gt;Reward: &lt;span class&#x3D;&quot;lthn-brand&quot;&gt;{{ block.reward |toCoin }}&lt;/span&gt;&lt;/mat-list-item&gt;
+&lt;!--            &lt;mat-list-item&gt;Previous block: &lt;a [routerLink]&#x3D;&quot;[&#x27;/&#x27;, &#x27;chain&#x27;, &#x27;block&#x27;, block.prev_hash ]&quot;  class&#x3D;&quot;lthn-brand&quot;&gt;{{ block.prev_hash }}&lt;/a&gt;&lt;/mat-list-item&gt;--&gt;
+        &lt;/mat-list&gt;
+    &lt;/ngx-section&gt;
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-styleData">
-                <p class="comment">
-                    <code>./blockdetails.component.scss</code>
-                </p>
-                <pre class="line-numbers"><code class="language-scss"></code></pre>
-    </div>
 
     <div class="tab-pane fade " id="c-tree">
         <div id="tree-container"></div>
@@ -582,8 +554,8 @@ export class BlockdetailsComponent implements OnInit, OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="container-fluid" fxLayout="row">    <mat-card fxFlex="100">        <a class="lthn-brand" [routerLink]="[\'/\',\'chain\']">Back to chain page</a>    </mat-card></div><div class="container-fluid" fxLayout="row">    <mat-card fxFlex="25" style="padding: 0;">        <mat-card-title style="padding: 16px;">Information</mat-card-title>        <mat-card-content style="padding: 0;">            <mat-list *ngIf="chainInfo | ngrxPush as info" dense>                <mat-list-item>Status: {{info.status }}</mat-list-item>                <mat-list-item>Daemon Start: {{info.start_time * 1000 | amTimeAgo }}</mat-list-item>                <mat-list-item>Height: {{info.height }}</mat-list-item>                <mat-list-item>Target Height: {{info.target_height }}</mat-list-item>                <mat-list-item>Top:&nbsp;<span [innerHTML]="info.top_block_hash | hashLink | keepHtml"></span>                </mat-list-item>                <mat-list-item>White Peers: {{info.white_peerlist_size }}</mat-list-item>                <mat-list-item>Grey Peers: {{info.grey_peerlist_size }}</mat-list-item>                <mat-list-item>Difficulty: {{info.difficulty | hashrate }}</mat-list-item>                <mat-list-item>Cumulative: {{info.cumulative_difficulty | hashrate }}</mat-list-item>                <mat-list-item>Connect INC: {{info.incoming_connections_count }}</mat-list-item>                <mat-list-item>Connect OUT: {{info.outgoing_connections_count }}</mat-list-item>                <mat-list-item>TX Count: {{info.tx_count }}</mat-list-item>                <mat-list-item>TX Pool Size: {{info.tx_pool_size }}</mat-list-item>                <mat-list-item>Testnet: {{info.testnet }}</mat-list-item>                <mat-list-item>Block Time: {{info.target }}</mat-list-item>                <mat-list-item>Alt Blocks: {{info.alt_blocks_count }}</mat-list-item>                <mat-list-item>Block Size Limit: {{info.block_size_limit }}</mat-list-item>            </mat-list>        </mat-card-content>    </mat-card>    <mat-card fxFlex="75">        <mat-card-title>Block Details</mat-card-title>        <mat-card-content>            <mat-list >                <mat-list-item>ID: <span class="lthn-brand">{{ blockID }}</span></mat-list-item>                <mat-list-item>Block Size: <span class="lthn-brand">{{ block.block_size }}</span></mat-list-item>                <mat-list-item>Depth from Top Block: <span class="lthn-brand">{{ block.depth }}</span></mat-list-item>                <mat-list-item>Difficulty of this block: <span class="lthn-brand">{{ block.difficulty }}</span></mat-list-item>                <mat-list-item>Block Height: <span class="lthn-brand">{{ block.height }}</span></mat-list-item>                <mat-list-item>Block Major Version: <span class="lthn-brand">{{ block.major_version}}</span></mat-list-item>                <mat-list-item>Block Minor Version: <span class="lthn-brand">{{ block.minor_version}}</span></mat-list-item>                <mat-list-item>Block Solution: <span class="lthn-brand">{{ block.nonce}}</span></mat-list-item>                <mat-list-item>Block Transactions: <span class="lthn-brand">{{ block.num_txes}}</span></mat-list-item>                <mat-list-item>Orphan Status: <span class="lthn-brand">{{ block.orphan_status }}</span></mat-list-item>                <mat-list-item>Minted Time: <span class="lthn-brand">{{ block.timestamp  | amFromUnix }}</span></mat-list-item>                <mat-list-item>Reward: <span class="lthn-brand">{{ block.reward |toCoin }}</span></mat-list-item>                <mat-list-item>Previous block: <a [routerLink]="[\'/\', \'chain\', \'block\', block.prev_hash ]"  class="lthn-brand">{{ block.prev_hash }}</a></mat-list-item>            </mat-list>        </mat-card-content>    </mat-card></div></div>'
-    var COMPONENTS = [{'name': 'AddComponent', 'selector': 'lthn-wallet-add'},{'name': 'AppComponent', 'selector': 'lthn-app'},{'name': 'BlockchainComponent', 'selector': 'lthn-chain'},{'name': 'BlockdetailsComponent', 'selector': 'lthn-app-blockdetails'},{'name': 'ConsoleComponent', 'selector': 'lthn-app-console'},{'name': 'DetailsComponent', 'selector': 'lthn-wallet-details'},{'name': 'LoginComponent', 'selector': 'lthn-login'},{'name': 'LogsComponent', 'selector': 'lthn-app-logs'},{'name': 'ModalComponent', 'selector': 'modal'},{'name': 'NoDaemonRunningDialog', 'selector': 'lthn-app-status-no-daemon'},{'name': 'OpenComponent', 'selector': 'lthn-wallet-open'},{'name': 'PostComponent', 'selector': 'lthn-app-post'},{'name': 'ProfileComponent', 'selector': 'lthn-user-profile'},{'name': 'RestoreComponent', 'selector': 'lthn-wallet-restore'},{'name': 'RootComponent', 'selector': 'lthn-root'},{'name': 'SettingsComponent', 'selector': 'lthn-settings'},{'name': 'SettingsComponent', 'selector': 'lthn-app-settings'},{'name': 'SpartaComponent', 'selector': 'lthn-app-sparta'},{'name': 'StatusComponent', 'selector': 'lthn-app-status'},{'name': 'TerminalComponent', 'selector': 'lthn-app-terminal'},{'name': 'TransactionsComponent', 'selector': 'lthn-wallet-transactions'},{'name': 'TransferComponent', 'selector': 'lthn-wallet-transfer'},{'name': 'UserComponent', 'selector': 'lthn-user'},{'name': 'VpnComponent', 'selector': 'lthn-vpn'},{'name': 'WalletComponent', 'selector': 'lthn-app-wallet'},{'name': 'WalletNewComponent', 'selector': 'lthn-wallet-new'}];
+        var COMPONENT_TEMPLATE = '<div>    <ngx-section class="ngx-flex--col"  [sectionCollapsible]="false" sectionTitle="Block Details"  >        <mat-list *ngIf="block" >            <mat-list-item>ID: <span class="lthn-brand">{{ id }}</span></mat-list-item>            <mat-list-item>Block Size: <span class="lthn-brand">{{ block.block_size }}</span></mat-list-item>            <mat-list-item>Depth from Top Block: <span class="lthn-brand">{{ block.depth }}</span></mat-list-item>            <mat-list-item>Difficulty of this block: <span class="lthn-brand">{{ block.difficulty }}</span></mat-list-item>            <mat-list-item>Block Height: <span class="lthn-brand">{{ block.height }}</span></mat-list-item>            <mat-list-item>Block Major Version: <span class="lthn-brand">{{ block.major_version}}</span></mat-list-item>            <mat-list-item>Block Minor Version: <span class="lthn-brand">{{ block.minor_version}}</span></mat-list-item>            <mat-list-item>Block Solution: <span class="lthn-brand">{{ block.nonce}}</span></mat-list-item>            <mat-list-item>Block Transactions: <span class="lthn-brand">{{ block.num_txes}}</span></mat-list-item>            <mat-list-item>Orphan Status: <span class="lthn-brand">{{ block.orphan_status }}</span></mat-list-item>            <mat-list-item>Minted Time: <span class="lthn-brand">{{ block.timestamp  | amFromUnix }}</span></mat-list-item>            <mat-list-item>Reward: <span class="lthn-brand">{{ block.reward |toCoin }}</span></mat-list-item><!--            <mat-list-item>Previous block: <a [routerLink]="[\'/\', \'chain\', \'block\', block.prev_hash ]"  class="lthn-brand">{{ block.prev_hash }}</a></mat-list-item>-->        </mat-list>    </ngx-section></div>'
+    var COMPONENTS = [{'name': 'AddComponent', 'selector': 'lthn-wallet-add'},{'name': 'AppComponent', 'selector': 'lthn-app'},{'name': 'BlockchainComponent', 'selector': 'lthn-chain'},{'name': 'BlockdetailsComponent', 'selector': 'lthn-chain-blockdetails'},{'name': 'ConsoleComponent', 'selector': 'lthn-app-console'},{'name': 'DetailsComponent', 'selector': 'lthn-wallet-details'},{'name': 'LoginComponent', 'selector': 'lthn-login'},{'name': 'LogsComponent', 'selector': 'lthn-app-logs'},{'name': 'ModalComponent', 'selector': 'modal'},{'name': 'NoDaemonRunningDialog', 'selector': 'lthn-app-status-no-daemon'},{'name': 'OpenComponent', 'selector': 'lthn-wallet-open'},{'name': 'PostComponent', 'selector': 'lthn-app-post'},{'name': 'ProfileComponent', 'selector': 'lthn-user-profile'},{'name': 'RestoreComponent', 'selector': 'lthn-wallet-restore'},{'name': 'RootComponent', 'selector': 'lthn-root'},{'name': 'SettingsComponent', 'selector': 'lthn-settings'},{'name': 'SettingsComponent', 'selector': 'lthn-app-settings'},{'name': 'SpartaComponent', 'selector': 'lthn-app-sparta'},{'name': 'StatusComponent', 'selector': 'lthn-app-status'},{'name': 'TerminalComponent', 'selector': 'lthn-app-terminal'},{'name': 'TransactionsComponent', 'selector': 'lthn-wallet-transactions'},{'name': 'TransferComponent', 'selector': 'lthn-wallet-transfer'},{'name': 'UserComponent', 'selector': 'lthn-user'},{'name': 'VpnComponent', 'selector': 'lthn-vpn'},{'name': 'WalletComponent', 'selector': 'lthn-app-wallet'},{'name': 'WalletNewComponent', 'selector': 'lthn-wallet-new'}];
     var DIRECTIVES = [{'name': 'ChartDirective', 'selector': '[lthnChart]'}];
     var ACTUAL_COMPONENT = {'name': 'BlockdetailsComponent'};
 </script>
