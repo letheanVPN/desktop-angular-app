@@ -19,22 +19,20 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: 16.x
-
     - run: npm install --legacy-peer-deps
     - run: npm run build
-    - run: npm install anti-trojan-source
-    - name: Unicode bidi attack check
-      run: npx anti-trojan-source --files='${{ github.workspace }}/dist/**/*.js'
-    - name: run auditjs
-      run: npx --loglevel=error auditjs@beta ossi --json > auditjs.json || exit 0
     - name: Get the version
       id: get_version
       if: startsWith(github.ref, 'refs/tags/')
       run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
     - uses: papeloto/action-zip@v1
       with:
-        files: ${{ github.workspace }}/dist/lethean-desktop/browser/
+        files: ${{ github.workspace }}/dist/lethean-desktop/browser
         dest: lethean-ui-${{ steps.get_version.outputs.VERSION }}.zip
+    - uses: actions/upload-artifact@v2
+      with:
+        name: lethean-ui-${{ steps.get_version.outputs.VERSION }}
+        path: lethean-ui-${{ steps.get_version.outputs.VERSION }}.zip
     - name: Release
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
