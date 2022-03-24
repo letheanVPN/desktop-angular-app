@@ -6,3 +6,7 @@ node_modules
 /lthn
 /coverage
 out-tsc
+apps
+cli
+data
+config
