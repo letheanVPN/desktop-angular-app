@@ -48,7 +48,7 @@ jobs:
         source: "dist/lethean-desktop/browser"
         storageZoneName: "lthn-desktop"
         accessKey: "${{ secrets.BUNNY_CDN_STORAGE_KEY }}"
-        zoneID: "${{ secrets.BUNNY_ZONE_ID }}"
+        zoneId: "${{ secrets.BUNNY_ZONE_ID }}"
         zoneKey: "${{ secrets.BUNNY_ZONE_KEY }}"
    
 
