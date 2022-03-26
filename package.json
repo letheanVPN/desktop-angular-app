@@ -1,5 +1,5 @@
 {
-  "name": "lethean-desktop-angular-app",
+  "name": "lthn-app-desktop",
   "version": "0.0.2",
   "scripts": {
     "ng": "ng",
