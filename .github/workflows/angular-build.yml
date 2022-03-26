@@ -48,8 +48,8 @@ jobs:
         source: "dist/lethean-desktop/browser"
         storageZoneName: "lthn-desktop"
         accessKey: "${{ secrets.BUNNY_CDN_STORAGE_KEY }}"
-    - name: BunnyEdge Purge
-      run: |
-        curl -i -H "Accept: application/json" -H "Content-Type: application/json" -H "AccessKey: ${{ secrets.BUNNY_ZONE_KEY }}" https://bunnycdn.com/api/pullzone/purgeCache?id=${{ secrets.BUNNY_ZONE_ID }}
+        zoneID: "${{ secrets.BUNNY_ZONE_ID }}"
+        zoneKey: "${{ secrets.BUNNY_ZONE_KEY }}"
+   
 
 
