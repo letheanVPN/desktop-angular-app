@@ -42,4 +42,13 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/')
       with:
         files: lethean-ui-${{ steps.get_version.outputs.VERSION }}.zip
+    - name: Web Desktop
+      uses: Snider/bunnycdn-gh-action@master
+      with:
+        source: "dist/lethean-desktop/browser"
+        storageZoneName: "lthn-app"
+        accessKey: "${{ secrets.BUNNY_CDN_STORAGE_KEY }}"
+    - run: |
+        curl -i -H "Accept: application/json" -H "Content-Type: application/json" -H "AccessKey: ${{ secrets.BUNNY_ZONE_KEY }}" https://bunnycdn.com/api/pullzone/purgeCache?id=${{ secrets.BUNNY_ZONE_ID }}
+
 
