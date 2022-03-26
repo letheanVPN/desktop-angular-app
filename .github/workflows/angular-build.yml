@@ -46,7 +46,7 @@ jobs:
       uses: Snider/bunnycdn-gh-action@master
       with:
         source: "dist/lethean-desktop/browser"
-        storageZoneName: "lthn-app"
+        storageZoneName: "lthn-desktop"
         accessKey: "${{ secrets.BUNNY_CDN_STORAGE_KEY }}"
     - name: BunnyEdge Purge
       run: |
