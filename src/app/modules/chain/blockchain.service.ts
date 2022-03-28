@@ -21,7 +21,7 @@ export class BlockchainService {
         return this.http
             .post<any>(
                 `http://127.0.0.1:36911/daemon/chain/start`,
-                {},
+                {"configFile":"letheand.conf"},
                 options
             )
             .toPromise()
