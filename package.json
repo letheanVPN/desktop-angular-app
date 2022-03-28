@@ -11,7 +11,7 @@
     "dev": "npm run be:serve",
     "doc": "npx @compodoc/compodoc -p tsconfig.json",
     "doc:serve": "npx @compodoc/compodoc -s",
-    "be:serve": "deno run -Ar --unstable https://raw.githubusercontent.com/letheanVPN/lethean-server/main/mod.ts",
+    "be:serve": "deno run -Ar --unstable https://raw.githubusercontent.com/letheanVPN/lethean-server/main/mod.ts server",
     "sec": "run-s sec:auditjs sec:bidi",
     "sec:auditjs": "npx auditjs@beta ossi",
     "sec:bidi": "npx anti-trojan-source --files='./dist/**/*.js'",
