@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {ConfigIniParser} from 'config-ini-parser';
 import {CryptService} from '@service/crypt.service';
 import {FileSystemService} from '@service/filesystem/file-system.service';
 import {Router} from '@angular/router';
@@ -49,20 +48,20 @@ export class UserComponent {
 		const password = this.password.value;
 		const passwordRepeat = this.passwordRepeat.value;
 
-		const p = new ConfigIniParser('\r\n');
-		try {
-			p.addSection('daemon');
-			p.set('daemon', 'start_on_boot', 'on');
-
-			await this.fileSystem.writeFile(
-				'conf/app.ini',
-				p.stringify('\r\n')
-			);
-		} catch (e) {
-			if (e === ConfigIniParser.Errors.ErrorDuplicateSectionError) {
-				console.error('Duplicated section');
-			}
-		}
+//		const p = new ConfigIniParser('\r\n');
+//		try {
+//			p.addSection('daemon');
+//			p.set('daemon', 'start_on_boot', 'on');
+//
+//			await this.fileSystem.writeFile(
+//				'conf/app.ini',
+//				p.stringify('\r\n')
+//			);
+//		} catch (e) {
+//			if (e === ConfigIniParser.Errors.ErrorDuplicateSectionError) {
+//				console.error('Duplicated section');
+//			}
+//		}
 
 		const usernameHash = this.cryptService.sha256Salty(username);
 
@@ -87,6 +86,7 @@ export class UserComponent {
 			);
 
 			console.log('Creating User profile data file');
+
 			await this.fileSystem.writeFile(
 				`users/${usernameHash}.lthn`,
 				await this.cryptService.encryptPGPSingle(

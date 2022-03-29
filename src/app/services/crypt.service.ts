@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 import {FileSystemService} from './filesystem/file-system.service';
-import {AppConfigService} from '@service/app-config.service';
+import * as openpgp from 'openpgp';
+import * as crypto from 'crypto-js';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class CryptService {
 	constructor(
-		private appService: AppConfigService,
 		private fileSystem: FileSystemService
 	) {
 	}
@@ -73,7 +73,7 @@ export class CryptService {
 	 * @returns {string}
 	 */
 	sha256Salty(input): string {
-		return this.appService.crypto
+		return crypto
 			.SHA256(input + this.createSalt(input))
 			.toString();
 	}
@@ -85,8 +85,8 @@ export class CryptService {
 	 * @returns {any}
 	 */
 	generateKey(input) {
-		const salt = this.appService.crypto.lib.WordArray.random(128 / 8);
-		return this.appService.crypto.PBKDF2(input, salt, {
+		const salt = crypto.lib.WordArray.random(128 / 8);
+		return crypto.PBKDF2(input, salt, {
 			keySize: 256 / 32
 		});
 	}
@@ -100,7 +100,7 @@ export class CryptService {
 	 * @returns {Promise<any>}
 	 */
 	async createOpenPGP(username, password) {
-		return await this.appService.openpgp.generateKey({
+		return await openpgp.generateKey({
 			type: 'rsa', // Type of the key, defaults to ECC
 			rsaBits: 4096,
 			userIDs: [{name: username}], // you can pass multiple user IDs
@@ -128,11 +128,11 @@ export class CryptService {
 		if (encryptionKey.length === 0) {
 			throw new Error(`Failed to load encryption key id: ${id}`);
 		}
-		const encrypted = await this.appService.openpgp.encrypt({
-			message: await this.appService.openpgp.createMessage({
+		const encrypted = await openpgp.encrypt({
+			message: await openpgp.createMessage({
 				text: data
 			}), // input as Message object
-			encryptionKeys: await this.appService.openpgp.readKey({
+			encryptionKeys: await openpgp.readKey({
 				armoredKey: encryptionKey
 			})
 		});
@@ -157,19 +157,19 @@ export class CryptService {
 			`users/${id}.lthn.private.asc`
 		);
 		// decrypt the private key
-		let privateKey = await this.appService.openpgp.decryptKey({
-			privateKey: await this.appService.openpgp.readPrivateKey({
+		let privateKey = await openpgp.decryptKey({
+			privateKey: await openpgp.readPrivateKey({
 				armoredKey: encryptionKey
 			}),
 			passphrase
 		});
 
-		let message = await this.appService.openpgp.readMessage({
+		let message = await openpgp.readMessage({
 			armoredMessage: encrypted
 		})
 
 		const {data: decrypted, signatures} =
-			await this.appService.openpgp.decrypt({
+			await openpgp.decrypt({
 				message,
 				decryptionKeys: privateKey
 			});

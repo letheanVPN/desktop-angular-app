@@ -16,6 +16,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {AuthModule} from '@module/auth/auth.module';
+import {SectionModule, ToolbarModule} from '@swimlane/ngx-ui';
 
 const routes: Routes = [
 	{
@@ -48,7 +49,9 @@ const routes: Routes = [
 		MatCheckboxModule,
 		ReactiveFormsModule,
 		MatProgressBarModule,
-		AuthModule
+		AuthModule,
+		ToolbarModule,
+		SectionModule
 	]
 })
 export class UserModule {
