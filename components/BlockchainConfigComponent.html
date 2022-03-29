@@ -38,7 +38,7 @@
   <li>Components</li>
   <li
   >
-  LoginComponent</li>
+  BlockchainConfigComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -61,7 +61,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/modules/auth/login.component.ts</code>
+    <code>src/app/modules/chain/components/config.component.ts</code>
 </p>
 
 
@@ -86,7 +86,7 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>lthn-login</code></td>
+                <td class="col-md-9"><code>lthn-chain-config</code></td>
             </tr>
 
 
@@ -94,7 +94,7 @@
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./login.component.html</code></td>
+                <td class="col-md-9"><code>./config.component.html</code></td>
             </tr>
 
 
@@ -121,16 +121,15 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#error" >error</a>
+                                    <span class="modifier">Public</span>
+                                <a href="#chain" >chain</a>
                             </li>
                             <li>
-                                <a href="#password" >password</a>
+                                <a href="#chainInfo" >chainInfo</a>
                             </li>
                             <li>
-                                <a href="#passwordRepeat" >passwordRepeat</a>
-                            </li>
-                            <li>
-                                <a href="#username" >username</a>
+                                    <span class="modifier">Public</span>
+                                <a href="#config" >config</a>
                             </li>
                         </ul>
                     </td>
@@ -145,11 +144,12 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#inputChanged" >inputChanged</a>
+                                    <span class="modifier">Async</span>
+                                <a href="#load" >load</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#submit" >submit</a>
+                                <a href="#save" >save</a>
                             </li>
                         </ul>
                     </td>
@@ -169,12 +169,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+<code>constructor(chain: <a href="../injectables/BlockchainService.html" target="_self">BlockchainService</a>, fs: <a href="../injectables/FileSystemService.html" target="_self">FileSystemService</a>, notify: NotificationService)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/auth/login.component.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/modules/chain/components/config.component.ts:13</a></div>
                             </td>
                         </tr>
 
@@ -192,10 +192,10 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>authService</td>
+                                                        <td>chain</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                                        <code><a href="../injectables/BlockchainService.html" target="_self" >BlockchainService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -204,10 +204,22 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>router</td>
+                                                        <td>fs</td>
                                                   
                                                         <td>
-                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                                        <code><a href="../injectables/FileSystemService.html" target="_self" >FileSystemService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>notify</td>
+                                                  
+                                                        <td>
+                                                                    <code>NotificationService</code>
                                                         </td>
                                                   
                                                     <td>
@@ -237,24 +249,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="inputChanged"></a>
+                    <a name="load"></a>
                     <span class="name">
-                        <span ><b>inputChanged</b></span>
-                        <a href="#inputChanged"><span class="icon ion-ios-link"></span></a>
+                        <span class="modifier">Async</span>
+                        <span ><b>load</b></span>
+                        <a href="#load"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>inputChanged()</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>load()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">src/app/modules/auth/login.component.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">src/app/modules/chain/components/config.component.ts:28</a></div>
                 </td>
             </tr>
 
@@ -263,7 +277,7 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                     </div>
                 </td>
@@ -274,26 +288,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="submit"></a>
+                    <a name="save"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
-                        <span ><b>submit</b></span>
-                        <a href="#submit"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>save</b></span>
+                        <a href="#save"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>submit()</code>
+                    <code>save()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="24"
-                            class="link-to-prism">src/app/modules/auth/login.component.ts:24</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="19"
+                            class="link-to-prism">src/app/modules/chain/components/config.component.ts:19</a></div>
                 </td>
             </tr>
 
@@ -319,10 +333,64 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="error"></a>
+                    <a name="chain"></a>
                     <span class="name">
-                        <span ><b>error</b></span>
-                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                            <span class="modifier">Public</span>
+                        <span ><b>chain</b></span>
+                        <a href="#chain"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/BlockchainService.html" target="_self" >BlockchainService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/modules/chain/components/config.component.ts:15</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chainInfo"></a>
+                    <span class="name">
+                        <span ><b>chainInfo</b></span>
+                        <a href="#chainInfo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ChainGetInfo.html" target="_self" >ChainGetInfo</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/modules/chain/components/config.component.ts:13</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="config"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>config</b></span>
+                        <a href="#config"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
@@ -339,82 +407,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/auth/login.component.ts:14</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="password"></a>
-                    <span class="name">
-                        <span ><b>password</b></span>
-                        <a href="#password"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>new FormControl(&#x27;&#x27;)</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/modules/auth/login.component.ts:12</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="passwordRepeat"></a>
-                    <span class="name">
-                        <span ><b>passwordRepeat</b></span>
-                        <a href="#passwordRepeat"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>new FormControl(&#x27;&#x27;)</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/modules/auth/login.component.ts:13</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="username"></a>
-                    <span class="name">
-                        <span ><b>username</b></span>
-                        <a href="#username"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>new FormControl(&#x27;&#x27;)</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/modules/auth/login.component.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/modules/chain/components/config.component.ts:12</a></div>
                         </td>
                     </tr>
 
@@ -428,58 +421,53 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component} from &#x27;@angular/core&#x27;;
-import {FormControl} from &#x27;@angular/forms&#x27;;
-import {AuthService} from &#x27;./auth.service&#x27;;
-import {Router} from &#x27;@angular/router&#x27;;
-
+import {ChainGetInfo} from &#x27;@module/chain/interfaces/props/get_info&#x27;;
+import {BlockchainService} from &#x27;@module/chain/blockchain.service&#x27;;
+import {FileSystemService} from &#x27;@service/filesystem/file-system.service&#x27;;
+import {NotificationService, NotificationStyleType, NotificationType} from &#x27;@swimlane/ngx-ui&#x27;;
 @Component({
-	selector: &#x27;lthn-login&#x27;,
-	templateUrl: &#x27;./login.component.html&#x27;
+	selector: &#x27;lthn-chain-config&#x27;,
+	templateUrl: &#x27;./config.component.html&#x27;
 })
-export class LoginComponent {
-	username &#x3D; new FormControl(&#x27;&#x27;);
-	password &#x3D; new FormControl(&#x27;&#x27;);
-	passwordRepeat &#x3D; new FormControl(&#x27;&#x27;);
-	error &#x3D; &#x27;&#x27;;
+export class BlockchainConfigComponent {
 
-	constructor(private authService: AuthService, private router: Router) {
+	public config &#x3D; &#x27;&#x27;
+	chainInfo: ChainGetInfo;
+
+	constructor(public chain: BlockchainService, private fs: FileSystemService, private notify: NotificationService) {
+		this.load().then(() &#x3D;&gt; console.log(&#x27;loaded&#x27;));
 	}
 
-	inputChanged(){
-		// Reset error after inputs are changed
-		this.error &#x3D; &#x27;&#x27;;
-	}
-
-	async submit() {
-		this.authService.login(this.username.value, this.password.value)
-		.then(() &#x3D;&gt; {
-			if (this.authService.getAuthStatus()) {
-				this.router.navigateByUrl(&#x27;/&#x27;);
-			} else {
-				this.error &#x3D; &#x27;Login Failed, try again.&#x27;;
-			}
-		})
-		.catch(() &#x3D;&gt; {
-			this.error &#x3D; &#x27;Login Failed, try again.&#x27;;
+	async save() {
+		await this.fs.writeFile(&#x27;conf/letheand.conf&#x27;, this.config)
+		this.notify.create({
+			type: NotificationType.html,
+			styleType: NotificationStyleType.success,
+			title: &#x27;Saved Config File&#x27;
 		})
 	}
+
+	async load() {
+		this.config &#x3D; await this.fs.readFile(&#x27;conf/letheand.conf&#x27;)
+	}
+
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div *ngIf&#x3D;&quot;error.length &gt; 0&quot;&gt;{{error}}&lt;/div&gt;
-&lt;mat-form-field appearance&#x3D;&quot;standard&quot;&gt;
-    &lt;mat-label&gt;Username&lt;/mat-label&gt;
-    &lt;input [formControl]&#x3D;&quot;username&quot; (keyup)&#x3D;&quot;inputChanged()&quot; matInput type&#x3D;&quot;text&quot;&gt;
-&lt;/mat-form-field&gt;
-&lt;mat-form-field appearance&#x3D;&quot;standard&quot;&gt;
-    &lt;mat-label&gt;Password&lt;/mat-label&gt;
-    &lt;input [formControl]&#x3D;&quot;password&quot; (keyup)&#x3D;&quot;inputChanged()&quot; matInput type&#x3D;&quot;password&quot;&gt;
-&lt;/mat-form-field&gt;
+        <pre class="line-numbers"><code class="language-html">
+&lt;div class&#x3D;&quot;container-fluid&quot; style&#x3D;&quot;min-height: 500px;&quot;&gt;
+    &lt;ngx-codemirror style&#x3D;&quot;width: 100%;&quot; class&#x3D;&quot;p-0&quot;  mode&#x3D;&quot;text&quot; [(ngModel)]&#x3D;&quot;config&quot;
+            [config]&#x3D;&quot;{
+    lineNumbers: true,
+    theme: &#x27;dracula&#x27;
 
-&lt;button mat-button (click)&#x3D;&quot;submit()&quot;&gt;Login&lt;/button&gt;
-
+  }&quot;
+    &gt;
+    &lt;/ngx-codemirror&gt;
+    &lt;ngx-button (click)&#x3D;&quot;save()&quot;&gt;Save File&lt;/ngx-button&gt;
+&lt;/div&gt;
 
 </code></pre>
     </div>
@@ -510,10 +498,10 @@ export class LoginComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div *ngIf="error.length > 0">{{error}}</div><mat-form-field appearance="standard">    <mat-label>Username</mat-label>    <input [formControl]="username" (keyup)="inputChanged()" matInput type="text"></mat-form-field><mat-form-field appearance="standard">    <mat-label>Password</mat-label>    <input [formControl]="password" (keyup)="inputChanged()" matInput type="password"></mat-form-field><button mat-button (click)="submit()">Login</button></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="container-fluid" style="min-height: 500px;">    <ngx-codemirror style="width: 100%;" class="p-0"  mode="text" [(ngModel)]="config"            [config]="{    lineNumbers: true,    theme: \'dracula\'  }"    >    </ngx-codemirror>    <ngx-button (click)="save()">Save File</ngx-button></div></div>'
     var COMPONENTS = [{'name': 'AddComponent', 'selector': 'lthn-wallet-add'},{'name': 'AppComponent', 'selector': 'lthn-app'},{'name': 'BlockchainComponent', 'selector': 'lthn-chain'},{'name': 'BlockchainConfigComponent', 'selector': 'lthn-chain-config'},{'name': 'BlockchainStatsComponent', 'selector': 'lthn-chain-stats'},{'name': 'BlockDetailsComponent', 'selector': 'lthn-chain-block-details'},{'name': 'BlockLedgerComponent', 'selector': 'lthn-chain-ledger'},{'name': 'ConsoleComponent', 'selector': 'lthn-app-console'},{'name': 'DetailsComponent', 'selector': 'lthn-wallet-details'},{'name': 'LoginComponent', 'selector': 'lthn-login'},{'name': 'LogsComponent', 'selector': 'lthn-app-logs'},{'name': 'ModalComponent', 'selector': 'modal'},{'name': 'NoDaemonRunningDialog', 'selector': 'lthn-app-status-no-daemon'},{'name': 'OpenComponent', 'selector': 'lthn-wallet-open'},{'name': 'PostComponent', 'selector': 'lthn-app-post'},{'name': 'ProfileComponent', 'selector': 'lthn-user-profile'},{'name': 'RestoreComponent', 'selector': 'lthn-wallet-restore'},{'name': 'RootComponent', 'selector': 'lthn-root'},{'name': 'SettingsComponent', 'selector': 'lthn-settings'},{'name': 'SettingsComponent', 'selector': 'lthn-app-settings'},{'name': 'SpartaComponent', 'selector': 'lthn-app-sparta'},{'name': 'StatusComponent', 'selector': 'lthn-app-status'},{'name': 'TerminalComponent', 'selector': 'lthn-app-terminal'},{'name': 'TransactionsComponent', 'selector': 'lthn-wallet-transactions'},{'name': 'TransferComponent', 'selector': 'lthn-wallet-transfer'},{'name': 'UserComponent', 'selector': 'lthn-user'},{'name': 'VpnComponent', 'selector': 'lthn-vpn'},{'name': 'WalletComponent', 'selector': 'lthn-app-wallet'},{'name': 'WalletNewComponent', 'selector': 'lthn-wallet-new'}];
     var DIRECTIVES = [{'name': 'ChartDirective', 'selector': '[lthnChart]'}];
-    var ACTUAL_COMPONENT = {'name': 'LoginComponent'};
+    var ACTUAL_COMPONENT = {'name': 'BlockchainConfigComponent'};
 </script>
 <script src="../js/tree.js"></script>
 
@@ -559,7 +547,7 @@ export class LoginComponent {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'LoginComponent.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'BlockchainConfigComponent.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

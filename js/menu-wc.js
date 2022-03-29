@@ -15,7 +15,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
         <nav>
             <ul class="list">
                 <li class="title">
-                    <a href="index.html" data-type="index-link">lethean-desktop-angular-app documentation</a>
+                    <a href="index.html" data-type="index-link">lthn-app-desktop documentation</a>
                 </li>
 
                 <li class="divider"></li>
@@ -96,18 +96,27 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/BlockchainModule.html" data-type="entity-link" >BlockchainModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-BlockchainModule-32171280b93325635b0fd164a4938ba84ecf5497b0036fd87dfece58233ff6bd0a72ff732609de2328187937ab094f6345f879db0d499f5779e8a69eeb266993"' : 'data-target="#xs-components-links-module-BlockchainModule-32171280b93325635b0fd164a4938ba84ecf5497b0036fd87dfece58233ff6bd0a72ff732609de2328187937ab094f6345f879db0d499f5779e8a69eeb266993"' }>
+                                            'data-target="#components-links-module-BlockchainModule-bacae7ddd67827d43b1976d5af618ccc6cdf6d5305690abd44f201ac2d89c980f89e6887b82bc471ae76bbaef7fde653fdefd5e5a887359e6c69dc0cd45e0b7f"' : 'data-target="#xs-components-links-module-BlockchainModule-bacae7ddd67827d43b1976d5af618ccc6cdf6d5305690abd44f201ac2d89c980f89e6887b82bc471ae76bbaef7fde653fdefd5e5a887359e6c69dc0cd45e0b7f"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-BlockchainModule-32171280b93325635b0fd164a4938ba84ecf5497b0036fd87dfece58233ff6bd0a72ff732609de2328187937ab094f6345f879db0d499f5779e8a69eeb266993"' :
-                                            'id="xs-components-links-module-BlockchainModule-32171280b93325635b0fd164a4938ba84ecf5497b0036fd87dfece58233ff6bd0a72ff732609de2328187937ab094f6345f879db0d499f5779e8a69eeb266993"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-BlockchainModule-bacae7ddd67827d43b1976d5af618ccc6cdf6d5305690abd44f201ac2d89c980f89e6887b82bc471ae76bbaef7fde653fdefd5e5a887359e6c69dc0cd45e0b7f"' :
+                                            'id="xs-components-links-module-BlockchainModule-bacae7ddd67827d43b1976d5af618ccc6cdf6d5305690abd44f201ac2d89c980f89e6887b82bc471ae76bbaef7fde653fdefd5e5a887359e6c69dc0cd45e0b7f"' }>
+                                            <li class="link">
+                                                <a href="components/BlockDetailsComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >BlockDetailsComponent</a>
+                                            </li>
+                                            <li class="link">
+                                                <a href="components/BlockLedgerComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >BlockLedgerComponent</a>
+                                            </li>
                                             <li class="link">
                                                 <a href="components/BlockchainComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >BlockchainComponent</a>
                                             </li>
                                             <li class="link">
-                                                <a href="components/BlockdetailsComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >BlockdetailsComponent</a>
+                                                <a href="components/BlockchainConfigComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >BlockchainConfigComponent</a>
+                                            </li>
+                                            <li class="link">
+                                                <a href="components/BlockchainStatsComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >BlockchainStatsComponent</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -443,6 +452,18 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         <ul class="links collapse " ${ isNormalMode ? 'id="components-links"' : 'id="xs-components-links"' }>
                             <li class="link">
                                 <a href="components/AddComponent.html" data-type="entity-link" >AddComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/BlockchainConfigComponent.html" data-type="entity-link" >BlockchainConfigComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/BlockchainStatsComponent.html" data-type="entity-link" >BlockchainStatsComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/BlockDetailsComponent.html" data-type="entity-link" >BlockDetailsComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/BlockLedgerComponent.html" data-type="entity-link" >BlockLedgerComponent</a>
                             </li>
                             <li class="link">
                                 <a href="components/DetailsComponent.html" data-type="entity-link" >DetailsComponent</a>

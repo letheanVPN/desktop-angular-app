@@ -38,7 +38,7 @@
   <li>Components</li>
   <li
   >
-  LoginComponent</li>
+  BlockchainStatsComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -61,7 +61,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/modules/auth/login.component.ts</code>
+    <code>src/app/modules/chain/components/stats.component.ts</code>
 </p>
 
 
@@ -86,7 +86,7 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>lthn-login</code></td>
+                <td class="col-md-9"><code>lthn-chain-stats</code></td>
             </tr>
 
 
@@ -94,7 +94,7 @@
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./login.component.html</code></td>
+                <td class="col-md-9"><code>./stats.component.html</code></td>
             </tr>
 
 
@@ -121,39 +121,16 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#error" >error</a>
+                                    <span class="modifier">Public</span>
+                                <a href="#chain" >chain</a>
                             </li>
                             <li>
-                                <a href="#password" >password</a>
-                            </li>
-                            <li>
-                                <a href="#passwordRepeat" >passwordRepeat</a>
-                            </li>
-                            <li>
-                                <a href="#username" >username</a>
+                                <a href="#chainInfo" >chainInfo</a>
                             </li>
                         </ul>
                     </td>
                 </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Methods</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#inputChanged" >inputChanged</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#submit" >submit</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
 
 
@@ -169,12 +146,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+<code>constructor(chain: <a href="../injectables/BlockchainService.html" target="_self">BlockchainService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/auth/login.component.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/modules/chain/components/stats.component.ts:12</a></div>
                             </td>
                         </tr>
 
@@ -192,22 +169,10 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>authService</td>
+                                                        <td>chain</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>router</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                                        <code><a href="../injectables/BlockchainService.html" target="_self" >BlockchainService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -228,88 +193,7 @@
 
 
 
-    <section>
-    
-    <h3 id="methods">
-        Methods
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="inputChanged"></a>
-                    <span class="name">
-                        <span ><b>inputChanged</b></span>
-                        <a href="#inputChanged"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>inputChanged()</code>
-                </td>
-            </tr>
 
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">src/app/modules/auth/login.component.ts:19</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="submit"></a>
-                    <span class="name">
-                        <span class="modifier">Async</span>
-                        <span ><b>submit</b></span>
-                        <a href="#submit"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>submit()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="24"
-                            class="link-to-prism">src/app/modules/auth/login.component.ts:24</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
     <section>
     
     <h3 id="inputs">
@@ -319,27 +203,23 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="error"></a>
+                    <a name="chain"></a>
                     <span class="name">
-                        <span ><b>error</b></span>
-                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                            <span class="modifier">Public</span>
+                        <span ><b>chain</b></span>
+                        <a href="#chain"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                        <i>Type : </i>        <code><a href="../injectables/BlockchainService.html" target="_self" >BlockchainService</a></code>
 
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;&#x27;</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/auth/login.component.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/chain/components/stats.component.ts:14</a></div>
                         </td>
                     </tr>
 
@@ -350,71 +230,22 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="password"></a>
+                    <a name="chainInfo"></a>
                     <span class="name">
-                        <span ><b>password</b></span>
-                        <a href="#password"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>chainInfo</b></span>
+                        <a href="#chainInfo"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>new FormControl(&#x27;&#x27;)</code>
+                        <i>Type : </i>        <code><a href="../interfaces/ChainGetInfo.html" target="_self" >ChainGetInfo</a></code>
+
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/modules/auth/login.component.ts:12</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="passwordRepeat"></a>
-                    <span class="name">
-                        <span ><b>passwordRepeat</b></span>
-                        <a href="#passwordRepeat"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>new FormControl(&#x27;&#x27;)</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/modules/auth/login.component.ts:13</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="username"></a>
-                    <span class="name">
-                        <span ><b>username</b></span>
-                        <a href="#username"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>new FormControl(&#x27;&#x27;)</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/modules/auth/login.component.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/modules/chain/components/stats.component.ts:12</a></div>
                         </td>
                     </tr>
 
@@ -428,59 +259,103 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component} from &#x27;@angular/core&#x27;;
-import {FormControl} from &#x27;@angular/forms&#x27;;
-import {AuthService} from &#x27;./auth.service&#x27;;
-import {Router} from &#x27;@angular/router&#x27;;
+import {ChainGetInfo} from &#x27;@module/chain/interfaces/props/get_info&#x27;;
+import {BlockchainService} from &#x27;@module/chain/blockchain.service&#x27;;
 
 @Component({
-	selector: &#x27;lthn-login&#x27;,
-	templateUrl: &#x27;./login.component.html&#x27;
+	selector: &#x27;lthn-chain-stats&#x27;,
+	templateUrl: &#x27;./stats.component.html&#x27;
 })
-export class LoginComponent {
-	username &#x3D; new FormControl(&#x27;&#x27;);
-	password &#x3D; new FormControl(&#x27;&#x27;);
-	passwordRepeat &#x3D; new FormControl(&#x27;&#x27;);
-	error &#x3D; &#x27;&#x27;;
+export class BlockchainStatsComponent {
 
-	constructor(private authService: AuthService, private router: Router) {
-	}
 
-	inputChanged(){
-		// Reset error after inputs are changed
-		this.error &#x3D; &#x27;&#x27;;
-	}
+	chainInfo: ChainGetInfo;
 
-	async submit() {
-		this.authService.login(this.username.value, this.password.value)
-		.then(() &#x3D;&gt; {
-			if (this.authService.getAuthStatus()) {
-				this.router.navigateByUrl(&#x27;/&#x27;);
-			} else {
-				this.error &#x3D; &#x27;Login Failed, try again.&#x27;;
-			}
-		})
-		.catch(() &#x3D;&gt; {
-			this.error &#x3D; &#x27;Login Failed, try again.&#x27;;
-		})
-	}
+	constructor(public chain: BlockchainService) {}
+
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div *ngIf&#x3D;&quot;error.length &gt; 0&quot;&gt;{{error}}&lt;/div&gt;
-&lt;mat-form-field appearance&#x3D;&quot;standard&quot;&gt;
-    &lt;mat-label&gt;Username&lt;/mat-label&gt;
-    &lt;input [formControl]&#x3D;&quot;username&quot; (keyup)&#x3D;&quot;inputChanged()&quot; matInput type&#x3D;&quot;text&quot;&gt;
-&lt;/mat-form-field&gt;
-&lt;mat-form-field appearance&#x3D;&quot;standard&quot;&gt;
-    &lt;mat-label&gt;Password&lt;/mat-label&gt;
-    &lt;input [formControl]&#x3D;&quot;password&quot; (keyup)&#x3D;&quot;inputChanged()&quot; matInput type&#x3D;&quot;password&quot;&gt;
-&lt;/mat-form-field&gt;
-
-&lt;button mat-button (click)&#x3D;&quot;submit()&quot;&gt;Login&lt;/button&gt;
-
-
+        <pre class="line-numbers"><code class="language-html">&lt;table class&#x3D;&quot;table&quot; *ngIf&#x3D;&quot;chain.chainInfo as info&quot; &gt;
+    &lt;thead&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Statistic&lt;/th&gt;
+        &lt;th&gt;Value&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+    &lt;tr&gt;
+        &lt;td&gt;{{ &#x27;app.lthn.chain.words.status&#x27; | translate}}&lt;/td&gt;
+        &lt;td&gt;{{ info.status }}&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;{{ &#x27;app.lthn.chain.words.height&#x27; | translate}}&lt;/td&gt;
+        &lt;td&gt;{{ info.height | number }}&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;{{ &#x27;app.lthn.chain.words.start_time&#x27; | translate}}&lt;/td&gt;
+        &lt;td&gt;{{info.start_time * 1000 | amTimeAgo }}&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;{{ &#x27;app.lthn.chain.words.target_height&#x27; | translate}}&lt;/td&gt;
+        &lt;td&gt;{{info.target_height }}&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;{{ &#x27;app.lthn.chain.words.top_height&#x27; | translate}}&lt;/td&gt;
+        &lt;td&gt;&lt;span [innerHTML]&#x3D;&quot;info.top_block_hash | hashLink | keepHtml&quot; &gt;&lt;/span&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;{{ &#x27;app.lthn.chain.words.white_peerlist_size&#x27; | translate}}&lt;/td&gt;
+        &lt;td&gt;{{info.white_peerlist_size }}&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;{{ &#x27;app.lthn.chain.words.grey_peerlist_size&#x27; | translate}}&lt;/td&gt;
+        &lt;td&gt;{{info.grey_peerlist_size }}&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;{{ &#x27;app.lthn.chain.words.difficulty&#x27; | translate}}&lt;/td&gt;
+        &lt;td&gt;{{info.difficulty | hashrate }}&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;{{ &#x27;app.lthn.chain.words.cumulative_difficulty&#x27; | translate}}&lt;/td&gt;
+        &lt;td&gt;{{info.cumulative_difficulty | hashrate }}&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;{{ &#x27;app.lthn.chain.words.incoming_connections_count&#x27; | translate}}&lt;/td&gt;
+        &lt;td&gt;{{info.incoming_connections_count }}&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;{{ &#x27;app.lthn.chain.words.tx_count&#x27; | translate}}&lt;/td&gt;
+        &lt;td&gt;{{info.tx_count }}&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;{{ &#x27;app.lthn.chain.words.tx_pool_size&#x27; | translate}}&lt;/td&gt;
+        &lt;td&gt;{{info.tx_pool_size }}&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;{{ &#x27;app.lthn.chain.words.testnet&#x27; | translate}}&lt;/td&gt;
+        &lt;td&gt;{{info.testnet }}&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;{{ &#x27;app.lthn.chain.words.outgoing_connections_count&#x27; | translate}}&lt;/td&gt;
+        &lt;td&gt;{{info.outgoing_connections_count }}&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;{{ &#x27;app.lthn.chain.words.target&#x27; | translate}}&lt;/td&gt;
+        &lt;td&gt;{{info.target }}&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;{{ &#x27;app.lthn.chain.words.alt_blocks_count&#x27; | translate}}&lt;/td&gt;
+        &lt;td&gt;{{info.alt_blocks_count }}&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;{{ &#x27;app.lthn.chain.words.block_size_limit&#x27; | translate}}&lt;/td&gt;
+        &lt;td&gt;{{info.block_size_limit }}&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
 </code></pre>
     </div>
 
@@ -510,10 +385,10 @@ export class LoginComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div *ngIf="error.length > 0">{{error}}</div><mat-form-field appearance="standard">    <mat-label>Username</mat-label>    <input [formControl]="username" (keyup)="inputChanged()" matInput type="text"></mat-form-field><mat-form-field appearance="standard">    <mat-label>Password</mat-label>    <input [formControl]="password" (keyup)="inputChanged()" matInput type="password"></mat-form-field><button mat-button (click)="submit()">Login</button></div>'
+        var COMPONENT_TEMPLATE = '<div><table class="table" *ngIf="chain.chainInfo as info" >    <thead>    <tr>        <th>Statistic</th>        <th>Value</th>    </tr>    </thead>    <tbody>    <tr>        <td>{{ \'app.lthn.chain.words.status\' | translate}}</td>        <td>{{ info.status }}</td>    </tr>    <tr>        <td>{{ \'app.lthn.chain.words.height\' | translate}}</td>        <td>{{ info.height | number }}</td>    </tr>    <tr>        <td>{{ \'app.lthn.chain.words.start_time\' | translate}}</td>        <td>{{info.start_time * 1000 | amTimeAgo }}</td>    </tr>    <tr>        <td>{{ \'app.lthn.chain.words.target_height\' | translate}}</td>        <td>{{info.target_height }}</td>    </tr>    <tr>        <td>{{ \'app.lthn.chain.words.top_height\' | translate}}</td>        <td><span [innerHTML]="info.top_block_hash | hashLink | keepHtml" ></span></td>    </tr>    <tr>        <td>{{ \'app.lthn.chain.words.white_peerlist_size\' | translate}}</td>        <td>{{info.white_peerlist_size }}</td>    </tr>    <tr>        <td>{{ \'app.lthn.chain.words.grey_peerlist_size\' | translate}}</td>        <td>{{info.grey_peerlist_size }}</td>    </tr>    <tr>        <td>{{ \'app.lthn.chain.words.difficulty\' | translate}}</td>        <td>{{info.difficulty | hashrate }}</td>    </tr>    <tr>        <td>{{ \'app.lthn.chain.words.cumulative_difficulty\' | translate}}</td>        <td>{{info.cumulative_difficulty | hashrate }}</td>    </tr>    <tr>        <td>{{ \'app.lthn.chain.words.incoming_connections_count\' | translate}}</td>        <td>{{info.incoming_connections_count }}</td>    </tr>    <tr>        <td>{{ \'app.lthn.chain.words.tx_count\' | translate}}</td>        <td>{{info.tx_count }}</td>    </tr>    <tr>        <td>{{ \'app.lthn.chain.words.tx_pool_size\' | translate}}</td>        <td>{{info.tx_pool_size }}</td>    </tr>    <tr>        <td>{{ \'app.lthn.chain.words.testnet\' | translate}}</td>        <td>{{info.testnet }}</td>    </tr>    <tr>        <td>{{ \'app.lthn.chain.words.outgoing_connections_count\' | translate}}</td>        <td>{{info.outgoing_connections_count }}</td>    </tr>    <tr>        <td>{{ \'app.lthn.chain.words.target\' | translate}}</td>        <td>{{info.target }}</td>    </tr>    <tr>        <td>{{ \'app.lthn.chain.words.alt_blocks_count\' | translate}}</td>        <td>{{info.alt_blocks_count }}</td>    </tr>    <tr>        <td>{{ \'app.lthn.chain.words.block_size_limit\' | translate}}</td>        <td>{{info.block_size_limit }}</td>    </tr>    </tbody></table></div>'
     var COMPONENTS = [{'name': 'AddComponent', 'selector': 'lthn-wallet-add'},{'name': 'AppComponent', 'selector': 'lthn-app'},{'name': 'BlockchainComponent', 'selector': 'lthn-chain'},{'name': 'BlockchainConfigComponent', 'selector': 'lthn-chain-config'},{'name': 'BlockchainStatsComponent', 'selector': 'lthn-chain-stats'},{'name': 'BlockDetailsComponent', 'selector': 'lthn-chain-block-details'},{'name': 'BlockLedgerComponent', 'selector': 'lthn-chain-ledger'},{'name': 'ConsoleComponent', 'selector': 'lthn-app-console'},{'name': 'DetailsComponent', 'selector': 'lthn-wallet-details'},{'name': 'LoginComponent', 'selector': 'lthn-login'},{'name': 'LogsComponent', 'selector': 'lthn-app-logs'},{'name': 'ModalComponent', 'selector': 'modal'},{'name': 'NoDaemonRunningDialog', 'selector': 'lthn-app-status-no-daemon'},{'name': 'OpenComponent', 'selector': 'lthn-wallet-open'},{'name': 'PostComponent', 'selector': 'lthn-app-post'},{'name': 'ProfileComponent', 'selector': 'lthn-user-profile'},{'name': 'RestoreComponent', 'selector': 'lthn-wallet-restore'},{'name': 'RootComponent', 'selector': 'lthn-root'},{'name': 'SettingsComponent', 'selector': 'lthn-settings'},{'name': 'SettingsComponent', 'selector': 'lthn-app-settings'},{'name': 'SpartaComponent', 'selector': 'lthn-app-sparta'},{'name': 'StatusComponent', 'selector': 'lthn-app-status'},{'name': 'TerminalComponent', 'selector': 'lthn-app-terminal'},{'name': 'TransactionsComponent', 'selector': 'lthn-wallet-transactions'},{'name': 'TransferComponent', 'selector': 'lthn-wallet-transfer'},{'name': 'UserComponent', 'selector': 'lthn-user'},{'name': 'VpnComponent', 'selector': 'lthn-vpn'},{'name': 'WalletComponent', 'selector': 'lthn-app-wallet'},{'name': 'WalletNewComponent', 'selector': 'lthn-wallet-new'}];
     var DIRECTIVES = [{'name': 'ChartDirective', 'selector': '[lthnChart]'}];
-    var ACTUAL_COMPONENT = {'name': 'LoginComponent'};
+    var ACTUAL_COMPONENT = {'name': 'BlockchainStatsComponent'};
 </script>
 <script src="../js/tree.js"></script>
 
@@ -559,7 +434,7 @@ export class LoginComponent {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'LoginComponent.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'BlockchainStatsComponent.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
