@@ -33,15 +33,16 @@ export class AuthGuard implements CanActivate {
 	canActivate(
 
 	): boolean | Promise<boolean> {
-		return true
+		//return true
+		console.log('AuthGuard#canActivate');
 		let isAuthenticated = this.authService.getAuthStatus();
 		if (!isAuthenticated) {
 			try {
-				this.fileSystem.listFiles('/users').then((dat: any) => {
+				this.fileSystem.listFiles('users').then(async (dat: any) => {
 					if (dat.length > 0) {
-						this.router.navigate(['/login']);
+						await this.router.navigate(['/login']);
 					} else {
-						//this.router.navigate(['/user']);
+						await this.router.navigate(['/user']);
 					}
 				});
 			}catch (e) {

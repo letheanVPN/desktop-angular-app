@@ -4,6 +4,8 @@ import {RootRoutingModule} from '@module/root-routing.module';
 import {LoginComponent} from '@module/auth/login.component';
 import {BlockchainRoutingModule} from '@module/chain/blockchain-routing.module';
 import {WalletRoutingModule} from '@module/wallet/wallet-routing.module';
+import {UserRoutingModule} from '@module/user/user-routing.module';
+import {AuthGuard} from '@module/auth/route.guard';
 
 const routes: Routes = [
 	{
@@ -18,7 +20,9 @@ const routes: Routes = [
 		}
 	},
 	{
-		path: "", redirectTo: 'dashboard',
+		path: "",
+		canActivate: [AuthGuard],
+		redirectTo: 'dashboard',
 	}
 ];
 
@@ -26,12 +30,13 @@ const routes: Routes = [
 	imports: [
 		RouterModule.forRoot(routes, { useHash: true, relativeLinkResolution: 'legacy', initialNavigation: 'enabledBlocking' }),
 		BlockchainRoutingModule,
-//		UserRoutingModule,
+		UserRoutingModule,
 		//SettingsRoutingModule,
 		WalletRoutingModule,
 		// Make sure Root is the last in the list, it has a catch all
 		RootRoutingModule
 	],
+	providers: [AuthGuard],
 	exports: [RouterModule]
 })
 /**

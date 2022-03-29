@@ -5,11 +5,13 @@ import {WalletComponent} from '@module/wallet/wallet.component';
 import {WalletNewComponent} from '@module/wallet/components/wallet-new.component';
 import {RestoreComponent} from '@module/wallet/components/restore.component';
 import {SettingsComponent} from '@module/wallet/components/settings.component';
+import {AuthGuard} from '@module/auth/route.guard';
 
 const routes: Routes = [
 	{
 		path: 'wallet',
 		component: WalletComponent,
+		canActivate: [AuthGuard],
 		data: {
 			title: 'view.wallets.title',
 			heading: 'view.wallets.heading',
@@ -20,6 +22,7 @@ const routes: Routes = [
 	{
 		path: 'wallet/new',
 		component: WalletNewComponent,
+		canActivate: [AuthGuard],
 		data: {
 			title: 'view.wallets.new.title',
 			heading: 'view.wallets.new.heading',
@@ -30,6 +33,7 @@ const routes: Routes = [
 	{
 		path: 'wallet/backup',
 		component: RestoreComponent,
+		canActivate: [AuthGuard],
 		data: {
 			title: 'view.wallets.backup.title',
 			heading: 'view.wallets.backup.heading',
@@ -40,6 +44,7 @@ const routes: Routes = [
 	{
 		path: 'wallet/restore',
 		component: RestoreComponent,
+		canActivate: [AuthGuard],
 		data: {
 			title: 'view.wallets.restore.title',
 			heading: 'view.wallets.restore.heading',
@@ -50,6 +55,7 @@ const routes: Routes = [
 	{
 		path: 'wallet/settings',
 		component: SettingsComponent,
+		canActivate: [AuthGuard],
 		data: {
 			title: 'view.wallets.settings.title',
 			heading: 'view.wallets.settings.heading',
@@ -62,6 +68,7 @@ const routes: Routes = [
 @NgModule({
 	declarations: [],
 	imports: [CommonModule, RouterModule.forChild(routes)],
+	providers: [AuthGuard],
 	exports: [RouterModule]
 })
 export class WalletRoutingModule {

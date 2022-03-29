@@ -4,11 +4,13 @@ import {RouterModule, Routes} from '@angular/router';
 import {RootComponent} from '@module/root.component';
 import {RootModule} from '@module/root.module';
 import {TerminalComponent} from '@module/console/terminal.component';
+import {AuthGuard} from '@module/auth/route.guard';
 
 const routes: Routes = [
 	{
 		path: 'dashboard',
 		component: RootComponent,
+		canActivate: [AuthGuard],
 		pathMatch: 'full',
 		data: {
 			title: 'view.dashboard.title',
@@ -20,6 +22,7 @@ const routes: Routes = [
 	{
 		path: 'terminal',
 		component: TerminalComponent,
+		canActivate: [AuthGuard],
 		pathMatch: 'full',
 		data: {
 			title: 'view.terminal.title',
@@ -36,6 +39,7 @@ const routes: Routes = [
 	imports: [CommonModule,
 		RootModule,
 		RouterModule.forChild(routes)],
+	providers: [AuthGuard],
 	exports: [RouterModule]
 })
 export class RootRoutingModule {

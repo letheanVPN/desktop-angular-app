@@ -27,7 +27,7 @@ export class AuthService {
 	 * @returns {boolean}
 	 */
 	getAuthStatus() {
-		return true;//this.user.length > 0;
+		return this.user.length > 0;
 	}
 
 	/**
