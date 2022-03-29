@@ -1,14 +1,13 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {rpcBody} from '@service/json-rpc';
-import {ChainSetBlocks, ChainSetGetInfo} from '@module/chain/data';
-import {Store} from '@ngrx/store';
 
 @Injectable({
     providedIn: 'root'
 })
 export class BlockchainService {
-    constructor(private http: HttpClient, private store: Store) {
+    public chainInfo: any;
+    constructor(private http: HttpClient) {
     }
 
     startDaemon() {
@@ -70,36 +69,38 @@ export class BlockchainService {
             .then((dat) => console.log(dat));
     }
 
-    chainRpc(method: string, params: any) {
-        return this.http
-            .post<any>('http://127.0.0.1:36911/daemon/chain/json_rpc', JSON.stringify(rpcBody(method)(params)));
-    }
-
-    getInfo() {
-        return this.chainRpc('get_info', '').subscribe((data) => {
-            this.store.dispatch(ChainSetGetInfo({info: data.result}))
+    chainRpc(method: string, params: any = '', url: string = 'json_rpc') {
+        return fetch(`http://127.0.0.1:36911/daemon/chain/${url}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(rpcBody(method)(params))
         })
+            .then(res => res.json())
+            .then(res => res.result)
     }
 
-    getTransactions(txsHashes: string[]) {
+    async getInfo() {
+        return this.chainInfo = await this.chainRpc('get_info')
+    }
 
-       return this.chainRpc('gettransactions', {txs_hashes: txsHashes});
+    async getTransactions(txsHashes: string[]) {
+
+        return await this.chainRpc('gettransactions', {txs_hashes: txsHashes});
     }
 
 
-    getBlock(block_id: string) {
+    async getBlock(block_id: string) {
 
-        return this.chainRpc('getblock', {hash: block_id})
+        return await this.chainRpc('getblock', {hash: block_id})
     }
 
-    getBlocks(start_height: number, end_height: number) {
+    async getBlocks(start_height: number, end_height: number) {
 
-        this.chainRpc('getblockheadersrange', {
+        return await this.chainRpc('getblockheadersrange', {
             start_height: start_height,
             end_height: end_height
-        }).subscribe((data) => {
-
-            this.store.dispatch(ChainSetBlocks({blocks: data.result}))
         })
     }
 }

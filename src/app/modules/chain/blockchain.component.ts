@@ -1,9 +1,7 @@
 import {Component, OnDestroy, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {ChartService} from '@module/chart/chart.service';
 import {ChainGetInfo} from '@module/chain/interfaces/props/get_info';
-import {select, Store} from '@ngrx/store';
-import {getChainBlocks, getChainInfo} from '@module/chain/data';
-import {interval, Observable, Subscription} from 'rxjs';
+import {interval, Subscription} from 'rxjs';
 import {BlockHeader} from '@module/chain/interfaces/types/blockHeader';
 import {ColumnMode} from '@swimlane/ngx-datatable';
 import {BlockchainService} from '@module/chain/blockchain.service';
@@ -42,8 +40,8 @@ export class BlockchainComponent implements OnInit, OnDestroy {
 		//	{ prop: 'prev_hash', name: 'Last Hash', default: true },
 	];
 	ColumnMode = ColumnMode;
-	blocks: Observable<{ headers: BlockHeader[] }>;
-	chainInfo: Observable<ChainGetInfo>;
+	blocks: BlockHeader[] ;
+	chainInfo: ChainGetInfo;
 	@ViewChild('editTmpl', { static: false }) editTmpl: TemplateRef<any>;
 	private sub: Subscription[] = [];
 	recentTxs: any;
@@ -52,7 +50,7 @@ export class BlockchainComponent implements OnInit, OnDestroy {
 	blockSearch: FormControl;
 	start_height: number = null;
 	end_height: number = null;
-	constructor(private store: Store,
+	constructor(
 				private chain: BlockchainService,
 				private drawerService: DrawerService) {
 
@@ -67,36 +65,34 @@ export class BlockchainComponent implements OnInit, OnDestroy {
 	}
 
 
-	ngOnInit(): void {
+	async ngOnInit() {
 		this.blockSearch = new FormControl('', [Validators.required]);
 
 		//this.chain.getInfo()
-		this.chainInfo = this.store.pipe(select(getChainInfo));
-		this.blocks = this.store.pipe(select(getChainBlocks));
-
-		this.sub['interval'] = interval(5000).subscribe(() => this.chain.getInfo());
-		this.sub['info'] = this.store.pipe(select(getChainInfo)).subscribe((data) => {
-			if (data) {
+		this.chainInfo = await this.chain.getInfo();
+		if (this.chainInfo) {
 				// we have chain data, and it talks to us set to amber
 				this.status_daemon = 1;
 				//console.log(data)
 				// if chain height + 4 to give 2~ blocks to be considered healthy
-				if (data.height + 4 > data.target_height) {
+				if (this.chainInfo.height + 4 > this.chainInfo.target_height) {
 					this.status_daemon = 2;
 				}
-				this.page.totalElements = data.height
-				this.getBlocks()
+				this.page.totalElements = this.chainInfo.height
 			} else {
 				this.status_daemon = 0;
 			}
-		});
+		await this.getBlocks()
+
+		this.sub['interval'] = interval(5000).subscribe(async () => this.chainInfo = await this.chain.getInfo());
+
 	}
 
-	getBlocks(){
-		let start_height = this.page.totalElements - this.page.pageNumber * this.page.size-1
+	async getBlocks() {
+		let start_height = this.page.totalElements - this.page.pageNumber * this.page.size - 1
 		let end_height = this.page.totalElements - this.page.size - this.page.pageNumber * this.page.size
 
-		this.chain.getBlocks(Math.max(0,end_height),  Math.max(0,start_height));
+		this.blocks = await this.chain.getBlocks(Math.max(0, end_height), Math.max(0, start_height));
 	}
 
 	toggle(col) {

@@ -13,28 +13,22 @@ export class BlockdetailsComponent implements OnInit, OnDestroy {
 	sub: Subscription;
 	block: BlockHeader;
 	blockData: any;
-	@Input() id: string ='';
+	@Input() id: string = '';
 
 
 	constructor(private chain: BlockchainService) {
 	}
 
-	ngOnInit(): void {
+	async ngOnInit() {
 
-    	if(this.id.length>0)
-		this.sub = this.chain.getBlock(this.id).subscribe((data) => {
-			this.block = data.result['block_header'];
-			this.blockData = JSON.parse(data.result['json']);
+		if (this.id.length > 0) {
+			const data = await this.chain.getBlock(this.id);
+			this.block = data['block_header'];
+			this.blockData = JSON.parse(data['json']);
+			console.log(this.block);
+		}
 
-//        this.chain.getTransactions(this.blockData['tx_hashes']).subscribe((data) => {
-//          console.log(data)
-//            data.txs_as_json = JSON.parse(data.txs_as_json);
-//          this.transactions = data
-//
-//        })
-		});
 	}
-
 
 
 	ngOnDestroy(): void {

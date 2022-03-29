@@ -58,7 +58,7 @@
     <mat-card fxFlex="25" style="padding: 0;">
         <mat-card-title style="padding: 16px;">Information</mat-card-title>
         <mat-card-content style="padding: 0;">
-            <mat-list *ngIf="chainInfo | ngrxPush as info" dense>
+            <mat-list *ngIf="chainInfo as info" dense>
 
                 <mat-list-item>Status: {{info.status }}</mat-list-item>
                 <mat-list-item>Daemon Start: {{info.start_time * 1000 | amTimeAgo }}</mat-list-item>
@@ -83,7 +83,7 @@
     <mat-card fxFlex="75">
         <mat-card-title>
             Chain Status:
-            <ng-container *ngIf="chainInfo | ngrxPush as info">&nbsp;
+            <ng-container *ngIf="chainInfo as info">&nbsp;
                 <span *ngIf="info.target_height > 0" style="font-family: monospace; font-size: 12px;">
                     ({{info.height | number }}/{{info.target_height | number}} = {{ (info.height/info.target_height) | percent:'1.2-3' }})
                 </span>
@@ -98,12 +98,12 @@
 <!--                <mat-icon>view_column</mat-icon>-->
 <!--            </button>-->
 <!--     (page)="this.getBlocks(info.height - page.size, info.height - 1)"    </mat-card-actions>-->
-        <mat-card-content *ngIf="chainInfo | ngrxPush as info">
+        <mat-card-content *ngIf="chainInfo as info">
             <p>The data shown here comes from your local data, accurate to the point in time you have synced;</p>
             <p>Advanced users can "pop off" blocks from their local chain to see the work at particular heights</p>
             <ngx-datatable
                     class=" ngx-datatable"
-                    [rows]="(blocks | ngrxPush)?.headers"
+                    [rows]="blocks['headers']"
                     [loadingIndicator]="false"
                     [columns]="columns"
                     [columnMode]="ColumnMode.force"
