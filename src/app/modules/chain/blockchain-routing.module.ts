@@ -2,12 +2,12 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {BlockchainComponent} from '@module/chain/blockchain.component';
-import {BlockdetailsComponent} from "@module/chain/blockdetails/blockdetails.component";
+import {BlockDetailsComponent} from "@module/chain/components/block/details.component";
 
 const routes: Routes = [
 	{
 		path: 'chain/block/:id',
-		component: BlockdetailsComponent,
+		component: BlockDetailsComponent,
 		data: {
 			title: 'view.chain.title',
 			heading: 'view.chain.heading',

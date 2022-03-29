@@ -4,10 +4,10 @@ import {BlockchainService} from '@module/chain/blockchain.service';
 import {BlockHeader} from '@module/chain/interfaces/types/blockHeader';
 
 @Component({
-	selector: 'lthn-chain-blockdetails',
-	templateUrl: './blockdetails.component.html'
+	selector: 'lthn-chain-block-details',
+	templateUrl: './details.component.html'
 })
-export class BlockdetailsComponent implements OnInit, OnDestroy {
+export class BlockDetailsComponent implements OnInit, OnDestroy {
 
 	blockID: string;
 	sub: Subscription;

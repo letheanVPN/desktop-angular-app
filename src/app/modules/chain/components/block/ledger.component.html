@@ -1,0 +1,40 @@
+
+<ngx-datatable
+        class=" ngx-datatable"
+        [rows]="blocks['headers']"
+        [loadingIndicator]="false"
+        [columns]="columns"
+        [columnMode]="ColumnMode.force"
+        [headerHeight]="30"
+        [footerHeight]="50"
+        [externalPaging]="true"
+        [count]="page.totalElements"
+        [offset]="page.pageNumber"
+        [limit]="page.size"
+        [sorts]="[{ prop: 'timestamp', dir: 'desc' }]"
+        (page)="page.pageNumber = $event.offset;getBlocks();"
+>
+
+    <ngx-datatable-column *ngFor="let col of columns" [prop]="col.prop" [name]="col.name | translate">
+
+        <ng-template let-value="value" ngx-datatable-cell-template>
+            <span *ngIf="col.prop === 'difficulty'">{{ value | hashrate}}</span>
+            <span *ngIf="col.prop === 'height'">{{ value | number }}</span>
+            <!--                        <a class="lthn-brand" *ngIf="col.prop === 'hash'" [routerLink]="['/', 'chain', 'block', value]">{{ value | hashLink }}</a>-->
+            <a class="lthn-brand" *ngIf="col.prop === 'hash'"
+               (click)="$event.stopPropagation();openDrawer(value);">{{ value | hashLink }}</a>
+            <span *ngIf="col.prop === 'orphan_status'">
+                                <mat-icon style="color: green" *ngIf="!value">done</mat-icon>
+                                <mat-icon style="color: red" *ngIf="value">close</mat-icon>
+                              </span>
+            <span *ngIf="col.prop === 'timestamp'">{{ value | amFromUnix }}</span>
+            <span *ngIf="col.prop === 'block_size'">{{ value | number }}</span>
+            <span *ngIf="col.prop === 'depth'">{{ value | number }}</span>
+            <span *ngIf="col.prop === 'major_version'">{{ value  }}</span>
+            <span *ngIf="col.prop === 'minor_version'">{{ value | number }}</span>
+            <span *ngIf="col.prop === 'nonce'">{{ value  }}</span>
+            <span *ngIf="col.prop === 'num_txes'">{{ value | number }}</span>
+            <span *ngIf="col.prop === 'prev_hash'">{{ value }}</span>
+        </ng-template>
+
+    </ngx-datatable-column>

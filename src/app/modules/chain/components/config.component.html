@@ -1,0 +1,13 @@
+
+<div class="container-fluid" style="min-height: 500px;">
+    <ngx-codemirror style="width: 100%;" class="p-0"  mode="text" [(ngModel)]="config"
+            [config]="{
+    lineNumbers: true,
+    theme: 'dracula'
+
+  }"
+    >
+    </ngx-codemirror>
+    <ngx-button (click)="save()">Save File</ngx-button>
+</div>
+

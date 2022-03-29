@@ -17,15 +17,18 @@ import {PipesModule} from '@pipe/pipes.module';
 import {HashRatePipe} from '@pipe/crypto/hashrate.pipe';
 import {MomentModule} from 'ngx-moment';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import { BlockdetailsComponent } from './blockdetails/blockdetails.component';
 import {RouterModule} from "@angular/router";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
-import {ReactiveFormsModule} from "@angular/forms";
-import {SectionModule, ToolbarModule} from '@swimlane/ngx-ui';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ButtonModule, CodeEditorModule, SectionModule, TabsModule, ToolbarModule} from '@swimlane/ngx-ui';
+import {BlockDetailsComponent} from '@module/chain/components/block/details.component';
+import {BlockLedgerComponent} from '@module/chain/components/block/ledger.component';
+import { BlockchainStatsComponent} from '@module/chain/components/stats.component';
+import {BlockchainConfigComponent} from '@module/chain/components/config.component';
 
 @NgModule({
-	declarations: [BlockchainComponent, BlockdetailsComponent],
+	declarations: [BlockchainComponent, BlockDetailsComponent, BlockLedgerComponent, BlockchainStatsComponent, BlockchainConfigComponent],
 	imports: [
 		CommonModule,
 		ChartModule,
@@ -48,7 +51,11 @@ import {SectionModule, ToolbarModule} from '@swimlane/ngx-ui';
 		MatInputModule,
 		ReactiveFormsModule,
 		SectionModule,
-		ToolbarModule
+		ToolbarModule,
+		TabsModule,
+		CodeEditorModule,
+		FormsModule,
+		ButtonModule
 	],
 	exports: [ BlockchainComponent],
 	providers: [HashRatePipe]
