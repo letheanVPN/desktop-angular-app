@@ -73,15 +73,15 @@ export class UserComponent {
 
 			console.log('Saving keys to local filesystem');
 			await this.fileSystem.writeFile(
-				`users/${usernameHash}.lthn.private.asc`,
+				`users/${usernameHash}.lthn.key`,
 				privateKey
 			);
 			await this.fileSystem.writeFile(
-				`users/${usernameHash}.lthn.public.asc`,
+				`users/${usernameHash}.lthn.pub`,
 				publicKey
 			);
 			await this.fileSystem.writeFile(
-				`users/${usernameHash}.lthn.revoke.asc`,
+				`users/${usernameHash}.lthn.rev`,
 				revocationCertificate
 			);
 

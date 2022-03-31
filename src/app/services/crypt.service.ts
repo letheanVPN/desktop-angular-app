@@ -122,7 +122,7 @@ export class CryptService {
 	 */
 	async encryptPGPSingle(id: string, data: string) {
 		const encryptionKey = await this.fileSystem.readFile(
-			`users/${id}.lthn.public.asc`
+			`users/${id}.lthn.pub`
 		);
 
 		if (encryptionKey.length === 0) {
@@ -154,7 +154,7 @@ export class CryptService {
 		 * @type string OpenPGP Armoured private key
 		 */
 		let encryptionKey = await this.fileSystem.readFile(
-			`users/${id}.lthn.private.asc`
+			`users/${id}.lthn.key`
 		);
 		// decrypt the private key
 		let privateKey = await openpgp.decryptKey({
