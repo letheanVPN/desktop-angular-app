@@ -31,6 +31,7 @@
     "@angular/material": "v12-lts",
     "@angular/platform-browser": "v12-lts",
     "@angular/router": "v12-lts",
+    "@auth0/angular-jwt": "^5.0.2",
     "@kurkle/color": "^0.1.9",
     "@ngrx/component": "^12.5.1",
     "@ngrx/component-store": "^12.5.1",
@@ -68,6 +69,7 @@
     "random-js": "^2.1.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.3.0",
+    "url-polyfill": "^1.1.12",
     "web-animations-js": "^2.3.2",
     "zone.js": "~0.11.4"
   },

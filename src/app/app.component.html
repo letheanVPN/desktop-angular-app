@@ -1,4 +1,16 @@
-<mat-sidenav-container class="main-container">
+<ng-container *ngIf="offline">
+    <div class="main-container">
+        <div fxFlex="50" style="margin: 0 auto;padding-top: 8vh">
+            <ngx-section sectionTitle="Not Connected to Lethean Server">
+                <p>
+                    You are offline, if you have Beta access start your server, join <a href="https://sparta.lt.hn/signup">Sparta</a> to register for the waiting list.
+                </p>
+            </ngx-section>
+        </div>
+
+    </div>
+</ng-container>
+<mat-sidenav-container *ngIf="!offline" class="main-container">
     <mat-sidenav mode="side" opened>
         <div fxLayout="row">
             <a [routerLink]="['/']">

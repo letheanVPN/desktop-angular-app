@@ -22,9 +22,14 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {ReactiveComponentModule} from '@ngrx/component';
 import {IconModule, NgxUIModule} from '@swimlane/ngx-ui';
 import {ConsoleModule} from '@module/console/console.module';
+import {JwtModule} from '@auth0/angular-jwt';
 
 export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http);
+}
+
+export function tokenGetter() {
+	return localStorage.getItem("access_token");
 }
 
 @NgModule({
@@ -41,6 +46,12 @@ export function HttpLoaderFactory(http: HttpClient) {
 				useFactory: HttpLoaderFactory,
 				deps: [HttpClient]
 			}
+		}),
+		JwtModule.forRoot({
+			config: {
+				tokenGetter: tokenGetter,
+				allowedDomains: ["localhost:36911", "127.0.0.1:36911"],
+			},
 		}),
 		AppRoutingModule,
 		DataModule,

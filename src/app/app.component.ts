@@ -48,6 +48,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 			icon: 'circuit-board'
 		}
 	];
+	public offline: boolean = false;
 
 	/**
 	 * Starts the Angular framework and configures system plugins
@@ -78,7 +79,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 		let lang = translate.getBrowserLang();
 		// the lang to use, if the lang isn't available, it will use the current loader to get them
 		translate.use(lang ? lang : 'en');
-		this.app.loadConfig('conf/lethean.ini')
+
 		this.router.events.subscribe((event) => {
 			if(event instanceof NavigationStart) {
 				this.loadingService.start();
@@ -94,7 +95,12 @@ export class AppComponent implements OnInit, AfterContentInit {
 	 * Setup language setting watcher
 	 * Update View Meta data
 	 */
-	ngOnInit(): void {
+	async ngOnInit() {
+		try {
+			await this.app.loadConfig('conf/lethean.ini')
+		} catch (e) {
+			this.offline = true
+		}
 
 		// setup language watcher
 		this.currentLanguage$ = this.store.pipe(select(selectLanguage)).subscribe((lang) => {
@@ -112,7 +118,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 	}
 
 	public ngAfterContentInit(): void {
-		this.startChain();
+		if(!this.offline) this.startChain();
 	}
 
 	/**

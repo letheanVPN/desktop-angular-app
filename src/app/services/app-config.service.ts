@@ -27,11 +27,10 @@ export class AppConfigService {
 		if( filename === ''){ return false }
 		AppConfigService.apiUrl = AppConfigService.config.get('lethean-server', 'api_url', 'http://127.0.0.1:36911')
 
-		this.fs.readFile(filename).then((data) => {
-			AppConfigService.config.parse(data)
-		}).catch((err) => {
-			console.log(err)
-		})
+			return this.fs.readFile(filename).then((data) => {
+				AppConfigService.config.parse(data)
+			})
+
 	}
 
 }
