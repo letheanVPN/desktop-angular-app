@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {rpcBody} from '@service/json-rpc';
+import {AuthService} from '@module/auth/auth.service';
 
 @Injectable({
     providedIn: 'root'
@@ -14,6 +15,7 @@ export class BlockchainService {
         const options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': 'Bearer ' + AuthService.token.access_token
             }),
             responseType: 'text' as 'json',
         };
@@ -34,7 +36,8 @@ export class BlockchainService {
     exportChain() {
         const options = {
             headers: new HttpHeaders({
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': 'Bearer ' + AuthService.token.access_token
             }),
             responseType: 'text' as 'json'
         };
@@ -55,7 +58,8 @@ export class BlockchainService {
     importChain() {
         const options = {
             headers: new HttpHeaders({
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': 'Bearer ' + AuthService.token.access_token
             }),
             responseType: 'text' as 'json'
         };
@@ -73,7 +77,8 @@ export class BlockchainService {
         return fetch(`http://127.0.0.1:36911/daemon/chain/${url}`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + AuthService.token.access_token
             },
             body: JSON.stringify(rpcBody(method)(params))
         })

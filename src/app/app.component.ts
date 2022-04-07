@@ -11,6 +11,7 @@ import {BlockchainService} from '@module/chain/blockchain.service';
 import {ChainGetInfo} from '@module/chain/interfaces/props/get_info';
 import {AppConfigService} from '@service/app-config.service';
 import { LoadingService } from '@swimlane/ngx-ui';
+import {AuthService} from '@module/auth/auth.service';
 
 @Component({
 	selector: 'lthn-app',
@@ -24,7 +25,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 	@ViewChild('sidenav') public sidenav: MatSidenav;
 	public currentFlag: any;
 	public currentLanguage$: Subscription;
-	public currentLanguage: string;
+	public currentLanguage: string = 'en';
 	public navExpanded: boolean = true;
 	searchValue = '';
 	filteredNavigationTree: any[];
@@ -72,7 +73,8 @@ export class AppComponent implements OnInit, AfterContentInit {
 		private store: Store,
 		private chain: BlockchainService,
 		private app: AppConfigService,
-		private loadingService: LoadingService
+		private loadingService: LoadingService,
+		private authService: AuthService
 	) {
 
 		translate.setDefaultLang('en');
@@ -96,10 +98,28 @@ export class AppComponent implements OnInit, AfterContentInit {
 	 * Update View Meta data
 	 */
 	async ngOnInit() {
+		if(this.authService.getAuthStatus()){
+			this.startChain()
+		}
+	}
+
+
+	public ngOnDestroy() {
+		this.sub.forEach((s) => s.unsubscribe());
+	}
+
+	public async ngAfterContentInit() {
 		try {
 			await this.app.loadConfig('conf/lethean.ini')
 		} catch (e) {
-			this.offline = true
+			if ('HttpErrorResponse' === e.name) {
+				if (e.status === 401) {
+					this.offline = false;
+				}
+			} else {
+				//this.offline = true
+			}
+
 		}
 
 		// setup language watcher
@@ -109,16 +129,6 @@ export class AppComponent implements OnInit, AfterContentInit {
 		});
 
 		this.updateMeta();
-
-	}
-
-
-	public ngOnDestroy() {
-		this.sub.forEach((s) => s.unsubscribe());
-	}
-
-	public ngAfterContentInit(): void {
-		if(!this.offline) this.startChain();
 	}
 
 	/**

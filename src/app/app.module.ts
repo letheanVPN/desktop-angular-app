@@ -23,13 +23,14 @@ import {ReactiveComponentModule} from '@ngrx/component';
 import {IconModule, NgxUIModule} from '@swimlane/ngx-ui';
 import {ConsoleModule} from '@module/console/console.module';
 import {JwtModule} from '@auth0/angular-jwt';
+import {AuthService} from '@module/auth/auth.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http);
 }
 
 export function tokenGetter() {
-	return localStorage.getItem("access_token");
+	return AuthService.token["access_token"];
 }
 
 @NgModule({

@@ -1,13 +1,32 @@
 <div *ngIf="error.length > 0">{{error}}</div>
-<mat-form-field appearance="standard">
-    <mat-label>Username</mat-label>
-    <input [formControl]="username" (keyup)="inputChanged()" matInput type="text">
-</mat-form-field>
-<mat-form-field appearance="standard">
-    <mat-label>Password</mat-label>
-    <input [formControl]="password" (keyup)="inputChanged()" matInput type="password">
-</mat-form-field>
+<div class="ngx-flex--row">
+    <div class="ngx-flex--col-5">
+        {{fileName || "Select private key."}}
+        <input type="file" class="file-input"
+               (change)="onFileSelected($event)" #fileUpload>
+        <button mat-mini-fab color="primary" class="upload-btn"
+                (click)="fileUpload.click()">
+            <mat-icon>attach_file</mat-icon>
+        </button>
+    </div>
+    <div class="ngx-flex--col-7">
+        <ngx-input
+                name="password"
+                type="password"
+                label="Key Unlock Password"
+                [required]="true"
+                [passwordToggleEnabled]="true"
+                [hint]="'Enter a password'"
+                [(ngModel)]="password">
+        </ngx-input>
+    </div>
+    <div class="ngx-flex--col-2 ngx-flex--col-offset-2">
+        <button class="btn btn-primary" (click)="submit()">Login</button>
+    </div>
 
-<button mat-button (click)="submit()">Login</button>
+</div>
+
+
+
 
 

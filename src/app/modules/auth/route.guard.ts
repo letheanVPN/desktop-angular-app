@@ -36,6 +36,7 @@ export class AuthGuard implements CanActivate {
 		//return true
 		console.log('AuthGuard#canActivate');
 		let isAuthenticated = this.authService.getAuthStatus();
+		console.log(isAuthenticated)
 		if (!isAuthenticated) {
 			try {
 				this.fileSystem.listFiles('users').then(async (dat: any) => {

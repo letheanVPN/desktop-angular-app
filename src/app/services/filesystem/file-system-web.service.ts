@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {FileSystemInterface} from '@interface/file-system.interface';
+import {AuthService} from '@module/auth/auth.service';
 
 @Injectable({
 	providedIn: 'any'
@@ -21,7 +22,8 @@ export class FileSystemWebService implements FileSystemInterface {
 	public async list(dirname) {
 		const options = {
 			headers: new HttpHeaders({
-				'Content-Type': 'application/x-www-form-urlencoded'
+				'Content-Type': 'application/x-www-form-urlencoded',
+				'Authorization':  AuthService.token.access_token
 			}),
 			responseType: 'text' as 'json'
 		};
@@ -43,7 +45,8 @@ export class FileSystemWebService implements FileSystemInterface {
 	public async read(filename) {
 		const options = {
 			headers: new HttpHeaders({
-				'Content-Type': 'application/x-www-form-urlencoded'
+				'Content-Type': 'application/json',
+				'Authorization': AuthService.token.access_token
 			}),
 			responseType: 'text' as 'json'
 		};
@@ -56,7 +59,8 @@ export class FileSystemWebService implements FileSystemInterface {
 	public async write(filename, data) {
 		const options = {
 			headers: new HttpHeaders({
-				'Content-Type': 'application/x-www-form-urlencoded'
+				'Content-Type': 'application/x-www-form-urlencoded',
+				'Authorization': AuthService.token.access_token
 			})
 		};
 

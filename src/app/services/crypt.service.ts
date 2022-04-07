@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {FileSystemService} from './filesystem/file-system.service';
 import * as openpgp from 'openpgp';
 import * as crypto from 'crypto-js';
+import {PrivateKey} from 'openpgp';
 
 @Injectable({
 	providedIn: 'root'
@@ -156,17 +157,14 @@ export class CryptService {
 		let encryptionKey = await this.fileSystem.readFile(
 			`users/${id}.lthn.key`
 		);
-		// decrypt the private key
-		let privateKey = await openpgp.decryptKey({
-			privateKey: await openpgp.readPrivateKey({
-				armoredKey: encryptionKey
-			}),
-			passphrase
-		});
 
-		let message = await openpgp.readMessage({
-			armoredMessage: encrypted
-		})
+		if (encryptionKey.length === 0) {
+			throw new Error(`Failed to load encryption key id: ${id}`);
+		}
+		// decrypt the private key
+		let privateKey = await this.decryptPrivateKey( encryptionKey, passphrase);
+
+		let message = await this.readMessage(encrypted);
 
 		const {data: decrypted, signatures} =
 			await openpgp.decrypt({
@@ -181,5 +179,70 @@ export class CryptService {
 
 		return decrypted;
 	}
+
+	async readMessage(encrypted: string ) {
+		return await openpgp.readMessage({
+			armoredMessage: encrypted
+		})
+	}
+
+	async readPrivateKey(encryptionKey: string){
+		return await openpgp.readPrivateKey({
+			armoredKey: encryptionKey
+		})
+	}
+	async readKey(encryptionKey: string){
+		return await openpgp.readKey({
+			armoredKey: encryptionKey
+		})
+	}
+
+	async decryptPrivateKey(encryptionKey: string, passphrase: string){
+		return await openpgp.decryptKey({
+			privateKey: await this.readPrivateKey( encryptionKey),
+			passphrase
+		});
+	}
+
+	async sign(data: string, privateKey: PrivateKey) {
+		const options: any = {
+			message: await openpgp.createCleartextMessage({ text: data }),
+			signingKeys: privateKey,
+		};
+
+		return await openpgp.sign(options);
+	}
+
+	async encryptPublic(data: any, publicKey: string) {
+
+		try {
+			const options: any = {
+				message: await openpgp.createMessage({ text: data }),
+				encryptionKeys:  await this.readKey(publicKey),
+			};
+
+			return await openpgp.encrypt(options);
+		}catch (e) {
+			return false
+		}
+
+	}
+
+	async decryptPGP(
+		message: string,
+		privateKey: any
+	): Promise<string> {
+
+		let options: any = {
+			message: await this.readMessage(message),
+			decryptionKeys: privateKey,
+		};
+
+		return await openpgp.decrypt(options).then((result: any) => {
+			return result.data;
+		});
+
+	}
+
 
 }
