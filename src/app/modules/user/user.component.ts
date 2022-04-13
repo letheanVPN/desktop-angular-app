@@ -103,7 +103,7 @@ export class UserComponent {
 					})
 				)
 			);
-			await this.authService.login(username, password);
+			await this.authService.login(privateKey, password);
 			console.log('cleaning up');
 			console.log('Done, and away we go!');
 			await this.router.navigateByUrl(`/`);

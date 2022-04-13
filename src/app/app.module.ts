@@ -2,7 +2,7 @@ import { NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {DataModule} from '@data/data.module';
 import {StatusModule} from '@module/status/status.module';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -24,6 +24,7 @@ import {IconModule, NgxUIModule} from '@swimlane/ngx-ui';
 import {ConsoleModule} from '@module/console/console.module';
 import {JwtModule} from '@auth0/angular-jwt';
 import {AuthService} from '@module/auth/auth.service';
+import {HeaderInterceptor} from '@module/auth/auth.interceptor';
 
 export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http);
@@ -73,7 +74,10 @@ export function tokenGetter() {
 		ConsoleModule
 
 	],
-	bootstrap: [AppComponent]
+	bootstrap: [AppComponent],
+	providers: [
+		{ provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true }
+	]
 })
 /**
  * Application shell/bootstrap

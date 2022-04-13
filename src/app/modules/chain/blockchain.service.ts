@@ -14,8 +14,7 @@ export class BlockchainService {
     startDaemon() {
         const options = {
             headers: new HttpHeaders({
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': 'Bearer ' + AuthService.token.access_token
+                'Content-Type': 'application/x-www-form-urlencoded'
             }),
             responseType: 'text' as 'json',
         };
@@ -36,8 +35,7 @@ export class BlockchainService {
     exportChain() {
         const options = {
             headers: new HttpHeaders({
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': 'Bearer ' + AuthService.token.access_token
+                'Content-Type': 'application/x-www-form-urlencoded'
             }),
             responseType: 'text' as 'json'
         };
@@ -58,8 +56,7 @@ export class BlockchainService {
     importChain() {
         const options = {
             headers: new HttpHeaders({
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': 'Bearer ' + AuthService.token.access_token
+                'Content-Type': 'application/x-www-form-urlencoded'
             }),
             responseType: 'text' as 'json'
         };
@@ -78,7 +75,7 @@ export class BlockchainService {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + AuthService.token.access_token
+                'Authorization':  AuthService.token.access_token
             },
             body: JSON.stringify(rpcBody(method)(params))
         })
