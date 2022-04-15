@@ -10,7 +10,6 @@ const routes: Routes = [
 	{
 		path: 'dashboard',
 		component: RootComponent,
-		canActivate: [AuthGuard],
 		pathMatch: 'full',
 		data: {
 			title: 'view.dashboard.title',

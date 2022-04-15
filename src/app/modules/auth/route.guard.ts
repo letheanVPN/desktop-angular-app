@@ -1,10 +1,12 @@
 import {Injectable} from '@angular/core';
-import { CanActivate, Router} from '@angular/router';
+import {CanActivate, Router} from '@angular/router';
 import {AuthService} from './auth.service';
 import {FileSystemService} from '@service/filesystem/file-system.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
+
+
 	constructor(
 		private router: Router,
 		private authService: AuthService,
@@ -30,27 +32,26 @@ export class AuthGuard implements CanActivate {
 	 * @param {RouterStateSnapshot} state
 	 * @returns {boolean | Promise<boolean>}
 	 */
-	canActivate(
-
-	): boolean | Promise<boolean> {
+	async canActivate(): Promise<boolean> {
 		//return true
-		console.log('AuthGuard#canActivate');
 		let isAuthenticated = this.authService.getAuthStatus();
-		console.log(isAuthenticated)
+
 		if (!isAuthenticated) {
+
 			try {
-				this.fileSystem.listFiles('users').then(async (dat: any) => {
-					if (dat.length > 0) {
-						await this.router.navigate(['/login']);
-					} else {
-						await this.router.navigate(['/user']);
-					}
+				isAuthenticated = await this.fileSystem.listFiles('users').then(async (dat: any) => {
+					return dat.length > 0 && !dat.map((file: string) => file.endsWith('.lthn')).includes(true);
 				});
-			}catch (e) {
+			} catch (e) {
 				isAuthenticated = false
 			}
 
 		}
+
+		if(!isAuthenticated){
+			await this.router.navigate(['/login']);
+		}
+
 		return isAuthenticated;
 	}
 }
