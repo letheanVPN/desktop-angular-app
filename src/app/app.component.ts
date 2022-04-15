@@ -110,7 +110,11 @@ export class AppComponent implements OnInit, AfterContentInit {
 
 	public async ngAfterContentInit() {
 		try {
-			await this.app.loadConfig('conf/lethean.ini')
+			await this.app.loadConfig('conf/app.ini')
+
+			if(this.app.getConfig('daemon', 'start_on_boot', false)){
+				this.startChain()
+			}
 		} catch (e) {
 			if ('HttpErrorResponse' === e.name) {
 				if (e.status === 401) {

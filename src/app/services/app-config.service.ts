@@ -44,4 +44,36 @@ export class AppConfigService {
 
 	}
 
+	/**
+	 *
+	 * @param {string} section
+	 * @param {string} key
+	 * @param {string} defaultValue
+	 * @returns {any}
+	 */
+	getConfig(section: string, key: string, defaultValue: any = '') {
+		return AppConfigService.config.get(section, key, defaultValue)
+	}
+
+	/**
+	 *
+	 * @param {string} section
+	 * @param {string} key
+	 * @param {string} value
+	 */
+	setConfig(section: string, key: string, value: string) {
+		AppConfigService.config.set(section, key, value)
+	}
+
+	/**
+	 *
+	 * @returns {Promise<Object>}
+	 */
+	saveConfig() {
+		return this.fs.writeFile('conf/app.ini', AppConfigService.config.stringify())
+	}
+
+
+
+
 }
