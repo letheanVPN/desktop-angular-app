@@ -36,7 +36,7 @@ export class BlockLedgerComponent implements OnInit, OnDestroy {
 		//{ prop: 'major_version', name: 'Block Major Version', default: true },
 		//	{ prop: 'minor_version', name: 'Block Minor Version', default: false },
 		//	{ prop: 'nonce', name: 'Block Nonce', default: false },
-			{ prop: 'num_txes', name: 'Transactions', default: true },
+			{ prop: 'num_txes', name: 'app.lthn.chain.words.tx_count', default: true },
 		//	{ prop: 'prev_hash', name: 'Last Hash', default: true },
 	];
 	ColumnMode = ColumnMode;

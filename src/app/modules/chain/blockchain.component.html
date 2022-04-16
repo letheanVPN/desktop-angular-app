@@ -30,17 +30,17 @@
 
         <ngx-section>
             <ngx-tabs [vertical]="true">
-                <ngx-tab label="Blocks">
+                <ngx-tab label="{{ 'app.lthn.chain.menu.blocks' | translate}}">
                     <div *ngxIfTabActive>
                         <lthn-chain-ledger></lthn-chain-ledger>
                     </div>
                 </ngx-tab>
-                <ngx-tab label="Stats">
+                <ngx-tab label="{{ 'app.lthn.chain.menu.stats' | translate}}">
                     <div *ngxIfTabActive>
                         <lthn-chain-stats></lthn-chain-stats>
                     </div>
                 </ngx-tab>
-                <ngx-tab label="Configuration">
+                <ngx-tab label="{{ 'app.lthn.chain.menu.configuration' | translate}}">
                     <div *ngxIfTabActive>
                         <lthn-chain-config></lthn-chain-config>
                     </div>
