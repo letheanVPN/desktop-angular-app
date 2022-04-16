@@ -11,7 +11,6 @@ import {BlockchainService} from '@module/chain/blockchain.service';
 import {ChainGetInfo} from '@module/chain/interfaces/props/get_info';
 import {AppConfigService} from '@service/app-config.service';
 import { LoadingService } from '@swimlane/ngx-ui';
-import {AuthService} from '@module/auth/auth.service';
 
 @Component({
 	selector: 'lthn-app',
@@ -73,8 +72,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 		private store: Store,
 		private chain: BlockchainService,
 		private app: AppConfigService,
-		private loadingService: LoadingService,
-		private authService: AuthService
+		private loadingService: LoadingService
 	) {
 
 		translate.setDefaultLang('en');
@@ -91,18 +89,6 @@ export class AppComponent implements OnInit, AfterContentInit {
 		});
 
 	}
-
-	/**
-	 * Start loading overlay
-	 * Setup language setting watcher
-	 * Update View Meta data
-	 */
-	async ngOnInit() {
-		if(this.authService.getAuthStatus()){
-			this.startChain()
-		}
-	}
-
 
 	public ngOnDestroy() {
 		this.sub.forEach((s) => s.unsubscribe());
