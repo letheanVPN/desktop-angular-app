@@ -39,4 +39,12 @@
 
     </ngx-datatable-column>
 </ngx-datatable>
+    <ng-template #editTmpl let-context="context">
+        <ngx-toolbar
+                [mainTitle]="'Block Information'">
+        </ngx-toolbar>
+        <section class="section">
+            <lthn-chain-block-details [id]="context.id"></lthn-chain-block-details>
+        </section>
+    </ng-template>
 </ng-container>

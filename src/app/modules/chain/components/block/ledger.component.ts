@@ -44,12 +44,10 @@ export class BlockLedgerComponent implements OnInit, OnDestroy {
 	chainInfo: ChainGetInfo;
 	@ViewChild('editTmpl', { static: false }) editTmpl: TemplateRef<any>;
 	private sub: Subscription[] = [];
-	recentTxs: any;
-	buildType: string;
+
 	status_daemon: number = 0;
 	blockSearch: FormControl;
-	start_height: number = null;
-	end_height: number = null;
+
 	constructor(
 		private chain: BlockchainService,
 		private drawerService: DrawerService) {
@@ -95,25 +93,6 @@ export class BlockLedgerComponent implements OnInit, OnDestroy {
 		this.blocks = await this.chain.getBlocks(Math.max(0, end_height), Math.max(0, start_height));
 	}
 
-	toggle(col) {
-		const isChecked = this.isChecked(col);
-
-		if (isChecked) {
-			this.columns = this.columns.filter(c => {
-				return c.name !== col.name;
-			});
-		} else {
-			this.columns.push(col);
-		}
-	}
-
-	isChecked(col) {
-		return (
-			this.columns.find(c => {
-				return c.name === col.name;
-			}) !== undefined
-		);
-	}
 
 	public ngOnDestroy() {
 		this.sub.forEach((s) => s.unsubscribe());
