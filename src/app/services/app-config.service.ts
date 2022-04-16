@@ -44,6 +44,26 @@ export class AppConfigService {
 
 	}
 
+	async makeDefault() {
+		const p = new ConfigIniParser('\r\n');
+		try {
+			p.addSection('daemon');
+			p.set('daemon', 'start_on_boot', 'true');
+
+			p.addSection('lethean-server');
+			p.set('lethean-server', 'api_url', 'http://127.0.0.1:36911')
+
+			await this.fs.writeFile(
+				'conf/app.ini',
+				p.stringify('\r\n')
+			);
+		} catch (e) {
+			if (e === ConfigIniParser.Errors.ErrorDuplicateSectionError) {
+				console.error('Duplicated section');
+			}
+		}
+	}
+
 	/**
 	 *
 	 * @param {string} section

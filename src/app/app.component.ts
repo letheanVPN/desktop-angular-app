@@ -113,12 +113,15 @@ export class AppComponent implements OnInit, AfterContentInit {
 			await this.app.loadConfig('conf/app.ini')
 
 			if(this.app.getConfig('daemon', 'start_on_boot', false)){
-				this.startChain()
+				this.startChain();
 			}
 		} catch (e) {
 			if ('HttpErrorResponse' === e.name) {
 				if (e.status === 401) {
 					this.offline = false;
+				}else if(e.status === 404){
+					await this.app.makeDefault()
+					await this.app.loadConfig('conf/app.ini')
 				}
 			} else {
 				//this.offline = true
