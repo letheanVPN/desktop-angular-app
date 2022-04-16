@@ -1,4 +1,4 @@
-
+<ng-container *ngIf="blocks">
 <ngx-datatable
         class=" ngx-datatable"
         [rows]="blocks['headers']"
@@ -38,3 +38,5 @@
         </ng-template>
 
     </ngx-datatable-column>
+</ngx-datatable>
+</ng-container>
