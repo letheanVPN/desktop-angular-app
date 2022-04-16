@@ -19,37 +19,23 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: 16.x
-    - uses: denoland/setup-deno@v1
-      with:
-        deno-version: v1.20.x
     - run: npm install --legacy-peer-deps
     - run: npm run build
-    - name: Get the version
-      id: get_version
-      if: startsWith(github.ref, 'refs/tags/')
-      run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
     - name: Install zip
       uses: montudor/action-zip@v1
     - name: package
       working-directory: dist/lethean-desktop/browser
-      run: zip -qq -r ../../../lethean-ui-${{ steps.get_version.outputs.VERSION }}.zip .
+      run: zip -qq -r ../../../lethean-ui.zip .
     - uses: actions/upload-artifact@v2
       with:
-        name: lethean-ui-${{ steps.get_version.outputs.VERSION }}
-        path: lethean-ui-${{ steps.get_version.outputs.VERSION }}.zip
+        name: lethean-ui
+        path: lethean-ui.zip
     - name: Release
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
-        files: lethean-ui-${{ steps.get_version.outputs.VERSION }}.zip
-    - name: Web Desktop
-      uses: Snider/bunnycdn-gh-action@master
-      with:
-        source: "dist/lethean-desktop/browser"
-        storageZoneName: "lthn-desktop"
-        accessKey: "${{ secrets.BUNNY_CDN_STORAGE_KEY }}"
-        zoneId: "${{ secrets.BUNNY_ZONE_ID }}"
-        zoneKey: "${{ secrets.BUNNY_ZONE_KEY }}"
-   
+        files: lethean-ui.zip
+
+
 
 
