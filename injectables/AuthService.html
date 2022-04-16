@@ -82,6 +82,10 @@
                                 <a href="#id" >id</a>
                             </li>
                             <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#token" >token</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Private</span>
                                 <a href="#user" >user</a>
                             </li>
@@ -131,12 +135,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(cryptService: <a href="../injectables/CryptService.html" target="_self">CryptService</a>, fileSystem: <a href="../injectables/FileSystemService.html" target="_self">FileSystemService</a>)</code>
+<code>constructor(cryptService: <a href="../injectables/CryptService.html" target="_self">CryptService</a>, notificationService: NotificationService)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/modules/auth/auth.service.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/modules/auth/auth.service.ts:15</a></div>
                             </td>
                         </tr>
 
@@ -166,10 +170,10 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>fileSystem</td>
+                                                        <td>notificationService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/FileSystemService.html" target="_self" >FileSystemService</a></code>
+                                                                    <code>NotificationService</code>
                                                         </td>
                                                   
                                                     <td>
@@ -211,8 +215,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="29"
-                            class="link-to-prism">src/app/modules/auth/auth.service.ts:29</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">src/app/modules/auth/auth.service.ts:35</a></div>
                 </td>
             </tr>
 
@@ -259,8 +263,8 @@ not because it would just be easier to code</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="63"
-                            class="link-to-prism">src/app/modules/auth/auth.service.ts:63</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="108"
+                            class="link-to-prism">src/app/modules/auth/auth.service.ts:108</a></div>
                 </td>
             </tr>
 
@@ -296,8 +300,8 @@ not because it would just be easier to code</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="67"
-                            class="link-to-prism">src/app/modules/auth/auth.service.ts:67</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="112"
+                            class="link-to-prism">src/app/modules/auth/auth.service.ts:112</a></div>
                 </td>
             </tr>
 
@@ -328,15 +332,15 @@ not because it would just be easier to code</p>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>login(username, password)</code>
+                    <code>login(key, password)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="45"
-                            class="link-to-prism">src/app/modules/auth/auth.service.ts:45</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">src/app/modules/auth/auth.service.ts:58</a></div>
                 </td>
             </tr>
 
@@ -361,7 +365,7 @@ so if the worst happens, they can decrypt using a HSM/encrypted file stored pass
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>username</td>
+                                    <td>key</td>
 
                                     <td>
                                         No
@@ -384,7 +388,7 @@ so if the worst happens, they can decrypt using a HSM/encrypted file stored pass
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>    <code>unknown</code>
 
                     </div>
                     <div class="io-description">
@@ -414,8 +418,8 @@ so if the worst happens, they can decrypt using a HSM/encrypted file stored pass
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="59"
-                            class="link-to-prism">src/app/modules/auth/auth.service.ts:59</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="104"
+                            class="link-to-prism">src/app/modules/auth/auth.service.ts:104</a></div>
                 </td>
             </tr>
 
@@ -464,7 +468,42 @@ so if the worst happens, they can decrypt using a HSM/encrypted file stored pass
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/modules/auth/auth.service.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/modules/auth/auth.service.ts:11</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="token"></a>
+                    <span class="name">
+                            <span class="modifier">Static</span>
+                        <span ><b>token</b></span>
+                        <a href="#token"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+		access_token: undefined,
+		refresh_token: undefined
+	}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/modules/auth/auth.service.ts:12</a></div>
                         </td>
                     </tr>
 
@@ -496,7 +535,7 @@ so if the worst happens, they can decrypt using a HSM/encrypted file stored pass
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/modules/auth/auth.service.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/modules/auth/auth.service.ts:10</a></div>
                         </td>
                     </tr>
 
@@ -511,7 +550,8 @@ so if the worst happens, they can decrypt using a HSM/encrypted file stored pass
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Injectable} from &#x27;@angular/core&#x27;;
 import {CryptService} from &#x27;@service/crypt.service&#x27;;
-import {FileSystemService} from &#x27;@service/filesystem/file-system.service&#x27;;
+import {AppConfigService} from &#x27;@service/app-config.service&#x27;;
+import {NotificationService, NotificationStyleType, NotificationType} from &#x27;@swimlane/ngx-ui&#x27;;
 
 @Injectable({
 	providedIn: &#x27;root&#x27;
@@ -519,11 +559,16 @@ import {FileSystemService} from &#x27;@service/filesystem/file-system.service&#x
 export class AuthService {
 	private user &#x3D; &#x27;&#x27;;
 	private id &#x3D; &#x27;&#x27;;
+	public static token: { access_token: string, refresh_token: string } &#x3D; {
+		access_token: undefined,
+		refresh_token: undefined
+	};
 
 	constructor(
 		private cryptService: CryptService,
-		private fileSystem: FileSystemService
+		private notificationService: NotificationService
 	) {
+this.getAuthStatus()
 	}
 
 	/**
@@ -538,7 +583,14 @@ export class AuthService {
 	 * @returns {boolean}
 	 */
 	getAuthStatus() {
-		return true;//this.user.length &gt; 0;
+		if (AuthService.token[&#x27;access_token&#x27;] &#x3D;&#x3D; undefined) {
+			AuthService.token[&#x27;access_token&#x27;] &#x3D; sessionStorage.getItem(&#x27;access_token&#x27;)
+		}
+
+		if (AuthService.token[&#x27;refresh_token&#x27;] &#x3D;&#x3D; undefined) {
+			AuthService.token[&#x27;refresh_token&#x27;] &#x3D; sessionStorage.getItem(&#x27;refresh_token&#x27;)
+		}
+		return AuthService.token[&#x27;access_token&#x27;]?.length &gt; 0
 	}
 
 	/**
@@ -553,15 +605,47 @@ export class AuthService {
 	 * @param password
 	 * @returns {Promise&lt;void&gt;}
 	 */
-	async login(username, password) {
-		const id &#x3D; this.cryptService.sha256Salty(username);
-		const data &#x3D; await this.fileSystem.readFile(&#x60;users/${id}.lthn&#x60;);
+	async login(key, password) {
 
-		const decrypted &#x3D; JSON.parse(
-			await this.cryptService.decryptPGPSingle(id, password, data)
-		);
-		this.user &#x3D; decrypted.username;
-		this.id &#x3D; decrypted.id;
+		try {
+
+			let privateKey &#x3D; await this.cryptService.decryptPrivateKey(key, password);
+			if (privateKey) {
+
+				//console.log(privateKey.getUserIDs())
+				const msg &#x3D; await this.cryptService.encryptPublic(await this.cryptService.sign(&#x60;{&quot;id&quot;:&quot;${privateKey.getUserIDs()[0]}&quot;}&#x60;, privateKey), AppConfigService.serverPublicKey)
+					.then((res) &#x3D;&gt; {
+						console.log(res)
+						return btoa(res.toString())
+					});
+
+				return fetch(AppConfigService.apiUrl + &#x27;/auth/login&#x27;, {
+					method: &#x27;POST&#x27;,
+					headers: {
+						&#x27;Content-Type&#x27;: &#x27;application/json&#x27;
+					},
+					body: JSON.stringify({
+						payload: msg
+					})
+				}).then((res) &#x3D;&gt; res.json())
+					.then(async res &#x3D;&gt; {
+						console.log(res)
+						if (res[&#x27;result&#x27;] &#x3D;&#x3D; false) {
+							this.notificationService.create({type: NotificationType.html, styleType: NotificationStyleType.error, body: &#x27;Failed to login&#x27;});
+						} else {
+
+							AuthService.token &#x3D; JSON.parse(await this.cryptService.decryptPGP(atob(res[&#x27;result&#x27;]), privateKey))
+
+							sessionStorage.setItem(&#x27;access_token&#x27;, AuthService.token[&#x27;access_token&#x27;]);
+							sessionStorage.setItem(&#x27;refresh_token&#x27;, AuthService.token[&#x27;refresh_token&#x27;]);
+							return true;
+						}
+
+
+					});
+			}
+		} catch(e){ console.log(e)}
+		return false;
 	}
 
 	/**

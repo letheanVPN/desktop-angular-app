@@ -93,6 +93,10 @@
                             </li>
                             <li>
                                     <span class="modifier">Static</span>
+                                <a href="#serverPublicKey" >serverPublicKey</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
                                 <a href="#settings" >settings</a>
                             </li>
                         </ul>
@@ -108,7 +112,23 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#fetchServerPublicKey" >fetchServerPublicKey</a>
+                            </li>
+                            <li>
+                                <a href="#getConfig" >getConfig</a>
+                            </li>
+                            <li>
                                 <a href="#loadConfig" >loadConfig</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#makeDefault" >makeDefault</a>
+                            </li>
+                            <li>
+                                <a href="#saveConfig" >saveConfig</a>
+                            </li>
+                            <li>
+                                <a href="#setConfig" >setConfig</a>
                             </li>
                         </ul>
                     </td>
@@ -180,6 +200,144 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="fetchServerPublicKey"></a>
+                    <span class="name">
+                        <span ><b>fetchServerPublicKey</b></span>
+                        <a href="#fetchServerPublicKey"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>fetchServerPublicKey()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">src/app/services/app-config.service.ts:26</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getConfig"></a>
+                    <span class="name">
+                        <span ><b>getConfig</b></span>
+                        <a href="#getConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getConfig(section: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, defaultValue: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">src/app/services/app-config.service.ts:74</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>section</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>key</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>defaultValue</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>&#x27;&#x27;</code>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="loadConfig"></a>
                     <span class="name">
                         <span ><b>loadConfig</b></span>
@@ -196,8 +354,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">src/app/services/app-config.service.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">src/app/services/app-config.service.ts:36</a></div>
                 </td>
             </tr>
 
@@ -239,7 +397,181 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="makeDefault"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>makeDefault</b></span>
+                        <a href="#makeDefault"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>makeDefault()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="47"
+                            class="link-to-prism">src/app/services/app-config.service.ts:47</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="saveConfig"></a>
+                    <span class="name">
+                        <span ><b>saveConfig</b></span>
+                        <a href="#saveConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>saveConfig()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="92"
+                            class="link-to-prism">src/app/services/app-config.service.ts:92</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setConfig"></a>
+                    <span class="name">
+                        <span ><b>setConfig</b></span>
+                        <a href="#setConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setConfig(section: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="84"
+                            class="link-to-prism">src/app/services/app-config.service.ts:84</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>section</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>key</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                     </div>
                     <div class="io-description">
@@ -375,6 +707,27 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="serverPublicKey"></a>
+                    <span class="name">
+                            <span class="modifier">Static</span>
+                        <span ><b>serverPublicKey</b></span>
+                        <a href="#serverPublicKey"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/services/app-config.service.ts:14</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="settings"></a>
                     <span class="name">
                             <span class="modifier">Static</span>
@@ -417,14 +770,25 @@ import {FileSystemService} from &#x27;@service/filesystem/file-system.service&#x
 export class AppConfigService {
 
 	public static apiUrl: string &#x3D; &#x27;http://127.0.0.1:36911&#x27;;
-
+	public static serverPublicKey;
 	public static settings: any;
 	public static config: ConfigIniParser &#x3D; new ConfigIniParser();
 	openpgp: any;
 	crypto: any;
 
 	constructor(private fs: FileSystemService) {
+		if(!AppConfigService.serverPublicKey){
+			this.fetchServerPublicKey()
+		}
+	}
 
+	fetchServerPublicKey(){
+		fetch(AppConfigService.apiUrl + &#x27;/cert&#x27;)
+			.then(response &#x3D;&gt; response.text())
+			.then(text &#x3D;&gt; {
+				AppConfigService.serverPublicKey &#x3D; text;
+				//console.log(AppConfigService.serverPublicKey);
+			});
 	}
 
 
@@ -433,12 +797,63 @@ export class AppConfigService {
 		if( filename &#x3D;&#x3D;&#x3D; &#x27;&#x27;){ return false }
 		AppConfigService.apiUrl &#x3D; AppConfigService.config.get(&#x27;lethean-server&#x27;, &#x27;api_url&#x27;, &#x27;http://127.0.0.1:36911&#x27;)
 
-		this.fs.readFile(filename).then((data) &#x3D;&gt; {
-			AppConfigService.config.parse(data)
-		}).catch((err) &#x3D;&gt; {
-			console.log(err)
-		})
+			return this.fs.readFile(filename).then((data) &#x3D;&gt; {
+				AppConfigService.config.parse(data)
+			})
+
 	}
+
+	async makeDefault() {
+		const p &#x3D; new ConfigIniParser(&#x27;\r\n&#x27;);
+		try {
+			p.addSection(&#x27;daemon&#x27;);
+			p.set(&#x27;daemon&#x27;, &#x27;start_on_boot&#x27;, &#x27;true&#x27;);
+
+			p.addSection(&#x27;lethean-server&#x27;);
+			p.set(&#x27;lethean-server&#x27;, &#x27;api_url&#x27;, &#x27;http://127.0.0.1:36911&#x27;)
+
+			await this.fs.writeFile(
+				&#x27;conf/app.ini&#x27;,
+				p.stringify(&#x27;\r\n&#x27;)
+			);
+		} catch (e) {
+			if (e &#x3D;&#x3D;&#x3D; ConfigIniParser.Errors.ErrorDuplicateSectionError) {
+				console.error(&#x27;Duplicated section&#x27;);
+			}
+		}
+	}
+
+	/**
+	 *
+	 * @param {string} section
+	 * @param {string} key
+	 * @param {string} defaultValue
+	 * @returns {any}
+	 */
+	getConfig(section: string, key: string, defaultValue: any &#x3D; &#x27;&#x27;) {
+		return AppConfigService.config.get(section, key, defaultValue)
+	}
+
+	/**
+	 *
+	 * @param {string} section
+	 * @param {string} key
+	 * @param {string} value
+	 */
+	setConfig(section: string, key: string, value: string) {
+		AppConfigService.config.set(section, key, value)
+	}
+
+	/**
+	 *
+	 * @returns {Promise&lt;Object&gt;}
+	 */
+	saveConfig() {
+		return this.fs.writeFile(&#x27;conf/app.ini&#x27;, AppConfigService.config.stringify())
+	}
+
+
+
 
 }
 </code></pre>

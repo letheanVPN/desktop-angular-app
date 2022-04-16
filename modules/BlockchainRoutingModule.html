@@ -77,11 +77,13 @@ import {CommonModule} from &#x27;@angular/common&#x27;;
 import {RouterModule, Routes} from &#x27;@angular/router&#x27;;
 import {BlockchainComponent} from &#x27;@module/chain/blockchain.component&#x27;;
 import {BlockDetailsComponent} from &quot;@module/chain/components/block/details.component&quot;;
+import {AuthGuard} from &#x27;@module/auth/route.guard&#x27;;
 
 const routes: Routes &#x3D; [
 	{
 		path: &#x27;chain/block/:id&#x27;,
 		component: BlockDetailsComponent,
+		canActivate: [AuthGuard],
 		data: {
 			title: &#x27;view.chain.title&#x27;,
 			heading: &#x27;view.chain.heading&#x27;,
@@ -92,7 +94,7 @@ const routes: Routes &#x3D; [
 	{
 		path: &#x27;chain&#x27;,
 		component: BlockchainComponent,
-
+		canActivate: [AuthGuard],
 		data: {
 			title: &#x27;view.chain.title&#x27;,
 			heading: &#x27;view.chain.heading&#x27;,
@@ -106,6 +108,7 @@ const routes: Routes &#x3D; [
 @NgModule({
 	declarations: [],
 	imports: [CommonModule, RouterModule.forChild(routes)],
+	providers: [AuthGuard],
 	exports: [RouterModule]
 })
 export class BlockchainRoutingModule {

@@ -218,7 +218,6 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component} from &#x27;@angular/core&#x27;;
 import {FormControl, FormGroup} from &#x27;@angular/forms&#x27;;
-import {ConfigIniParser} from &#x27;config-ini-parser&#x27;;
 import {CryptService} from &#x27;@service/crypt.service&#x27;;
 import {FileSystemService} from &#x27;@service/filesystem/file-system.service&#x27;;
 import {Router} from &#x27;@angular/router&#x27;;
@@ -267,21 +266,6 @@ export class UserComponent {
 		const password &#x3D; this.password.value;
 		const passwordRepeat &#x3D; this.passwordRepeat.value;
 
-		const p &#x3D; new ConfigIniParser(&#x27;\r\n&#x27;);
-		try {
-			p.addSection(&#x27;daemon&#x27;);
-			p.set(&#x27;daemon&#x27;, &#x27;start_on_boot&#x27;, &#x27;on&#x27;);
-
-			await this.fileSystem.writeFile(
-				&#x27;conf/app.ini&#x27;,
-				p.stringify(&#x27;\r\n&#x27;)
-			);
-		} catch (e) {
-			if (e &#x3D;&#x3D;&#x3D; ConfigIniParser.Errors.ErrorDuplicateSectionError) {
-				console.error(&#x27;Duplicated section&#x27;);
-			}
-		}
-
 		const usernameHash &#x3D; this.cryptService.sha256Salty(username);
 
 		if (password &#x3D;&#x3D;&#x3D; passwordRepeat) {
@@ -292,19 +276,20 @@ export class UserComponent {
 
 			console.log(&#x27;Saving keys to local filesystem&#x27;);
 			await this.fileSystem.writeFile(
-				&#x60;users/${usernameHash}.lthn.private.asc&#x60;,
+				&#x60;users/${usernameHash}.lthn.key&#x60;,
 				privateKey
 			);
 			await this.fileSystem.writeFile(
-				&#x60;users/${usernameHash}.lthn.public.asc&#x60;,
+				&#x60;users/${usernameHash}.lthn.pub&#x60;,
 				publicKey
 			);
 			await this.fileSystem.writeFile(
-				&#x60;users/${usernameHash}.lthn.revoke.asc&#x60;,
+				&#x60;users/${usernameHash}.lthn.rev&#x60;,
 				revocationCertificate
 			);
 
 			console.log(&#x27;Creating User profile data file&#x27;);
+
 			await this.fileSystem.writeFile(
 				&#x60;users/${usernameHash}.lthn&#x60;,
 				await this.cryptService.encryptPGPSingle(
@@ -321,7 +306,7 @@ export class UserComponent {
 					})
 				)
 			);
-			await this.authService.login(username, password);
+			await this.authService.login(privateKey, password);
 			console.log(&#x27;cleaning up&#x27;);
 			console.log(&#x27;Done, and away we go!&#x27;);
 			await this.router.navigateByUrl(&#x60;/&#x60;);

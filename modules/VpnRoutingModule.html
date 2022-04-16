@@ -76,17 +76,20 @@
 import {CommonModule} from &#x27;@angular/common&#x27;;
 import {RouterModule, Routes} from &#x27;@angular/router&#x27;;
 import {VpnComponent} from &#x27;src/app/modules/vpn/vpn.component&#x27;;
+import {AuthGuard} from &#x27;@module/auth/route.guard&#x27;;
 
 const routes: Routes &#x3D; [
 	{
 		path: &#x27;vpn&#x27;,
-		component: VpnComponent
+		component: VpnComponent,
+		canActivate: [AuthGuard]
 	}
 ];
 
 @NgModule({
 	declarations: [],
 	imports: [CommonModule, RouterModule.forChild(routes)],
+	providers: [AuthGuard],
 	exports: [RouterModule]
 })
 export class VpnRoutingModule {}

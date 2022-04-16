@@ -140,6 +140,7 @@ import {RouterModule, Routes} from &#x27;@angular/router&#x27;;
 import {RootComponent} from &#x27;@module/root.component&#x27;;
 import {RootModule} from &#x27;@module/root.module&#x27;;
 import {TerminalComponent} from &#x27;@module/console/terminal.component&#x27;;
+import {AuthGuard} from &#x27;@module/auth/route.guard&#x27;;
 
 const routes: Routes &#x3D; [
 	{
@@ -156,6 +157,7 @@ const routes: Routes &#x3D; [
 	{
 		path: &#x27;terminal&#x27;,
 		component: TerminalComponent,
+		canActivate: [AuthGuard],
 		pathMatch: &#x27;full&#x27;,
 		data: {
 			title: &#x27;view.terminal.title&#x27;,
@@ -172,6 +174,7 @@ const routes: Routes &#x3D; [
 	imports: [CommonModule,
 		RootModule,
 		RouterModule.forChild(routes)],
+	providers: [AuthGuard],
 	exports: [RouterModule]
 })
 export class RootRoutingModule {

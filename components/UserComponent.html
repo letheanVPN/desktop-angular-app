@@ -184,7 +184,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/modules/user/user.component.ts:36</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/modules/user/user.component.ts:35</a></div>
                             </td>
                         </tr>
 
@@ -289,8 +289,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="46"
-                            class="link-to-prism">src/app/modules/user/user.component.ts:46</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">src/app/modules/user/user.component.ts:45</a></div>
                 </td>
             </tr>
 
@@ -330,7 +330,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/modules/user/user.component.ts:34</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/modules/user/user.component.ts:33</a></div>
                         </td>
                     </tr>
 
@@ -355,7 +355,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/modules/user/user.component.ts:35</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/modules/user/user.component.ts:34</a></div>
                         </td>
                     </tr>
 
@@ -380,7 +380,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/modules/user/user.component.ts:36</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/modules/user/user.component.ts:35</a></div>
                         </td>
                     </tr>
 
@@ -415,7 +415,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/modules/user/user.component.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/modules/user/user.component.ts:20</a></div>
                         </td>
                     </tr>
 
@@ -444,7 +444,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/modules/user/user.component.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/modules/user/user.component.ts:26</a></div>
                         </td>
                     </tr>
 
@@ -469,7 +469,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/modules/user/user.component.ts:33</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/modules/user/user.component.ts:32</a></div>
                         </td>
                     </tr>
 
@@ -484,7 +484,6 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component} from &#x27;@angular/core&#x27;;
 import {FormControl, FormGroup} from &#x27;@angular/forms&#x27;;
-import {ConfigIniParser} from &#x27;config-ini-parser&#x27;;
 import {CryptService} from &#x27;@service/crypt.service&#x27;;
 import {FileSystemService} from &#x27;@service/filesystem/file-system.service&#x27;;
 import {Router} from &#x27;@angular/router&#x27;;
@@ -533,21 +532,6 @@ export class UserComponent {
 		const password &#x3D; this.password.value;
 		const passwordRepeat &#x3D; this.passwordRepeat.value;
 
-		const p &#x3D; new ConfigIniParser(&#x27;\r\n&#x27;);
-		try {
-			p.addSection(&#x27;daemon&#x27;);
-			p.set(&#x27;daemon&#x27;, &#x27;start_on_boot&#x27;, &#x27;on&#x27;);
-
-			await this.fileSystem.writeFile(
-				&#x27;conf/app.ini&#x27;,
-				p.stringify(&#x27;\r\n&#x27;)
-			);
-		} catch (e) {
-			if (e &#x3D;&#x3D;&#x3D; ConfigIniParser.Errors.ErrorDuplicateSectionError) {
-				console.error(&#x27;Duplicated section&#x27;);
-			}
-		}
-
 		const usernameHash &#x3D; this.cryptService.sha256Salty(username);
 
 		if (password &#x3D;&#x3D;&#x3D; passwordRepeat) {
@@ -558,19 +542,20 @@ export class UserComponent {
 
 			console.log(&#x27;Saving keys to local filesystem&#x27;);
 			await this.fileSystem.writeFile(
-				&#x60;users/${usernameHash}.lthn.private.asc&#x60;,
+				&#x60;users/${usernameHash}.lthn.key&#x60;,
 				privateKey
 			);
 			await this.fileSystem.writeFile(
-				&#x60;users/${usernameHash}.lthn.public.asc&#x60;,
+				&#x60;users/${usernameHash}.lthn.pub&#x60;,
 				publicKey
 			);
 			await this.fileSystem.writeFile(
-				&#x60;users/${usernameHash}.lthn.revoke.asc&#x60;,
+				&#x60;users/${usernameHash}.lthn.rev&#x60;,
 				revocationCertificate
 			);
 
 			console.log(&#x27;Creating User profile data file&#x27;);
+
 			await this.fileSystem.writeFile(
 				&#x60;users/${usernameHash}.lthn&#x60;,
 				await this.cryptService.encryptPGPSingle(
@@ -587,7 +572,7 @@ export class UserComponent {
 					})
 				)
 			);
-			await this.authService.login(username, password);
+			await this.authService.login(privateKey, password);
 			console.log(&#x27;cleaning up&#x27;);
 			console.log(&#x27;Done, and away we go!&#x27;);
 			await this.router.navigateByUrl(&#x60;/&#x60;);
@@ -602,48 +587,47 @@ export class UserComponent {
     &lt;div fxFlex&#x3D;&quot;100&quot; style&#x3D;&quot;padding: 12px 12px 3px 12px;&quot;&gt;
         &lt;div fxLayout&#x3D;&quot;row&quot;&gt;
             &lt;mat-toolbar&gt;
-                &lt;div&gt;
-                    &lt;h1&gt;Welcome To Lethean&lt;/h1&gt;
-                    &lt;h2 class&#x3D;&quot;lthn-brand&quot; style&#x3D;&quot;font-size: medium; line-height: 12px;&quot;&gt;
-                        Protecting Privacy &amp;amp; Confidentially since 2017
-                    &lt;/h2&gt;
-                &lt;/div&gt;
-
+                &lt;mat-toolbar-row&gt;
+                    Lethean Desktop
+                &lt;/mat-toolbar-row&gt;
             &lt;/mat-toolbar&gt;
         &lt;/div&gt;
         &lt;mat-divider&gt;&lt;/mat-divider&gt;
-        &lt;div *ngIf&#x3D;&quot;!processingForm&quot; fxLayout&#x3D;&quot;row&quot; fxLayoutGap&#x3D;&quot;2px&quot;&gt;
+        &lt;ngx-section *ngIf&#x3D;&quot;!processingForm&quot;&gt;
+            &lt;div fxLayout&#x3D;&quot;row&quot;&gt;
+                &lt;mat-card fxFlex&#x3D;&quot;50&quot; &gt;
+                    &lt;mat-card-title&gt;Please Login&lt;/mat-card-title&gt;
+                    &lt;mat-card-content&gt;
+                        &lt;lthn-login&gt;&lt;/lthn-login&gt;
+                    &lt;/mat-card-content&gt;
 
-            &lt;mat-card fxFlex&#x3D;&quot;40&quot;&gt;
-                &lt;mat-card-title&gt;New User&lt;/mat-card-title&gt;
-                &lt;mat-card-content&gt;
-                    &lt;form fxLayout&#x3D;&quot;column&quot;&gt;
-                        &lt;mat-form-field appearance&#x3D;&quot;standard&quot; fxFlex&#x3D;&quot;100&quot;&gt;
-                            &lt;mat-label&gt;Username&lt;/mat-label&gt;
-                            &lt;input [formControl]&#x3D;&quot;username&quot; autocomplete&#x3D;&quot;off&quot; matInput&gt;
-                        &lt;/mat-form-field&gt;
-                        &lt;mat-form-field appearance&#x3D;&quot;standard&quot; fxFlex&#x3D;&quot;100&quot;&gt;
-                            &lt;mat-label&gt;Password&lt;/mat-label&gt;
-                            &lt;input [formControl]&#x3D;&quot;password&quot; autocomplete&#x3D;&quot;off&quot; matInput&gt;
-                        &lt;/mat-form-field&gt;
-                        &lt;mat-form-field appearance&#x3D;&quot;standard&quot; fxFlex&#x3D;&quot;100&quot;&gt;
-                            &lt;mat-label&gt;Password (Confirm)&lt;/mat-label&gt;
-                            &lt;input [formControl]&#x3D;&quot;passwordRepeat&quot; autocomplete&#x3D;&quot;off&quot; matInput&gt;
-                        &lt;/mat-form-field&gt;
+                &lt;/mat-card&gt;
+                &lt;mat-card fxFlex&#x3D;&quot;50&quot;&gt;
+                    &lt;mat-card-title&gt;New User&lt;/mat-card-title&gt;
+                    &lt;mat-card-content&gt;
+                        &lt;form fxLayout&#x3D;&quot;column&quot;&gt;
+                            &lt;mat-form-field appearance&#x3D;&quot;standard&quot; fxFlex&#x3D;&quot;100&quot;&gt;
+                                &lt;mat-label&gt;Username&lt;/mat-label&gt;
+                                &lt;input [formControl]&#x3D;&quot;username&quot; autocomplete&#x3D;&quot;off&quot; matInput&gt;
+                            &lt;/mat-form-field&gt;
+                            &lt;mat-form-field appearance&#x3D;&quot;standard&quot; fxFlex&#x3D;&quot;100&quot;&gt;
+                                &lt;mat-label&gt;Password&lt;/mat-label&gt;
+                                &lt;input [formControl]&#x3D;&quot;password&quot; autocomplete&#x3D;&quot;off&quot; matInput&gt;
+                            &lt;/mat-form-field&gt;
+                            &lt;mat-form-field appearance&#x3D;&quot;standard&quot; fxFlex&#x3D;&quot;100&quot;&gt;
+                                &lt;mat-label&gt;Password (Confirm)&lt;/mat-label&gt;
+                                &lt;input [formControl]&#x3D;&quot;passwordRepeat&quot; autocomplete&#x3D;&quot;off&quot; matInput&gt;
+                            &lt;/mat-form-field&gt;
 
-                    &lt;/form&gt;
-                    &lt;button (click)&#x3D;&quot;addUser()&quot; color&#x3D;&quot;accent&quot; mat-button&gt;Create User&lt;/button&gt;
-                &lt;/mat-card-content&gt;
-            &lt;/mat-card&gt;
+                        &lt;/form&gt;
+                        &lt;button (click)&#x3D;&quot;addUser()&quot; color&#x3D;&quot;accent&quot; mat-button&gt;Create User&lt;/button&gt;
+                    &lt;/mat-card-content&gt;
+                &lt;/mat-card&gt;
 
-            &lt;mat-card&gt;
-                &lt;mat-card-title&gt;Login&lt;/mat-card-title&gt;
-                &lt;mat-card-content&gt;
-                    &lt;lthn-login&gt;&lt;/lthn-login&gt;
-                &lt;/mat-card-content&gt;
 
-            &lt;/mat-card&gt;
-        &lt;/div&gt;
+            &lt;/div&gt;
+
+        &lt;/ngx-section&gt;
         &lt;div *ngIf&#x3D;&quot;processingForm&quot; fxLayout&#x3D;&quot;row&quot; fxLayoutGap&#x3D;&quot;2px&quot;&gt;
             &lt;mat-card fxFlex&#x3D;&quot;100&quot;&gt;
                 &lt;mat-card-title&gt;Building Your Encryption Keys&lt;/mat-card-title&gt;
@@ -691,7 +675,7 @@ export class UserComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="container-fluid" fxLayout="column">    <div fxFlex="100" style="padding: 12px 12px 3px 12px;">        <div fxLayout="row">            <mat-toolbar>                <div>                    <h1>Welcome To Lethean</h1>                    <h2 class="lthn-brand" style="font-size: medium; line-height: 12px;">                        Protecting Privacy &amp; Confidentially since 2017                    </h2>                </div>            </mat-toolbar>        </div>        <mat-divider></mat-divider>        <div *ngIf="!processingForm" fxLayout="row" fxLayoutGap="2px">            <mat-card fxFlex="40">                <mat-card-title>New User</mat-card-title>                <mat-card-content>                    <form fxLayout="column">                        <mat-form-field appearance="standard" fxFlex="100">                            <mat-label>Username</mat-label>                            <input [formControl]="username" autocomplete="off" matInput>                        </mat-form-field>                        <mat-form-field appearance="standard" fxFlex="100">                            <mat-label>Password</mat-label>                            <input [formControl]="password" autocomplete="off" matInput>                        </mat-form-field>                        <mat-form-field appearance="standard" fxFlex="100">                            <mat-label>Password (Confirm)</mat-label>                            <input [formControl]="passwordRepeat" autocomplete="off" matInput>                        </mat-form-field>                    </form>                    <button (click)="addUser()" color="accent" mat-button>Create User</button>                </mat-card-content>            </mat-card>            <mat-card>                <mat-card-title>Login</mat-card-title>                <mat-card-content>                    <lthn-login></lthn-login>                </mat-card-content>            </mat-card>        </div>        <div *ngIf="processingForm" fxLayout="row" fxLayoutGap="2px">            <mat-card fxFlex="100">                <mat-card-title>Building Your Encryption Keys</mat-card-title>                <mat-card-content>                    <p>You will be redirected to the profile creation page soon.</p>                    <mat-progress-bar color="accent" mode="indeterminate"></mat-progress-bar>                </mat-card-content>            </mat-card>        </div>    </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="container-fluid" fxLayout="column">    <div fxFlex="100" style="padding: 12px 12px 3px 12px;">        <div fxLayout="row">            <mat-toolbar>                <mat-toolbar-row>                    Lethean Desktop                </mat-toolbar-row>            </mat-toolbar>        </div>        <mat-divider></mat-divider>        <ngx-section *ngIf="!processingForm">            <div fxLayout="row">                <mat-card fxFlex="50" >                    <mat-card-title>Please Login</mat-card-title>                    <mat-card-content>                        <lthn-login></lthn-login>                    </mat-card-content>                </mat-card>                <mat-card fxFlex="50">                    <mat-card-title>New User</mat-card-title>                    <mat-card-content>                        <form fxLayout="column">                            <mat-form-field appearance="standard" fxFlex="100">                                <mat-label>Username</mat-label>                                <input [formControl]="username" autocomplete="off" matInput>                            </mat-form-field>                            <mat-form-field appearance="standard" fxFlex="100">                                <mat-label>Password</mat-label>                                <input [formControl]="password" autocomplete="off" matInput>                            </mat-form-field>                            <mat-form-field appearance="standard" fxFlex="100">                                <mat-label>Password (Confirm)</mat-label>                                <input [formControl]="passwordRepeat" autocomplete="off" matInput>                            </mat-form-field>                        </form>                        <button (click)="addUser()" color="accent" mat-button>Create User</button>                    </mat-card-content>                </mat-card>            </div>        </ngx-section>        <div *ngIf="processingForm" fxLayout="row" fxLayoutGap="2px">            <mat-card fxFlex="100">                <mat-card-title>Building Your Encryption Keys</mat-card-title>                <mat-card-content>                    <p>You will be redirected to the profile creation page soon.</p>                    <mat-progress-bar color="accent" mode="indeterminate"></mat-progress-bar>                </mat-card-content>            </mat-card>        </div>    </div></div></div>'
     var COMPONENTS = [{'name': 'AddComponent', 'selector': 'lthn-wallet-add'},{'name': 'AppComponent', 'selector': 'lthn-app'},{'name': 'BlockchainComponent', 'selector': 'lthn-chain'},{'name': 'BlockchainConfigComponent', 'selector': 'lthn-chain-config'},{'name': 'BlockchainStatsComponent', 'selector': 'lthn-chain-stats'},{'name': 'BlockDetailsComponent', 'selector': 'lthn-chain-block-details'},{'name': 'BlockLedgerComponent', 'selector': 'lthn-chain-ledger'},{'name': 'ConsoleComponent', 'selector': 'lthn-app-console'},{'name': 'DetailsComponent', 'selector': 'lthn-wallet-details'},{'name': 'LoginComponent', 'selector': 'lthn-login'},{'name': 'LogsComponent', 'selector': 'lthn-app-logs'},{'name': 'ModalComponent', 'selector': 'modal'},{'name': 'NoDaemonRunningDialog', 'selector': 'lthn-app-status-no-daemon'},{'name': 'OpenComponent', 'selector': 'lthn-wallet-open'},{'name': 'PostComponent', 'selector': 'lthn-app-post'},{'name': 'ProfileComponent', 'selector': 'lthn-user-profile'},{'name': 'RestoreComponent', 'selector': 'lthn-wallet-restore'},{'name': 'RootComponent', 'selector': 'lthn-root'},{'name': 'SettingsComponent', 'selector': 'lthn-settings'},{'name': 'SettingsComponent', 'selector': 'lthn-app-settings'},{'name': 'SpartaComponent', 'selector': 'lthn-app-sparta'},{'name': 'StatusComponent', 'selector': 'lthn-app-status'},{'name': 'TerminalComponent', 'selector': 'lthn-app-terminal'},{'name': 'TransactionsComponent', 'selector': 'lthn-wallet-transactions'},{'name': 'TransferComponent', 'selector': 'lthn-wallet-transfer'},{'name': 'UserComponent', 'selector': 'lthn-user'},{'name': 'VpnComponent', 'selector': 'lthn-vpn'},{'name': 'WalletComponent', 'selector': 'lthn-app-wallet'},{'name': 'WalletNewComponent', 'selector': 'lthn-wallet-new'}];
     var DIRECTIVES = [{'name': 'ChartDirective', 'selector': '[lthnChart]'}];
     var ACTUAL_COMPONENT = {'name': 'UserComponent'};

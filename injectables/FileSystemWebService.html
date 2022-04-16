@@ -689,7 +689,7 @@ export class FileSystemWebService implements FileSystemInterface {
 	public async read(filename) {
 		const options &#x3D; {
 			headers: new HttpHeaders({
-				&#x27;Content-Type&#x27;: &#x27;application/x-www-form-urlencoded&#x27;
+				&#x27;Content-Type&#x27;: &#x27;application/json&#x27;
 			}),
 			responseType: &#x27;text&#x27; as &#x27;json&#x27;
 		};
@@ -700,6 +700,7 @@ export class FileSystemWebService implements FileSystemInterface {
 	}
 
 	public async write(filename, data) {
+
 		const options &#x3D; {
 			headers: new HttpHeaders({
 				&#x27;Content-Type&#x27;: &#x27;application/x-www-form-urlencoded&#x27;
