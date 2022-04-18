@@ -42,6 +42,7 @@ export class BlockLedgerComponent implements OnInit, OnDestroy {
 	ColumnMode = ColumnMode;
 	blocks: BlockHeader[] ;
 	chainInfo: ChainGetInfo;
+	@ViewChild('blocksTable') table: any;
 	@ViewChild('editTmpl', { static: false }) editTmpl: TemplateRef<any>;
 	private sub: Subscription[] = [];
 
@@ -105,6 +106,15 @@ export class BlockLedgerComponent implements OnInit, OnDestroy {
 			context: { id}
 
 		});
+	}
+
+	toggleExpandRow(row) {
+		console.log('Toggled Expand Row!', row);
+		this.table.rowDetail.toggleExpandRow(row);
+	}
+
+	onDetailToggle(event) {
+		console.log('Detail Toggled', event);
 	}
 
 }

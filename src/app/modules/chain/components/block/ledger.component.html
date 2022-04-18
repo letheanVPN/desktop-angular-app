@@ -1,5 +1,6 @@
 <ng-container *ngIf="blocks">
 <ngx-datatable
+    #blocksTable
         class=" ngx-datatable"
         [rows]="blocks['headers']"
         [loadingIndicator]="false"
@@ -7,6 +8,7 @@
         [columnMode]="ColumnMode.force"
         [headerHeight]="30"
         [footerHeight]="50"
+    [rowHeight]="'auto'"
         [externalPaging]="true"
         [count]="page.totalElements"
         [offset]="page.pageNumber"
@@ -14,7 +16,29 @@
         [sorts]="[{ prop: 'timestamp', dir: 'desc' }]"
         (page)="page.pageNumber = $event.offset;getBlocks();"
 >
-
+    <ngx-datatable-row-detail [rowHeight]="500" #blocksTable (toggle)="onDetailToggle($event)" >
+        <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+            <lthn-chain-block-details [id]="row.hash"></lthn-chain-block-details>
+        </ng-template>
+    </ngx-datatable-row-detail>
+    <ngx-datatable-column
+            [width]="50"
+            [resizeable]="false"
+            [sortable]="false"
+            [draggable]="false"
+            [canAutoResize]="false"
+    >
+        <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+            <a
+                    href="javascript:void(0)"
+                    [class.datatable-icon-right]="!expanded"
+                    [class.datatable-icon-down]="expanded"
+                    title="Expand/Collapse Row"
+                    (click)="toggleExpandRow(row)"
+            >
+            </a>
+        </ng-template>
+    </ngx-datatable-column>
     <ngx-datatable-column *ngFor="let col of columns" [prop]="col.prop" [name]="col.name | translate">
 
         <ng-template let-value="value" ngx-datatable-cell-template>
