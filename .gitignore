@@ -8,8 +8,5 @@ out-tsc
 /cli
 /data
 /users
-/conf/app.ini
-/conf/letheand.conf
-/wallets/test
-/wallets/test.address.txt
-/wallets/test.keys
+/conf
+/wallets
