@@ -1,0 +1,40 @@
+<p>{{'app.lthn.chain.desc.no_transactions' | translate}}</p>
+<table class="table">
+    <caption>{{'app.lthn.chain.words.miner_transaction' | translate}}</caption>
+    <thead>
+    <tr>
+        <th>{{'words.things.type' | translate}}</th>
+        <th>{{'app.lthn.chain.words.hash' | translate}}</th>
+        <th>{{'app.lthn.chain.words.reward' | translate}}</th>
+        <th>{{'app.lthn.chain.words.unlock_time' | translate}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Block Miner Reward</td>
+        <td>{{ blockData['miner_tx']['vout'][0]['target']['key'] }}</td>
+        <td>{{ blockData['miner_tx']['vout'][0]['amount'] | toCoin }}</td>
+        <td>{{ blockData['miner_tx']['unlock_time'] }}</td>
+    </tr>
+    </tbody>
+
+</table>
+
+<h2>Block Transactions</h2>
+<table class="table">
+    <caption>Included Transactions</caption>
+    <thead>
+    <tr>
+        <th>Tx {{'app.lthn.chain.words.hash' | translate}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let tx of blockData['tx_hashes']">
+        <td>{{ tx }}</td>
+    </tr>
+    </tbody>
+
+</table>
+
+
+

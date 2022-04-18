@@ -17,18 +17,19 @@ import {PipesModule} from '@pipe/pipes.module';
 import {HashRatePipe} from '@pipe/crypto/hashrate.pipe';
 import {MomentModule} from 'ngx-moment';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import {RouterModule} from "@angular/router";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatInputModule} from "@angular/material/input";
+import {RouterModule} from '@angular/router';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ButtonModule, CodeEditorModule, SectionModule, TabsModule, ToolbarModule} from '@swimlane/ngx-ui';
+import {ButtonModule, CodeEditorModule, IconModule, JSONTreeModule, SectionModule, TabsModule, ToolbarModule, TreeModule} from '@swimlane/ngx-ui';
 import {BlockDetailsComponent} from '@module/chain/components/block/details.component';
 import {BlockLedgerComponent} from '@module/chain/components/block/ledger.component';
-import { BlockchainStatsComponent} from '@module/chain/components/stats.component';
+import {BlockchainStatsComponent} from '@module/chain/components/stats.component';
 import {BlockchainConfigComponent} from '@module/chain/components/config.component';
+import {BlockTransactionsComponent} from '@module/chain/components/block/transactions.component';
 
 @NgModule({
-	declarations: [BlockchainComponent, BlockDetailsComponent, BlockLedgerComponent, BlockchainStatsComponent, BlockchainConfigComponent],
+	declarations: [BlockchainComponent, BlockDetailsComponent, BlockLedgerComponent, BlockchainStatsComponent, BlockchainConfigComponent, BlockTransactionsComponent],
 	imports: [
 		CommonModule,
 		ChartModule,
@@ -55,9 +56,12 @@ import {BlockchainConfigComponent} from '@module/chain/components/config.compone
 		TabsModule,
 		CodeEditorModule,
 		FormsModule,
-		ButtonModule
+		ButtonModule,
+		TreeModule,
+		JSONTreeModule,
+		IconModule
 	],
-	exports: [ BlockchainComponent],
+	exports: [BlockchainComponent],
 	providers: [HashRatePipe]
 })
 export class BlockchainModule {

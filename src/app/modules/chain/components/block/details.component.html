@@ -1,62 +1,78 @@
 <ngx-tabs>
     <ngx-tab label="Block Details">
-        <mat-list *ngIf="block" >
-            <mat-list-item>{{'app.lthn.chain.words.hash' | translate}}: <span class="lthn-brand">{{ id }}</span></mat-list-item>
-            <mat-list-item>{{'app.lthn.chain.words.block_size' | translate}}: <span class="lthn-brand">{{ block.block_size }}</span></mat-list-item>
-            <mat-list-item>{{'app.lthn.chain.words.depth' | translate}}: <span class="lthn-brand">{{ block.depth }}</span></mat-list-item>
-            <mat-list-item>{{'app.lthn.chain.words.difficulty' | translate}}: <span class="lthn-brand">{{ block.difficulty }}</span></mat-list-item>
-            <mat-list-item>{{'app.lthn.chain.words.height' | translate}}: <span class="lthn-brand">{{ block.height }}</span></mat-list-item>
-            <mat-list-item>{{'app.lthn.chain.words.major_version' | translate}}: <span class="lthn-brand">{{ block.major_version}}</span></mat-list-item>
-            <mat-list-item>{{'app.lthn.chain.words.minor_version' | translate}}: <span class="lthn-brand">{{ block.minor_version}}</span></mat-list-item>
-            <mat-list-item>{{'app.lthn.chain.words.nonce' | translate}}: <span class="lthn-brand">{{ block.nonce}}</span></mat-list-item>
-            <mat-list-item>{{'app.lthn.chain.words.tx_count' | translate}}: <span class="lthn-brand">{{ block.num_txes}}</span></mat-list-item>
-            <mat-list-item>{{'app.lthn.chain.words.orphan_status' | translate}}: <span class="lthn-brand">{{ block.orphan_status }}</span></mat-list-item>
-            <mat-list-item>{{'app.lthn.chain.words.timestamp' | translate}}: <span class="lthn-brand">{{ block.timestamp  | amFromUnix }}</span></mat-list-item>
-            <mat-list-item>{{'app.lthn.chain.words.reward' | translate}}: <span class="lthn-brand">{{ block.reward |toCoin }}</span></mat-list-item>
-            <!--            <mat-list-item>Previous block: <a [routerLink]="['/', 'chain', 'block', block.prev_hash ]"  class="lthn-brand">{{ block.prev_hash }}</a></mat-list-item>-->
-        </mat-list>
-    </ngx-tab>
-    <ngx-tab label="Transactions ({{blockData['tx_hashes'].length + 1}})">
         <div *ngxIfTabActive>
-            <p>{{'app.lthn.chain.desc.no_transactions' | translate}}</p>
-            <table class="table">
-                <caption>{{'app.lthn.chain.words.miner_transaction' | translate}}</caption>
+            <table class="table striped">
                 <thead>
                 <tr>
-                    <th>{{'words.things.type' | translate}}</th>
                     <th>{{'app.lthn.chain.words.hash' | translate}}</th>
-                    <th>{{'app.lthn.chain.words.reward' | translate}}</th>
-                    <th>{{'app.lthn.chain.words.unlock_time' | translate}}</th>
+                    <th>{{ id }}</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td>Block Miner Reward</td>
-                    <td>{{ blockData['miner_tx']['vout'][0]['target']['key'] }}</td>
-                    <td>{{ blockData['miner_tx']['vout'][0]['amount'] | toCoin }}</td>
-                    <td>{{ blockData['miner_tx']['unlock_time'] }}</td>
+                    <td>{{'app.lthn.chain.words.valid' | translate}}</td>
+                    <td>
+                        <ngx-icon *ngIf="!block.orphan_status" style="color: green;" fontIcon="thumb-up-outline-large"></ngx-icon>
+                        <ngx-icon *ngIf="block.orphan_status" style="color: red;" fontIcon="thumb-down-outline-large"></ngx-icon>
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{'app.lthn.chain.words.tx_count' | translate}}</td>
+                    <td>{{ block.num_txes }}</td>
+                </tr>
+                <tr>
+                    <td>{{'app.lthn.chain.words.height' | translate}}</td>
+                    <td>{{ block.height }}</td>
+                </tr>
+                <tr>
+                    <td>{{'app.lthn.chain.words.reward' | translate}}</td>
+                    <td>{{ block.reward |toCoin  }}</td>
+                </tr>
+                <tr>
+                    <td>{{'app.lthn.chain.words.depth' | translate}}</td>
+                    <td>{{ block.depth }}</td>
+                </tr>
+                <tr>
+                    <td>{{'app.lthn.chain.words.timestamp' | translate}}</td>
+                    <td>{{ block.timestamp | amFromUnix  }}</td>
+                </tr>
+                <tr>
+                    <td>{{'app.lthn.chain.words.difficulty' | translate}}</td>
+                    <td>{{ block.difficulty }}</td>
+                </tr>
+                <tr>
+                    <td>{{'app.lthn.chain.words.block_size' | translate}}</td>
+                    <td>{{ block.block_size }}</td>
+                </tr>
+                <tr>
+                    <td>{{'app.lthn.chain.words.version' | translate}}</td>
+                    <td>{{ block.major_version }}.{{ block.minor_version}}</td>
+                </tr>
+                <tr>
+                    <td>{{'app.lthn.chain.words.nonce' | translate}}</td>
+                    <td>{{ block.nonce }}</td>
                 </tr>
                 </tbody>
+                <tbody>
 
+                </tbody>
             </table>
-            <ng-container *ngIf="blockData['tx_hashes'].length > 0">
-                <h2>Block Transactions</h2>
-                <table class="table">
-                    <caption>Included Transactions</caption>
-                    <thead>
-                    <tr>
-                        <th>Tx {{'app.lthn.chain.words.hash' | translate}}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr *ngFor="let tx of blockData['tx_hashes']">
-                        <td>{{ tx }}</td>
-                    </tr>
-                    </tbody>
-
-                </table>
-            </ng-container>
-
+        </div>
+    </ngx-tab>
+    <ngx-tab label="Transactions ({{blockData['tx_hashes'].length + 1}})">
+        <div *ngxIfTabActive>
+            <lthn-chain-block-transactions [blockData]="blockData"></lthn-chain-block-transactions>
+        </div>
+    </ngx-tab>
+    <ngx-tab label="{{'app.lthn.chain.menu.raw_data' | translate}}">
+        <div *ngxIfTabActive>
+            <ngx-tree [nodes]="blockData | jsonTree">
+                <ng-template let-label="label" let-model="model" let-expandable="expandable">
+                    <div class="ngx-node-label" [ngClass]="model.type">
+                        <code><strong>{{label}}:</strong><span *ngIf="!model.expandable">{{model.value}}</span></code>
+                    </div>
+                </ng-template>
+            </ngx-tree>
         </div>
     </ngx-tab>
 </ngx-tabs>
