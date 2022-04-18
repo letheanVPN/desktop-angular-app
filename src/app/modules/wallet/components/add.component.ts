@@ -16,7 +16,7 @@ export class AddComponent implements OnInit {
 
 	setTargetTabIndex(): void {
 		if (this.targetAddForm === "open") {
-			this.targetTabIndex = 2;
+			this.targetTabIndex = 0;
 		}else if (this.targetAddForm === "restore") {
 			this.targetTabIndex = 1;
 		}else{

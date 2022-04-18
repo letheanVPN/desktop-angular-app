@@ -1,26 +1,26 @@
 <mat-card>
-    <mat-card-title>{{ 'plugin.lthn.wallet.titles.restore-seed' | translate }}</mat-card-title>
+    <mat-card-title>{{ 'app.lthn.wallet.titles.restore-seed' | translate }}</mat-card-title>
     <mat-card-content>
         <form [formGroup]="restoreWalletForm">
             <section>
                 <mat-form-field appearance="standard">
-                    <mat-label>{{ 'plugin.lthn.wallet.label.filename' | translate }}</mat-label>
+                    <mat-label>{{ 'app.lthn.wallet.label.filename' | translate }}</mat-label>
                     <input matInput type="text" formControlName="filename">
 					<mat-error *ngIf="restoreWalletForm.get('filename')?.errors?.['nameTaken']">Wallet already exists</mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="standard">
-                    <mat-label>{{ 'plugin.lthn.wallet.label.wallet-password' | translate }}</mat-label>
+                    <mat-label>{{ 'app.lthn.wallet.label.wallet-password' | translate }}</mat-label>
                     <input matInput type="password" formControlName="password">
                 </mat-form-field>
                 <mat-form-field appearance="standard">
-                    <mat-label>{{ 'plugin.lthn.wallet.label.wallet-password-confirm' | translate }}</mat-label>
+                    <mat-label>{{ 'app.lthn.wallet.label.wallet-password-confirm' | translate }}</mat-label>
                     <input matInput type="password" formControlName="password_confirm">
                 </mat-form-field>
             </section>
 
             <section>
                 <mat-form-field class="full_width" appearance="standard">
-                    <mat-label>{{ 'plugin.lthn.wallet.label.address' | translate }}</mat-label>
+                    <mat-label>{{ 'app.lthn.wallet.label.address' | translate }}</mat-label>
                     <input matInput type="text" formControlName="address">
                 </mat-form-field>
             </section>
@@ -28,12 +28,12 @@
 
 
             <mat-form-field *ngIf="!restoreWalletForm.value.viewonly_wallet" class="full_width" appearance="standard">
-                <mat-label>{{ 'plugin.lthn.wallet.label.spend-key' | translate }}</mat-label>
+                <mat-label>{{ 'app.lthn.wallet.label.spend-key' | translate }}</mat-label>
                 <input matInput type="password" formControlName="spendkey">
             </mat-form-field>
 
             <mat-form-field class="full_width" appearance="standard">
-                <mat-label>{{ 'plugin.lthn.wallet.label.view-key' | translate }}</mat-label>
+                <mat-label>{{ 'app.lthn.wallet.label.view-key' | translate }}</mat-label>
                 <input matInput type="password" formControlName="viewkey">
             </mat-form-field>
 
@@ -46,12 +46,12 @@
                 </mat-expansion-panel-header>
 
                 <mat-form-field appearance="standard">
-                    <mat-label>{{ 'plugin.lthn.wallet.label.restore-height' | translate }}</mat-label>
+                    <mat-label>{{ 'app.lthn.wallet.label.restore-height' | translate }}</mat-label>
                     <input matInput type="text" formControlName="restore_height">
                 </mat-form-field>
 
                 <section>
-                    <mat-checkbox formControlName="autosave_current">{{ 'plugin.lthn.wallet.label.autosave' | translate }}</mat-checkbox>
+                    <mat-checkbox formControlName="autosave_current">{{ 'app.lthn.wallet.label.autosave' | translate }}</mat-checkbox>
                 </section>
 
                 <section>
@@ -61,7 +61,7 @@
             </mat-expansion-panel>
 
             <p>
-                <button mat-button (click)="restoreWallet()">{{ 'plugin.lthn.wallet.button.restore-wallet' | translate }}</button>
+                <button mat-button (click)="restoreWallet()">{{ 'app.lthn.wallet.button.restore-wallet' | translate }}</button>
             </p>
 
         </form>
