@@ -457,23 +457,23 @@ export class WalletNewComponent implements OnInit {
 
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;mat-card&gt;
-    &lt;mat-card-title&gt;{{ &#x27;plugin.lthn.wallet.titles.new-wallet&#x27; | translate }}&lt;/mat-card-title&gt;
+    &lt;mat-card-title&gt;{{ &#x27;app.lthn.wallet.titles.new-wallet&#x27; | translate }}&lt;/mat-card-title&gt;
     &lt;mat-card-content&gt;
 
         &lt;mat-form-field class&#x3D;&quot;full_width&quot;  appearance&#x3D;&quot;standard&quot;&gt;
-            &lt;mat-label&gt;{{ &#x27;plugin.lthn.wallet.label.filename&#x27; | translate }}&lt;/mat-label&gt;
+            &lt;mat-label&gt;{{ &#x27;app.lthn.wallet.label.filename&#x27; | translate }}&lt;/mat-label&gt;
             &lt;input [formControl]&#x3D;&quot;wallet_name&quot; matInput type&#x3D;&quot;text&quot;&gt;
 			&lt;mat-error *ngIf&#x3D;&quot;wallet_name.errors?.[&#x27;nameTaken&#x27;]&quot;&gt;Wallet already exists&lt;/mat-error&gt;
         &lt;/mat-form-field&gt;
         &lt;mat-form-field  class&#x3D;&quot;full_width&quot; appearance&#x3D;&quot;standard&quot;&gt;
-            &lt;mat-label&gt;{{ &#x27;plugin.lthn.wallet.label.wallet-password&#x27; | translate }}&lt;/mat-label&gt;
+            &lt;mat-label&gt;{{ &#x27;app.lthn.wallet.label.wallet-password&#x27; | translate }}&lt;/mat-label&gt;
             &lt;input [formControl]&#x3D;&quot;password&quot; matInput type&#x3D;&quot;password&quot;&gt;
         &lt;/mat-form-field&gt;
         &lt;mat-form-field  class&#x3D;&quot;full_width&quot; appearance&#x3D;&quot;standard&quot;&gt;
-            &lt;mat-label&gt;{{ &#x27;plugin.lthn.wallet.label.wallet-password-confirm&#x27; | translate }}&lt;/mat-label&gt;
+            &lt;mat-label&gt;{{ &#x27;app.lthn.wallet.label.wallet-password-confirm&#x27; | translate }}&lt;/mat-label&gt;
             &lt;input [formControl]&#x3D;&quot;password_confirm&quot; matInput type&#x3D;&quot;password&quot;&gt;
         &lt;/mat-form-field&gt;
-        &lt;button mat-button (click)&#x3D;&quot;createWallet()&quot;&gt;{{ &#x27;plugin.lthn.wallet.button.create-wallet&#x27; | translate }}&lt;/button&gt;
+        &lt;button mat-button (click)&#x3D;&quot;createWallet()&quot;&gt;{{ &#x27;app.lthn.wallet.button.create-wallet&#x27; | translate }}&lt;/button&gt;
     &lt;/mat-card-content&gt;
 &lt;/mat-card&gt;
 </code></pre>
@@ -505,7 +505,7 @@ export class WalletNewComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><mat-card>    <mat-card-title>{{ \'plugin.lthn.wallet.titles.new-wallet\' | translate }}</mat-card-title>    <mat-card-content>        <mat-form-field class="full_width"  appearance="standard">            <mat-label>{{ \'plugin.lthn.wallet.label.filename\' | translate }}</mat-label>            <input [formControl]="wallet_name" matInput type="text">			<mat-error *ngIf="wallet_name.errors?.[\'nameTaken\']">Wallet already exists</mat-error>        </mat-form-field>        <mat-form-field  class="full_width" appearance="standard">            <mat-label>{{ \'plugin.lthn.wallet.label.wallet-password\' | translate }}</mat-label>            <input [formControl]="password" matInput type="password">        </mat-form-field>        <mat-form-field  class="full_width" appearance="standard">            <mat-label>{{ \'plugin.lthn.wallet.label.wallet-password-confirm\' | translate }}</mat-label>            <input [formControl]="password_confirm" matInput type="password">        </mat-form-field>        <button mat-button (click)="createWallet()">{{ \'plugin.lthn.wallet.button.create-wallet\' | translate }}</button>    </mat-card-content></mat-card></div>'
+        var COMPONENT_TEMPLATE = '<div><mat-card>    <mat-card-title>{{ \'app.lthn.wallet.titles.new-wallet\' | translate }}</mat-card-title>    <mat-card-content>        <mat-form-field class="full_width"  appearance="standard">            <mat-label>{{ \'app.lthn.wallet.label.filename\' | translate }}</mat-label>            <input [formControl]="wallet_name" matInput type="text">			<mat-error *ngIf="wallet_name.errors?.[\'nameTaken\']">Wallet already exists</mat-error>        </mat-form-field>        <mat-form-field  class="full_width" appearance="standard">            <mat-label>{{ \'app.lthn.wallet.label.wallet-password\' | translate }}</mat-label>            <input [formControl]="password" matInput type="password">        </mat-form-field>        <mat-form-field  class="full_width" appearance="standard">            <mat-label>{{ \'app.lthn.wallet.label.wallet-password-confirm\' | translate }}</mat-label>            <input [formControl]="password_confirm" matInput type="password">        </mat-form-field>        <button mat-button (click)="createWallet()">{{ \'app.lthn.wallet.button.create-wallet\' | translate }}</button>    </mat-card-content></mat-card></div>'
     var COMPONENTS = [{'name': 'AddComponent', 'selector': 'lthn-wallet-add'},{'name': 'AppComponent', 'selector': 'lthn-app'},{'name': 'BlockchainComponent', 'selector': 'lthn-chain'},{'name': 'BlockchainConfigComponent', 'selector': 'lthn-chain-config'},{'name': 'BlockchainStatsComponent', 'selector': 'lthn-chain-stats'},{'name': 'BlockDetailsComponent', 'selector': 'lthn-chain-block-details'},{'name': 'BlockLedgerComponent', 'selector': 'lthn-chain-ledger'},{'name': 'ConsoleComponent', 'selector': 'lthn-app-console'},{'name': 'DetailsComponent', 'selector': 'lthn-wallet-details'},{'name': 'LoginComponent', 'selector': 'lthn-login'},{'name': 'LogsComponent', 'selector': 'lthn-app-logs'},{'name': 'ModalComponent', 'selector': 'modal'},{'name': 'NoDaemonRunningDialog', 'selector': 'lthn-app-status-no-daemon'},{'name': 'OpenComponent', 'selector': 'lthn-wallet-open'},{'name': 'PostComponent', 'selector': 'lthn-app-post'},{'name': 'ProfileComponent', 'selector': 'lthn-user-profile'},{'name': 'RestoreComponent', 'selector': 'lthn-wallet-restore'},{'name': 'RootComponent', 'selector': 'lthn-root'},{'name': 'SettingsComponent', 'selector': 'lthn-settings'},{'name': 'SettingsComponent', 'selector': 'lthn-app-settings'},{'name': 'SpartaComponent', 'selector': 'lthn-app-sparta'},{'name': 'StatusComponent', 'selector': 'lthn-app-status'},{'name': 'TerminalComponent', 'selector': 'lthn-app-terminal'},{'name': 'TransactionsComponent', 'selector': 'lthn-wallet-transactions'},{'name': 'TransferComponent', 'selector': 'lthn-wallet-transfer'},{'name': 'UserComponent', 'selector': 'lthn-user'},{'name': 'VpnComponent', 'selector': 'lthn-vpn'},{'name': 'WalletComponent', 'selector': 'lthn-app-wallet'},{'name': 'WalletNewComponent', 'selector': 'lthn-wallet-new'}];
     var DIRECTIVES = [{'name': 'ChartDirective', 'selector': '[lthnChart]'}];
     var ACTUAL_COMPONENT = {'name': 'WalletNewComponent'};

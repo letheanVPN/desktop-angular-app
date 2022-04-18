@@ -581,14 +581,14 @@ export class OpenComponent implements OnInit {
 
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">
-    &lt;h2&gt;{{ &#x27;plugin.lthn.wallet.titles.unlock-wallet&#x27; | translate }}&lt;/h2&gt;
+    &lt;h2&gt;{{ &#x27;app.lthn.wallet.titles.unlock-wallet&#x27; | translate }}&lt;/h2&gt;
 
         &lt;div fxLayout&#x3D;&quot;row, wrap&quot;&gt;
             &lt;div  fxFlex&#x3D;&quot;50&quot; *ngFor&#x3D;&quot;let wall of wallets&quot;&gt;
             &lt;mat-card&gt;
                 &lt;mat-card-title&gt;{{wall}}&lt;/mat-card-title&gt;
                 &lt;mat-card-actions&gt;
-                    &lt;button mat-button (click)&#x3D;&quot;unlockWallet(wall)&quot; color&#x3D;&quot;accent&quot;&gt;{{ &#x27;plugin.lthn.wallet.button.unlock-wallet&#x27; | translate }}&lt;/button&gt;
+                    &lt;button mat-button (click)&#x3D;&quot;unlockWallet(wall)&quot; color&#x3D;&quot;accent&quot;&gt;{{ &#x27;app.lthn.wallet.button.unlock-wallet&#x27; | translate }}&lt;/button&gt;
 
                 &lt;/mat-card-actions&gt;
             &lt;/mat-card&gt;
@@ -624,7 +624,7 @@ export class OpenComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div>    <h2>{{ \'plugin.lthn.wallet.titles.unlock-wallet\' | translate }}</h2>        <div fxLayout="row, wrap">            <div  fxFlex="50" *ngFor="let wall of wallets">            <mat-card>                <mat-card-title>{{wall}}</mat-card-title>                <mat-card-actions>                    <button mat-button (click)="unlockWallet(wall)" color="accent">{{ \'plugin.lthn.wallet.button.unlock-wallet\' | translate }}</button>                </mat-card-actions>            </mat-card>            </div>        </div></div>'
+        var COMPONENT_TEMPLATE = '<div>    <h2>{{ \'app.lthn.wallet.titles.unlock-wallet\' | translate }}</h2>        <div fxLayout="row, wrap">            <div  fxFlex="50" *ngFor="let wall of wallets">            <mat-card>                <mat-card-title>{{wall}}</mat-card-title>                <mat-card-actions>                    <button mat-button (click)="unlockWallet(wall)" color="accent">{{ \'app.lthn.wallet.button.unlock-wallet\' | translate }}</button>                </mat-card-actions>            </mat-card>            </div>        </div></div>'
     var COMPONENTS = [{'name': 'AddComponent', 'selector': 'lthn-wallet-add'},{'name': 'AppComponent', 'selector': 'lthn-app'},{'name': 'BlockchainComponent', 'selector': 'lthn-chain'},{'name': 'BlockchainConfigComponent', 'selector': 'lthn-chain-config'},{'name': 'BlockchainStatsComponent', 'selector': 'lthn-chain-stats'},{'name': 'BlockDetailsComponent', 'selector': 'lthn-chain-block-details'},{'name': 'BlockLedgerComponent', 'selector': 'lthn-chain-ledger'},{'name': 'ConsoleComponent', 'selector': 'lthn-app-console'},{'name': 'DetailsComponent', 'selector': 'lthn-wallet-details'},{'name': 'LoginComponent', 'selector': 'lthn-login'},{'name': 'LogsComponent', 'selector': 'lthn-app-logs'},{'name': 'ModalComponent', 'selector': 'modal'},{'name': 'NoDaemonRunningDialog', 'selector': 'lthn-app-status-no-daemon'},{'name': 'OpenComponent', 'selector': 'lthn-wallet-open'},{'name': 'PostComponent', 'selector': 'lthn-app-post'},{'name': 'ProfileComponent', 'selector': 'lthn-user-profile'},{'name': 'RestoreComponent', 'selector': 'lthn-wallet-restore'},{'name': 'RootComponent', 'selector': 'lthn-root'},{'name': 'SettingsComponent', 'selector': 'lthn-settings'},{'name': 'SettingsComponent', 'selector': 'lthn-app-settings'},{'name': 'SpartaComponent', 'selector': 'lthn-app-sparta'},{'name': 'StatusComponent', 'selector': 'lthn-app-status'},{'name': 'TerminalComponent', 'selector': 'lthn-app-terminal'},{'name': 'TransactionsComponent', 'selector': 'lthn-wallet-transactions'},{'name': 'TransferComponent', 'selector': 'lthn-wallet-transfer'},{'name': 'UserComponent', 'selector': 'lthn-user'},{'name': 'VpnComponent', 'selector': 'lthn-vpn'},{'name': 'WalletComponent', 'selector': 'lthn-app-wallet'},{'name': 'WalletNewComponent', 'selector': 'lthn-wallet-new'}];
     var DIRECTIVES = [{'name': 'ChartDirective', 'selector': '[lthnChart]'}];
     var ACTUAL_COMPONENT = {'name': 'OpenComponent'};

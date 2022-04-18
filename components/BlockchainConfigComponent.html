@@ -125,9 +125,6 @@
                                 <a href="#chain" >chain</a>
                             </li>
                             <li>
-                                <a href="#chainInfo" >chainInfo</a>
-                            </li>
-                            <li>
                                     <span class="modifier">Public</span>
                                 <a href="#config" >config</a>
                             </li>
@@ -174,7 +171,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/modules/chain/components/config.component.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/modules/chain/components/config.component.ts:12</a></div>
                             </td>
                         </tr>
 
@@ -267,8 +264,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="28"
-                            class="link-to-prism">src/app/modules/chain/components/config.component.ts:28</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="27"
+                            class="link-to-prism">src/app/modules/chain/components/config.component.ts:27</a></div>
                 </td>
             </tr>
 
@@ -306,8 +303,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">src/app/modules/chain/components/config.component.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="18"
+                            class="link-to-prism">src/app/modules/chain/components/config.component.ts:18</a></div>
                 </td>
             </tr>
 
@@ -349,33 +346,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/modules/chain/components/config.component.ts:15</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="chainInfo"></a>
-                    <span class="name">
-                        <span ><b>chainInfo</b></span>
-                        <a href="#chainInfo"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../interfaces/ChainGetInfo.html" target="_self" >ChainGetInfo</a></code>
-
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/modules/chain/components/config.component.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/chain/components/config.component.ts:14</a></div>
                         </td>
                     </tr>
 
@@ -421,10 +392,10 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component} from &#x27;@angular/core&#x27;;
-import {ChainGetInfo} from &#x27;@module/chain/interfaces/props/get_info&#x27;;
 import {BlockchainService} from &#x27;@module/chain/blockchain.service&#x27;;
 import {FileSystemService} from &#x27;@service/filesystem/file-system.service&#x27;;
 import {NotificationService, NotificationStyleType, NotificationType} from &#x27;@swimlane/ngx-ui&#x27;;
+import &#x27;codemirror/mode/properties/properties.js&#x27;;
 @Component({
 	selector: &#x27;lthn-chain-config&#x27;,
 	templateUrl: &#x27;./config.component.html&#x27;
@@ -432,7 +403,6 @@ import {NotificationService, NotificationStyleType, NotificationType} from &#x27
 export class BlockchainConfigComponent {
 
 	public config &#x3D; &#x27;&#x27;
-	chainInfo: ChainGetInfo;
 
 	constructor(public chain: BlockchainService, private fs: FileSystemService, private notify: NotificationService) {
 		this.load().then(() &#x3D;&gt; console.log(&#x27;loaded&#x27;));
@@ -456,16 +426,15 @@ export class BlockchainConfigComponent {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">
-&lt;div class&#x3D;&quot;container-fluid&quot; style&#x3D;&quot;min-height: 500px;&quot;&gt;
-    &lt;ngx-codemirror style&#x3D;&quot;width: 100%;&quot; class&#x3D;&quot;p-0&quot;  mode&#x3D;&quot;text&quot; [(ngModel)]&#x3D;&quot;config&quot;
-            [config]&#x3D;&quot;{
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container-fluid&quot; style&#x3D;&quot;min-height: 500px;&quot;&gt;
+    &lt;ngx-codemirror [(ngModel)]&#x3D;&quot;config&quot; [config]&#x3D;&quot;{
     lineNumbers: true,
-    theme: &#x27;dracula&#x27;
-
-  }&quot;
-    &gt;
-    &lt;/ngx-codemirror&gt;
+    viewportMargin: 10,
+    theme: &#x27;dracula&#x27;,
+    mode: {
+      name: &#x27;properties&#x27;
+    }
+  }&quot;&gt;&lt;/ngx-codemirror&gt;
     &lt;ngx-button (click)&#x3D;&quot;save()&quot;&gt;{{ &#x27;words.actions.save&#x27; | translate}}&lt;/ngx-button&gt;
 &lt;/div&gt;
 
@@ -498,7 +467,7 @@ export class BlockchainConfigComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="container-fluid" style="min-height: 500px;">    <ngx-codemirror style="width: 100%;" class="p-0"  mode="text" [(ngModel)]="config"            [config]="{    lineNumbers: true,    theme: \'dracula\'  }"    >    </ngx-codemirror>    <ngx-button (click)="save()">{{ \'words.actions.save\' | translate}}</ngx-button></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="container-fluid" style="min-height: 500px;">    <ngx-codemirror [(ngModel)]="config" [config]="{    lineNumbers: true,    viewportMargin: 10,    theme: \'dracula\',    mode: {      name: \'properties\'    }  }"></ngx-codemirror>    <ngx-button (click)="save()">{{ \'words.actions.save\' | translate}}</ngx-button></div></div>'
     var COMPONENTS = [{'name': 'AddComponent', 'selector': 'lthn-wallet-add'},{'name': 'AppComponent', 'selector': 'lthn-app'},{'name': 'BlockchainComponent', 'selector': 'lthn-chain'},{'name': 'BlockchainConfigComponent', 'selector': 'lthn-chain-config'},{'name': 'BlockchainStatsComponent', 'selector': 'lthn-chain-stats'},{'name': 'BlockDetailsComponent', 'selector': 'lthn-chain-block-details'},{'name': 'BlockLedgerComponent', 'selector': 'lthn-chain-ledger'},{'name': 'ConsoleComponent', 'selector': 'lthn-app-console'},{'name': 'DetailsComponent', 'selector': 'lthn-wallet-details'},{'name': 'LoginComponent', 'selector': 'lthn-login'},{'name': 'LogsComponent', 'selector': 'lthn-app-logs'},{'name': 'ModalComponent', 'selector': 'modal'},{'name': 'NoDaemonRunningDialog', 'selector': 'lthn-app-status-no-daemon'},{'name': 'OpenComponent', 'selector': 'lthn-wallet-open'},{'name': 'PostComponent', 'selector': 'lthn-app-post'},{'name': 'ProfileComponent', 'selector': 'lthn-user-profile'},{'name': 'RestoreComponent', 'selector': 'lthn-wallet-restore'},{'name': 'RootComponent', 'selector': 'lthn-root'},{'name': 'SettingsComponent', 'selector': 'lthn-settings'},{'name': 'SettingsComponent', 'selector': 'lthn-app-settings'},{'name': 'SpartaComponent', 'selector': 'lthn-app-sparta'},{'name': 'StatusComponent', 'selector': 'lthn-app-status'},{'name': 'TerminalComponent', 'selector': 'lthn-app-terminal'},{'name': 'TransactionsComponent', 'selector': 'lthn-wallet-transactions'},{'name': 'TransferComponent', 'selector': 'lthn-wallet-transfer'},{'name': 'UserComponent', 'selector': 'lthn-user'},{'name': 'VpnComponent', 'selector': 'lthn-vpn'},{'name': 'WalletComponent', 'selector': 'lthn-app-wallet'},{'name': 'WalletNewComponent', 'selector': 'lthn-wallet-new'}];
     var DIRECTIVES = [{'name': 'ChartDirective', 'selector': '[lthnChart]'}];
     var ACTUAL_COMPONENT = {'name': 'BlockchainConfigComponent'};
