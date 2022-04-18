@@ -1,4 +1,4 @@
-import {AfterContentInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterContentInit, Component, ViewChild} from '@angular/core';
 import {MatSidenav} from '@angular/material/sidenav';
 import {ActivatedRoute, NavigationEnd, NavigationStart, Router} from '@angular/router';
 import {Meta, Title} from '@angular/platform-browser';
@@ -17,7 +17,7 @@ import { LoadingService } from '@swimlane/ngx-ui';
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, AfterContentInit {
+export class AppComponent implements AfterContentInit {
 	public menu: boolean;
 	public heading = '';
 

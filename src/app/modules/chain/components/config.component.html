@@ -1,13 +1,12 @@
-
 <div class="container-fluid" style="min-height: 500px;">
-    <ngx-codemirror style="width: 100%;" class="p-0"  mode="text" [(ngModel)]="config"
-            [config]="{
+    <ngx-codemirror [(ngModel)]="config" [config]="{
     lineNumbers: true,
-    theme: 'dracula'
-
-  }"
-    >
-    </ngx-codemirror>
+    viewportMargin: 10,
+    theme: 'dracula',
+    mode: {
+      name: 'properties'
+    }
+  }"></ngx-codemirror>
     <ngx-button (click)="save()">{{ 'words.actions.save' | translate}}</ngx-button>
 </div>
 

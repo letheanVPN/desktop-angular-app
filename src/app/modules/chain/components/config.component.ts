@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
-import {ChainGetInfo} from '@module/chain/interfaces/props/get_info';
 import {BlockchainService} from '@module/chain/blockchain.service';
 import {FileSystemService} from '@service/filesystem/file-system.service';
 import {NotificationService, NotificationStyleType, NotificationType} from '@swimlane/ngx-ui';
+import 'codemirror/mode/properties/properties.js';
 @Component({
 	selector: 'lthn-chain-config',
 	templateUrl: './config.component.html'
@@ -10,7 +10,6 @@ import {NotificationService, NotificationStyleType, NotificationType} from '@swi
 export class BlockchainConfigComponent {
 
 	public config = ''
-	chainInfo: ChainGetInfo;
 
 	constructor(public chain: BlockchainService, private fs: FileSystemService, private notify: NotificationService) {
 		this.load().then(() => console.log('loaded'));
