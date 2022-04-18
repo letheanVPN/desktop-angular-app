@@ -39,22 +39,24 @@
                 </tbody>
 
             </table>
+            <ng-container *ngIf="blockData['tx_hashes'].length > 0">
+                <h2>Block Transactions</h2>
+                <table class="table">
+                    <caption>Included Transactions</caption>
+                    <thead>
+                    <tr>
+                        <th>Tx {{'app.lthn.chain.words.hash' | translate}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let tx of blockData['tx_hashes']">
+                        <td>{{ tx }}</td>
+                    </tr>
+                    </tbody>
 
-            <h2>Block Transactions</h2>
-            <table class="table">
-                <caption>Included Transactions</caption>
-                <thead>
-                <tr>
-                    <th>Tx {{'app.lthn.chain.words.hash' | translate}}</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let tx of blockData['tx_hashes']">
-                    <td>{{ tx }}</td>
-                </tr>
-                </tbody>
+                </table>
+            </ng-container>
 
-            </table>
         </div>
     </ngx-tab>
 </ngx-tabs>
