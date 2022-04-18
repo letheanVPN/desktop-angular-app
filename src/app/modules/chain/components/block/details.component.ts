@@ -25,7 +25,7 @@ export class BlockDetailsComponent implements OnInit, OnDestroy {
 			const data = await this.chain.getBlock(this.id);
 			this.block = data['block_header'];
 			this.blockData = JSON.parse(data['json']);
-			console.log(this.block);
+			console.log(this.blockData);
 		}
 
 	}

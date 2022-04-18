@@ -1,18 +1,61 @@
-
-    <ngx-section class="ngx-flex--col"  [sectionCollapsible]="false" sectionTitle="Block Details"  >
+<ngx-tabs>
+    <ngx-tab label="Block Details">
         <mat-list *ngIf="block" >
-            <mat-list-item>ID: <span class="lthn-brand">{{ id }}</span></mat-list-item>
-            <mat-list-item>Block Size: <span class="lthn-brand">{{ block.block_size }}</span></mat-list-item>
-            <mat-list-item>Depth from Top Block: <span class="lthn-brand">{{ block.depth }}</span></mat-list-item>
-            <mat-list-item>Difficulty of this block: <span class="lthn-brand">{{ block.difficulty }}</span></mat-list-item>
-            <mat-list-item>Block Height: <span class="lthn-brand">{{ block.height }}</span></mat-list-item>
-            <mat-list-item>Block Major Version: <span class="lthn-brand">{{ block.major_version}}</span></mat-list-item>
-            <mat-list-item>Block Minor Version: <span class="lthn-brand">{{ block.minor_version}}</span></mat-list-item>
-            <mat-list-item>Block Solution: <span class="lthn-brand">{{ block.nonce}}</span></mat-list-item>
-            <mat-list-item>Block Transactions: <span class="lthn-brand">{{ block.num_txes}}</span></mat-list-item>
-            <mat-list-item>Orphan Status: <span class="lthn-brand">{{ block.orphan_status }}</span></mat-list-item>
-            <mat-list-item>Minted Time: <span class="lthn-brand">{{ block.timestamp  | amFromUnix }}</span></mat-list-item>
-            <mat-list-item>Reward: <span class="lthn-brand">{{ block.reward |toCoin }}</span></mat-list-item>
-<!--            <mat-list-item>Previous block: <a [routerLink]="['/', 'chain', 'block', block.prev_hash ]"  class="lthn-brand">{{ block.prev_hash }}</a></mat-list-item>-->
+            <mat-list-item>{{'app.lthn.chain.words.hash' | translate}}: <span class="lthn-brand">{{ id }}</span></mat-list-item>
+            <mat-list-item>{{'app.lthn.chain.words.block_size' | translate}}: <span class="lthn-brand">{{ block.block_size }}</span></mat-list-item>
+            <mat-list-item>{{'app.lthn.chain.words.depth' | translate}}: <span class="lthn-brand">{{ block.depth }}</span></mat-list-item>
+            <mat-list-item>{{'app.lthn.chain.words.difficulty' | translate}}: <span class="lthn-brand">{{ block.difficulty }}</span></mat-list-item>
+            <mat-list-item>{{'app.lthn.chain.words.height' | translate}}: <span class="lthn-brand">{{ block.height }}</span></mat-list-item>
+            <mat-list-item>{{'app.lthn.chain.words.major_version' | translate}}: <span class="lthn-brand">{{ block.major_version}}</span></mat-list-item>
+            <mat-list-item>{{'app.lthn.chain.words.minor_version' | translate}}: <span class="lthn-brand">{{ block.minor_version}}</span></mat-list-item>
+            <mat-list-item>{{'app.lthn.chain.words.nonce' | translate}}: <span class="lthn-brand">{{ block.nonce}}</span></mat-list-item>
+            <mat-list-item>{{'app.lthn.chain.words.tx_count' | translate}}: <span class="lthn-brand">{{ block.num_txes}}</span></mat-list-item>
+            <mat-list-item>{{'app.lthn.chain.words.orphan_status' | translate}}: <span class="lthn-brand">{{ block.orphan_status }}</span></mat-list-item>
+            <mat-list-item>{{'app.lthn.chain.words.timestamp' | translate}}: <span class="lthn-brand">{{ block.timestamp  | amFromUnix }}</span></mat-list-item>
+            <mat-list-item>{{'app.lthn.chain.words.reward' | translate}}: <span class="lthn-brand">{{ block.reward |toCoin }}</span></mat-list-item>
+            <!--            <mat-list-item>Previous block: <a [routerLink]="['/', 'chain', 'block', block.prev_hash ]"  class="lthn-brand">{{ block.prev_hash }}</a></mat-list-item>-->
         </mat-list>
-    </ngx-section>
+    </ngx-tab>
+    <ngx-tab label="Transactions ({{blockData['tx_hashes'].length + 1}})">
+        <div *ngxIfTabActive>
+            <p>{{'app.lthn.chain.desc.no_transactions' | translate}}</p>
+            <table class="table">
+                <caption>{{'app.lthn.chain.words.miner_transaction' | translate}}</caption>
+                <thead>
+                <tr>
+                    <th>{{'words.things.type' | translate}}</th>
+                    <th>{{'app.lthn.chain.words.hash' | translate}}</th>
+                    <th>{{'app.lthn.chain.words.reward' | translate}}</th>
+                    <th>{{'app.lthn.chain.words.unlock_time' | translate}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Block Miner Reward</td>
+                    <td>{{ blockData['miner_tx']['vout'][0]['target']['key'] }}</td>
+                    <td>{{ blockData['miner_tx']['vout'][0]['amount'] | toCoin }}</td>
+                    <td>{{ blockData['miner_tx']['unlock_time'] }}</td>
+                </tr>
+                </tbody>
+
+            </table>
+
+            <h2>Block Transactions</h2>
+            <table class="table">
+                <caption>Included Transactions</caption>
+                <thead>
+                <tr>
+                    <th>Tx {{'app.lthn.chain.words.hash' | translate}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let tx of blockData['tx_hashes']">
+                    <td>{{ tx }}</td>
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </ngx-tab>
+</ngx-tabs>
+
