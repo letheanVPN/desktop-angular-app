@@ -21,6 +21,10 @@
                     <td>{{ block.num_txes }}</td>
                 </tr>
                 <tr>
+                    <td>{{'app.lthn.chain.words.miner_tx' | translate}}</td>
+                    <td>{{ blockData['miner_tx']['vout'][0]['target']['key'] }}</td>
+                </tr>
+                <tr>
                     <td>{{'app.lthn.chain.words.height' | translate}}</td>
                     <td>{{ block.height }}</td>
                 </tr>
