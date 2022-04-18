@@ -96,18 +96,21 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/BlockchainModule.html" data-type="entity-link" >BlockchainModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-BlockchainModule-bacae7ddd67827d43b1976d5af618ccc6cdf6d5305690abd44f201ac2d89c980f89e6887b82bc471ae76bbaef7fde653fdefd5e5a887359e6c69dc0cd45e0b7f"' : 'data-target="#xs-components-links-module-BlockchainModule-bacae7ddd67827d43b1976d5af618ccc6cdf6d5305690abd44f201ac2d89c980f89e6887b82bc471ae76bbaef7fde653fdefd5e5a887359e6c69dc0cd45e0b7f"' }>
+                                            'data-target="#components-links-module-BlockchainModule-cbb040fef3b876f33990c7f63e1b861070c9ceb770d8680146c518f249c45113c01c31ebb48e6672720636141fbaeafec58c4655bffc8bed510ae589d8dd97a9"' : 'data-target="#xs-components-links-module-BlockchainModule-cbb040fef3b876f33990c7f63e1b861070c9ceb770d8680146c518f249c45113c01c31ebb48e6672720636141fbaeafec58c4655bffc8bed510ae589d8dd97a9"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-BlockchainModule-bacae7ddd67827d43b1976d5af618ccc6cdf6d5305690abd44f201ac2d89c980f89e6887b82bc471ae76bbaef7fde653fdefd5e5a887359e6c69dc0cd45e0b7f"' :
-                                            'id="xs-components-links-module-BlockchainModule-bacae7ddd67827d43b1976d5af618ccc6cdf6d5305690abd44f201ac2d89c980f89e6887b82bc471ae76bbaef7fde653fdefd5e5a887359e6c69dc0cd45e0b7f"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-BlockchainModule-cbb040fef3b876f33990c7f63e1b861070c9ceb770d8680146c518f249c45113c01c31ebb48e6672720636141fbaeafec58c4655bffc8bed510ae589d8dd97a9"' :
+                                            'id="xs-components-links-module-BlockchainModule-cbb040fef3b876f33990c7f63e1b861070c9ceb770d8680146c518f249c45113c01c31ebb48e6672720636141fbaeafec58c4655bffc8bed510ae589d8dd97a9"' }>
                                             <li class="link">
                                                 <a href="components/BlockDetailsComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >BlockDetailsComponent</a>
                                             </li>
                                             <li class="link">
                                                 <a href="components/BlockLedgerComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >BlockLedgerComponent</a>
+                                            </li>
+                                            <li class="link">
+                                                <a href="components/BlockTransactionsComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >BlockTransactionsComponent</a>
                                             </li>
                                             <li class="link">
                                                 <a href="components/BlockchainComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >BlockchainComponent</a>
@@ -464,6 +467,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="components/BlockLedgerComponent.html" data-type="entity-link" >BlockLedgerComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/BlockTransactionsComponent.html" data-type="entity-link" >BlockTransactionsComponent</a>
                             </li>
                             <li class="link">
                                 <a href="components/DetailsComponent.html" data-type="entity-link" >DetailsComponent</a>
