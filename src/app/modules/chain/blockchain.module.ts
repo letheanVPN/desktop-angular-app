@@ -27,6 +27,7 @@ import {BlockLedgerComponent} from '@module/chain/components/block/ledger.compon
 import {BlockchainStatsComponent} from '@module/chain/components/stats.component';
 import {BlockchainConfigComponent} from '@module/chain/components/config.component';
 import {BlockTransactionsComponent} from '@module/chain/components/block/transactions.component';
+import {ConsoleModule} from '@module/console/console.module';
 
 @NgModule({
 	declarations: [BlockchainComponent, BlockDetailsComponent, BlockLedgerComponent, BlockchainStatsComponent, BlockchainConfigComponent, BlockTransactionsComponent],
@@ -59,7 +60,8 @@ import {BlockTransactionsComponent} from '@module/chain/components/block/transac
 		ButtonModule,
 		TreeModule,
 		JSONTreeModule,
-		IconModule
+		IconModule,
+		ConsoleModule
 	],
 	exports: [BlockchainComponent],
 	providers: [HashRatePipe]

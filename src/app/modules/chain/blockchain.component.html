@@ -45,6 +45,11 @@
                         <lthn-chain-config></lthn-chain-config>
                     </div>
                 </ngx-tab>
+                <ngx-tab label="{{'app.lthn.console.title' | translate}}">
+                    <div *ngxIfTabActive>
+                        <lthn-console attach="letheand"></lthn-console>
+                    </div>
+                </ngx-tab>
             </ngx-tabs>
         </ngx-section>
     </div>
