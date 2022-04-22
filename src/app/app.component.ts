@@ -98,7 +98,7 @@ export class AppComponent implements AfterContentInit {
 		try {
 			await this.app.loadConfig('conf/app.ini')
 
-			if(this.app.getConfig('daemon', 'start_on_boot', false)){
+			if(this.app.getConfig('daemon', 'start_on_boot', true)){
 				this.startChain();
 			}
 		} catch (e) {
@@ -108,6 +108,9 @@ export class AppComponent implements AfterContentInit {
 				}else if(e.status === 404){
 					await this.app.makeDefault()
 					await this.app.loadConfig('conf/app.ini')
+					if(this.app.getConfig('daemon', 'start_on_boot', true)){
+						this.startChain();
+					}
 				}
 			} else {
 				//this.offline = true
