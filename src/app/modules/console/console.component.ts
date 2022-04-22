@@ -34,7 +34,7 @@ export class ConsoleComponent implements OnInit, AfterViewInit, OnDestroy {
 				if(data[0] === 'update-cli'){
 					this.terminal.underlying.writeln(data[1]);
 				}else{
-					this.terminal.underlying.writeln(data[1].trim().replace('src/cryptonote_protocol/cryptonote_protocol_handler.inl', ''));
+					this.terminal.underlying.writeln(atob(data[1]).trim().replace('src/cryptonote_protocol/cryptonote_protocol_handler.inl', ''));
 				}
 
 				that.ref.markForCheck()
