@@ -30,14 +30,11 @@ export class ConsoleComponent implements OnInit, AfterViewInit, OnDestroy {
 
 		this.ref.detectChanges();
 		this.ws.connect().subscribe((data) => {
-			console.log(data)
 			if(this.attach === data[0]) {
-				let line  = atob(data[1]);
 				if(data[0] === 'update-cli'){
 					this.terminal.underlying.writeln(data[1]);
 				}else{
-					console.log(line);
-					this.terminal.underlying.writeln(line.trim().replace('global  src/cryptonote_protocol/cryptonote_protocol_handler.inl', ''));
+					this.terminal.underlying.writeln(data[1].trim().replace('src/cryptonote_protocol/cryptonote_protocol_handler.inl', ''));
 				}
 
 				that.ref.markForCheck()
