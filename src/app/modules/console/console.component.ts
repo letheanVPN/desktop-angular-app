@@ -14,7 +14,7 @@ import {WebsocketService} from '@service/websocket.service';
 export class ConsoleComponent implements OnInit, AfterViewInit, OnDestroy {
 	@ViewChild('term', { static: true }) terminal: NgTerminal;
 
-	@Input() attach  = 'letheand';
+	@Input() attach: string  = 'letheand';
 	private command: string[] = []
 
 	constructor(private ws: WebsocketService, private ref: ChangeDetectorRef) {
@@ -30,6 +30,7 @@ export class ConsoleComponent implements OnInit, AfterViewInit, OnDestroy {
 
 		this.ref.detectChanges();
 		this.ws.connect().subscribe((data) => {
+			console.log(data)
 			if(this.attach === data[0]) {
 				let line  = atob(data[1]);
 				if(data[0] === 'update-cli'){
