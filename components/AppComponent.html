@@ -406,8 +406,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="132"
-                            class="link-to-prism">src/app/app.component.ts:132</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="135"
+                            class="link-to-prism">src/app/app.component.ts:135</a></div>
                 </td>
             </tr>
 
@@ -477,8 +477,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="206"
-                            class="link-to-prism">src/app/app.component.ts:206</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="209"
+                            class="link-to-prism">src/app/app.component.ts:209</a></div>
                 </td>
             </tr>
 
@@ -627,8 +627,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="189"
-                            class="link-to-prism">src/app/app.component.ts:189</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="192"
+                            class="link-to-prism">src/app/app.component.ts:192</a></div>
                 </td>
             </tr>
 
@@ -667,8 +667,8 @@ unblock UI</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="139"
-                            class="link-to-prism">src/app/app.component.ts:139</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="142"
+                            class="link-to-prism">src/app/app.component.ts:142</a></div>
                 </td>
             </tr>
 
@@ -706,8 +706,8 @@ unblock UI</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="146"
-                            class="link-to-prism">src/app/app.component.ts:146</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="149"
+                            class="link-to-prism">src/app/app.component.ts:149</a></div>
                 </td>
             </tr>
 
@@ -1246,7 +1246,7 @@ export class AppComponent implements AfterContentInit {
 		try {
 			await this.app.loadConfig(&#x27;conf/app.ini&#x27;)
 
-			if(this.app.getConfig(&#x27;daemon&#x27;, &#x27;start_on_boot&#x27;, false)){
+			if(this.app.getConfig(&#x27;daemon&#x27;, &#x27;start_on_boot&#x27;, true)){
 				this.startChain();
 			}
 		} catch (e) {
@@ -1256,6 +1256,9 @@ export class AppComponent implements AfterContentInit {
 				}else if(e.status &#x3D;&#x3D;&#x3D; 404){
 					await this.app.makeDefault()
 					await this.app.loadConfig(&#x27;conf/app.ini&#x27;)
+					if(this.app.getConfig(&#x27;daemon&#x27;, &#x27;start_on_boot&#x27;, true)){
+						this.startChain();
+					}
 				}
 			} else {
 				//this.offline &#x3D; true

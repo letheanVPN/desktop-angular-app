@@ -322,8 +322,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="54"
-                            class="link-to-prism">src/app/modules/console/console.component.ts:54</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="52"
+                            class="link-to-prism">src/app/modules/console/console.component.ts:52</a></div>
                 </td>
             </tr>
 
@@ -391,8 +391,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="50"
-                            class="link-to-prism">src/app/modules/console/console.component.ts:50</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">src/app/modules/console/console.component.ts:48</a></div>
                 </td>
             </tr>
 
@@ -428,8 +428,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="59"
-                            class="link-to-prism">src/app/modules/console/console.component.ts:59</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="57"
+                            class="link-to-prism">src/app/modules/console/console.component.ts:57</a></div>
                 </td>
             </tr>
 
@@ -467,8 +467,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="93"
-                            class="link-to-prism">src/app/modules/console/console.component.ts:93</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="91"
+                            class="link-to-prism">src/app/modules/console/console.component.ts:91</a></div>
                 </td>
             </tr>
 
@@ -616,7 +616,7 @@ import {WebsocketService} from &#x27;@service/websocket.service&#x27;;
 export class ConsoleComponent implements OnInit, AfterViewInit, OnDestroy {
 	@ViewChild(&#x27;term&#x27;, { static: true }) terminal: NgTerminal;
 
-	@Input() attach  &#x3D; &#x27;letheand&#x27;;
+	@Input() attach: string  &#x3D; &#x27;letheand&#x27;;
 	private command: string[] &#x3D; []
 
 	constructor(private ws: WebsocketService, private ref: ChangeDetectorRef) {
@@ -633,12 +633,10 @@ export class ConsoleComponent implements OnInit, AfterViewInit, OnDestroy {
 		this.ref.detectChanges();
 		this.ws.connect().subscribe((data) &#x3D;&gt; {
 			if(this.attach &#x3D;&#x3D;&#x3D; data[0]) {
-				let line  &#x3D; atob(data[1]);
 				if(data[0] &#x3D;&#x3D;&#x3D; &#x27;update-cli&#x27;){
 					this.terminal.underlying.writeln(data[1]);
 				}else{
-					console.log(line);
-					this.terminal.underlying.writeln(line.trim().replace(&#x27;global  src/cryptonote_protocol/cryptonote_protocol_handler.inl&#x27;, &#x27;&#x27;));
+					this.terminal.underlying.writeln(atob(data[1]).trim().replace(&#x27;src/cryptonote_protocol/cryptonote_protocol_handler.inl&#x27;, &#x27;&#x27;));
 				}
 
 				that.ref.markForCheck()
@@ -672,7 +670,7 @@ export class ConsoleComponent implements OnInit, AfterViewInit, OnDestroy {
 				if (ev.keyCode &#x3D;&#x3D;&#x3D; 13) {
 
 					//console.log(&#x60;cmd:letheand:${this.command.join(&#x27;&#x27;)}&#x60;)
-					that.ws.sendMessage(&#x60;cmd:letheand:${this.command.join(&#x27;&#x27;)}&#x60;)
+					that.ws.sendMessage(&#x60;cmd:${this.attach}:${this.command.join(&#x27;&#x27;)}&#x60;)
 					this.command &#x3D; []
 					this.terminal.underlying.writeln(&quot;\r\n&quot;);
 					this.ref.detectChanges();
