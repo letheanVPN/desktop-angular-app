@@ -3,6 +3,6 @@
   "name": "Lethean Desktop",
   "app": {
     "type": "zip",
-    "url": "https://github.com/letheanVPN/lthn-app-desktop/releases/download/v4.1.2/lethean-ui-v4.1.2.zip"
+    "url": "https://github.com/letheanVPN/lthn-app-desktop/releases/latest/download/lethean-ui.zip"
   }
 }
