@@ -21,7 +21,7 @@ export class WalletRpcService {
 	startWalletService() {
 		const options = {
 			headers: new HttpHeaders({
-				'Content-Type': 'application/x-www-form-urlencoded'
+				'Content-Type': 'application/json'
 			}),
 			responseType: 'text' as 'json'
 		};

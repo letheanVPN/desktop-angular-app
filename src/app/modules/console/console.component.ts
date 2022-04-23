@@ -68,7 +68,7 @@ export class ConsoleComponent implements OnInit, AfterViewInit, OnDestroy {
 				if (ev.keyCode === 13) {
 
 					//console.log(`cmd:letheand:${this.command.join('')}`)
-					that.ws.sendMessage(`cmd:letheand:${this.command.join('')}`)
+					that.ws.sendMessage(`cmd:${this.attach}:${this.command.join('')}`)
 					this.command = []
 					this.terminal.underlying.writeln("\r\n");
 					this.ref.detectChanges();

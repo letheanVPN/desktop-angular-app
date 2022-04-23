@@ -62,8 +62,10 @@
                             <lthn-wallet-transfer></lthn-wallet-transfer>
                         </div>
                     </ngx-tab>
-                    <ngx-tab label="Accounts">
-                        <div *ngxIfTabActive></div>
+                    <ngx-tab label="Console">
+                        <div *ngxIfTabActive>
+                            <lthn-console attach="lethean-wallet-rpc"></lthn-console>
+                        </div>
                     </ngx-tab>
                 </ngx-tabs>
             </ngx-section>

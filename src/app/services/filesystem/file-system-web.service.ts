@@ -21,7 +21,7 @@ export class FileSystemWebService implements FileSystemInterface {
 	public async list(dirname) {
 		const options = {
 			headers: new HttpHeaders({
-				'Content-Type': 'application/x-www-form-urlencoded'
+				'Content-Type': 'application/json'
 			}),
 			responseType: 'text' as 'json'
 		};
@@ -57,7 +57,7 @@ export class FileSystemWebService implements FileSystemInterface {
 
 		const options = {
 			headers: new HttpHeaders({
-				'Content-Type': 'application/x-www-form-urlencoded'
+				'Content-Type': 'application/json'
 			})
 		};
 

@@ -25,8 +25,8 @@ export class OpenComponent implements OnInit {
 	/**
 	 * get list of filesystem wallets
 	 */
-	ngOnInit(): void {
-		this.wallets = this.wallet.getWalletList()
+	async ngOnInit() {
+		this.wallets = await this.wallet.getWalletList()
 	}
 
 	/**

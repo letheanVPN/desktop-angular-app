@@ -14,7 +14,7 @@ export class BlockchainService {
     startDaemon() {
         const options = {
             headers: new HttpHeaders({
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/json'
             }),
             responseType: 'text' as 'json',
         };
@@ -35,7 +35,7 @@ export class BlockchainService {
     exportChain() {
         const options = {
             headers: new HttpHeaders({
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/json'
             }),
             responseType: 'text' as 'json'
         };
@@ -56,7 +56,7 @@ export class BlockchainService {
     importChain() {
         const options = {
             headers: new HttpHeaders({
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/json'
             }),
             responseType: 'text' as 'json'
         };

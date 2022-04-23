@@ -27,6 +27,7 @@ import {DetailsComponent} from '@module/wallet/components/details.component';
 import {AddComponent} from '@module/wallet/components/add.component';
 import {OpenComponent} from '@module/wallet/components/open.component';
 import { TransferComponent } from './components/transfer/transfer.component';
+import {ConsoleModule} from '@module/console/console.module';
 
 
 
@@ -67,7 +68,8 @@ import { TransferComponent } from './components/transfer/transfer.component';
 		TabsModule,
 		SectionModule,
 		CardModule,
-		NgxUIModule
+		NgxUIModule,
+		ConsoleModule
 	]
 })
 export class WalletModule {}
