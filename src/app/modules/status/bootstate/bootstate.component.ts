@@ -30,7 +30,7 @@ export class BootstateComponent implements OnInit {
   constructor(private app: AppConfigService, private fs: FileSystemService, private chain: BlockchainService) { }
 
   async ngOnInit() {
-
+const that = this;
 	  this.serverCheck = interval(2000).subscribe(
 		  async () => {
 			  if (await this.checkServerAlive()) {
@@ -41,11 +41,25 @@ export class BootstateComponent implements OnInit {
 					  this.next()
 				  }
 
-				  this.downloaded = interval(2000).subscribe(
-					  () => {
-						  if(this.checkDownloaded(this)){
+				  this.downloaded = interval(1000).subscribe(
+					  async () => {
+						  if (await this.checkDownloaded()) {
 							  this.next()
 							  this.downloaded.unsubscribe()
+							  this.next()
+							  try {
+								  await this.app.fetchServerPublicKey()
+
+								  await this.app.loadConfig('conf/app.ini')
+
+								  if(this.app.getConfig('daemon', 'start_on_boot', true)){
+									  await this.chain.startDaemon();
+								  }
+							  } catch (e) {
+								  console.log(e)
+							  }
+
+							  that.app.online = true
 
 						  }
 					  }
@@ -54,23 +68,11 @@ export class BootstateComponent implements OnInit {
 				  console.log('check')
 
 				  if(await this.checkDownloads()){
-					  this.next()
+
 				  }else{
 					  return
 				  }
-				  try {
-					  await this.app.fetchServerPublicKey()
 
-					  await this.app.loadConfig('conf/app.ini')
-
-					  if(this.app.getConfig('daemon', 'start_on_boot', true)){
-						  await this.chain.startDaemon();
-					  }
-				  } catch (e) {
-					  console.log(e)
-				  }
-
-				  this.app.online = true
 
 			  }
 		  }
@@ -134,7 +136,7 @@ export class BootstateComponent implements OnInit {
         return false
       }
 
-      if(await this.fs.listFiles('cli') < 3){
+      if(await this.fs.listFiles('cli').then(res => res.length) < 3){
         this.downloadNeeded = true
         this.chain.downloadDaemons().then(() => console.log('daemons downloaded'));
         return false
@@ -150,13 +152,13 @@ export class BootstateComponent implements OnInit {
       }
       return false;
     }
-    return true;
+    return false;
 
   }
 
-  async checkDownloaded(that: BootstateComponent) {
-
-   return await that.fs.listFiles('cli') > 3
+  async checkDownloaded() {
+	console.log('checking for cli')
+   return await this.fs.listFiles('cli').then(res => res.length) > 3
 
   }
 }
