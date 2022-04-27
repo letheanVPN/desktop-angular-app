@@ -1,165 +1,160 @@
-import { Component, OnInit } from '@angular/core';
-import { StepperPosition } from '@swimlane/ngx-ui';
+import {Component, OnInit} from '@angular/core';
+import {StepperPosition} from '@swimlane/ngx-ui';
 import {AppConfigService} from '@service/app-config.service';
 import {FileSystemService} from '@service/filesystem/file-system.service';
 import {BlockchainService} from '@module/chain/blockchain.service';
 import {interval, Subscription} from 'rxjs';
+
 @Component({
-  selector: 'lthn-app-bootstate',
-  templateUrl: './bootstate.component.html',
-  styleUrls: ['./bootstate.component.scss']
+	selector: 'lthn-app-bootstate',
+	templateUrl: './bootstate.component.html',
+	styleUrls: ['./bootstate.component.scss']
 })
 export class BootstateComponent implements OnInit {
 
-  readonly StepperPosition = StepperPosition;
-  readonly steps: Array<{ readonly title: string; readonly icon?: string; readonly completeIcon?: string }> = [
-    { title: 'app.boot.server-check', icon: 'ngx-icon ngx-server' },
-    { title: 'app.boot.folder-check', icon: 'ngx-icon ngx-folder' },
-    { title: 'app.boot.download-check', icon: 'ngx-icon ngx-cloud-download' },
-    { title: 'app.boot.start-runtime', icon: 'ngx-icon ngx-workstation' }
-  ];
-  index = 0;
-  readonly = true;
-  position = StepperPosition.Top;
+	readonly StepperPosition = StepperPosition;
+	readonly steps: Array<{ readonly title: string; readonly icon?: string; readonly completeIcon?: string }> = [
+		{title: 'app.boot.server-check', icon: 'ngx-icon ngx-server'},
+		{title: 'app.boot.folder-check', icon: 'ngx-icon ngx-folder'},
+		{title: 'app.boot.download-check', icon: 'ngx-icon ngx-cloud-download'},
+		{title: 'app.boot.start-runtime', icon: 'ngx-icon ngx-workstation'}
+	];
+	index = 0;
+	readonly = true;
+	position = StepperPosition.Top;
 
-  authNeeded = false;
-  downloadNeeded = false;
-  downloaded: Subscription;
+	authNeeded = false;
+	downloadNeeded = false;
+	downloaded: Subscription;
 	serverCheck: Subscription;
 
-  constructor(private app: AppConfigService, private fs: FileSystemService, private chain: BlockchainService) { }
+	constructor(private app: AppConfigService, private fs: FileSystemService, private chain: BlockchainService) {
+	}
 
-  async ngOnInit() {
-const that = this;
-	  this.serverCheck = interval(2000).subscribe(
-		  async () => {
-			  if (await this.checkServerAlive()) {
-				  this.next();
+	async ngOnInit() {
+		const that = this;
 
-				  this.serverCheck.unsubscribe();
-				  if(await this.checkFolderStructure()){
-					  this.next()
-				  }
+		this.serverCheck = interval(1000).subscribe(
+			async () => {
+				if (await this.checkServerAlive()) {
+					this.next();
 
-				  this.downloaded = interval(1000).subscribe(
-					  async () => {
-						  if (await this.checkDownloaded()) {
-							  this.next()
-							  this.downloaded.unsubscribe()
-							  this.next()
-							  try {
-								  await this.app.fetchServerPublicKey()
-                                  await this.app.makeDefault()
-								  await this.app.loadConfig('conf/app.ini')
+					this.serverCheck.unsubscribe();
+					if (await this.checkFolderStructure()) {
+						this.next();
+					}
 
-								  if(this.app.getConfig('daemon', 'start_on_boot', true)){
-									  await this.chain.startDaemon();
-								  }
-							  } catch (e) {
-								  console.log(e)
-							  }
+					this.downloaded = interval(1000).subscribe(
+						async () => {
+							if (await this.checkDownloaded()) {
+								this.next();
+								this.downloaded.unsubscribe();
+								try {
+                                  	await this.app.makeDefault()
+									await this.app.loadConfig('conf/app.ini');
 
-							  that.app.online = true
+									if (this.app.getConfig('daemon', 'start_on_boot', true)) {
+										await this.chain.startDaemon();
+									}
+								} catch (e) {
+									console.log(e);
+								}
 
-						  }
-					  }
-				  );
+								that.app.online = true;
 
-				  console.log('check')
-
-				  if(await this.checkDownloads()){
-
-				  }else{
-					  return
-				  }
+							}
+						}
+					);
 
 
-			  }
-		  }
-	  );
+					await this.checkDownloads()
 
 
+				}
+			}
+		);
 
 
+	}
 
-  }
+	next() {
+		if (this.index < this.steps.length - 1) {
+			this.index++;
+		}
+	}
 
-  next() {
-    if (this.index < this.steps.length - 1) {
-      this.index++;
-    }
-  }
+	async checkServerAlive() {
+		try {
+			console.log('check');
+			await this.app.fetchServerPublicKey();
 
-  async checkServerAlive() {
-    try{
-      console.log('check')
-      await this.app.fetchServerPublicKey();
-    }catch (e) {
-      return false;
-    }
-    return true;
+		} catch (e) {
+			return false;
+		}
+		return true;
 
-  }
-  async checkFolderStructure() {
-    try{
-      if(!await this.fs.isDir('conf')){
-        await this.fs.mkDir('conf');
-        await this.app.makeDefault()
-      }
-      if(!await this.fs.isDir('data')){
-        await this.fs.mkDir('data');
-      }
-      if(!await this.fs.isDir('users')){
-        await this.fs.mkDir('users');
-      }
-      if(!await this.fs.isDir('wallets')){
-        await this.fs.mkDir('wallets');
-      }
+	}
 
-    }catch (e) {
-      if ('HttpErrorResponse' === e.name) {
-        if (e.status === 401) {
-          this.authNeeded = true
-        }
-      }
-      return false;
-    }
-    return true;
+	async checkFolderStructure() {
+		try {
+			if (!await this.fs.isDir('conf')) {
+				await this.fs.mkDir('conf');
+				await this.app.makeDefault();
+			}
+			if (!await this.fs.isDir('data')) {
+				await this.fs.mkDir('data');
+			}
+			if (!await this.fs.isDir('users')) {
+				await this.fs.mkDir('users');
+			}
+			if (!await this.fs.isDir('wallets')) {
+				await this.fs.mkDir('wallets');
+			}
+			if (!await this.fs.isDir('cli')) {
+				await this.fs.mkDir('cli');
+			}
 
-  }
+		} catch (e) {
+			if ('HttpErrorResponse' === e.name) {
+				if (e.status === 401) {
+					this.authNeeded = true;
+				}
+			}
+			return false;
+		}
+		return true;
 
-  async checkDownloads() {
-    try{
+	}
 
-      if(!await this.fs.isDir('cli')){
-        await this.fs.mkDir('cli');
-        return false
-      }
+	async checkDownloads() {
+		try {
 
-      if(await this.fs.listFiles('cli').then(res => res.length) < 3){
-        this.downloadNeeded = true
-        this.chain.downloadDaemons().then(() => console.log('daemons downloaded'));
-        return false
-      }
+			if (await this.fs.listFiles('cli').then(res => res.length) < 3) {
+				this.downloadNeeded = true;
+				this.chain.downloadDaemons().then(() => console.log('daemons downloaded'));
+				return false;
+			} else {
+				return true;
+			}
 
 
-    }catch (e) {
-      if ('HttpErrorResponse' === e.name) {
-        if (e.status === 401) {
-          this.authNeeded = true
+		} catch (e) {
+			if ('HttpErrorResponse' === e.name) {
+				if (e.status === 401) {
+					this.authNeeded = true;
 
-        }
-      }
-      return false;
-    }
-    return false;
+				}
+			}
+			return false;
+		}
+		return false;
 
-  }
+	}
 
-  async checkDownloaded() {
-	console.log('checking for cli')
-   return await this.fs.listFiles('cli').then(res => res.length) > 3
+	async checkDownloaded() {
+		console.log('checking for cli');
+		return await this.fs.listFiles('cli').then(res => res.length) > 3;
 
-  }
+	}
 }
 
