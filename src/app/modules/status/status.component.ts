@@ -18,7 +18,7 @@ export class StatusComponent implements OnInit {
 	constructor(public dialog: MatDialog, private chain: BlockchainService) {}
 
 	public async ngOnInit() {
-		this.chainInfo = await this.chain.getInfo()
+		this.chainInfo = await this.chain.chainInfo
 
 		if (this.chainInfo) {
 			// we have chain data, and it talks to us set to amber

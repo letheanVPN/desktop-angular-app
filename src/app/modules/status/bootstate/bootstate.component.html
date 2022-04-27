@@ -1,0 +1,32 @@
+<ngx-section sectionTitle="Loading Lethean Desktop" padding="40px">
+    <ngx-stepper
+            [position]="position"
+            [readonly]="readonly"
+            [(active)]="index"
+            large="true"
+    >
+        <ngx-step
+                *ngFor="let step of steps"
+                [label]="step.title | translate"
+                [icon]="step.icon"
+        >
+            <ng-template ngxStepContent>
+                <div *ngIf="step.title == 'app.boot.server-check'"><p>Lethean Server failed to start, unable to recover this installation. Please open a support ticket on <a href="https://github.com/letheanVPN/desktop/issues/new">https://github.com/letheanVPN/desktop/issues/new</a></p></div>
+                <div *ngIf="step.title == 'app.boot.folder-check'"><p  *ngIf="!authNeeded">Checking installation files</p>
+                    <div *ngIf="authNeeded"><h3>This server is auth protected. please login</h3>
+                <lthn-login></lthn-login>
+                </div>
+                </div>
+                <div *ngIf="step.title == 'app.boot.download-check'"><p>Checking for updates.</p>
+                    <div *ngIf="downloadNeeded"><h3>Downloading Blockchain Binaries</h3>
+                        <ngx-progress-spinner
+                                mode="indeterminate"
+
+                                appearance="icon"
+                        ></ngx-progress-spinner></div>
+                </div>
+                <div *ngIf="step.title == 'app.boot.start-runtime'"><p>Everything looks ok, starting.</p></div>
+            </ng-template>
+        </ngx-step>
+    </ngx-stepper>
+</ngx-section>

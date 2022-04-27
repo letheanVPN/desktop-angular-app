@@ -71,4 +71,11 @@ export class FileSystemService {
 	exists(pathname: string) {
 		return this.fileSystem.exists(pathname);
 	}
+
+	isFile(pathname: string) {
+		return this.fileSystem.isFile(pathname);
+	}
+	isDir(pathname: string) {
+		return this.fileSystem.isDir(pathname);
+	}
 }

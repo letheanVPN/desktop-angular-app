@@ -3,7 +3,7 @@ import {ConfigIniParser} from 'config-ini-parser';
 import {FileSystemService} from '@service/filesystem/file-system.service';
 
 @Injectable({
-	providedIn: 'root',
+	providedIn: 'root'
 })
 /**
  * @deprecated
@@ -16,31 +16,33 @@ export class AppConfigService {
 	public static config: ConfigIniParser = new ConfigIniParser();
 	openpgp: any;
 	crypto: any;
+	online: boolean = false
 
 	constructor(private fs: FileSystemService) {
-		if(!AppConfigService.serverPublicKey){
-			this.fetchServerPublicKey()
-		}
+
 	}
 
-	fetchServerPublicKey(){
-		fetch(AppConfigService.apiUrl + '/cert')
-			.then(response => response.text())
+	async fetchServerPublicKey() {
+
+		return await fetch(AppConfigService.apiUrl + '/cert')
+			.then(response =>  response.text())
 			.then(text => {
-				AppConfigService.serverPublicKey = text;
-				//console.log(AppConfigService.serverPublicKey);
+				return AppConfigService.serverPublicKey = text;
 			});
+
 	}
 
 
 	loadConfig(filename: string = '') {
-		console.log(`Load Config: ${filename}`)
-		if( filename === ''){ return false }
-		AppConfigService.apiUrl = AppConfigService.config.get('lethean-server', 'api_url', 'http://127.0.0.1:36911')
+		console.log(`Load Config: ${filename}`);
+		if (filename === '') {
+			return false;
+		}
+		AppConfigService.apiUrl = AppConfigService.config.get('lethean-server', 'api_url', 'http://127.0.0.1:36911');
 
-			return this.fs.readFile(filename).then((data) => {
-				AppConfigService.config.parse(data)
-			})
+		return this.fs.readFile(filename).then((data) => {
+			AppConfigService.config.parse(data);
+		})
 
 	}
 
@@ -51,7 +53,7 @@ export class AppConfigService {
 			p.set('daemon', 'start_on_boot', 'true');
 
 			p.addSection('lethean-server');
-			p.set('lethean-server', 'api_url', 'http://127.0.0.1:36911')
+			p.set('lethean-server', 'api_url', 'http://127.0.0.1:36911');
 
 			await this.fs.writeFile(
 				'conf/app.ini',
@@ -72,7 +74,7 @@ export class AppConfigService {
 	 * @returns {any}
 	 */
 	getConfig(section: string, key: string, defaultValue: any = '') {
-		return AppConfigService.config.get(section, key, defaultValue)
+		return AppConfigService.config.get(section, key, defaultValue);
 	}
 
 	/**
@@ -82,7 +84,7 @@ export class AppConfigService {
 	 * @param {string} value
 	 */
 	setConfig(section: string, key: string, value: string) {
-		AppConfigService.config.set(section, key, value)
+		AppConfigService.config.set(section, key, value);
 	}
 
 	/**
@@ -90,10 +92,8 @@ export class AppConfigService {
 	 * @returns {Promise<Object>}
 	 */
 	saveConfig() {
-		return this.fs.writeFile('conf/app.ini', AppConfigService.config.stringify())
+		return this.fs.writeFile('conf/app.ini', AppConfigService.config.stringify());
 	}
-
-
 
 
 }

@@ -28,6 +28,21 @@ export class BlockchainService {
             .then((dat) => console.log(dat));
     }
 
+    downloadDaemons() {
+        const options = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json'
+            }),
+            responseType: 'text' as 'json',
+        };
+        return this.http
+            .post<any>(
+                `http://127.0.0.1:36911/update/cli`,{},
+                options
+            ) .toPromise()
+            .then((dat) => console.log(dat));
+    }
+
     /**
      * Export chain to a raw format
      *

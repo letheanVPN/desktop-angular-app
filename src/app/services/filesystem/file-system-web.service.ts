@@ -70,5 +70,33 @@ export class FileSystemWebService implements FileSystemInterface {
 			.toPromise();
 	}
 
+	public async isFile(filename) {
+		const options = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json'
+			}),
+			responseType: 'text' as 'json'
+		};
+		return await this.http
+			.post<any>(`${this.apiUrl}/file-check`, {path: filename}, options)
+			.toPromise()
+			.then((dat) => JSON.parse(dat))
+			.then((dat) => dat.result);
+	}
+
+	public async isDir(filename) {
+		const options = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json'
+			}),
+			responseType: 'text' as 'json'
+		};
+		return await this.http
+			.post<any>(`${this.apiUrl}/dir-check`, {path: filename}, options)
+			.toPromise()
+			.then((dat) => JSON.parse(dat))
+			.then((dat) => dat.result);
+	}
+
 
 }

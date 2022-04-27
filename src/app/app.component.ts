@@ -1,23 +1,23 @@
-import {AfterContentInit, Component, ViewChild} from '@angular/core';
+import {AfterContentInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatSidenav} from '@angular/material/sidenav';
 import {ActivatedRoute, NavigationEnd, NavigationStart, Router} from '@angular/router';
 import {Meta, Title} from '@angular/platform-browser';
 import {filter} from 'rxjs/operators';
 import {TranslateService} from '@ngx-translate/core';
 import {select, Store} from '@ngrx/store';
-import {changeLanguage, selectLanguage, toggleHideNavigation} from '@module/settings/data';
+import {changeLanguage, selectLanguage} from '@module/settings/data';
 import { Subscription} from 'rxjs';
 import {BlockchainService} from '@module/chain/blockchain.service';
 import {ChainGetInfo} from '@module/chain/interfaces/props/get_info';
-import {AppConfigService} from '@service/app-config.service';
 import { LoadingService } from '@swimlane/ngx-ui';
+import {AppConfigService} from '@service/app-config.service';
 
 @Component({
 	selector: 'lthn-app',
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterContentInit {
+export class AppComponent implements OnInit, AfterContentInit {
 	public menu: boolean;
 	public heading = '';
 
@@ -30,25 +30,8 @@ export class AppComponent implements AfterContentInit {
 	filteredNavigationTree: any[];
 	private sub: Subscription[] = [];
 	public chainInfo: ChainGetInfo;
-	navigationTree: any[] = [
-		{
-			name: 'menu.text.dashboard',
-			route: 'dashboard',
-			icon: 'circles'
 
-		},
-		{
-			name: 'menu.text.blockchain',
-			route: 'chain',
-			icon: 'assets'
-		},
-		{
-			name: 'menu.text.wallet',
-			route: 'wallet',
-			icon: 'circuit-board'
-		}
-	];
-	public offline: boolean = false;
+	public offline: boolean = true;
 
 	/**
 	 * Starts the Angular framework and configures system plugins
@@ -71,22 +54,11 @@ export class AppComponent implements AfterContentInit {
 		private translate: TranslateService,
 		private store: Store,
 		private chain: BlockchainService,
-		private app: AppConfigService,
-		private loadingService: LoadingService
+		private loadingService: LoadingService,
+		public app: AppConfigService
 	) {
 
-		translate.setDefaultLang('en');
-		let lang = translate.getBrowserLang();
-		// the lang to use, if the lang isn't available, it will use the current loader to get them
-		translate.use(lang ? lang : 'en');
 
-		this.router.events.subscribe((event) => {
-			if(event instanceof NavigationStart) {
-				this.loadingService.start();
-			} else if(event instanceof NavigationEnd) {
-				loadingService.complete();
-			}
-		});
 
 	}
 
@@ -94,29 +66,48 @@ export class AppComponent implements AfterContentInit {
 		this.sub.forEach((s) => s.unsubscribe());
 	}
 
+	public async ngOnInit() {
+
+
+
+		this.translate.setDefaultLang('en');
+		let lang = this.translate.getBrowserLang();
+		// the lang to use, if the lang isn't available, it will use the current loader to get them
+		this.translate.use(lang ? lang : 'en');
+
+		this.router.events.subscribe((event) => {
+			if (event instanceof NavigationStart) {
+				this.loadingService.start();
+			} else if (event instanceof NavigationEnd) {
+				this.loadingService.complete();
+			}
+		});
+
+	}
+
 	public async ngAfterContentInit() {
-		try {
-			await this.app.loadConfig('conf/app.ini')
-
-			if(this.app.getConfig('daemon', 'start_on_boot', true)){
-				this.startChain();
-			}
-		} catch (e) {
-			if ('HttpErrorResponse' === e.name) {
-				if (e.status === 401) {
-					this.offline = false;
-				}else if(e.status === 404){
-					await this.app.makeDefault()
-					await this.app.loadConfig('conf/app.ini')
-					if(this.app.getConfig('daemon', 'start_on_boot', true)){
-						this.startChain();
-					}
-				}
-			} else {
-				//this.offline = true
-			}
-
-		}
+//		try {
+//			await this.app.fetchServerPublicKey()
+//
+//			await this.app.loadConfig('conf/app.ini')
+//
+//			if(this.app.getConfig('daemon', 'start_on_boot', true)){
+//				this.startChain();
+//			}
+//		} catch (e) {
+//			if ('HttpErrorResponse' === e.name) {
+//				if (e.status === 401) {
+//					this.offline = false;
+//				}else if(e.status === 404){
+//					this.offline = false;
+//					await this.app.makeDefault()
+//					await this.app.loadConfig('conf/app.ini')
+//					if(this.app.getConfig('daemon', 'start_on_boot', true)){
+//						this.startChain();
+//					}
+//				}
+//			}
+//		}
 
 		// setup language watcher
 		this.currentLanguage$ = this.store.pipe(select(selectLanguage)).subscribe((lang) => {
@@ -136,12 +127,6 @@ export class AppComponent implements AfterContentInit {
 		this.store.dispatch(changeLanguage({language: lang}));
 	}
 
-	/**
-	 * Dispatch a Menu toggle request
-	 */
-	toggleMenu() {
-		this.store.dispatch(toggleHideNavigation());
-	}
 
 	/**
 	 * creates subscriptions for multi lingual page meta
