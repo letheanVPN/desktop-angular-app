@@ -25,54 +25,61 @@ export class BootstateComponent implements OnInit {
   authNeeded = false;
   downloadNeeded = false;
   downloaded: Subscription;
+	serverCheck: Subscription;
 
   constructor(private app: AppConfigService, private fs: FileSystemService, private chain: BlockchainService) { }
 
   async ngOnInit() {
 
-    if(await this.checkServerAlive()){
-      await new Promise(r => setTimeout(r, 2000));
+	  this.serverCheck = interval(2000).subscribe(
+		  async () => {
+			  if (await this.checkServerAlive()) {
+				  this.next();
 
-      this.next()
-    }else{
-      return;
-    }
+				  this.serverCheck.unsubscribe();
+				  if(await this.checkFolderStructure()){
+					  this.next()
+				  }
 
-    if(await this.checkFolderStructure()){
-      this.next()
-    }else{
-      return
-    }
+				  this.downloaded = interval(2000).subscribe(
+					  () => {
+						  if(this.checkDownloaded(this)){
+							  this.next()
+							  this.downloaded.unsubscribe()
 
-    this.downloaded = interval(2000).subscribe(
-        () => {
-          if(this.checkDownloaded(this)){
-            this.next()
-            this.downloaded.unsubscribe()
+						  }
+					  }
+				  );
 
-          }
-        }
-    );
+				  console.log('check')
 
-    if(await this.checkDownloads()){
-      this.next()
-    }else{
-      return
-    }
+				  if(await this.checkDownloads()){
+					  this.next()
+				  }else{
+					  return
+				  }
+				  try {
+					  await this.app.fetchServerPublicKey()
 
-    try {
-			await this.app.fetchServerPublicKey()
+					  await this.app.loadConfig('conf/app.ini')
 
-			await this.app.loadConfig('conf/app.ini')
+					  if(this.app.getConfig('daemon', 'start_on_boot', true)){
+						  await this.chain.startDaemon();
+					  }
+				  } catch (e) {
+					  console.log(e)
+				  }
 
-			if(this.app.getConfig('daemon', 'start_on_boot', true)){
-				await this.chain.startDaemon();
-			}
-		} catch (e) {
-			console.log(e)
-		}
+				  this.app.online = true
 
-    this.app.online = true
+			  }
+		  }
+	  );
+
+
+
+
+
   }
 
   next() {
@@ -83,6 +90,7 @@ export class BootstateComponent implements OnInit {
 
   async checkServerAlive() {
     try{
+      console.log('check')
       await this.app.fetchServerPublicKey();
     }catch (e) {
       return false;
