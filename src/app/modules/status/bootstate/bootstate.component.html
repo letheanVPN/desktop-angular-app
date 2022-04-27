@@ -11,7 +11,7 @@
                 [icon]="step.icon"
         >
             <ng-template ngxStepContent>
-                <div *ngIf="step.title == 'app.boot.server-check'"><p>Lethean Server failed to start, unable to recover this installation. Please open a support ticket on <a href="https://github.com/letheanVPN/desktop/issues/new">https://github.com/letheanVPN/desktop/issues/new</a></p></div>
+                <div *ngIf="step.title == 'app.boot.server-check'"><p>Checking lethean server, if this step fails. Please open a support ticket on <a href="https://github.com/letheanVPN/desktop/issues/new">https://github.com/letheanVPN/desktop/issues/new</a></p></div>
                 <div *ngIf="step.title == 'app.boot.folder-check'"><p  *ngIf="!authNeeded">Checking installation files</p>
                     <div *ngIf="authNeeded"><h3>This server is auth protected. please login</h3>
                 <lthn-login></lthn-login>

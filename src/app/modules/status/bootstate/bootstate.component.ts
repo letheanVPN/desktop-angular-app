@@ -31,10 +31,13 @@ export class BootstateComponent implements OnInit {
   async ngOnInit() {
 
     if(await this.checkServerAlive()){
+      await new Promise(r => setTimeout(r, 2000));
+
       this.next()
     }else{
       return;
     }
+
     if(await this.checkFolderStructure()){
       this.next()
     }else{
