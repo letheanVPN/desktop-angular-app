@@ -89,6 +89,9 @@
                                 <a href="#crypto" >crypto</a>
                             </li>
                             <li>
+                                <a href="#online" >online</a>
+                            </li>
+                            <li>
                                 <a href="#openpgp" >openpgp</a>
                             </li>
                             <li>
@@ -112,6 +115,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#fetchServerPublicKey" >fetchServerPublicKey</a>
                             </li>
                             <li>
@@ -153,7 +157,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/services/app-config.service.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/services/app-config.service.ts:19</a></div>
                             </td>
                         </tr>
 
@@ -202,6 +206,7 @@
                 <td class="col-md-4">
                     <a name="fetchServerPublicKey"></a>
                     <span class="name">
+                        <span class="modifier">Async</span>
                         <span ><b>fetchServerPublicKey</b></span>
                         <a href="#fetchServerPublicKey"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -209,15 +214,16 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>fetchServerPublicKey()</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>fetchServerPublicKey()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="26"
-                            class="link-to-prism">src/app/services/app-config.service.ts:26</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="25"
+                            class="link-to-prism">src/app/services/app-config.service.ts:25</a></div>
                 </td>
             </tr>
 
@@ -226,7 +232,7 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                        <b>Returns : </b>    <code>unknown</code>
 
                     </div>
                 </td>
@@ -253,8 +259,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="74"
-                            class="link-to-prism">src/app/services/app-config.service.ts:74</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="76"
+                            class="link-to-prism">src/app/services/app-config.service.ts:76</a></div>
                 </td>
             </tr>
 
@@ -429,8 +435,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="47"
-                            class="link-to-prism">src/app/services/app-config.service.ts:47</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="49"
+                            class="link-to-prism">src/app/services/app-config.service.ts:49</a></div>
                 </td>
             </tr>
 
@@ -466,8 +472,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="92"
-                            class="link-to-prism">src/app/services/app-config.service.ts:92</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="94"
+                            class="link-to-prism">src/app/services/app-config.service.ts:94</a></div>
                 </td>
             </tr>
 
@@ -508,8 +514,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="84"
-                            class="link-to-prism">src/app/services/app-config.service.ts:84</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="86"
+                            class="link-to-prism">src/app/services/app-config.service.ts:86</a></div>
                 </td>
             </tr>
 
@@ -681,6 +687,37 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="online"></a>
+                    <span class="name">
+                        <span ><b>online</b></span>
+                        <a href="#online"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/services/app-config.service.ts:19</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="openpgp"></a>
                     <span class="name">
                         <span ><b>openpgp</b></span>
@@ -762,7 +799,7 @@ import {ConfigIniParser} from &#x27;config-ini-parser&#x27;;
 import {FileSystemService} from &#x27;@service/filesystem/file-system.service&#x27;;
 
 @Injectable({
-	providedIn: &#x27;root&#x27;,
+	providedIn: &#x27;root&#x27;
 })
 /**
  * @deprecated
@@ -775,31 +812,33 @@ export class AppConfigService {
 	public static config: ConfigIniParser &#x3D; new ConfigIniParser();
 	openpgp: any;
 	crypto: any;
+	online: boolean &#x3D; false
 
 	constructor(private fs: FileSystemService) {
-		if(!AppConfigService.serverPublicKey){
-			this.fetchServerPublicKey()
-		}
+
 	}
 
-	fetchServerPublicKey(){
-		fetch(AppConfigService.apiUrl + &#x27;/cert&#x27;)
-			.then(response &#x3D;&gt; response.text())
+	async fetchServerPublicKey() {
+
+		return await fetch(AppConfigService.apiUrl + &#x27;/cert&#x27;)
+			.then(response &#x3D;&gt;  response.text())
 			.then(text &#x3D;&gt; {
-				AppConfigService.serverPublicKey &#x3D; text;
-				//console.log(AppConfigService.serverPublicKey);
+				return AppConfigService.serverPublicKey &#x3D; text;
 			});
+
 	}
 
 
 	loadConfig(filename: string &#x3D; &#x27;&#x27;) {
-		console.log(&#x60;Load Config: ${filename}&#x60;)
-		if( filename &#x3D;&#x3D;&#x3D; &#x27;&#x27;){ return false }
-		AppConfigService.apiUrl &#x3D; AppConfigService.config.get(&#x27;lethean-server&#x27;, &#x27;api_url&#x27;, &#x27;http://127.0.0.1:36911&#x27;)
+		console.log(&#x60;Load Config: ${filename}&#x60;);
+		if (filename &#x3D;&#x3D;&#x3D; &#x27;&#x27;) {
+			return false;
+		}
+		AppConfigService.apiUrl &#x3D; AppConfigService.config.get(&#x27;lethean-server&#x27;, &#x27;api_url&#x27;, &#x27;http://127.0.0.1:36911&#x27;);
 
-			return this.fs.readFile(filename).then((data) &#x3D;&gt; {
-				AppConfigService.config.parse(data)
-			})
+		return this.fs.readFile(filename).then((data) &#x3D;&gt; {
+			AppConfigService.config.parse(data);
+		})
 
 	}
 
@@ -810,7 +849,7 @@ export class AppConfigService {
 			p.set(&#x27;daemon&#x27;, &#x27;start_on_boot&#x27;, &#x27;true&#x27;);
 
 			p.addSection(&#x27;lethean-server&#x27;);
-			p.set(&#x27;lethean-server&#x27;, &#x27;api_url&#x27;, &#x27;http://127.0.0.1:36911&#x27;)
+			p.set(&#x27;lethean-server&#x27;, &#x27;api_url&#x27;, &#x27;http://127.0.0.1:36911&#x27;);
 
 			await this.fs.writeFile(
 				&#x27;conf/app.ini&#x27;,
@@ -831,7 +870,7 @@ export class AppConfigService {
 	 * @returns {any}
 	 */
 	getConfig(section: string, key: string, defaultValue: any &#x3D; &#x27;&#x27;) {
-		return AppConfigService.config.get(section, key, defaultValue)
+		return AppConfigService.config.get(section, key, defaultValue);
 	}
 
 	/**
@@ -841,7 +880,7 @@ export class AppConfigService {
 	 * @param {string} value
 	 */
 	setConfig(section: string, key: string, value: string) {
-		AppConfigService.config.set(section, key, value)
+		AppConfigService.config.set(section, key, value);
 	}
 
 	/**
@@ -849,10 +888,8 @@ export class AppConfigService {
 	 * @returns {Promise&lt;Object&gt;}
 	 */
 	saveConfig() {
-		return this.fs.writeFile(&#x27;conf/app.ini&#x27;, AppConfigService.config.stringify())
+		return this.fs.writeFile(&#x27;conf/app.ini&#x27;, AppConfigService.config.stringify());
 	}
-
-
 
 
 }
