@@ -49,7 +49,7 @@ const that = this;
 							  this.next()
 							  try {
 								  await this.app.fetchServerPublicKey()
-
+                                  await this.app.makeDefault()
 								  await this.app.loadConfig('conf/app.ini')
 
 								  if(this.app.getConfig('daemon', 'start_on_boot', true)){
