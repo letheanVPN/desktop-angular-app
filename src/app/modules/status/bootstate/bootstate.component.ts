@@ -32,49 +32,23 @@ export class BootstateComponent implements OnInit {
 	}
 
 	async ngOnInit() {
-		const that = this;
 
-		this.serverCheck = interval(1000).subscribe(
-			async () => {
-				if (await this.checkServerAlive()) {
-					this.next();
+		await this.checkServerAlive();
+	}
 
-					this.serverCheck.unsubscribe();
-					if (await this.checkFolderStructure()) {
-						this.next();
-					}
+	async initApp() {
+		try {
 
-					this.downloaded = interval(1000).subscribe(
-						async () => {
-							if (await this.checkDownloaded()) {
-								this.next();
-								this.downloaded.unsubscribe();
-								try {
-                                  	await this.app.makeDefault()
-									await this.app.loadConfig('conf/app.ini');
-
-									if (this.app.getConfig('daemon', 'start_on_boot', true)) {
-										await this.chain.startDaemon();
-									}
-								} catch (e) {
-									console.log(e);
-								}
-
-								that.app.online = true;
-
-							}
-						}
-					);
-
-
-					await this.checkDownloads()
-
-
-				}
+			await this.app.loadConfig('conf/app.ini');
+			await this.app.fetchServerPublicKey();
+			if (this.app.getConfig('daemon', 'start_on_boot', true)) {
+				await this.chain.startDaemon();
 			}
-		);
+		} catch (e) {
+			console.log(e);
+		}
 
-
+		this.app.online = true;
 	}
 
 	next() {
@@ -84,15 +58,19 @@ export class BootstateComponent implements OnInit {
 	}
 
 	async checkServerAlive() {
-		try {
-			console.log('check');
-			await this.app.fetchServerPublicKey();
-
-		} catch (e) {
-			return false;
-		}
-		return true;
-
+		this.serverCheck = interval(1000).subscribe(
+			async () => {
+				try {
+					await this.app.loadConfig('conf/app.ini');
+					await this.initApp()
+				} catch (e) {
+					return false;
+				}
+				this.next();
+				this.serverCheck.unsubscribe()
+				await this.checkFolderStructure()
+				return true;
+			})
 	}
 
 	async checkFolderStructure() {
@@ -122,19 +100,20 @@ export class BootstateComponent implements OnInit {
 			}
 			return false;
 		}
+		this.next();
+		await this.checkDownloads()
 		return true;
 
 	}
 
 	async checkDownloads() {
+
 		try {
 
 			if (await this.fs.listFiles('cli').then(res => res.length) < 3) {
 				this.downloadNeeded = true;
 				this.chain.downloadDaemons().then(() => console.log('daemons downloaded'));
-				return false;
-			} else {
-				return true;
+				//return false;
 			}
 
 
@@ -147,7 +126,20 @@ export class BootstateComponent implements OnInit {
 			}
 			return false;
 		}
-		return false;
+
+		return this.downloaded = interval(1000).subscribe(
+			async () => {
+				if (await this.checkDownloaded()) {
+					this.next();
+					this.downloaded.unsubscribe();
+					await this.initApp()
+
+				}
+			}
+		);
+
+
+
 
 	}
 
