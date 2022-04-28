@@ -17,13 +17,11 @@
                 <lthn-login></lthn-login>
                 </div>
                 </div>
-                <div *ngIf="step.title == 'app.boot.download-check'"><p>Checking for updates.</p>
+                <div *ngIf="step.title == 'app.boot.download-check'">
                     <div *ngIf="downloadNeeded"><h3>Downloading Blockchain Binaries</h3>
-                        <ngx-progress-spinner
-                                mode="indeterminate"
-
-                                appearance="icon"
-                        ></ngx-progress-spinner></div>
+                        Downloaded: {{downloadStats.total | number}}
+                        Of {{downloadStats.size | number}}
+                        <mat-progress-bar mode="determinate" color="accent" [value]="downloadStats.total/downloadStats.size*100" ></mat-progress-bar></div>
                 </div>
                 <div *ngIf="step.title == 'app.boot.start-runtime'"><p>Everything looks ok, starting.</p></div>
             </ng-template>
