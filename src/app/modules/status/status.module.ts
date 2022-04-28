@@ -11,6 +11,7 @@ import { BootstateComponent } from './bootstate/bootstate.component';
 import {ProgressSpinnerModule, SectionModule, StepperModule} from '@swimlane/ngx-ui';
 import {TranslateModule} from '@ngx-translate/core';
 import {AuthModule} from '@module/auth/auth.module';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
 	declarations: [StatusComponent, NoDaemonRunningDialog, BootstateComponent],
@@ -26,7 +27,8 @@ import {AuthModule} from '@module/auth/auth.module';
 		StepperModule,
 		TranslateModule,
 		AuthModule,
-		ProgressSpinnerModule
+		ProgressSpinnerModule,
+		MatProgressBarModule
 	]
 })
 export class StatusModule {

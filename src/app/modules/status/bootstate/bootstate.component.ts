@@ -4,6 +4,7 @@ import {AppConfigService} from '@service/app-config.service';
 import {FileSystemService} from '@service/filesystem/file-system.service';
 import {BlockchainService} from '@module/chain/blockchain.service';
 import {interval, Subscription} from 'rxjs';
+import {WebsocketService} from '@service/websocket.service';
 
 @Component({
 	selector: 'lthn-app-bootstate',
@@ -13,6 +14,14 @@ import {interval, Subscription} from 'rxjs';
 export class BootstateComponent implements OnInit {
 
 	readonly StepperPosition = StepperPosition;
+
+	downloadStats: {
+		file: string,
+		dir: string,
+		fullPath: string,
+		size: number,
+		total: number,
+	}
 	readonly steps: Array<{ readonly title: string; readonly icon?: string; readonly completeIcon?: string }> = [
 		{title: 'app.boot.server-check', icon: 'ngx-icon ngx-server'},
 		{title: 'app.boot.folder-check', icon: 'ngx-icon ngx-folder'},
@@ -28,7 +37,7 @@ export class BootstateComponent implements OnInit {
 	downloaded: Subscription;
 	serverCheck: Subscription;
 
-	constructor(private app: AppConfigService, private fs: FileSystemService, private chain: BlockchainService) {
+	constructor(private app: AppConfigService, private fs: FileSystemService, private chain: BlockchainService, private ws: WebsocketService) {
 	}
 
 	async ngOnInit() {
@@ -64,7 +73,7 @@ export class BootstateComponent implements OnInit {
 					await this.app.loadConfig('conf/app.ini');
 					await this.initApp()
 				} catch (e) {
-					return false;
+					//return false;
 				}
 				this.next();
 				this.serverCheck.unsubscribe()
@@ -108,6 +117,7 @@ export class BootstateComponent implements OnInit {
 
 	async checkDownloads() {
 
+		this.downloadProgress()
 		try {
 
 			if (await this.fs.listFiles('cli').then(res => res.length) < 3) {
@@ -146,6 +156,18 @@ export class BootstateComponent implements OnInit {
 	async checkDownloaded() {
 		console.log('checking for cli');
 		return await this.fs.listFiles('cli').then(res => res.length) > 3;
+
+	}
+
+	downloadProgress(){
+		let that = this;
+		const subject = this.ws.connect().subscribe((data) => {
+			that.downloadStats = JSON.parse(atob(data[1]));
+			if(this.downloadStats.total == this.downloadStats.size){
+				subject.unsubscribe();
+			}
+		})
+		this.ws.sendMessage('daemon:download')
 
 	}
 }
