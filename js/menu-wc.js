@@ -340,13 +340,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/StatusModule.html" data-type="entity-link" >StatusModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-StatusModule-e4db5b431f40d5ecbcd034da19e419e3dd75a6bfa97283b124a2211380f307ffdc2283f3c40b317b3ef74f79de436660041b6393c96b5209655095bbf3bf26a4"' : 'data-target="#xs-components-links-module-StatusModule-e4db5b431f40d5ecbcd034da19e419e3dd75a6bfa97283b124a2211380f307ffdc2283f3c40b317b3ef74f79de436660041b6393c96b5209655095bbf3bf26a4"' }>
+                                            'data-target="#components-links-module-StatusModule-bf015102421eb1f1f3347e018ff379cb68155838cb67a07a4eaf4a1ecb6bf5be53551189011bcc85fa1b2065b08790a19a6ff2a9bfe920c31203ba2c7bd46f7a"' : 'data-target="#xs-components-links-module-StatusModule-bf015102421eb1f1f3347e018ff379cb68155838cb67a07a4eaf4a1ecb6bf5be53551189011bcc85fa1b2065b08790a19a6ff2a9bfe920c31203ba2c7bd46f7a"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-StatusModule-e4db5b431f40d5ecbcd034da19e419e3dd75a6bfa97283b124a2211380f307ffdc2283f3c40b317b3ef74f79de436660041b6393c96b5209655095bbf3bf26a4"' :
-                                            'id="xs-components-links-module-StatusModule-e4db5b431f40d5ecbcd034da19e419e3dd75a6bfa97283b124a2211380f307ffdc2283f3c40b317b3ef74f79de436660041b6393c96b5209655095bbf3bf26a4"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-StatusModule-bf015102421eb1f1f3347e018ff379cb68155838cb67a07a4eaf4a1ecb6bf5be53551189011bcc85fa1b2065b08790a19a6ff2a9bfe920c31203ba2c7bd46f7a"' :
+                                            'id="xs-components-links-module-StatusModule-bf015102421eb1f1f3347e018ff379cb68155838cb67a07a4eaf4a1ecb6bf5be53551189011bcc85fa1b2065b08790a19a6ff2a9bfe920c31203ba2c7bd46f7a"' }>
                                             <li class="link">
                                                 <a href="components/BootstateComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >BootstateComponent</a>
                                             </li>
