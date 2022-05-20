@@ -86,28 +86,28 @@ export class AppComponent implements OnInit, AfterContentInit {
 	}
 
 	public async ngAfterContentInit() {
-//		try {
-//			await this.app.fetchServerPublicKey()
-//
-//			await this.app.loadConfig('conf/app.ini')
-//
-//			if(this.app.getConfig('daemon', 'start_on_boot', true)){
-//				this.startChain();
-//			}
-//		} catch (e) {
-//			if ('HttpErrorResponse' === e.name) {
-//				if (e.status === 401) {
-//					this.offline = false;
-//				}else if(e.status === 404){
-//					this.offline = false;
-//					await this.app.makeDefault()
-//					await this.app.loadConfig('conf/app.ini')
-//					if(this.app.getConfig('daemon', 'start_on_boot', true)){
-//						this.startChain();
-//					}
-//				}
-//			}
-//		}
+		try {
+			await this.app.fetchServerPublicKey()
+
+			await this.app.loadConfig('conf/app.ini')
+
+			if(this.app.getConfig('daemon', 'start_on_boot', true)){
+				this.startChain();
+			}
+		} catch (e) {
+			if ('HttpErrorResponse' === e.name) {
+				if (e.status === 401) {
+					this.offline = false;
+				}else if(e.status === 404){
+					this.offline = false;
+					await this.app.makeDefault()
+					await this.app.loadConfig('conf/app.ini')
+					if(this.app.getConfig('daemon', 'start_on_boot', true)){
+						this.startChain();
+					}
+				}
+			}
+		}
 
 		// setup language watcher
 		this.currentLanguage$ = this.store.pipe(select(selectLanguage)).subscribe((lang) => {
