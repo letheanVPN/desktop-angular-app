@@ -92,7 +92,12 @@ export class AppComponent implements OnInit, AfterContentInit {
 			await this.app.loadConfig('conf/app.ini')
 
 			if(this.app.getConfig('daemon', 'start_on_boot', true)){
-				this.startChain();
+				// we can get to here, without the cli...
+				if (await this.app.fs.isDir('cli')){
+					this.startChain();
+				}else{
+					this.offline = true
+				}
 			}
 		} catch (e) {
 			if ('HttpErrorResponse' === e.name) {
