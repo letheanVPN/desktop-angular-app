@@ -410,8 +410,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="126"
-                            class="link-to-prism">src/app/app.component.ts:126</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="131"
+                            class="link-to-prism">src/app/app.component.ts:131</a></div>
                 </td>
             </tr>
 
@@ -481,8 +481,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="194"
-                            class="link-to-prism">src/app/app.component.ts:194</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="199"
+                            class="link-to-prism">src/app/app.component.ts:199</a></div>
                 </td>
             </tr>
 
@@ -671,8 +671,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="177"
-                            class="link-to-prism">src/app/app.component.ts:177</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="182"
+                            class="link-to-prism">src/app/app.component.ts:182</a></div>
                 </td>
             </tr>
 
@@ -711,8 +711,8 @@ unblock UI</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="134"
-                            class="link-to-prism">src/app/app.component.ts:134</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="139"
+                            class="link-to-prism">src/app/app.component.ts:139</a></div>
                 </td>
             </tr>
 
@@ -1218,28 +1218,33 @@ export class AppComponent implements OnInit, AfterContentInit {
 	}
 
 	public async ngAfterContentInit() {
-//		try {
-//			await this.app.fetchServerPublicKey()
-//
-//			await this.app.loadConfig(&#x27;conf/app.ini&#x27;)
-//
-//			if(this.app.getConfig(&#x27;daemon&#x27;, &#x27;start_on_boot&#x27;, true)){
-//				this.startChain();
-//			}
-//		} catch (e) {
-//			if (&#x27;HttpErrorResponse&#x27; &#x3D;&#x3D;&#x3D; e.name) {
-//				if (e.status &#x3D;&#x3D;&#x3D; 401) {
-//					this.offline &#x3D; false;
-//				}else if(e.status &#x3D;&#x3D;&#x3D; 404){
-//					this.offline &#x3D; false;
-//					await this.app.makeDefault()
-//					await this.app.loadConfig(&#x27;conf/app.ini&#x27;)
-//					if(this.app.getConfig(&#x27;daemon&#x27;, &#x27;start_on_boot&#x27;, true)){
-//						this.startChain();
-//					}
-//				}
-//			}
-//		}
+		try {
+			await this.app.fetchServerPublicKey()
+
+			await this.app.loadConfig(&#x27;conf/app.ini&#x27;)
+
+			if(this.app.getConfig(&#x27;daemon&#x27;, &#x27;start_on_boot&#x27;, true)){
+				// we can get to here, without the cli...
+				if (await this.app.fs.isDir(&#x27;cli&#x27;)){
+					this.startChain();
+				}else{
+					this.offline &#x3D; true
+				}
+			}
+		} catch (e) {
+			if (&#x27;HttpErrorResponse&#x27; &#x3D;&#x3D;&#x3D; e.name) {
+				if (e.status &#x3D;&#x3D;&#x3D; 401) {
+					this.offline &#x3D; false;
+				}else if(e.status &#x3D;&#x3D;&#x3D; 404){
+					this.offline &#x3D; false;
+					await this.app.makeDefault()
+					await this.app.loadConfig(&#x27;conf/app.ini&#x27;)
+					if(this.app.getConfig(&#x27;daemon&#x27;, &#x27;start_on_boot&#x27;, true)){
+						this.startChain();
+					}
+				}
+			}
+		}
 
 		// setup language watcher
 		this.currentLanguage$ &#x3D; this.store.pipe(select(selectLanguage)).subscribe((lang) &#x3D;&gt; {
