@@ -18,7 +18,7 @@ export class AppConfigService {
 	crypto: any;
 	online: boolean = false
 
-	constructor(private fs: FileSystemService) {
+	constructor(public fs: FileSystemService) {
 
 	}
 
