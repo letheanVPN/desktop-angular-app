@@ -6,6 +6,7 @@ import {BlockchainRoutingModule} from '@module/chain/blockchain-routing.module';
 import {WalletRoutingModule} from '@module/wallet/wallet-routing.module';
 import {UserRoutingModule} from '@module/user/user-routing.module';
 import {AuthGuard} from '@module/auth/route.guard';
+import {DocsRoutingModule} from "@module/docs/docs-routing.module";
 
 const routes: Routes = [
 	{
@@ -32,6 +33,7 @@ const routes: Routes = [
 		UserRoutingModule,
 		//SettingsRoutingModule,
 		WalletRoutingModule,
+		DocsRoutingModule,
 		// Make sure Root is the last in the list, it has a catch all
 		RootRoutingModule
 	],

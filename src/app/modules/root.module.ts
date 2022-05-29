@@ -17,32 +17,39 @@ import {WalletModule} from '@module/wallet/wallet.module';
 import {BlockchainModule} from '@module/chain/blockchain.module';
 import {PostModule} from '@module/content/post/post.module';
 import {SpartaModule} from '@module/content/sparta/sparta.module';
-import {CodeEditorModule} from '@swimlane/ngx-ui';
+import {CardModule, CodeEditorModule, DropdownModule, IconModule, SectionModule, ToggleModule} from '@swimlane/ngx-ui';
 import {FormsModule} from '@angular/forms';
+import {RouterModule} from "@angular/router";
 
 @NgModule({
 	declarations: [RootComponent],
-	imports: [
-		CommonModule,
-		MatButtonModule,
-		FlexModule,
-		MatTabsModule,
-		WalletModule,
-		TranslateModule,
-		MatDividerModule,
-		MatProgressSpinnerModule,
-		MatListModule,
-		ReactiveComponentModule,
-		PipesModule,
-		NgxDatatableModule,
-		MatIconModule,
-		MatCardModule,
-		BlockchainModule,
-		PostModule,
-		SpartaModule,
-		CodeEditorModule,
-		FormsModule
-	]
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        FlexModule,
+        MatTabsModule,
+        WalletModule,
+        TranslateModule,
+        MatDividerModule,
+        MatProgressSpinnerModule,
+        MatListModule,
+        ReactiveComponentModule,
+        PipesModule,
+        NgxDatatableModule,
+        MatIconModule,
+        MatCardModule,
+        BlockchainModule,
+        PostModule,
+        SpartaModule,
+        CodeEditorModule,
+        FormsModule,
+        CardModule,
+        IconModule,
+        ToggleModule,
+        DropdownModule,
+        SectionModule,
+        RouterModule
+    ]
 })
 export class RootModule {
 }

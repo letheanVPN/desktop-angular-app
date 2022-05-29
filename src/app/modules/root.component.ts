@@ -10,10 +10,15 @@ export class RootComponent {
 	public loaded: boolean = false;
 	public downloadingCLI: boolean;
 	public code: any;
+    isSelected: any;
 
 	constructor() {}
 
 	renderWebView() {
 
+	}
+
+	onDelete() {
+		console.log('yo')
 	}
 }

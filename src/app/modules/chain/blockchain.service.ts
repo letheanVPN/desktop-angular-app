@@ -2,12 +2,13 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {rpcBody} from '@service/json-rpc';
 import {AuthService} from '@module/auth/auth.service';
+import {ChainGetInfo} from "@module/chain/interfaces/props/get_info";
 
 @Injectable({
     providedIn: 'root'
 })
 export class BlockchainService {
-    public chainInfo: any;
+    public chainInfo: ChainGetInfo;
     constructor(private http: HttpClient) {
     }
 

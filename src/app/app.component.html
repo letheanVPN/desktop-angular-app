@@ -1,18 +1,8 @@
-<ng-container *ngIf="!app.online">
 
-    <div class="main-container">
-        <div fxFlex="60" style="margin: 0 auto;padding-top: 8vh">
-        <lthn-app-bootstate></lthn-app-bootstate>
-        </div>
-
-    </div>
-</ng-container>
-<mat-sidenav-container *ngIf="app.online" class="main-container">
+<mat-sidenav-container class="main-container">
     <mat-sidenav mode="side" opened>
-        <div fxLayout="row">
-            <a [routerLink]="['/']">
-                <img alt="Lethean Logo" class="logo" src="assets/images/lthn-sheild.png"/>
-            </a>
+        <div fxLayout="row" style="height: 63px;">
+
         </div>
 
         <mat-divider></mat-divider>

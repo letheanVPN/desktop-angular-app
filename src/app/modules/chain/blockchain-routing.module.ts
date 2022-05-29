@@ -4,8 +4,32 @@ import {RouterModule, Routes} from '@angular/router';
 import {BlockchainComponent} from '@module/chain/blockchain.component';
 import {BlockDetailsComponent} from "@module/chain/components/block/details.component";
 import {AuthGuard} from '@module/auth/route.guard';
+import {BlockchainConfigComponent} from "@module/chain/components/config.component";
+import {BlockchainStatsComponent} from "@module/chain/components/stats.component";
 
 const routes: Routes = [
+	{
+		path: 'chain/stats',
+		component: BlockchainStatsComponent,
+		canActivate: [AuthGuard],
+		data: {
+			title: 'view.chain.title',
+			heading: 'view.chain.heading',
+			description: 'view.chain.description',
+			robots: false
+		}
+	},
+	{
+		path: 'chain/config',
+		component: BlockchainConfigComponent,
+		canActivate: [AuthGuard],
+		data: {
+			title: 'view.chain.title',
+			heading: 'view.chain.heading',
+			description: 'view.chain.description',
+			robots: false
+		}
+	},
 	{
 		path: 'chain/block/:id',
 		component: BlockDetailsComponent,

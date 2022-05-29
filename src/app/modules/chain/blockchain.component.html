@@ -12,9 +12,12 @@
                 </span>
                 </ng-container>
                 <span class="flex-spacer"></span>
-                <!--                    <button [routerLink]="['/', 'wallet', 'new']" mat-button matTooltip="New Wallet">-->
-                <!--                        <mat-icon>account_balance_wallet</mat-icon>-->
-                <!--                    </button>-->
+                                    <button [routerLink]="['/', 'chain', 'config']" mat-button matTooltip="New Wallet">
+                                        <mat-icon>settings</mat-icon>
+                                    </button>
+                                    <button [routerLink]="['/', 'chain', 'stats']" mat-button matTooltip="New Wallet">
+                                        <mat-icon>analytics</mat-icon>
+                                    </button>
                 <!--                    <button [routerLink]="['/', 'wallet', 'backup']" mat-button matTooltip="Backup">-->
                 <!--                        <mat-icon>cloud_download</mat-icon>-->
                 <!--                    </button>-->
@@ -29,28 +32,7 @@
 
 
         <ngx-section>
-            <ngx-tabs [vertical]="true">
-                <ngx-tab label="{{ 'app.lthn.chain.menu.blocks' | translate}}">
-                    <div *ngxIfTabActive>
-                        <lthn-chain-ledger></lthn-chain-ledger>
-                    </div>
-                </ngx-tab>
-                <ngx-tab label="{{ 'app.lthn.chain.menu.stats' | translate}}">
-                    <div *ngxIfTabActive>
-                        <lthn-chain-stats></lthn-chain-stats>
-                    </div>
-                </ngx-tab>
-                <ngx-tab label="{{ 'app.lthn.chain.menu.configuration' | translate}}">
-                    <div *ngxIfTabActive>
-                        <lthn-chain-config></lthn-chain-config>
-                    </div>
-                </ngx-tab>
-                <ngx-tab label="{{'app.lthn.console.title' | translate}}">
-                    <div *ngxIfTabActive>
-                        <lthn-console attach="letheand"></lthn-console>
-                    </div>
-                </ngx-tab>
-            </ngx-tabs>
+            <lthn-chain-ledger></lthn-chain-ledger>
         </ngx-section>
     </div>
 

@@ -1,54 +1,33 @@
 <div class="container-fluid" fxLayout="column">
-    <div fxFlex="100" >
-            <mat-card >
-                <mat-card-title>Welcome to Lethean Desktop!</mat-card-title>
-                <mat-card-content>
-                    <p>This app is using bleeding edge technologies to bring Web3 to you, it is rough around the edges and in active development</p>
-                </mat-card-content>
+    <div class="row" style="padding: 12px 12px 3px 12px;" >
 
-            </mat-card>
-            <div fxLayout="row">
-                <mat-card fxFlex="50"  class="no-pad" >
-                    <mat-card-title>Mining Pools</mat-card-title>
-                    <mat-card-content>
-                        <mat-list>
-                            <mat-list-item>
-                                <a class="lthn-brand" target="_blank" href="https://lethean.hashvault.pro/en/getting-started">HashVault</a>
-                            </mat-list-item>
-                            <mat-list-item>
-                                <a class="lthn-brand" target="_blank" href="https://lethean.fairhash.org/">FairHash</a>
-                            </mat-list-item>
-                            <mat-list-item>
-                                <a class="lthn-brand" target="_blank" href="https://fastpool.xyz/lthn/">FastPool</a>
-                            </mat-list-item>
-                            <mat-list-item>
-                                <a class="lthn-brand" target="_blank" href="https://lthn.pool-pay.com/">Pool Pay</a>
-                            </mat-list-item>
-                        </mat-list>
-                    </mat-card-content>
-                </mat-card>
-                <mat-card fxFlex="50" class="no-pad" >
-                    <mat-card-title>Project Websites</mat-card-title>
-                    <mat-card-content >
-                        <mat-list>
-                            <mat-list-item>
-                                <a class="lthn-brand" target="_blank" href="https://www.lt.hn">Website</a>
-                            </mat-list-item>
-                            <mat-list-item>
-                                <a class="lthn-brand" target="_blank" href="https://sparta.lt.hn">Community Website</a>
-                            </mat-list-item>
-                            <mat-list-item>
-                                <a class="lthn-brand" target="_blank" href="https://store.lt.hn">SSL & DNS Store</a>
-                            </mat-list-item>
-                            <mat-list-item>
-                                <a class="lthn-brand" target="_blank" href="https://github.com/letheanVPN">GitHub</a>
-                            </mat-list-item>
-                        </mat-list>
-                    </mat-card-content>
-                </mat-card>
-            </div>
+        <ngx-section>
+           <lthn-chain-status></lthn-chain-status>
+        </ngx-section>
+
         </div>
 
 </div>
 
 
+<ng-template #viewDetailsTpl>
+    <div class="view-details" (click)="$event.stopPropagation()">
+        <a [routerLink]="['/','docs']">
+            <ngx-icon fontIcon="documentation"></ngx-icon>
+            <span> View Details </span>
+        </a>
+    </div>
+</ng-template>
+
+<ng-template #ellipsisTpl>
+    <ngx-dropdown showCaret class="ellipsis" (click)="$event.stopPropagation()">
+        <ngx-dropdown-toggle (click)="$event.stopPropagation()">
+            <ngx-icon fontIcon="dots-vert-round"></ngx-icon>
+        </ngx-dropdown-toggle>
+        <ngx-dropdown-menu class="ngx-dropdown-dark-outline align-right">
+            <ul class="vertical-list">
+                <li><button type="button" (click)="onDelete()">Delete</button></li>
+            </ul>
+        </ngx-dropdown-menu>
+    </ngx-dropdown>
+</ng-template>

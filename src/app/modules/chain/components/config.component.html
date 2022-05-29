@@ -1,5 +1,18 @@
-<div class="container-fluid" style="min-height: 500px;">
-    <ngx-codemirror [(ngModel)]="config" [config]="{
+<div class="container-fluid" >
+    <div  style="padding: 12px 12px 3px 12px;">
+
+        <mat-toolbar>
+            <mat-toolbar-row>
+                {{ 'app.lthn.chain.title' | translate }}
+
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <ngx-section sectionTitle="Daemon Configuration File">
+    <div class="container-fluid" fxLayout="row, wrap" style="min-height: 500px;">
+
+
+        <div fxFlex="50" fxLayout="column">
+            <ngx-codemirror fxFlex="100" [(ngModel)]="config" [config]="{
     lineNumbers: true,
     viewportMargin: 10,
     theme: 'dracula',
@@ -7,6 +20,88 @@
       name: 'properties'
     }
   }"></ngx-codemirror>
-    <ngx-button (click)="save()">{{ 'words.actions.save' | translate}}</ngx-button>
-</div>
+            <div>
+                <ngx-button class="btn btn-default" (click)="save()">Back</ngx-button>
+                <ngx-button class="btn btn-bordered" (click)="save()">{{ 'words.actions.save' | translate}}</ngx-button>
+            </div>
 
+        </div>
+        <mat-accordion fxFlexOffset="1" fxFlex="45">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        log-level
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <ul>
+                    <li><pre>log-level=1</pre></li>
+                    <li><pre>log-level=2</pre></li>
+                    <li><pre>log-level=3</pre></li>
+                    <li><pre>log-level=4</pre></li>
+                </ul>
+            </mat-expansion-panel>
+            <mat-expansion-panel >
+                <mat-expansion-panel-header>
+                    <mat-panel-title>block-sync-size</mat-panel-title>
+                </mat-expansion-panel-header>
+               <p>How many blocks to sync at once during chain synchronization (0 = adaptive)</p>
+            </mat-expansion-panel>
+            <mat-expansion-panel >
+                <mat-expansion-panel-header>
+                    <mat-panel-title>p2p-bind-port</mat-panel-title>
+                </mat-expansion-panel-header>
+               <p>Port for p2p network protocol</p>
+                <pre>p2p-bind-port=48772</pre>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel >
+                <mat-expansion-panel-header>
+                    <mat-panel-title>db-sync-mode</mat-panel-title>
+                </mat-expansion-panel-header>
+               <p>Specify sync option, using format [safe|fast|fastest]:[sync|async]:[nblocks_per_sync]</p>
+            </mat-expansion-panel>
+            <mat-expansion-panel >
+                <mat-expansion-panel-header>
+                    <mat-panel-title>p2p-bind-ip</mat-panel-title>
+                </mat-expansion-panel-header>
+               <p>Interface for p2p network protocol</p>
+            </mat-expansion-panel>
+            <mat-expansion-panel >
+                <mat-expansion-panel-header>
+                    <mat-panel-title>p2p-external-port</mat-panel-title>
+                </mat-expansion-panel-header>
+               <p>External port for p2p network protocol (if port forwarding used with NAT)</p>
+            </mat-expansion-panel>
+            <mat-expansion-panel >
+                <mat-expansion-panel-header>
+                    <mat-panel-title>limit-rate</mat-panel-title>
+                </mat-expansion-panel-header>
+               <p>set limit-rate [kB/s]</p>
+            </mat-expansion-panel>
+            <mat-expansion-panel >
+                <mat-expansion-panel-header>
+                    <mat-panel-title>confirm-external-bind </mat-panel-title>
+                </mat-expansion-panel-header>
+               <p>set limit-rate [kB/s]</p>
+            </mat-expansion-panel>
+            <mat-expansion-panel >
+                <mat-expansion-panel-header>
+                    <mat-panel-title>rpc-bind-ip</mat-panel-title>
+                </mat-expansion-panel-header>
+               <p>Specify ip to bind rpc server</p>
+            </mat-expansion-panel>
+            <mat-expansion-panel >
+                <mat-expansion-panel-header>
+                    <mat-panel-title>rpc-login</mat-panel-title>
+                </mat-expansion-panel-header>
+               <p>Specify username[:password] required for RPC server</p>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+
+    </div>
+</ngx-section>
+
+
+</div>
+</div>
