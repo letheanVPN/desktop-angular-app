@@ -1,31 +1,15 @@
 
-<mat-sidenav-container class="main-container">
-    <mat-sidenav mode="side" opened>
-        <div fxLayout="row" style="height: 63px;">
-
-        </div>
-
-        <mat-divider></mat-divider>
-        <mat-nav-list>
-            <a [routerLink]="['/'] " mat-list-item title="{{ 'menu.text.dashboard' | translate }}">
-                <mat-icon>dashboard</mat-icon>
-            </a>
-            <a [routerLink]="['/','chain'] " mat-list-item title="{{ 'menu.text.blockchain' | translate }}">
-                <mat-icon>link</mat-icon>
-            </a>
-            <!--           <a [routerLink]="['chain'] " mat-list-item>{{ 'menu.text.blockchain' | translate }}</a>-->
-                        <a [routerLink]="['/', 'wallet']" mat-list-item> <mat-icon>account_balance_wallet</mat-icon></a>
-<!--                        <a [routerLink]="['/', 'terminal']" mat-list-item> <mat-icon>terminal</mat-icon></a>-->
-            <!--            <a [routerLink]="['settings'] " mat-list-item>{{ 'menu.text.settings' | translate }}</a>-->
-        </mat-nav-list>
-        <span class="flex-spacer"></span>
-        <lthn-app-status></lthn-app-status>
-    </mat-sidenav>
-    <mat-sidenav-content>
-
-
-        <mat-toolbar class="main-toolbar">
-             <span class="flex-spacer"></span>
+<div class="main-container">
+    <ngx-toolbar style="height: 58px;">
+        <ngx-toolbar-title>
+        </ngx-toolbar-title>
+        <ngx-toolbar-content>
+            <ngx-navbar [active]="activeRoute">
+                <ngx-navbar-item [routerLink]="['/']" title="{{ 'menu.text.dashboard' | translate }}"><ngx-icon fontIcon="apps"></ngx-icon></ngx-navbar-item>
+                <ngx-navbar-item [routerLink]="['/','chain'] "><ngx-icon fontIcon="runs-outline"></ngx-icon></ngx-navbar-item>
+                <ngx-navbar-item [routerLink]="['/','wallet'] "><ngx-icon fontIcon="credit-card"></ngx-icon></ngx-navbar-item>
+            </ngx-navbar>
+            &nbsp;
             <mat-menu #appMenu="matMenu">
                 <ng-template let-name="name" matMenuContent>
                     <mat-list-item>
@@ -73,12 +57,14 @@
                     mat-icon-button>
                 <img src="assets/flags/1x1/{{ this.currentLanguage  }}.svg" width="24">
             </button>
+        </ngx-toolbar-content>
+    </ngx-toolbar>
 
-        </mat-toolbar>
+
         <div class="page">
 
             <router-outlet></router-outlet>
         </div>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+
+</div>
 

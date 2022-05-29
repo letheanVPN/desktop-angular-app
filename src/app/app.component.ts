@@ -84,7 +84,9 @@ export class AppComponent implements OnInit, AfterContentInit {
 		});
 
 	}
-
+	get activeRoute(): number {
+		return this.router.url === '/navbar/child-1' ? 0 : this.router.url === '/navbar/child-2' ? 1 : -1;
+	}
 	public async ngAfterContentInit() {
 		try {
 			await this.app.fetchServerPublicKey()

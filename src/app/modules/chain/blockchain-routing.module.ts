@@ -6,9 +6,20 @@ import {BlockDetailsComponent} from "@module/chain/components/block/details.comp
 import {AuthGuard} from '@module/auth/route.guard';
 import {BlockchainConfigComponent} from "@module/chain/components/config.component";
 import {BlockchainStatsComponent} from "@module/chain/components/stats.component";
+import {BlockchainConsoleComponent} from "@module/chain/components/console/console.component";
 
 const routes: Routes = [
 	{
+		path: 'chain/console',
+		component: BlockchainConsoleComponent,
+		canActivate: [AuthGuard],
+		data: {
+			title: 'view.chain.title',
+			heading: 'view.chain.heading',
+			description: 'view.chain.description',
+			robots: false
+		}
+	},{
 		path: 'chain/stats',
 		component: BlockchainStatsComponent,
 		canActivate: [AuthGuard],

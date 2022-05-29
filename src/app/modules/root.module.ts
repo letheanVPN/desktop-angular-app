@@ -17,9 +17,18 @@ import {WalletModule} from '@module/wallet/wallet.module';
 import {BlockchainModule} from '@module/chain/blockchain.module';
 import {PostModule} from '@module/content/post/post.module';
 import {SpartaModule} from '@module/content/sparta/sparta.module';
-import {CardModule, CodeEditorModule, DropdownModule, IconModule, SectionModule, ToggleModule} from '@swimlane/ngx-ui';
+import {
+    CardModule,
+    CodeEditorModule,
+    DropdownModule,
+    IconModule,
+    SectionModule,
+    TabsModule,
+    ToggleModule
+} from '@swimlane/ngx-ui';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from "@angular/router";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 @NgModule({
 	declarations: [RootComponent],
@@ -48,7 +57,9 @@ import {RouterModule} from "@angular/router";
         ToggleModule,
         DropdownModule,
         SectionModule,
-        RouterModule
+        RouterModule,
+        TabsModule,
+        MatProgressBarModule
     ]
 })
 export class RootModule {

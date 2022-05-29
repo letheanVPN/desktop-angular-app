@@ -11,7 +11,14 @@ export class RootComponent {
 	public downloadingCLI: boolean;
 	public code: any;
     isSelected: any;
-
+    downloading: any= false;
+	downloadStats: {
+		file: string,
+		dir: string,
+		fullPath: string,
+		size: number,
+		total: number,
+	}
 	constructor() {}
 
 	renderWebView() {

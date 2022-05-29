@@ -1,40 +1,32 @@
-<div class="container-fluid" >
-    <div  style="padding: 12px 12px 3px 12px;">
-        <mat-toolbar>
-            <mat-toolbar-row>
-                {{ 'app.lthn.chain.title' | translate }}
-                <ng-container *ngIf="chainInfo as info">&nbsp;
-                    <span *ngIf="info.target_height > 0" style="font-family: monospace; font-size: 12px;">
-                    ({{info.height | number }}/{{info.target_height | number}} = {{ (info.height/info.target_height) | percent:'1.2-3' }})
-                </span>
-                    <span *ngIf="info.target_height === 0" style="color: green; font-size: 14px;">
-                    Synchronized
-                </span>
-                </ng-container>
-                <span class="flex-spacer"></span>
-                                    <button [routerLink]="['/', 'chain', 'config']" mat-button matTooltip="New Wallet">
-                                        <mat-icon>settings</mat-icon>
-                                    </button>
-                                    <button [routerLink]="['/', 'chain', 'stats']" mat-button matTooltip="New Wallet">
-                                        <mat-icon>analytics</mat-icon>
-                                    </button>
-                <!--                    <button [routerLink]="['/', 'wallet', 'backup']" mat-button matTooltip="Backup">-->
-                <!--                        <mat-icon>cloud_download</mat-icon>-->
-                <!--                    </button>-->
-                <!--                    <button [routerLink]="['/', 'wallet', 'restore']" mat-button matTooltip="Restore">-->
-                <!--                        <mat-icon>cloud_upload</mat-icon>-->
-                <!--                    </button>-->
-<!--                <button (click)="wallet.closeWallet()"  mat-button matTooltip="Close Wallet">-->
-<!--                    <mat-icon>close</mat-icon>-->
-<!--                </button>-->
-            </mat-toolbar-row>
-        </mat-toolbar>
-
-
+<ngx-tabs class="">
+    <ngx-tab label="Chain Explorer" >
         <ngx-section>
             <lthn-chain-ledger></lthn-chain-ledger>
         </ngx-section>
-    </div>
-
-</div>
-
+    </ngx-tab>
+    <ngx-tab label="Daemon Stats">
+        <ngx-section>
+            <lthn-chain-stats></lthn-chain-stats>
+        </ngx-section>
+    </ngx-tab>
+    <ngx-tab label="Config">
+        <ngx-section>
+            <lthn-chain-config></lthn-chain-config>
+        </ngx-section>
+    </ngx-tab>
+    <ngx-tab label="Export">
+        <ngx-section>
+            <lthn-console attach="letheand"></lthn-console>
+        </ngx-section>
+    </ngx-tab>
+    <ngx-tab label="Import">
+        <ngx-section>
+            <lthn-console attach="letheand"></lthn-console>
+        </ngx-section>
+    </ngx-tab>
+    <ngx-tab label="Console">
+        <ngx-section>
+            <lthn-console attach="letheand"></lthn-console>
+        </ngx-section>
+    </ngx-tab>
+</ngx-tabs>

@@ -1,33 +1,25 @@
-<div class="container-fluid" fxLayout="column">
-    <div class="row" style="padding: 12px 12px 3px 12px;" >
-
+<ngx-tabs class="" #tabs>
+    <ngx-tab label="Installed (0)" #tab1 >
         <ngx-section>
-           <lthn-chain-status></lthn-chain-status>
+       <p>You have no apps installed</p>
+        <button class="btn btn-primary-gradient" (click)="tabs.tabClicked(tab2)">View Installable Apps</button>
         </ngx-section>
+        <ngx-section>
+        <lthn-chain-status></lthn-chain-status>
+        </ngx-section>
+    </ngx-tab>
+    <ngx-tab label="Marketplace" #tab2>
+        <ngx-section>
+            <div *ngIf="downloading['app.chain.lthn']"><h3>Downloading Blockchain Binaries</h3>
+                Downloaded: {{downloadStats.total | number}}
+                Of {{downloadStats.size | number}}
+                <mat-progress-bar mode="determinate" color="accent" [value]="downloadStats.total/downloadStats.size*100" ></mat-progress-bar></div>
+        </ngx-section>
+    </ngx-tab>
+    <ngx-tab label="Developer">
 
-        </div>
+    </ngx-tab>
+    <ngx-tab label="Documentation">
 
-</div>
-
-
-<ng-template #viewDetailsTpl>
-    <div class="view-details" (click)="$event.stopPropagation()">
-        <a [routerLink]="['/','docs']">
-            <ngx-icon fontIcon="documentation"></ngx-icon>
-            <span> View Details </span>
-        </a>
-    </div>
-</ng-template>
-
-<ng-template #ellipsisTpl>
-    <ngx-dropdown showCaret class="ellipsis" (click)="$event.stopPropagation()">
-        <ngx-dropdown-toggle (click)="$event.stopPropagation()">
-            <ngx-icon fontIcon="dots-vert-round"></ngx-icon>
-        </ngx-dropdown-toggle>
-        <ngx-dropdown-menu class="ngx-dropdown-dark-outline align-right">
-            <ul class="vertical-list">
-                <li><button type="button" (click)="onDelete()">Delete</button></li>
-            </ul>
-        </ngx-dropdown-menu>
-    </ngx-dropdown>
-</ng-template>
+    </ngx-tab>
+</ngx-tabs>

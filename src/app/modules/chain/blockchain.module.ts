@@ -40,9 +40,10 @@ import {BlockTransactionsComponent} from '@module/chain/components/block/transac
 import {ConsoleModule} from '@module/console/console.module';
 import { StatusComponent } from './components/status/status.component';
 import {MatExpansionModule} from "@angular/material/expansion";
+import { BlockchainConsoleComponent } from './components/console/console.component';
 
 @NgModule({
-	declarations: [BlockchainComponent, BlockDetailsComponent, BlockLedgerComponent, BlockchainStatsComponent, BlockchainConfigComponent, BlockTransactionsComponent, StatusComponent],
+	declarations: [BlockchainComponent, BlockDetailsComponent, BlockLedgerComponent, BlockchainStatsComponent, BlockchainConfigComponent, BlockTransactionsComponent, StatusComponent, BlockchainConsoleComponent],
     imports: [
         CommonModule,
         ChartModule,

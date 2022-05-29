@@ -1,13 +1,4 @@
-<div class="container-fluid" >
-    <div  style="padding: 12px 12px 3px 12px;">
 
-        <mat-toolbar>
-            <mat-toolbar-row>
-                {{ 'app.lthn.chain.title' | translate }}
-
-            </mat-toolbar-row>
-        </mat-toolbar>
-        <ngx-section sectionTitle="Daemon Configuration File">
     <div class="container-fluid" fxLayout="row, wrap" style="min-height: 500px;">
 
 
@@ -21,7 +12,7 @@
     }
   }"></ngx-codemirror>
             <div>
-                <ngx-button class="btn btn-default" (click)="save()">Back</ngx-button>
+                <ngx-button class="btn btn-default" [routerLink]="['/', 'chain']">Back</ngx-button>
                 <ngx-button class="btn btn-bordered" (click)="save()">{{ 'words.actions.save' | translate}}</ngx-button>
             </div>
 
@@ -100,8 +91,3 @@
 
 
     </div>
-</ngx-section>
-
-
-</div>
-</div>
