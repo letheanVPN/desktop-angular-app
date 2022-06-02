@@ -8,7 +8,7 @@ import {ChainGetInfo} from "@module/chain/interfaces/props/get_info";
     providedIn: 'root'
 })
 export class BlockchainService {
-    public chainInfo: ChainGetInfo;
+    public chainInfo: ChainGetInfo = null;
     constructor(private http: HttpClient) {
     }
 

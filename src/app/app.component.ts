@@ -7,8 +7,6 @@ import {TranslateService} from '@ngx-translate/core';
 import {select, Store} from '@ngrx/store';
 import {changeLanguage, selectLanguage} from '@module/settings/data';
 import { Subscription} from 'rxjs';
-import {BlockchainService} from '@module/chain/blockchain.service';
-import {ChainGetInfo} from '@module/chain/interfaces/props/get_info';
 import { LoadingService } from '@swimlane/ngx-ui';
 import {AppConfigService} from '@service/app-config.service';
 
@@ -26,12 +24,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 	public currentLanguage$: Subscription;
 	public currentLanguage: string = 'en';
 	public navExpanded: boolean = true;
-	searchValue = '';
-	filteredNavigationTree: any[];
-	private sub: Subscription[] = [];
-	public chainInfo: ChainGetInfo;
 
-	public offline: boolean = true;
 
 	/**
 	 * Starts the Angular framework and configures system plugins
@@ -53,22 +46,12 @@ export class AppComponent implements OnInit, AfterContentInit {
 		private metaService: Meta,
 		private translate: TranslateService,
 		private store: Store,
-		private chain: BlockchainService,
 		private loadingService: LoadingService,
 		public app: AppConfigService
-	) {
+	) {}
 
-
-
-	}
-
-	public ngOnDestroy() {
-		this.sub.forEach((s) => s.unsubscribe());
-	}
 
 	public async ngOnInit() {
-
-
 
 		this.translate.setDefaultLang('en');
 		let lang = this.translate.getBrowserLang();
@@ -88,33 +71,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 		return this.router.url === '/navbar/child-1' ? 0 : this.router.url === '/navbar/child-2' ? 1 : -1;
 	}
 	public async ngAfterContentInit() {
-		try {
-			await this.app.fetchServerPublicKey()
 
-			await this.app.loadConfig('conf/app.ini')
-
-			if(this.app.getConfig('daemon', 'start_on_boot', true)){
-				// we can get to here, without the cli...
-				if (await this.app.fs.isDir('cli')){
-					this.startChain();
-				}else{
-					this.offline = true
-				}
-			}
-		} catch (e) {
-			if ('HttpErrorResponse' === e.name) {
-				if (e.status === 401) {
-					this.offline = false;
-				}else if(e.status === 404){
-					this.offline = false;
-					await this.app.makeDefault()
-					await this.app.loadConfig('conf/app.ini')
-					if(this.app.getConfig('daemon', 'start_on_boot', true)){
-						this.startChain();
-					}
-				}
-			}
-		}
 
 		// setup language watcher
 		this.currentLanguage$ = this.store.pipe(select(selectLanguage)).subscribe((lang) => {
@@ -177,20 +134,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 			});
 	}
 
-	/**
-	 * Start chain daemon and wallet service
-	 * unblock UI
-	 */
-	startChain() {
 
-		this.chain.startDaemon().then(() => {
-			//this.blockUI.stop();
-			//this.wallet.startWallet().then(r => r);
-		});
-
-		this.chain.getInfo()
-
-	}
 
 	/**
 	 * Angular router helper
