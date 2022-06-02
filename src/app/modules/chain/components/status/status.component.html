@@ -17,11 +17,9 @@
     </ngx-card-header>
     <ngx-card-section class="ngx-card-section--description">
         <ng-container *ngIf="chain.chainInfo == null  && downloadNeeded == true">
-            <p>Checking for files</p>
+            <p *ngIf="downloadStats.total ===0">Checking for files</p>
             <ng-container *ngIf="downloadStats.total !==0">
-                <h3>Downloading Blockchain Binaries</h3>
-                Downloaded: {{downloadStats.total | number}}
-                Of {{downloadStats.size | number}}
+                <p>Downloading {{downloadStats.size | number}}: {{downloadStats.total | number}}</p>
                 <mat-progress-bar mode="determinate" color="accent" [value]="downloadStats.total/downloadStats.size*100" ></mat-progress-bar>
             </ng-container>
 

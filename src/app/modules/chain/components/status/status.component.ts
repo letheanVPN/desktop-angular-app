@@ -35,7 +35,7 @@ export class StatusComponent implements OnInit, AfterViewInit {
   async ngOnInit() {
 
 
-    this.chain.startDaemon().catch((err) => console.log(err))
+    //this.chain.startDaemon().catch((err) => console.log(err))
 
 
   }
@@ -60,7 +60,7 @@ export class StatusComponent implements OnInit, AfterViewInit {
               }
             }
         );
-        this.chain.downloadDaemons().then(() => this.chain.startDaemon());
+        this.chain.downloadDaemons().then(() => console.log('done'))
 
         //return false;
       }else {

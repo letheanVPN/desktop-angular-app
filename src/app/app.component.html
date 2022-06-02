@@ -2,13 +2,15 @@
 <div class="main-container">
     <ngx-toolbar style="height: 58px;">
         <ngx-toolbar-title>
-        </ngx-toolbar-title>
-        <ngx-toolbar-content>
-            <ngx-navbar [active]="activeRoute">
+            <ngx-navbar style="margin-left: 50px;" [active]="activeRoute">
                 <ngx-navbar-item [routerLink]="['/']" title="{{ 'menu.text.dashboard' | translate }}"><ngx-icon fontIcon="apps"></ngx-icon></ngx-navbar-item>
                 <ngx-navbar-item [routerLink]="['/','chain'] "><ngx-icon fontIcon="runs-outline"></ngx-icon></ngx-navbar-item>
                 <ngx-navbar-item [routerLink]="['/','wallet'] "><ngx-icon fontIcon="credit-card"></ngx-icon></ngx-navbar-item>
             </ngx-navbar>
+        </ngx-toolbar-title>
+
+        <ngx-toolbar-content>
+
             &nbsp;
             <mat-menu #appMenu="matMenu">
                 <ng-template let-name="name" matMenuContent>

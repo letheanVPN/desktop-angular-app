@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {StepperPosition} from '@swimlane/ngx-ui';
 import {AppConfigService} from '@service/app-config.service';
 import {interval, Subscription} from 'rxjs';
+import {FileSystemService} from '@service/filesystem/file-system.service';
 
 @Component({
 	selector: 'lthn-app-bootstate',
@@ -33,7 +34,7 @@ export class BootstateComponent implements OnInit {
 	downloadNeeded = false;
 	serverCheck: Subscription;
 
-	constructor(private app: AppConfigService) {
+	constructor(private app: AppConfigService, private fs: FileSystemService) {
 	}
 
 	async ngOnInit() {
@@ -63,21 +64,51 @@ export class BootstateComponent implements OnInit {
 	}
 
 	async checkServerAlive() {
-		this.serverCheck = interval(1000).subscribe(
-			async () => {
-				try {
-					await this.app.loadConfig('conf/app.ini');
-					await this.initApp()
-				} catch (e) {
-					//return false;
-				}
-				this.next();
-				this.serverCheck.unsubscribe();
-				await this.initApp()
-				return true;
-			})
-	}
+		if (await this.checkFolderStructure()) {
+			this.serverCheck = interval(1000).subscribe(
+				async () => {
 
+
+					try {
+						await this.app.loadConfig('conf/app.ini');
+						await this.initApp()
+					} catch (e) {
+						//return false;
+					}
+					this.next();
+					this.serverCheck.unsubscribe();
+					await this.initApp()
+					return true;
+
+				})
+		}
+
+	}
+	async checkFolderStructure() {
+		try {
+			if (!await this.fs.isDir('conf')) {
+				await this.fs.mkDir('conf');
+				await this.app.makeDefault();
+			}
+			if (!await this.fs.isDir('data')) {
+				await this.fs.mkDir('data');
+			}
+			if (!await this.fs.isDir('users')) {
+				await this.fs.mkDir('users');
+			}
+			if (!await this.fs.isDir('wallets')) {
+				await this.fs.mkDir('wallets');
+			}
+			if (!await this.fs.isDir('cli')) {
+				await this.fs.mkDir('cli');
+			}
+
+		} catch (e) {
+			return false;
+		}
+		return true;
+
+	}
 
 }
 

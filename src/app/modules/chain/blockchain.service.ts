@@ -21,7 +21,7 @@ export class BlockchainService {
         };
         return this.http
             .post<any>(
-                `http://127.0.0.1:36911/daemon/chain/start`,
+                `http://localhost:36911/daemon/chain/start`,
                 {"configFile":"letheand.conf"},
                 options
             )
@@ -38,7 +38,7 @@ export class BlockchainService {
         };
         return this.http
             .post<any>(
-                `http://127.0.0.1:36911/update/cli`,{},
+                `http://localhost:36911/update/cli`,{},
                 options
             ) .toPromise()
             .then((dat) => console.log(dat));
