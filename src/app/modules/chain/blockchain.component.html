@@ -14,20 +14,23 @@
             <lthn-chain-config></lthn-chain-config>
         </ngx-section>
     </ngx-tab>
-    <ngx-tab label="Console">
-        <ngx-section>
+    <ngx-tab label="Console" #consoleTab>
+        <ngx-section *ngIf="consoleTab?.active">
+
+            <p>Live feed, output might take a few seconds. if chain synced, type the word <i>help</i> and press enter</p>
             <lthn-console attach="letheand"></lthn-console>
         </ngx-section>
     </ngx-tab>
-    <ngx-tab label="Export">
-        <ngx-section>
+    <ngx-tab label="Export" #exportTab>
+        <ngx-section *ngIf="exportTab?.active" >
             <button (click)="exportChain()"  class="btn btn-bordered">Start Export</button>
             <lthn-console attach="lethean-blockchain-export"></lthn-console>
         </ngx-section>
     </ngx-tab>
-    <ngx-tab label="Import">
-        <ngx-section>
-            <a class="btn btn-bordered" href="https://seed.lethean.io">Download blockchain.raw</a>
+    <ngx-tab label="Import"#importTab>
+        <ngx-section  *ngIf="importTab?.active">
+            <p>Download https://seed.lethean.io/blockchain.raw > data/export/blockchain.raw</p>
+
             <button (click)="importChain()" class="btn btn-bordered">Start Import</button>
             <lthn-console attach="lethean-blockchain-import"></lthn-console>
         </ngx-section>

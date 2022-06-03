@@ -1,6 +1,7 @@
 import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {NgTerminal} from 'ng-terminal';
 import {WebsocketService} from '@service/websocket.service';
+import {Subscription} from 'rxjs';
 
 @Component({
 	selector: 'lthn-console',
@@ -17,6 +18,7 @@ export class ConsoleComponent implements OnInit, AfterViewInit, OnDestroy {
 	@Input() attach: string  = 'letheand';
 	private command: string[] = []
 
+	sub: Subscription
 	constructor(private ws: WebsocketService, private ref: ChangeDetectorRef) {
 		this.ref.detach()
 		setInterval(() => {
@@ -29,7 +31,7 @@ export class ConsoleComponent implements OnInit, AfterViewInit, OnDestroy {
 		let that = this;
 
 		this.ref.detectChanges();
-		this.ws.connect().subscribe((data) => {
+		this.sub = this.ws.connect().subscribe((data) => {
 			if(this.attach === data[0]) {
 				if(data[0] === 'update-cli'){
 					this.terminal.underlying.writeln(data[1]);
@@ -42,7 +44,7 @@ export class ConsoleComponent implements OnInit, AfterViewInit, OnDestroy {
 
 		})
 
-			this.changeStream(`daemon:${this.attach}`)
+		this.changeStream(`daemon:${this.attach}`)
     }
 
 	getSub(){
@@ -89,6 +91,9 @@ export class ConsoleComponent implements OnInit, AfterViewInit, OnDestroy {
 	}
 
 	public ngOnDestroy(): void {
+		this.terminal.underlying.dispose()
+		this.terminal = undefined
 		this.ws.closeConnection()
+		this.sub.unsubscribe()
 	}
 }
