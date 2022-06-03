@@ -56,3 +56,7 @@ html, body {
 .ngx-tabs .ngx-tabs-list {
 background-color: #313847;
 }
+
+.ngx-datatable .datatable-body .datatable-row-detail {
+  overflow-y: scroll!important;
+}
