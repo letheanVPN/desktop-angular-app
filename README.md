@@ -1,21 +1,17 @@
-# PWA Desktop Interface
-* [How Wails Interacts with WebView2](https://wails.io/docs/howdoesitwork)
-* [GoLang to Browser Integration](https://wails.io/docs/reference/runtime/intro)
-* [CLI Reference](https://wails.io/docs/reference/cli)
-* [CLI Remote Templates](https://wails.io/docs/reference/cli#remote-templates)
-* [CLI: Install Check](https://wails.io/docs/reference/cli#doctor)
-* [CLI: Build](https://wails.io/docs/reference/cli#build)
-* [CLI: Dev](https://wails.io/docs/reference/cli#dev)
-* [CLI: Update](https://wails.io/docs/reference/cli#update)
-* [Window Options](https://wails.io/docs/reference/options)
-* [Menu Options](https://wails.io/docs/reference/menus)
-* [Project Config](https://wails.io/docs/reference/project-config)
+# How to run
 
-## About Wails
-* [About Wails.io](https://wails.io/docs/about)
-* [Wails GitHub](https://github.com/wailsapp/wails)
-* [Sponsor Wails](https://github.com/sponsors/leaanthony)
-## Development Build
+You need to run two parts of the system to get a working dev environment.
+
+This angular app with `npm start` will serve the app on port 4200.
+then run `npm run be:serve` to start the backend server.
+
+The server will store files to the local directory; 
+
+WARNING... you should not be running Lethean Desktop while developing this... BAD things might happen, if you clone this repo... don't use default data locations for the live app...
+
+
+
+
 
 ```shell
 npm install --legacy-peer-deps

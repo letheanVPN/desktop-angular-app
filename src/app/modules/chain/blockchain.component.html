@@ -19,16 +19,16 @@
             <lthn-console attach="letheand"></lthn-console>
         </ngx-section>
     </ngx-tab>
-    <ngx-tab label="Export(not implemented)">
+    <ngx-tab label="Export">
         <ngx-section>
-            <button class="btn btn-bordered">Start Export</button>
+            <button (click)="exportChain()"  class="btn btn-bordered">Start Export</button>
             <lthn-console attach="lethean-blockchain-export"></lthn-console>
         </ngx-section>
     </ngx-tab>
-    <ngx-tab label="Import(not implemented)">
+    <ngx-tab label="Import">
         <ngx-section>
             <a class="btn btn-bordered" href="https://seed.lethean.io">Download blockchain.raw</a>
-            <button class="btn btn-bordered">Start Import</button>
+            <button (click)="importChain()" class="btn btn-bordered">Start Import</button>
             <lthn-console attach="lethean-blockchain-import"></lthn-console>
         </ngx-section>
     </ngx-tab>

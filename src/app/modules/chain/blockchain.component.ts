@@ -64,4 +64,11 @@ export class BlockchainComponent implements AfterViewInit{
 
 	}
 
+	public async exportChain() {
+		return await this.chain.exportChain()
+	}
+
+	public async importChain() {
+		return await this.chain.importChain();
+	}
 }
