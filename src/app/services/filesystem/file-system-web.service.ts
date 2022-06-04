@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {FileSystemInterface} from '@interface/file-system.interface';
-
 @Injectable({
 	providedIn: 'any'
 })
@@ -40,7 +39,12 @@ export class FileSystemWebService implements FileSystemInterface {
 	}
 
 
-	public async read(filename) {
+	public async read(filename: string = '') {
+
+		if(!filename || filename === '') {
+			return null;
+		}
+
 		const options = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json'
@@ -54,7 +58,7 @@ export class FileSystemWebService implements FileSystemInterface {
 	}
 
 	public async write(filename, data) {
-
+console.log(filename, data)
 		const options = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json'

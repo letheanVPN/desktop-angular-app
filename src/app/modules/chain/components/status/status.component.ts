@@ -1,15 +1,17 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {BlockchainService} from "@module/chain/blockchain.service";
 import {interval, Subscription} from "rxjs";
 import {WebsocketService} from "@service/websocket.service";
 import {FileSystemService} from "@service/filesystem/file-system.service";
+import {AppConfigService} from '@service/app-config.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'lthn-chain-status',
   templateUrl: './status.component.html',
   styleUrls: ['./status.component.scss']
 })
-export class StatusComponent implements OnInit, AfterViewInit {
+export class StatusComponent implements OnInit, AfterViewInit, OnDestroy {
   isFocused: boolean = false;
   isSelected: boolean = false;
   chainInfo: any;
@@ -29,13 +31,19 @@ export class StatusComponent implements OnInit, AfterViewInit {
     size: 0,
     total: 0
   }
+  private sub: Subscription;
 
-  constructor(public chain: BlockchainService,  private ws: WebsocketService, private fs: FileSystemService) { }
+  constructor(private app: AppConfigService,
+              private ws: WebsocketService,
+              private fs: FileSystemService,
+              private router: Router,
+              public chain: BlockchainService) {
+
+  }
 
   async ngOnInit() {
 
 
-    //this.chain.startDaemon().catch((err) => console.log(err))
 
 
   }
@@ -64,10 +72,9 @@ export class StatusComponent implements OnInit, AfterViewInit {
 
         //return false;
       }else {
-        this.downloadNeeded = false
-        await this.chain.startDaemon()
+        this.downloadNeeded = false;
+        return true;
       }
-
 
     } catch (e) {
       if ('HttpErrorResponse' === e.name) {
@@ -108,20 +115,43 @@ export class StatusComponent implements OnInit, AfterViewInit {
 
   }
 
-  importChain() {
-
-  }
-
-  exportChain() {
-
-  }
 
   async ngAfterViewInit() {
     await this.checkDownloads()
-    this.isSelected = this.chain.chainInfo !== undefined
-    interval(5000).subscribe(async () => {
-      this.chainInfo = await this.chain.getInfo()
-      this.isSelected = this.chainInfo !== undefined
-    });
+    console.log('d',this.app.getConfig('app', 'start_on_boot', false, 'daemon').toLowerCase() )
+    this.isSelected = this.app.getConfig('app', 'start_on_boot', false, 'daemon').toLowerCase() === 'true'
+    if (this.isSelected) {
+      await this.chain.startDaemon()
+      this.sub = interval(5000).subscribe(async () => {
+        this.chainInfo = await this.chain.getInfo()
+        // this.isSelected = this.chainInfo !== undefined
+      });
+    }
+
+
+
+  }
+
+  /**
+   * Toggles the setting start_on_boot and stops a current running node (soon[tm])
+   */
+  public async toggleStart() {
+    //this.isSelected = !this.isSelected;
+
+    if (this.isSelected) {
+      console.log('stop', this.isSelected)
+      await this.router.navigate(['/'])
+    } else {
+      console.log('start', this.isSelected)
+      await this.router.navigate(['/'])
+    }
+
+    this.app.setConfig('app', 'start_on_boot', !this.isSelected, 'daemon')
+    this.app.saveConfig('app').catch(e => console.log(e))
+    this.app.updateState('app')
+  }
+
+  public ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }

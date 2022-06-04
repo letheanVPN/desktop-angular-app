@@ -10,7 +10,8 @@ import {AppConfigService} from '@service/app-config.service';
 	providedIn: 'root'
 })
 export class WalletRpcService {
-	private url = AppConfigService.config.get('lethean-server', 'api_url', 'http://127.0.0.1:36911') + '/daemon/wallet/json_rpc'
+	// @todo conf class is annoying me atm fix this later
+	private url =  'http://127.0.0.1:36911/daemon/wallet/json_rpc'
 
 	constructor(private http: HttpClient) {}
 
@@ -29,14 +30,14 @@ export class WalletRpcService {
 		const request = {rpcBindPort: '36963', disableRpcLogin: false};
 		return this.http
 			.post<any>(
-				`${AppConfigService.config.get('lethean-server', 'api_url', 'http://127.0.0.1:36911')}/daemon/wallet/rpc`,
+				`${AppConfigService.settings['app']['api_url']}/daemon/wallet/rpc`,
 				request,
 				options
 			);
 	}
 
 	/**
-	 * Get openned wallet balance
+	 * Get opened wallet balance
 	 *
 	 * @returns {Promise<Balance>}
 	 */

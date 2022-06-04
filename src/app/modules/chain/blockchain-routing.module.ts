@@ -7,6 +7,7 @@ import {AuthGuard} from '@module/auth/route.guard';
 import {BlockchainConfigComponent} from "@module/chain/components/config.component";
 import {BlockchainStatsComponent} from "@module/chain/components/stats.component";
 import {BlockchainConsoleComponent} from "@module/chain/components/console/console.component";
+import {BlockLedgerComponent} from '@module/chain/components/block/ledger.component';
 
 const routes: Routes = [
 	{
@@ -44,6 +45,17 @@ const routes: Routes = [
 	{
 		path: 'chain/block/:id',
 		component: BlockDetailsComponent,
+		canActivate: [AuthGuard],
+		data: {
+			title: 'view.chain.title',
+			heading: 'view.chain.heading',
+			description: 'view.chain.description',
+			robots: false
+		}
+	},
+	{
+		path: 'chain/ledger',
+		component: BlockLedgerComponent,
 		canActivate: [AuthGuard],
 		data: {
 			title: 'view.chain.title',

@@ -47,9 +47,7 @@ export class BootstateComponent implements OnInit {
 
 			await this.app.loadConfig('conf/app.ini');
 			await this.app.fetchServerPublicKey();
-			if (this.app.getConfig('daemon', 'start_on_boot', true)) {
-				//await this.chain.startDaemon();
-			}
+
 		} catch (e) {
 			console.log(e);
 		}

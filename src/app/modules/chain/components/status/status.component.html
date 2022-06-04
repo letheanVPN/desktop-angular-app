@@ -15,6 +15,7 @@
             <span class="date-display" *ngIf="chain.chainInfo != null"> Started {{ chain.chainInfo.start_time * 1000 | amTimeAgo}} </span>
         </ngx-card-subtitle>
     </ngx-card-header>
+    <!-- status and bootstrap -->
     <ngx-card-section class="ngx-card-section--description">
         <ng-container *ngIf="chain.chainInfo == null  && downloadNeeded == true">
             <p *ngIf="downloadStats.total ===0">Checking for files</p>
@@ -37,7 +38,7 @@
 
     </ngx-card-section>
     <ngx-card-section class="card-toggle">
-        <ngx-toggle [(ngModel)]="isSelected" label="Enable" (click)="$event.stopPropagation()"></ngx-toggle>
+        <ngx-toggle [(ngModel)]="isSelected" label="Enable" (click)="$event.stopPropagation(); toggleStart()"></ngx-toggle>
     </ngx-card-section>
     <ngx-card-section class="card-action">
         <ng-container *ngTemplateOutlet="viewDetailsTpl"></ng-container>
