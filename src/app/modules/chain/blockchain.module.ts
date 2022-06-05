@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BlockchainComponent} from 'src/app/modules/chain/blockchain.component';
-import {ChartModule} from '@module/chart/chart.module';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
@@ -45,7 +44,6 @@ import {MatExpansionModule} from "@angular/material/expansion";
 	declarations: [BlockchainComponent, BlockDetailsComponent, BlockLedgerComponent, BlockchainStatsComponent, BlockchainConfigComponent, BlockTransactionsComponent, StatusComponent],
     imports: [
         CommonModule,
-        ChartModule,
         MatCardModule,
         MatListModule,
         MatButtonModule,

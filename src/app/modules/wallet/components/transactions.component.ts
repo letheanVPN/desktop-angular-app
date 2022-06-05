@@ -2,11 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 
 import {FormControl} from '@angular/forms';
 import {WalletRpcService} from '@service/wallet.rpc.service';
-import {Subscription} from 'rxjs';
 import {GetTransfersIn, GetTransfersOut} from '@module/wallet/interfaces';
 import {ColumnMode} from '@swimlane/ngx-datatable';
-import {select, Store} from '@ngrx/store';
-import {selectWalletTransactions} from '@module/wallet/data';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -35,17 +32,12 @@ export class TransactionsComponent implements OnInit {
 		{name: 'Timestamp'}, {name: 'txid'}, {name: 'Type'}, {name: 'Unlock Time'}];
 
 	ColumnMode = ColumnMode;
-	private subs$: Subscription[] = []
-	constructor(private wallet: WalletRpcService, private store: Store, private route: ActivatedRoute) {
+
+	constructor(private wallet: WalletRpcService, private route: ActivatedRoute) {
 		this.name = this.route.snapshot.paramMap.get('id')
 	}
 
 	ngOnInit(): void {
-		this.subs$['txn'] = this.store.pipe(select(selectWalletTransactions)).subscribe((data) => {
-			if(data) {
-				this.rows = [...data['in'], ...data['out']]
-			}
-		})
 		this.loadTransactions().catch((err) => console.error(err));
 	}
 

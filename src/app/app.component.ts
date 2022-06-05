@@ -4,8 +4,6 @@ import {ActivatedRoute, NavigationEnd, NavigationStart, Router} from '@angular/r
 import {Meta, Title} from '@angular/platform-browser';
 import {filter} from 'rxjs/operators';
 import {TranslateService} from '@ngx-translate/core';
-import {select, Store} from '@ngrx/store';
-import {changeLanguage, selectLanguage} from '@module/settings/data';
 import { Subscription} from 'rxjs';
 import { LoadingService } from '@swimlane/ngx-ui';
 import {AppConfigService} from '@service/app-config.service';
@@ -45,7 +43,6 @@ export class AppComponent implements OnInit, AfterContentInit {
 		private titleService: Title,
 		private metaService: Meta,
 		private translate: TranslateService,
-		private store: Store,
 		private loadingService: LoadingService,
 		public app: AppConfigService
 	) {}
@@ -74,10 +71,10 @@ export class AppComponent implements OnInit, AfterContentInit {
 
 
 		// setup language watcher
-		this.currentLanguage$ = this.store.pipe(select(selectLanguage)).subscribe((lang) => {
-			this.currentLanguage = lang;
-			this.translate.use(lang);
-		});
+//		this.currentLanguage$ = this.store.pipe(select(selectLanguage)).subscribe((lang) => {
+//			this.currentLanguage = lang;
+//			this.translate.use(lang);
+//		});
 
 		this.updateMeta();
 	}
@@ -87,8 +84,8 @@ export class AppComponent implements OnInit, AfterContentInit {
 	 *
 	 * @param {string} lang
 	 */
-	changeLanguage(lang: string) {
-		this.store.dispatch(changeLanguage({language: lang}));
+	changeLanguage(lang: string) {console.log(lang);
+//		this.store.dispatch(changeLanguage({language: lang}));
 	}
 
 

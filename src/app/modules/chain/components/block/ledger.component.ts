@@ -1,5 +1,4 @@
 import {Component, OnDestroy, OnInit, TemplateRef, ViewChild} from '@angular/core';
-import {ChartService} from '@module/chart/chart.service';
 import {ChainGetInfo} from '@module/chain/interfaces/props/get_info';
 import {interval, Subscription} from 'rxjs';
 import {BlockHeader} from '@module/chain/interfaces/types/blockHeader';
@@ -10,8 +9,7 @@ import {DrawerDirection, DrawerService} from '@swimlane/ngx-ui';
 
 @Component({
 	selector: 'lthn-chain-ledger',
-	templateUrl: './ledger.component.html',
-	providers: [ChartService]
+	templateUrl: './ledger.component.html'
 })
 export class BlockLedgerComponent implements OnInit, OnDestroy {
 
