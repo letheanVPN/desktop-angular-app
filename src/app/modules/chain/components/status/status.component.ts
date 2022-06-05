@@ -4,7 +4,6 @@ import {interval, Subscription} from "rxjs";
 import {WebsocketService} from "@service/websocket.service";
 import {FileSystemService} from "@service/filesystem/file-system.service";
 import {AppConfigService} from '@service/app-config.service';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'lthn-chain-status',
@@ -32,21 +31,16 @@ export class StatusComponent implements OnInit, AfterViewInit, OnDestroy {
     total: 0
   }
   private sub: Subscription;
+  private sub2: Subscription;
 
   constructor(private app: AppConfigService,
               private ws: WebsocketService,
               private fs: FileSystemService,
-              private router: Router,
               public chain: BlockchainService) {
 
   }
 
-  async ngOnInit() {
-
-
-
-
-  }
+  async ngOnInit() {}
 
 
   async checkDownloads() {
@@ -121,14 +115,20 @@ export class StatusComponent implements OnInit, AfterViewInit, OnDestroy {
     console.log('d',this.app.getConfig('app', 'start_on_boot', false, 'daemon').toLowerCase() )
     this.isSelected = this.app.getConfig('app', 'start_on_boot', false, 'daemon').toLowerCase() === 'true'
     if (this.isSelected) {
-      await this.chain.startDaemon()
-      this.sub = interval(5000).subscribe(async () => {
+      this.chain.startDaemon().catch(e => console.log(e))
+      this.sub = interval(500).subscribe(async () => {
+        this.chainInfo = await this.chain.getInfo()
+        if(this.chainInfo.height > 0){
+          this.sub.unsubscribe();
+        }
+        // this.isSelected = this.chainInfo !== undefined
+      });
+
+      this.sub2 = interval(15000).subscribe(async () => {
         this.chainInfo = await this.chain.getInfo()
         // this.isSelected = this.chainInfo !== undefined
       });
     }
-
-
 
   }
 
@@ -138,20 +138,27 @@ export class StatusComponent implements OnInit, AfterViewInit, OnDestroy {
   public async toggleStart() {
     //this.isSelected = !this.isSelected;
 
-    if (this.isSelected) {
-      console.log('stop', this.isSelected)
-      await this.router.navigate(['/'])
-    } else {
-      console.log('start', this.isSelected)
-      await this.router.navigate(['/'])
-    }
+
 
     this.app.setConfig('app', 'start_on_boot', !this.isSelected, 'daemon')
     this.app.saveConfig('app').catch(e => console.log(e))
     this.app.updateState('app')
+    if (this.isSelected) {
+      console.log('stop', this.isSelected)
+      this.chain.stopDaemon()
+      this.sub.unsubscribe();
+    } else {
+      this.chain.startDaemon().catch(e => console.log(e))
+      console.log('start', this.isSelected)
+      this.sub = interval(1000).subscribe(async () => {
+        this.chainInfo = await this.chain.getInfo()
+        // this.isSelected = this.chainInfo !== undefined
+      });
+    }
   }
 
   public ngOnDestroy(): void {
     this.sub.unsubscribe();
+    this.sub2.unsubscribe();
   }
 }

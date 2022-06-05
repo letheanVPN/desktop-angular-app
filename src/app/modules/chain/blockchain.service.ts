@@ -3,14 +3,26 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {rpcBody} from '@service/json-rpc';
 import {AuthService} from '@module/auth/auth.service';
 import {ChainGetInfo} from "@module/chain/interfaces/props/get_info";
+import {WebsocketService} from '@service/websocket.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class BlockchainService {
     public chainInfo: ChainGetInfo = null;
-    constructor(private http: HttpClient) {
+    private _stdStream;
+    constructor(private http: HttpClient, private ws: WebsocketService) {
+
+        this._stdStream = this.ws.connect().subscribe()
+//
+        this.ws.sendMessage(`daemon:letheand`)
     }
+
+    stopDaemon() {
+        this.ws.sendMessage('cmd:letheand:stop_daemon')
+        this._stdStream.unsubscribe()
+    }
+
 
     startDaemon() {
         const options = {
