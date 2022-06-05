@@ -26,13 +26,20 @@
 
         </ng-container>
         <ng-container *ngIf=" chain.chainInfo == null && downloadNeeded == false">
-            <p>Starting Chain Daemon</p>
+            <p>Checking Chain Daemon</p>
         </ng-container>
         <ng-container *ngIf=" chain.chainInfo != null && downloadNeeded == false">
-            <p>Current: {{ chain.chainInfo.height }} </p>
-            <mat-progress-bar mode="determinate" color="accent" [value]="chain.chainInfo.height/chain.chainInfo.target_height*100" ></mat-progress-bar>
-            &nbsp;&nbsp;&nbsp;
-            <p>Target: {{ chain.chainInfo.target_height }}</p>
+            <ng-container *ngIf="chain.chainInfo.height < chain.chainInfo.target_height">
+                <p>Calculating Chain State</p>
+                <p>Current: {{ chain.chainInfo.height }} </p>
+                <mat-progress-bar mode="determinate" color="accent" [value]="chain.chainInfo.height/chain.chainInfo.target_height*100" ></mat-progress-bar>
+                &nbsp;&nbsp;&nbsp;
+                <p>Target: {{ chain.chainInfo.target_height }}</p>
+            </ng-container>
+
+            <ng-container *ngIf="chain.chainInfo.height >= chain.chainInfo.target_height">
+                <p>Chain is synced to height: {{ chain.chainInfo.height }} </p>
+            </ng-container>
         </ng-container>
 
 
