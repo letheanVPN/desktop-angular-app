@@ -1,4 +1,4 @@
-import {AfterViewInit, Component} from '@angular/core';
+import {AfterViewInit, Component, OnChanges, SimpleChanges} from '@angular/core';
 import {ChainGetInfo} from '@module/chain/interfaces/props/get_info';
 import {BlockHeader} from '@module/chain/interfaces/types/blockHeader';
 import {BlockchainService} from '@module/chain/blockchain.service';
@@ -7,12 +7,13 @@ import {AppConfigService} from "@service/app-config.service";
 	selector: 'lthn-chain',
 	templateUrl: './blockchain.component.html'
 })
-export class BlockchainComponent implements AfterViewInit{
+export class BlockchainComponent implements AfterViewInit, OnChanges{
 
 	blocks: BlockHeader[];
 	public chainInfo: ChainGetInfo;
 
 	public offline: boolean = true;
+	public cmd: string = '';
 	constructor(public chain: BlockchainService, public app: AppConfigService) {}
 
 	async ngAfterViewInit() {
@@ -70,5 +71,9 @@ export class BlockchainComponent implements AfterViewInit{
 
 	public async importChain() {
 		return await this.chain.importChain();
+	}
+
+	public ngOnChanges(changes: SimpleChanges): void {
+		console.log(changes)
 	}
 }

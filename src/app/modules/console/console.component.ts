@@ -15,6 +15,15 @@ import {Subscription} from 'rxjs';
 export class ConsoleComponent implements OnInit, AfterViewInit, OnDestroy {
 	@ViewChild('term', { static: true }) terminal: NgTerminal;
 
+	@Input()
+	set cmd(name: string) {
+		if(name.length > 1) {
+			this.ws.sendMessage(`cmd:${this.attach}:${name}`)
+			this.terminal.underlying.writeln("\r\n");
+			//this._cmd = (name && name.trim()) || '';
+		}
+	}
+
 	@Input() attach: string  = 'letheand';
 	private command: string[] = []
 

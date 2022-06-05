@@ -18,7 +18,12 @@
         <ngx-section *ngIf="consoleTab?.active">
 
             <p>Live feed, output might take a few seconds. if chain synced, type the word <i>help</i> and press enter</p>
-            <lthn-console attach="letheand"></lthn-console>
+            <span class="tag tag-bordered" (click)="this.cmd='help';">Help</span>
+            <span class="tag tag-bordered" (click)="this.cmd='status';">Status</span>
+            <span class="tag tag-bordered" (click)="this.cmd='hard_fork_info';">Sync Information</span>
+            <span class="tag tag-bordered" (click)="this.cmd='print_pl_stats';">Peer Information</span>
+            <span class="tag tag-bordered" (click)="this.cmd='print_pool_stats';">Tx Pool Information</span>
+            <lthn-console attach="letheand" [cmd]="this.cmd" ></lthn-console>
         </ngx-section>
     </ngx-tab>
     <ngx-tab label="Export" #exportTab>
