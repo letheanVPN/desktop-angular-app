@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {NgTerminal} from 'ng-terminal';
 import {WebsocketService} from '@service/websocket.service';
 import {Subscription} from 'rxjs';
@@ -13,13 +13,13 @@ import {Subscription} from 'rxjs';
 
 })
 export class ConsoleComponent implements OnInit, AfterViewInit, OnDestroy {
-	@ViewChild('term', { static: true }) terminal: NgTerminal;
+	@ViewChild('term') terminal: NgTerminal;
 
 	@Input()
 	set cmd(name: string) {
 		if(name.length > 1) {
 			this.ws.sendMessage(`cmd:${this.attach}:${name}`)
-			this.terminal.underlying.writeln("\r\n");
+			//this.terminal.underlying.writeln("\r\n");
 			//this._cmd = (name && name.trim()) || '';
 		}
 	}
@@ -27,7 +27,7 @@ export class ConsoleComponent implements OnInit, AfterViewInit, OnDestroy {
 	@Input() attach: string  = 'letheand';
 	private command: string[] = []
 
-	sub: Subscription
+	subs: Subscription[] = []
 	constructor(private ws: WebsocketService, private ref: ChangeDetectorRef) {
 		this.ref.detach()
 		setInterval(() => {
@@ -39,21 +39,24 @@ export class ConsoleComponent implements OnInit, AfterViewInit, OnDestroy {
 	ngOnInit(): void {
 		let that = this;
 
-		this.ref.detectChanges();
-		this.sub = this.ws.connect().subscribe((data) => {
-			if(this.attach === data[0]) {
-				if(data[0] === 'update-cli'){
-					this.terminal.underlying.writeln(data[1]);
-				}else{
-					this.terminal.underlying.writeln(atob(data[1]).trim().replace('src/cryptonote_protocol/cryptonote_protocol_handler.inl', ''));
+		if(this.subs['ws'] === undefined) {
+
+			this.ref.detectChanges();
+			this.subs['ws'] = this.ws.connect().subscribe((data) => {
+				if (this.attach === data[0]) {
+					if (data[0] === 'update-cli') {
+						this.terminal.underlying.writeln(data[1]);
+					} else {
+						this.terminal.underlying.writeln(atob(data[1]).trim().replace('src/cryptonote_protocol/cryptonote_protocol_handler.inl', ''));
+					}
+
+					that.ref.markForCheck()
 				}
 
-				that.ref.markForCheck()
-			}
+			})
 
-		})
-
-		this.changeStream(`daemon:${this.attach}`)
+			this.changeStream(`daemon:${this.attach}`)
+		}
     }
 
 	getSub(){
@@ -67,10 +70,10 @@ export class ConsoleComponent implements OnInit, AfterViewInit, OnDestroy {
 
 	ngAfterViewInit() {
 		const that = this;
-
+		this.terminal.setRows(50)
 		if(this.terminal.keyEventInput) {
 
-			this.terminal.keyEventInput.subscribe((e) => {
+			this.subs['term'] = this.terminal.keyEventInput.subscribe((e) => {
 				//console.log('keyboard event:' + e.domEvent.keyCode + ', ' + e.key);
 
 				const ev = e.domEvent;
@@ -100,9 +103,10 @@ export class ConsoleComponent implements OnInit, AfterViewInit, OnDestroy {
 	}
 
 	public ngOnDestroy(): void {
-		this.terminal.underlying.dispose()
-		this.terminal = undefined
+		this.terminal.underlying.clear()
+		//this.terminal = undefined
 		this.ws.closeConnection()
-		this.sub.unsubscribe()
+		this.subs.forEach((sub) => sub.unsubscribe())
 	}
+
 }

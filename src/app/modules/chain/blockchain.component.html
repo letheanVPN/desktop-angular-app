@@ -15,7 +15,7 @@
         </ngx-section>
     </ngx-tab>
     <ngx-tab label="Console" #consoleTab>
-        <ngx-section *ngIf="consoleTab?.active">
+        <ngx-section *ngxIfTabActive>
 
             <p>Live feed, output might take a few seconds. if chain synced, type the word <i>help</i> and press enter</p>
             <span class="tag tag-bordered" (click)="this.cmd='help';">Help</span>
@@ -26,19 +26,19 @@
             <lthn-console attach="letheand" [cmd]="this.cmd" ></lthn-console>
         </ngx-section>
     </ngx-tab>
-    <ngx-tab label="Export" #exportTab>
-        <ngx-section *ngIf="exportTab?.active" >
-            <button (click)="exportChain()"  class="btn btn-bordered">Start Export</button>
-            <lthn-console attach="lethean-blockchain-export"></lthn-console>
-        </ngx-section>
-    </ngx-tab>
-    <ngx-tab label="Import"#importTab>
-        <ngx-section  *ngIf="importTab?.active">
-            <p>Download https://seed.lethean.io/blockchain.raw > data/export/blockchain.raw</p>
+<!--    <ngx-tab label="Export" #exportTab>-->
+<!--        <ngx-section *ngxIfTabActive>-->
+<!--            <button (click)="exportChain()"  class="btn btn-bordered">Start Export</button>-->
+<!--            <lthn-console attach="lethean-blockchain-export"></lthn-console>-->
+<!--        </ngx-section>-->
+<!--    </ngx-tab>-->
+<!--    <ngx-tab label="Import"#importTab>-->
+<!--        <ngx-section *ngxIfTabActive>-->
+<!--            <p>Download https://seed.lethean.io/blockchain.raw > data/export/blockchain.raw</p>-->
 
-            <button (click)="importChain()" class="btn btn-bordered">Start Import</button>
-            <lthn-console attach="lethean-blockchain-import"></lthn-console>
-        </ngx-section>
-    </ngx-tab>
+<!--            <button (click)="importChain()" class="btn btn-bordered">Start Import</button>-->
+<!--            <lthn-console attach="lethean-blockchain-import"></lthn-console>-->
+<!--        </ngx-section>-->
+<!--    </ngx-tab>-->
 
 </ngx-tabs>

@@ -1,74 +1,32 @@
-<div class="container-fluid" >
-        <div  style="padding: 12px 12px 3px 12px;">
-            <mat-toolbar>
-                <mat-toolbar-row>
-                    Wallet: <span class="lthn-brand"> {{ wallet.address |hashLink }}</span>
-<!--                    <button (click)="wallet.closeWallet()" mat-button matTooltip="New Wallet">-->
-<!--                        <mat-icon>close</mat-icon>-->
-<!--                    </button>-->
-<!--                    <ngx-select [filterable]="true" placeholder="{{wallet.openedWallet}}" (change)="openWallet($event[0])"  >-->
-<!--                        <ngx-select-option *ngFor="let wallet of wallets"-->
-<!--                                           value="{{wallet}}"-->
-<!--                                           name="{{wallet}}"-->
-<!--                        ></ngx-select-option>-->
-<!--                    </ngx-select>-->
-                    <span class="flex-spacer"></span>
-<!--                    <button [routerLink]="['/', 'wallet', 'new']" mat-button matTooltip="New Wallet">-->
-<!--                        <mat-icon>account_balance_wallet</mat-icon>-->
-<!--                    </button>-->
-<!--                    <button [routerLink]="['/', 'wallet', 'backup']" mat-button matTooltip="Backup">-->
-<!--                        <mat-icon>cloud_download</mat-icon>-->
-<!--                    </button>-->
-<!--                    <button [routerLink]="['/', 'wallet', 'restore']" mat-button matTooltip="Restore">-->
-<!--                        <mat-icon>cloud_upload</mat-icon>-->
-<!--                    </button>-->
-                    <button (click)="wallet.closeWallet()"  mat-button matTooltip="Close Wallet">
-                        <mat-icon>close</mat-icon>
-                    </button>
-                </mat-toolbar-row>
-            </mat-toolbar>
-            <div>
-                <ngx-section *ngIf="wallet.address == null" fxFlex="50">
-                    <h1>Lethean Wallet Manager</h1>
+<ngx-tabs class="">
+    <ngx-tab label="Wallets" >
+        <ngx-section>
+            <pre dbl-click-copy>{{wallet.address}}</pre>
+            <lthn-wallet-open *ngIf="!wallet.address"></lthn-wallet-open>
+            <lthn-wallet-details *ngIf="wallet.address"></lthn-wallet-details>
+        </ngx-section>
+    </ngx-tab>
+    <ngx-tab label="New Wallet">
+        <ngx-section>
+            <lthn-wallet-add></lthn-wallet-add>
+        </ngx-section>
+    </ngx-tab>
+    <ngx-tab label="Transactions" #consoleTab>
+        <ngx-section *ngxIfTabActive>
 
-                    <p>Please select a previous wallet using the dropdown above or use the forms below to get started</p>
+                <lthn-wallet-transactions></lthn-wallet-transactions>
 
-                    <lthn-wallet-open></lthn-wallet-open>
+        </ngx-section>
+    </ngx-tab>
+    <ngx-tab label="Transfer" #consoleTab>
+        <ngx-section *ngxIfTabActive>
 
-                </ngx-section>
-                <ngx-section *ngIf="wallet.address == null" fxFlex="50">
-                <h1>Make or Add Wallet</h1>
-                <lthn-wallet-add></lthn-wallet-add>
+            <h3>Balance: {{ wallet.balance.unlocked_balance | toCoin}}</h3>
+            <h4 *ngIf="wallet.balance.unlocked_balance != wallet.balance.balance">Locked Balance: {{wallet.balance.balance-wallet.balance.unlocked_balance|toCoin}}</h4>
+            <lthn-wallet-transfer></lthn-wallet-transfer>
 
-            </ngx-section>
-            </div>
+        </ngx-section>
+    </ngx-tab>
 
-            <ngx-section *ngIf="wallet.address != null">
-                <ngx-tabs [vertical]="true">
-                    <ngx-tab label="Details">
-                        <div *ngxIfTabActive>
-                            <lthn-wallet-details></lthn-wallet-details>
-                        </div>
-                    </ngx-tab>
-                    <ngx-tab label="Transactions">
-                        <div *ngxIfTabActive>
-                            <lthn-wallet-transactions></lthn-wallet-transactions>
-                        </div>
-                    </ngx-tab>
-                    <ngx-tab label="Transfer" >
-                        <div *ngxIfTabActive>
-                            <h3>Balance: {{ wallet.balance.unlocked_balance | toCoin}}</h3>
-                            <h4 *ngIf="wallet.balance.unlocked_balance != wallet.balance.balance">Locked Balance: {{wallet.balance.balance-wallet.balance.unlocked_balance|toCoin}}</h4>
-                            <lthn-wallet-transfer></lthn-wallet-transfer>
-                        </div>
-                    </ngx-tab>
-                    <ngx-tab label="Console">
-                        <div *ngxIfTabActive>
-                            <lthn-console attach="lethean-wallet-rpc"></lthn-console>
-                        </div>
-                    </ngx-tab>
-                </ngx-tabs>
-            </ngx-section>
-        </div>
+</ngx-tabs>
 
-</div>
