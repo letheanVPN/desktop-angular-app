@@ -1,4 +1,4 @@
-<ngx-tabs class="" #tabs>
+<ngx-tabs class=""  #tabs>
     <ngx-tab label="Installed (1)" #tab1 >
 <!--        <ngx-section>-->
 <!--       <p>You have no apps installed</p>-->
@@ -8,16 +8,45 @@
         <lthn-chain-status></lthn-chain-status>
         </ngx-section>
     </ngx-tab>
-<!--    <ngx-tab label="Marketplace" #tab2>-->
-<!--        <ngx-section>-->
-<!--            <div *ngIf="downloading['app.chain.lthn']"><h3>Downloading Blockchain Binaries</h3>-->
-<!--                Downloaded: {{downloadStats.total | number}}-->
-<!--                Of {{downloadStats.size | number}}-->
-<!--                <mat-progress-bar mode="determinate" color="accent" [value]="downloadStats.total/downloadStats.size*100" ></mat-progress-bar></div>-->
-<!--        </ngx-section>-->
-<!--    </ngx-tab>-->
-<!--    <ngx-tab label="Developer">-->
+    <ngx-tab label="Marketplace" #tab2>
+        <ngx-section>
+            <ngx-card>
+                <ngx-card-header>
+                    <ngx-card-avatar status="default"> LTHN </ngx-card-avatar>
+                    <ngx-card-title> Lethean Blockchain </ngx-card-title>
+                    <ngx-card-subtitle> v4.0.7 </ngx-card-subtitle>
+                </ngx-card-header>
+                <ngx-card-section>
+                    <button class="btn btn-bordered">Install</button>
+                </ngx-card-section>
+            </ngx-card>
 
+            <ngx-card>
+                <ngx-card-header>
+                    <ngx-card-avatar status="default"> WRKZ </ngx-card-avatar>
+                    <ngx-card-title> WrkzCoin Blockchain </ngx-card-title>
+                    <ngx-card-subtitle> card_subtitle </ngx-card-subtitle>
+                </ngx-card-header>
+                <ngx-card-section>
+                    <button class="btn btn-bordered">Install</button>
+                </ngx-card-section>
+            </ngx-card>
+            <ngx-card>
+                <ngx-card-header>
+                    <ngx-card-avatar status="default"> XHV </ngx-card-avatar>
+                    <ngx-card-title> Haven Blockchain </ngx-card-title>
+                    <ngx-card-subtitle> card_subtitle </ngx-card-subtitle>
+                </ngx-card-header>
+                <ngx-card-section>
+                    <button class="btn btn-bordered">Install</button>
+                </ngx-card-section>
+            </ngx-card>
+        </ngx-section>
+    </ngx-tab>
+<!--    <ngx-tab label="Developer">-->
+<!--        <ngx-section>-->
+<!--<lthn-app-editor></lthn-app-editor>-->
+<!--        </ngx-section>-->
 <!--    </ngx-tab>-->
 <!--    <ngx-tab label="Documentation">-->
 

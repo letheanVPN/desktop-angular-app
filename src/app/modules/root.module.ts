@@ -27,6 +27,7 @@ import {
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from "@angular/router";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {EditorModule} from '@module/devkit/editor/editor.module';
 
 @NgModule({
 	declarations: [RootComponent],
@@ -55,7 +56,8 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
         SectionModule,
         RouterModule,
         TabsModule,
-        MatProgressBarModule
+        MatProgressBarModule,
+        EditorModule
     ]
 })
 export class RootModule {

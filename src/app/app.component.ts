@@ -4,8 +4,8 @@ import {ActivatedRoute, NavigationEnd, NavigationStart, Router} from '@angular/r
 import {Meta, Title} from '@angular/platform-browser';
 import {filter} from 'rxjs/operators';
 import {TranslateService} from '@ngx-translate/core';
-import { Subscription} from 'rxjs';
-import { LoadingService } from '@swimlane/ngx-ui';
+import {Subscription} from 'rxjs';
+import {LoadingService} from '@swimlane/ngx-ui';
 import {AppConfigService} from '@service/app-config.service';
 
 @Component({
@@ -14,7 +14,7 @@ import {AppConfigService} from '@service/app-config.service';
 	styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, AfterContentInit {
-	public menu: boolean;
+	//public menu: boolean;
 	public heading = '';
 
 	@ViewChild('sidenav') public sidenav: MatSidenav;
@@ -23,6 +23,37 @@ export class AppComponent implements OnInit, AfterContentInit {
 	public currentLanguage: string = 'en';
 	public navExpanded: boolean = true;
 
+	public menuItems = [
+		{
+			'title': 'menu.text.dashboard',
+			'icon': 'apps',
+			'url': ['/', 'dashboard'],
+			"children": [
+				{
+					'title': 'menu.text.dashboard',
+					'url': ['/', 'dashboard']
+				},
+				{
+					'title': 'menu.text.market',
+					'url': ['/', 'market']
+				},
+				{
+					'title': 'menu.text.developer',
+					'url': ['/', 'developer']
+				}
+		]
+		},
+		{
+			'title': 'menu.text.chain',
+			'icon': 'runs-outline',
+			'url': ['/', 'chain']
+		},
+		{
+			'title': 'menu.text.wallet',
+			'icon': 'credit-card',
+			'url': ['/', 'wallet']
+		}
+	];
 
 	/**
 	 * Starts the Angular framework and configures system plugins
@@ -45,7 +76,8 @@ export class AppComponent implements OnInit, AfterContentInit {
 		private translate: TranslateService,
 		private loadingService: LoadingService,
 		public app: AppConfigService
-	) {}
+	) {
+	}
 
 
 	public async ngOnInit() {
@@ -64,9 +96,19 @@ export class AppComponent implements OnInit, AfterContentInit {
 		});
 
 	}
+
 	get activeRoute(): number {
-		return this.router.url === '/navbar/child-1' ? 0 : this.router.url === '/navbar/child-2' ? 1 : -1;
+		switch (this.router.url) {
+			case '/':
+				return 0;
+			case '/chain':
+				return 1;
+			case '/wallet':
+				return 2;
+
+		}
 	}
+
 	public async ngAfterContentInit() {
 
 
@@ -84,7 +126,8 @@ export class AppComponent implements OnInit, AfterContentInit {
 	 *
 	 * @param {string} lang
 	 */
-	changeLanguage(lang: string) {console.log(lang);
+	changeLanguage(lang: string) {
+		console.log(lang);
 //		this.store.dispatch(changeLanguage({language: lang}));
 	}
 
@@ -132,7 +175,6 @@ export class AppComponent implements OnInit, AfterContentInit {
 	}
 
 
-
 	/**
 	 * Angular router helper
 	 *
@@ -147,4 +189,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 		}
 	}
 
+	public getChildItems() {
+console.log(this.activatedRoute.url);
+	}
 }

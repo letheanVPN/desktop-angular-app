@@ -58,7 +58,7 @@ export class FileSystemWebService implements FileSystemInterface {
 	}
 
 	public async write(filename, data) {
-console.log(filename, data)
+
 		const options = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json'
