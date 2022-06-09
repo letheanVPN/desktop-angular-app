@@ -23,7 +23,7 @@ export class BlockchainComponent implements AfterViewInit, OnChanges{
 
 			await this.app.loadConfig('conf/app.ini')
 
-			if (this.app.getConfig('daemon', 'start_on_boot', true)) {
+			if (this.app.getConfig('app', 'start_on_boot', true, 'daemon')) {
 				// we can get to here, without the cli...
 				if (await this.app.fs.isDir('cli')) {
 					this.startChain();
@@ -37,9 +37,8 @@ export class BlockchainComponent implements AfterViewInit, OnChanges{
 					this.offline = false;
 				} else if (e.status === 404) {
 					this.offline = false;
-					await this.app.makeDefault()
-					await this.app.loadConfig('conf/app.ini')
-					if (this.app.getConfig('daemon', 'start_on_boot', true)) {
+
+					if (this.app.getConfig('app', 'start_on_boot', true, 'daemon')) {
 						this.startChain();
 					}
 				}

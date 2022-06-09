@@ -48,6 +48,7 @@ export class StatusComponent implements OnInit, AfterViewInit, OnDestroy {
     try {
 
       if (await this.fs.listFiles('cli').then(res => res.length) < 3) {
+
         this.downloadNeeded = true;
         this.downloadProgress()
         this.downloaded = interval(1000).subscribe(
@@ -112,8 +113,8 @@ export class StatusComponent implements OnInit, AfterViewInit, OnDestroy {
 
   async ngAfterViewInit() {
     await this.checkDownloads()
-    console.log('d',this.app.getConfig('app', 'start_on_boot', false, 'daemon').toLowerCase() )
-    this.isSelected = this.app.getConfig('app', 'start_on_boot', false, 'daemon').toLowerCase() === 'true'
+    console.log('d',this.app.getConfig('app', 'start_on_boot', false, 'daemon') == 'true' )
+    this.isSelected = this.app.getConfig('app', 'start_on_boot', false, 'daemon') == 'true'
     if (this.isSelected) {
       this.chain.startDaemon().catch(e => console.log(e))
       this.sub = interval(500).subscribe(async () => {

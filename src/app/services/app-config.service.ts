@@ -18,7 +18,7 @@ export class AppConfigService {
 	}
 
 
-	public static apiUrl: string = 'http://localhost:36911';
+	public static apiUrl: string = 'http://127.0.0.1:36911/api';
 	public static serverPublicKey;
 	private static _config: { [key:string]: ConfigIniParser} = {  };
 
@@ -34,6 +34,11 @@ export class AppConfigService {
 			 this.fetchServerPublicKey().catch((err) => console.log(err));
 
 		} catch (e) {
+
+				this.makeDefault().catch((e) => console.log(e))
+			this.loadConfig('conf/app.ini')
+				this.saveConfig('app').catch((e) => console.log(e))
+
 			console.log(e);
 		}
 
@@ -43,7 +48,7 @@ export class AppConfigService {
 
 	async fetchServerPublicKey() {
 
-		return await fetch(AppConfigService.apiUrl + '/api/cert')
+		return await fetch(AppConfigService.apiUrl + '/cert')
 			.then(response =>  response.text())
 			.then(text => {
 				return AppConfigService.serverPublicKey = text;
@@ -60,62 +65,62 @@ export class AppConfigService {
 	 * @param {string} key
 	 * @param data
 	 */
-	updateState(key: string, data?: any){
+	updateState(key: string = 'app', data?: any){
 
 		if(AppConfigService.settings[key] == undefined){
-			AppConfigService.settings[key] = {};
-			// do this better
-			if(key == 'app'){
-				AppConfigService.settings[key]['api_url'] = AppConfigService.apiUrl;
-			}
+			AppConfigService.settings[key] = {}
 		}
 
 		if(data){
-			AppConfigService._config[key] = new ConfigIniParser('\r\n').parse(data)
+			AppConfigService._config[key] = new ConfigIniParser()
+			AppConfigService._config[key].parse(data)
 		}
 
-		if(!(AppConfigService._config[key] instanceof ConfigIniParser)){
-			return false;
-		}
-		 AppConfigService._config[key].items().forEach((item) => {
+		 AppConfigService._config[key].items().forEach((item: any[]) => {
 			 // if the section is not in the state yet, add it
 			 AppConfigService.settings[key][item[0]] = item[1]
 		});
-
-		AppConfigService._config[key].sections().forEach((section) => {
+		AppConfigService._config[key].sections().forEach((section: string) => {
 			// if the section is not in the state yet, add it
-			if(AppConfigService.settings[key] == undefined){AppConfigService.settings[key] = {};}
-			AppConfigService._config[key].items(section).forEach((item) => {
+			if(AppConfigService.settings[key][section] == undefined){AppConfigService.settings[key][section] = {};}
+			AppConfigService._config[key].items(section).forEach((item: any[]) => {
 				// if the section is not in the state yet, add it
 				if(AppConfigService.settings[key][section] == undefined){AppConfigService.settings[key][section] = {};}
 				AppConfigService.settings[key][section][item[0]] = item[1]
 			});
 		})
-console.log(AppConfigService.settings)
+
 	}
 
-	loadConfig(key: string, filename: string = '') {
+	loadConfig(key: string = 'app', filename: string = '') {
 		if(filename == ''){
 			return
 		}
 		console.log(`Load Config: ${filename}`);
 
+		try{
+			this.fs.readFile(filename).then((data) => {
+				this.updateState(key, data);
+			})
+		}catch (e) {
 
-		this.fs.readFile(filename).then((data) => {
-			 this.updateState(key, data);
-		})
+			console.log(e)
+		}
+
 
 	}
 
 	async makeDefault() {
 		const p = new ConfigIniParser('\r\n');
 		try {
-			p.addSection('daemon');
-			p.set('daemon', 'start_on_boot', 'true');
 
 			p.setOptionInDefaultSection('api_url', 'http://127.0.0.1:36911');
 
-			await this.fs.writeFile(
+			p.addSection('daemon');
+			p.set('daemon', 'start_on_boot', 'true');
+
+
+			return await this.fs.writeFile(
 				'conf/app.ini',
 				p.stringify('\r\n')
 			);
@@ -137,7 +142,8 @@ console.log(AppConfigService.settings)
 	 */
 	getConfig(key: string, option?: string, defaultValue?: any, section?: string) {
 		if(section){
-			return AppConfigService._config[key].get(section, option, defaultValue);
+				return AppConfigService._config[key].get(section, option, defaultValue);
+
 		}
 
 		try {
