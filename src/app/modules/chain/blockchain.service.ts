@@ -33,8 +33,8 @@ export class BlockchainService {
         };
         return this.http
             .post<any>(
-                `http://localhost:36911/daemon/chain/start`,
-                {"configFile":"letheand.conf"},
+                `http://localhost:36911/api/daemon/start`,
+                {"configFile":"letheand.conf", "ticker": "LTHN"},
                 options
             )
             .toPromise()
@@ -98,39 +98,44 @@ export class BlockchainService {
             .then((dat) => console.log(dat));
     }
 
-    chainRpc(method: string, params: any = '', url: string = 'json_rpc') {
-        return fetch(`http://127.0.0.1:36911/daemon/chain/${url}`, {
+    chainRpc(params: any ) {
+        let request = {
+            "url": params['url'] ,
+            "req": rpcBody(params['method'])(params['params'])
+        }
+        return fetch(`http://localhost:36911/api/daemon/json_rpc`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization':  AuthService.token.access_token
             },
-            body: JSON.stringify(rpcBody(method)(params))
+            body: JSON.stringify(request)
         })
+
             .then(res => res.json())
             .then(res => res.result)
     }
 
     async getInfo() {
-        return this.chainInfo = await this.chainRpc('get_info')
+        return this.chainInfo = await this.chainRpc({ "method": 'get_info'})
     }
 
     async getTransactions(txsHashes: string[]) {
 
-        return await this.chainRpc('gettransactions', {txs_hashes: txsHashes});
+        return await this.chainRpc({"method": 'gettransactions', "params": {txs_hashes: txsHashes}});
     }
 
 
     async getBlock(block_id: string) {
 
-        return await this.chainRpc('getblock', {hash: block_id})
+        return await this.chainRpc({"method": "getblock", "params": {hash: block_id}})
     }
 
     async getBlocks(start_height: number, end_height: number) {
 
-        return await this.chainRpc('getblockheadersrange', {
+        return await this.chainRpc({"method": 'getblockheadersrange', "params": {
             start_height: start_height,
             end_height: end_height
-        })
+        }})
     }
 }

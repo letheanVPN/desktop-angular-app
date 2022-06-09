@@ -10,7 +10,7 @@ export class FileSystemWebService implements FileSystemInterface {
 
 
 	constructor(private http: HttpClient) {
-		this.apiUrl = this.apiUrl + '/filesystem'
+		this.apiUrl = this.apiUrl + '/api/system/files'
 	}
 
 	public exists(pathname): boolean {

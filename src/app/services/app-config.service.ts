@@ -18,7 +18,7 @@ export class AppConfigService {
 	}
 
 
-	public static apiUrl: string = 'http://127.0.0.1:36911';
+	public static apiUrl: string = 'http://localhost:36911';
 	public static serverPublicKey;
 	private static _config: { [key:string]: ConfigIniParser} = {  };
 
@@ -43,7 +43,7 @@ export class AppConfigService {
 
 	async fetchServerPublicKey() {
 
-		return await fetch(AppConfigService.apiUrl + '/cert')
+		return await fetch(AppConfigService.apiUrl + '/api/cert')
 			.then(response =>  response.text())
 			.then(text => {
 				return AppConfigService.serverPublicKey = text;
