@@ -70,7 +70,7 @@ export class ConsoleComponent implements OnInit, AfterViewInit, OnDestroy {
 
 	ngAfterViewInit() {
 		const that = this;
-		this.terminal.setRows(50)
+		this.terminal.setRows(25)
 		if(this.terminal.keyEventInput) {
 
 			this.subs['term'] = this.terminal.keyEventInput.subscribe((e) => {

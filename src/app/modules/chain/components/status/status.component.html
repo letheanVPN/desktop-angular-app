@@ -30,7 +30,6 @@
         </ng-container>
         <ng-container *ngIf=" chain.chainInfo != null && downloadNeeded == false">
             <ng-container *ngIf="chain.chainInfo.height < chain.chainInfo.target_height">
-                <p>Calculating Chain State</p>
                 <p>Current: {{ chain.chainInfo.height }} </p>
                 <mat-progress-bar mode="determinate" color="accent" [value]="chain.chainInfo.height/chain.chainInfo.target_height*100" ></mat-progress-bar>
                 &nbsp;&nbsp;&nbsp;

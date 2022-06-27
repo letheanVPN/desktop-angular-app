@@ -18,7 +18,7 @@ export class AppConfigService {
 	}
 
 
-	public static apiUrl: string = 'http://127.0.0.1:36911/api';
+	public static apiUrl: string = 'http://localhost:36911';
 	public static serverPublicKey;
 	private static _config: { [key:string]: ConfigIniParser} = {  };
 
@@ -114,7 +114,7 @@ export class AppConfigService {
 		const p = new ConfigIniParser('\r\n');
 		try {
 
-			p.setOptionInDefaultSection('api_url', 'http://127.0.0.1:36911');
+			p.setOptionInDefaultSection('api_url', 'http://localhost:36911');
 
 			p.addSection('daemon');
 			p.set('daemon', 'start_on_boot', 'true');

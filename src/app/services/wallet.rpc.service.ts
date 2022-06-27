@@ -3,7 +3,6 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {request} from '@service/json-rpc';
 import {AddAddressBook, Address, Balance, CreateWallet, GetAddressBookOut, GetBulkPaymentsIn, GetBulkPaymentsOut, GetPaymentsIn, GetPaymentsOut, GetTransfersIn, GetTransfersOut, Height, IncomingTransfersIn, IncomingTransfersOut, IntegratedAddress, MakeIntegratedAddressIn, MakeUriIn, OpenWallet, QueryKeyIn, QueryKeyOut, SplitIntegratedAddressOut, StoreOut, SweepAllIn, SweepAllOut, Transfer, TransferIn, TransferOut, TransferSplitIn, TransferSplitOut, Uri} from '@plugin/../modules/wallet/interfaces';
 import {RestoreWallet} from '@module/wallet/interfaces/requests/restoreWallet';
-import {AppConfigService} from '@service/app-config.service';
 
 
 @Injectable({
@@ -11,7 +10,7 @@ import {AppConfigService} from '@service/app-config.service';
 })
 export class WalletRpcService {
 	// @todo conf class is annoying me atm fix this later
-	private url =  'http://127.0.0.1:36911/daemon/wallet/json_rpc'
+	private url =  'http://localhost:36911/daemon/wallet/json_rpc'
 
 	constructor(private http: HttpClient) {}
 
@@ -27,10 +26,10 @@ export class WalletRpcService {
 			responseType: 'text' as 'json'
 		};
 
-		const request = {rpcBindPort: '36963', disableRpcLogin: false};
+		const request = {walletDir:'wallets', rpcBindPort: '36963', disableRpcLogin: false};
 		return this.http
 			.post<any>(
-				`${AppConfigService.settings['app']['api_url']}/daemon/wallet/rpc`,
+				`http://localhost:36911/daemon/wallet/rpc`,
 				request,
 				options
 			);
