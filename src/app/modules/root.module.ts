@@ -28,6 +28,7 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from "@angular/router";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {EditorModule} from '@module/devkit/editor/editor.module';
+import {DockerModule} from '@module/docker/docker.module';
 
 @NgModule({
 	declarations: [RootComponent],
@@ -47,6 +48,7 @@ import {EditorModule} from '@module/devkit/editor/editor.module';
         MatIconModule,
         MatCardModule,
         BlockchainModule,
+        DockerModule,
         CodeEditorModule,
         FormsModule,
         CardModule,
