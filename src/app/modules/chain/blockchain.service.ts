@@ -33,7 +33,7 @@ export class BlockchainService {
         };
         return this.http
             .post<any>(
-                `http://127.0.0.1:36911/api/daemon/start`,
+                `http://localhost:36911/daemon/start`,
                 {"configFile":"letheand.conf", "ticker": "LTHN"},
                 options
             )
@@ -50,7 +50,7 @@ export class BlockchainService {
         };
         return this.http
             .post<any>(
-                `http://127.0.0.1:36911/api/system/update/cli`,{},
+                `http://localhost:36911/system/update/cli`,{},
                 options
             ) .toPromise()
             .then((dat) => console.log(dat));
@@ -69,7 +69,7 @@ export class BlockchainService {
         };
         return this.http
             .post<any>(
-                `http://127.0.0.1:36911/daemon/api/chain/export`,
+                `http://localhost:36911/daemon/chain/export`,
                 {},
                 options
             )
@@ -90,7 +90,7 @@ export class BlockchainService {
         };
         return this.http
             .post<any>(
-                `http://127.0.0.1:36911/api/daemon/chain/import`,
+                `http://localhost:36911/daemon/chain/import`,
                 {},
                 options
             )
@@ -103,7 +103,7 @@ export class BlockchainService {
             "url": params['url'] ,
             "req": rpcBody(params['method'])(params['params'])
         }
-        return fetch(`http://127.0.0.1:36911/api/daemon/json_rpc`, {
+        return fetch(`http://localhost:36911/daemon/json_rpc`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

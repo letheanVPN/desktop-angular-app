@@ -33,7 +33,7 @@ export class AuthGuard implements CanActivate {
 	 * @returns {boolean | Promise<boolean>}
 	 */
 	async canActivate(): Promise<boolean> {
-		//return true
+		return true
 		let isAuthenticated = this.authService.getAuthStatus();
 
 		if (!isAuthenticated) {
