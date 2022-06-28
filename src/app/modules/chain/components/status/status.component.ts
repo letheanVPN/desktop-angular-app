@@ -98,13 +98,17 @@ export class StatusComponent implements OnInit, AfterViewInit, OnDestroy {
 
   downloadProgress(){
     let that = this;
-    console.log('ws')
     const subject = this.ws.connect().subscribe((data) => {
-      console.log(data)
-      that.downloadStats = JSON.parse(atob(data[1]));
-      if(this.downloadStats.total == this.downloadStats.size){
-        subject.unsubscribe();
+      try{
+        that.downloadStats = JSON.parse(atob(data[1]));
+        if(this.downloadStats.total == this.downloadStats.size){
+          subject.unsubscribe();
+        }
+      }catch (e){
+
       }
+
+
     })
     this.ws.sendMessage('daemon:download')
 
