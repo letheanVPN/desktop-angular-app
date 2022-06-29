@@ -8,6 +8,7 @@ import {UserRoutingModule} from '@module/user/user-routing.module';
 import {AuthGuard} from '@module/auth/route.guard';
 import {DocsRoutingModule} from "@module/docs/docs-routing.module";
 import {DockerRoutingModule} from '@module/docker/docker-routing.module';
+import {XmrigRoutingModule} from '@module/mining/xmrig/xmrig-routing.module';
 
 const routes: Routes = [
 	{
@@ -36,6 +37,7 @@ const routes: Routes = [
 		WalletRoutingModule,
 		DocsRoutingModule,
 		DockerRoutingModule,
+		XmrigRoutingModule,
 		// Make sure Root is the last in the list, it has a catch all
 		RootRoutingModule
 	],

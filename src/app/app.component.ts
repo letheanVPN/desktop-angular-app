@@ -54,6 +54,11 @@ export class AppComponent implements OnInit, AfterContentInit {
 			'url': ['/', 'wallet']
 		},
 		{
+			'title': 'menu.text.mining',
+			'icon': 'rocket',
+			'url': ['/', 'mining', 'xmrig']
+		},
+		{
 			'title': 'menu.text.docker',
 			'icon': 'workstation',
 			'url': ['/', 'docker']

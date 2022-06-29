@@ -1,0 +1,14 @@
+<ngx-section sectionTitle="Xmrig" [sectionCollapsible]="false">
+    <button mat-button [matMenuTriggerFor]="menu">Download</button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="downloadXmrig('bionic-x64')" >bionic-x64</button>
+        <button mat-menu-item (click)="downloadXmrig('focal-x64')">focal-x64</button>
+        <button mat-menu-item (click)="downloadXmrig('freebsd-static-x64')">freebsd-static-x64</button>
+        <button mat-menu-item (click)="downloadXmrig('gcc-win64')">gcc-win64</button>
+        <button mat-menu-item (click)="downloadXmrig('linux-static-x64')">linux-static-x64</button>
+        <button mat-menu-item (click)="downloadXmrig('linux-x64')">linux-x64</button>
+        <button mat-menu-item (click)="downloadXmrig('macos-arm64')">macos-arm64</button>
+        <button mat-menu-item (click)="downloadXmrig('macos-x64')">macos-x64</button>
+        <button mat-menu-item (click)="downloadXmrig('msvc-win64')">msvc-win64</button>
+    </mat-menu>
+</ngx-section>

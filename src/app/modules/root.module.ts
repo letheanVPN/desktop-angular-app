@@ -29,6 +29,7 @@ import {RouterModule} from "@angular/router";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {EditorModule} from '@module/devkit/editor/editor.module';
 import {DockerModule} from '@module/docker/docker.module';
+import {XmrigModule} from '@module/mining/xmrig/xmrig.module';
 
 @NgModule({
 	declarations: [RootComponent],
@@ -49,6 +50,7 @@ import {DockerModule} from '@module/docker/docker.module';
         MatCardModule,
         BlockchainModule,
         DockerModule,
+        XmrigModule,
         CodeEditorModule,
         FormsModule,
         CardModule,
