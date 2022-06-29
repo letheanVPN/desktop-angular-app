@@ -1,1 +1,24 @@
-<p>docker works!</p>
+<ngx-section>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Container ID</th>
+            <th>Image</th>
+            <th>State</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let container of containers">
+            <td>{{container.Id}}</td>
+            <td>{{container.Image}}</td>
+            <td>{{container.State}}</td>
+            <td>
+                <button class="btn btn-primary" (click)="startContainer(container.Id)">Start</button>
+                <button class="btn btn-warning" (click)="restartContainer(container.Id)">Restart</button>
+                <button class="btn btn-danger" (click)="stopContainer(container.Id)">Stop</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</ngx-section>

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DockerComponent } from './docker.component';
+import {NgxUIModule} from '@swimlane/ngx-ui';
 
 
 
@@ -8,8 +9,9 @@ import { DockerComponent } from './docker.component';
   declarations: [
     DockerComponent
   ],
-  imports: [
-    CommonModule
-  ]
+	imports: [
+		CommonModule,
+		NgxUIModule
+	]
 })
 export class DockerModule { }
