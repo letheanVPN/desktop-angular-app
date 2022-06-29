@@ -1,11 +1,3 @@
 <ngx-section sectionTitle="Xmrig" [sectionCollapsible]="false">
-    <button mat-button (click)="fetchRelease()">Get Latest Version</button>
-    <ng-container *ngIf="downloads">
-        {{ downloads['version'] }}
-        <button mat-button [matMenuTriggerFor]="menu">Download</button>
-        <mat-menu #menu="matMenu">
-            <button *ngFor="let download of downloads['assets']" mat-menu-item (click)="downloadXmrig(download['id'])" >{{download['id']}}</button>
-        </mat-menu>
-    </ng-container>
-
+   <lthn-console attach="xmrig"></lthn-console>
 </ngx-section>

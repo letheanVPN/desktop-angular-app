@@ -7,6 +7,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {XmrigStatusComponent} from '@module/mining/xmrig/status/status.component';
 import {RouterModule} from '@angular/router';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {ConsoleModule} from '@module/console/console.module';
 
 
 
@@ -24,7 +25,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 		MatButtonModule,
 		MatMenuModule,
 		RouterModule,
-		MatProgressBarModule
+		MatProgressBarModule,
+		ConsoleModule
 	]
 })
 export class XmrigModule { }

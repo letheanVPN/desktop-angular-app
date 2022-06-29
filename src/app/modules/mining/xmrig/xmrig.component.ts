@@ -15,14 +15,10 @@ export class XmrigComponent implements OnInit {
   public downloads: any;
 
   async ngOnInit() {
-    await this.setInstallConfig()
+   // await this.setInstallConfig()
     this.config = await this.xmrig.checkInstallConfig()
   }
 
-  async setInstallConfig() {
-
-    await this.xmrig.setInstallConfig({'version': '6.18.0'})
-  }
 
   async fetchRelease() {
 

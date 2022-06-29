@@ -1,5 +1,4 @@
 import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
-import { Subscription} from "rxjs";
 import {XmrigService} from '@module/mining/xmrig/xmrig.service';
 import {NotificationService, NotificationStyleType, NotificationType} from '@swimlane/ngx-ui';
 
@@ -14,7 +13,6 @@ export class XmrigStatusComponent implements OnInit, AfterViewInit, OnDestroy {
   chainInfo: any;
   authNeeded = false;
   downloadNeeded = true;
-  downloaded: Subscription;
   downloadStats: {
     file: string,
     dir: string,
@@ -31,8 +29,6 @@ export class XmrigStatusComponent implements OnInit, AfterViewInit, OnDestroy {
   public config: any;
   public downloads: any;
 
-  private sub: Subscription;
-  private sub2: Subscription;
 
   constructor(private  xmrig: XmrigService,  private notificationService: NotificationService) {
 
@@ -84,7 +80,7 @@ export class XmrigStatusComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.sub.unsubscribe();
-    this.sub2.unsubscribe();
+//    this.sub.unsubscribe();
+//    this.sub2.unsubscribe();
   }
 }
