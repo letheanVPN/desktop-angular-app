@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NotificationService, NotificationStyleType, NotificationType} from '@swimlane/ngx-ui';
+import {XmrigService} from '@module/mining/xmrig/xmrig.service';
 
 @Component({
   selector: 'lthn-app-xmrig',
@@ -8,36 +9,30 @@ import {NotificationService, NotificationStyleType, NotificationType} from '@swi
 })
 export class XmrigComponent implements OnInit {
 
-  constructor(private notificationService: NotificationService) { }
+  constructor(private xmrig: XmrigService, private notificationService: NotificationService) { }
 
+  public config: any;
   public downloads: any;
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    await this.setInstallConfig()
+    this.config = await this.xmrig.checkInstallConfig()
+  }
+
+  async setInstallConfig() {
+
+    await this.xmrig.setInstallConfig({'version': '6.18.0'})
   }
 
   async fetchRelease() {
-    const containers = await fetch('http://localhost:36911/mining/xmrig/downloads', {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      }
-    })
-    this.downloads = await containers.json()
 
+    this.downloads = await this.xmrig.fetchRelease()
 
   }
 
 
   async downloadXmrig(id: string) {
-    const containers = await fetch('http://localhost:36911/mining/xmrig/download', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({id: id})
-    })
-    //this.containers = await containers.json()
-    console.log(await containers.json())
+    await this.xmrig.downloadXmrig(id)
     this.notificationService.create({
       type: NotificationType.html,
       styleType: NotificationStyleType.success,

@@ -1,45 +1,37 @@
 <ngx-card
         class="plugin-card"
         appearance="flat"
-        [status]="chain.chainInfo != null && chain.chainInfo.status == 'OK' ? 'success' : 'error'"
+        [status]="'success' "
         [hideAccent]="true"
         [selected]="this.isFocused"
         (mouseenter)="this.isFocused = true"
         (mouseleave)="this.isFocused = false"
 >
     <ngx-card-header [routerLink]="['/','chain']" >
-        <ngx-card-avatar src="assets/icons/icon-96x96.png"></ngx-card-avatar>
-        <ngx-card-title> Lethean Blockchain </ngx-card-title>
+        <ngx-card-avatar src="assets/icons/xmrig.svg"></ngx-card-avatar>
+        <ngx-card-title> Xmrig </ngx-card-title>
         <ngx-card-subtitle>
             <ngx-icon fontIcon="clock"></ngx-icon>
-            <span class="date-display" *ngIf="chain.chainInfo != null"> Started {{ chain.chainInfo.start_time * 1000 | amTimeAgo}} </span>
+            <span class="date-display" >l </span>
         </ngx-card-subtitle>
     </ngx-card-header>
     <!-- status and bootstrap -->
     <ngx-card-section class="ngx-card-section--description">
-        <ng-container *ngIf="chain.chainInfo == null  && downloadNeeded == true">
-            <p *ngIf="downloadStats.total ===0">Checking for files</p>
-            <ng-container *ngIf="downloadStats.total !==0">
-                <p>Downloading {{downloadStats.size | number}}: {{downloadStats.total | number}}</p>
-                <mat-progress-bar mode="determinate" color="accent" [value]="downloadStats.total/downloadStats.size*100" ></mat-progress-bar>
+        <ng-container *ngIf=" downloadNeeded == true">
+            <ng-container *ngIf="downloads">
+
+                <button mat-button [matMenuTriggerFor]="menu">Install v{{ downloads['version'] }}</button>
+                <mat-menu #menu="matMenu">
+                    <button *ngFor="let download of downloads['assets']" mat-menu-item (click)="downloadXmrig(download['id'])" >{{download['id']}}</button>
+                </mat-menu>
             </ng-container>
 
-        </ng-container>
-        <ng-container *ngIf=" chain.chainInfo == null && downloadNeeded == false">
-            <p>Checking Chain Daemon</p>
-        </ng-container>
-        <ng-container *ngIf=" chain.chainInfo != null && downloadNeeded == false">
-            <ng-container *ngIf="chain.chainInfo.height < chain.chainInfo.target_height">
-                <p>Current: {{ chain.chainInfo.height }} </p>
-                <mat-progress-bar mode="determinate" color="accent" [value]="chain.chainInfo.height/chain.chainInfo.target_height*100" ></mat-progress-bar>
-                &nbsp;&nbsp;&nbsp;
-                <p>Target: {{ chain.chainInfo.target_height }}</p>
-            </ng-container>
 
-            <ng-container *ngIf="chain.chainInfo.height >= chain.chainInfo.target_height">
-                <p>Chain is synced to height: {{ chain.chainInfo.height }} </p>
-            </ng-container>
         </ng-container>
+        <ng-container *ngIf=" downloadNeeded == false">
+            <button mat-button (click)="startXmrig()">Start Xmrig</button>
+        </ng-container>
+
 
 
     </ngx-card-section>
