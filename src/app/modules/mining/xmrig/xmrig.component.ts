@@ -10,8 +10,23 @@ export class XmrigComponent implements OnInit {
 
   constructor(private notificationService: NotificationService) { }
 
+  public downloads: any;
+
   ngOnInit(): void {
   }
+
+  async fetchRelease() {
+    const containers = await fetch('http://localhost:36911/mining/xmrig/downloads', {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+    this.downloads = await containers.json()
+
+
+  }
+
 
   async downloadXmrig(id: string) {
     const containers = await fetch('http://localhost:36911/mining/xmrig/download', {
