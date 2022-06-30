@@ -29,7 +29,7 @@
 
         </ng-container>
         <ng-container *ngIf=" downloadNeeded == false">
-            <button mat-button (click)="startXmrig()">Start Xmrig</button>
+            <button mat-button [routerLink]="['/','mining','xmrig']" >Open Xmrig</button>
         </ng-container>
 
 

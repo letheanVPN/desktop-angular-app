@@ -1,3 +1,51 @@
 <ngx-section sectionTitle="Xmrig" [sectionCollapsible]="false">
-   <lthn-console attach="xmrig"></lthn-console>
+   <ngx-toolbar *ngIf="poolInfo">
+      <ngx-toolbar-title>
+         <span class="tag">HashVault Reported Stats</span>
+      </ngx-toolbar-title>
+      <ngx-toolbar-content>
+         <i>Hourly AVG Hashrate: <strong>{{poolInfo['collective']['avg1hashRate']}}</strong></i>
+
+         <i>Last Share: <strong>{{poolInfo['collective']['lastShare'] | amTimeAgo }}</strong></i>
+         <i>Unconfirmed Balance: <strong>{{poolInfo['revenue']['unconfirmedBalance']['collective'].total}}</strong></i>
+         <i>Confirmed Balance: <strong>{{poolInfo['revenue']['confirmedBalance']}}</strong></i>
+      </ngx-toolbar-content>
+   </ngx-toolbar>
+
+   <div fxFlex>
+      <div fxFlex="40"><p>This GUI miner uses HashVault mining pool to remove complexity, the only required information is the wallet address to mine for on any supported coin.</p>
+         <p>for other coin/pools use the advanced options to make adjustments.</p>
+         <span class="tag tag-bordered">Lethean</span>
+         <span class="tag tag-bordered">Monero</span>
+         <span class="tag tag-bordered">Haven</span>
+         <span class="tag tag-bordered">TurtleCoin</span>
+         <span class="tag tag-bordered">KevaCoin</span>
+         <span class="tag tag-bordered">Sumokoin</span>
+         <span class="tag tag-bordered">Masari</span>
+         <ngx-input
+                 type="text"
+                 [label]="'Wallet Address'"
+                 [autofocus]="true"
+                 [ngModel]="wallet"
+                 [hint]="'Enter the wallet address to mine for'"
+                 (change)="wallet = $event">
+         </ngx-input>
+         <ngx-input
+                 type="text"
+                 [label]="'Mining Pool'"
+                 [autofocus]="false"
+                 [ngModel]="pool"
+                 [hint]="'Mining pool'"
+                 (change)="pool = $event">
+         </ngx-input>
+         <button mat-button (click)="this.startXmrig()">Start Xmrig</button>
+
+      </div>
+      <div fxFlex style="padding: 8px;">
+         <lthn-console attach="xmrig"></lthn-console>
+      </div>
+   </div>
+
+
+
 </ngx-section>

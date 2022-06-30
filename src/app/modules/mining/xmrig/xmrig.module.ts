@@ -8,6 +8,8 @@ import {XmrigStatusComponent} from '@module/mining/xmrig/status/status.component
 import {RouterModule} from '@angular/router';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {ConsoleModule} from '@module/console/console.module';
+import {FlexModule} from '@angular/flex-layout';
+import {MomentModule} from 'ngx-moment';
 
 
 
@@ -26,7 +28,9 @@ import {ConsoleModule} from '@module/console/console.module';
 		MatMenuModule,
 		RouterModule,
 		MatProgressBarModule,
-		ConsoleModule
+		ConsoleModule,
+		FlexModule,
+		MomentModule
 	]
 })
 export class XmrigModule { }

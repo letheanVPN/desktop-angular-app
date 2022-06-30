@@ -58,13 +58,18 @@ export class XmrigService {
     return await containers.json()
   }
 
-  async startXmrig() {
+  async startXmrig(args: any) {
+
+    if(!args['pass']){
+      args['pass'] = 'Lethean GUI Miner'
+    }
+
     const containers = await fetch('http://localhost:36911/mining/xmrig/start', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ url: 'pool.hashvault.pro', user: 'iz5Tcjds8Fi2xD32PotNJ4b23H3w9pxap7haK27asKZHTVQWYp6Cesb7cmCsc7XywPeVoCjN7kxm28X45vMLEMTB2YaSDPzbs'})
+      body: JSON.stringify(args)
     })
     //this.containers = await containers.json()
     return await containers.json()

@@ -69,15 +69,6 @@ export class XmrigStatusComponent implements OnInit, AfterViewInit, OnDestroy {
 
   }
 
-  public async startXmrig() {
-    await this.xmrig.startXmrig()
-    this.notificationService.create({
-      type: NotificationType.html,
-      styleType: NotificationStyleType.success,
-      title: 'Xmrig started!',
-      body: "Make it so"
-    })
-  }
 
   public ngOnDestroy(): void {
 //    this.sub.unsubscribe();
