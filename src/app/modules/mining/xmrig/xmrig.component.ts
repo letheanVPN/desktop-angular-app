@@ -48,7 +48,7 @@ export class XmrigComponent implements OnInit, OnDestroy {
 
     let config = this.config
 
-    if(config['wallet'] && config['wallet'] !== this.wallet){
+    if(!config['wallet'] || config['wallet'] && config['wallet'] !== this.wallet){
       config['wallet'] = this.wallet
       config['url'] = this.pool
       await this.xmrig.setInstallConfig(config)
