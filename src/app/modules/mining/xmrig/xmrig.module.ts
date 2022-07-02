@@ -10,6 +10,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {ConsoleModule} from '@module/console/console.module';
 import {FlexModule} from '@angular/flex-layout';
 import {MomentModule} from 'ngx-moment';
+import {HashvaultModule} from '@module/mining/hashvault/hashvault.module';
 
 
 
@@ -30,7 +31,8 @@ import {MomentModule} from 'ngx-moment';
 		MatProgressBarModule,
 		ConsoleModule,
 		FlexModule,
-		MomentModule
+		MomentModule,
+		HashvaultModule
 	]
 })
 export class XmrigModule { }

@@ -1,18 +1,17 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NotificationService, NotificationStyleType, NotificationType} from '@swimlane/ngx-ui';
 import {XmrigService} from '@module/mining/xmrig/xmrig.service';
-import {interval, Subscription} from 'rxjs';
 
 @Component({
   selector: 'lthn-app-xmrig',
   templateUrl: './xmrig.component.html',
   styleUrls: ['./xmrig.component.scss']
 })
-export class XmrigComponent implements OnInit, OnDestroy {
+export class XmrigComponent implements OnInit {
   public poolInfo: any;
 
   constructor(private xmrig: XmrigService, private notificationService: NotificationService) { }
-  private sub: Subscription;
+
   public config: any;
   public downloads: any;
   public wallet: string = '';
@@ -24,13 +23,13 @@ export class XmrigComponent implements OnInit, OnDestroy {
 
     if(this.config['wallet']){
       this.wallet = this.config['wallet']
-      this.poolInfo = await this.getHashVaultStats()
-      console.log(this.poolInfo)
-      this.sub = interval(30000).subscribe(async () => {
-        this.poolInfo = await this.getHashVaultStats()
-        console.log(this.poolInfo)
-
-      });
+//      this.poolInfo = await this.getHashVaultStats()
+//      console.log(this.poolInfo)
+//      this.sub = interval(30000).subscribe(async () => {
+//        this.poolInfo = await this.getHashVaultStats()
+//        console.log(this.poolInfo)
+//
+//      });
     }
     //console.log(await this.getHashVaultStats())
   }
@@ -85,10 +84,6 @@ export class XmrigComponent implements OnInit, OnDestroy {
     const res = await fetch(`https://api.hashvault.pro/v3/lethean/wallet/${this.wallet}/stats?chart=total&inactivityThreshold=10&order=name&period=daily&poolType=false&workers=true`)
 
     return await res.json()
-  }
-
-  public ngOnDestroy(): void {
-    this.sub.unsubscribe();
   }
 
 }

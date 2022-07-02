@@ -29,6 +29,7 @@ import {RouterModule} from "@angular/router";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {EditorModule} from '@module/devkit/editor/editor.module';
 import {DockerModule} from '@module/docker/docker.module';
+import {MiningModule} from '@module/mining/mining.module';
 import {XmrigModule} from '@module/mining/xmrig/xmrig.module';
 
 @NgModule({
@@ -50,7 +51,7 @@ import {XmrigModule} from '@module/mining/xmrig/xmrig.module';
         MatCardModule,
         BlockchainModule,
         DockerModule,
-        XmrigModule,
+        MiningModule,
         CodeEditorModule,
         FormsModule,
         CardModule,
@@ -61,7 +62,8 @@ import {XmrigModule} from '@module/mining/xmrig/xmrig.module';
         RouterModule,
         TabsModule,
         MatProgressBarModule,
-        EditorModule
+        EditorModule,
+        XmrigModule
     ]
 })
 export class RootModule {

@@ -115,6 +115,10 @@ export class AppComponent implements OnInit, AfterContentInit {
 				return 1;
 			case '/wallet':
 				return 2;
+			case '/mining/xmrig':
+				return 3;
+			case '/docker':
+				return 4;
 
 		}
 	}
