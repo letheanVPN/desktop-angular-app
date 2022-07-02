@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {XmrigService} from '@module/mining/xmrig/xmrig.service';
 import {NotificationService, NotificationStyleType, NotificationType} from '@swimlane/ngx-ui';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'lthn-xmrig-status',
@@ -30,7 +31,7 @@ export class XmrigStatusComponent implements OnInit, AfterViewInit, OnDestroy {
   public downloads: any;
 
 
-  constructor(private  xmrig: XmrigService,  private notificationService: NotificationService) {
+  constructor(private  xmrig: XmrigService,  private notificationService: NotificationService, private router: Router) {
 
   }
 
@@ -39,7 +40,12 @@ export class XmrigStatusComponent implements OnInit, AfterViewInit, OnDestroy {
 
   async ngAfterViewInit() {
 
-    this.config = await this.xmrig.checkInstallConfig()
+    try{
+      this.config = await this.xmrig.checkInstallConfig()
+
+    }catch (e) {
+
+    }
 
     if(this.config['dir'] == undefined){
       this.downloadNeeded = true
@@ -58,6 +64,7 @@ export class XmrigStatusComponent implements OnInit, AfterViewInit, OnDestroy {
       title: 'Download Requested!',
       body: id
     })
+    await this.router.navigateByUrl('/')
   }
 
   /**
