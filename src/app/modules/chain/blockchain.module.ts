@@ -39,9 +39,10 @@ import {BlockTransactionsComponent} from '@module/chain/components/block/transac
 import {ConsoleModule} from '@module/console/console.module';
 import { StatusComponent } from './components/status/status.component';
 import {MatExpansionModule} from "@angular/material/expansion";
+import {XMRStatusComponent} from '@module/chain/xmr/status.component';
 
 @NgModule({
-	declarations: [BlockchainComponent, BlockDetailsComponent, BlockLedgerComponent, BlockchainStatsComponent, BlockchainConfigComponent, BlockTransactionsComponent, StatusComponent],
+	declarations: [XMRStatusComponent, BlockchainComponent, BlockDetailsComponent, BlockLedgerComponent, BlockchainStatsComponent, BlockchainConfigComponent, BlockTransactionsComponent, StatusComponent],
     imports: [
         CommonModule,
         MatCardModule,
@@ -77,7 +78,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
         ToggleModule,
         MatExpansionModule
     ],
-	exports: [BlockchainComponent, StatusComponent],
+	exports: [BlockchainComponent, StatusComponent, XMRStatusComponent],
 	providers: [HashRatePipe]
 })
 export class BlockchainModule {

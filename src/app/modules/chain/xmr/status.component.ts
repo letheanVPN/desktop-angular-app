@@ -1,16 +1,15 @@
-import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
-import {BlockchainService} from "@module/chain/blockchain.service";
+import { Component, OnDestroy, OnInit} from '@angular/core';
 import {interval, Subscription} from "rxjs";
 import {WebsocketService} from "@service/websocket.service";
 import {FileSystemService} from "@service/filesystem/file-system.service";
-import {AppConfigService} from '@service/app-config.service';
+import {XMRBlockchainService} from '@module/chain/xmr/blockchain.service';
 
 @Component({
-  selector: 'lthn-chain-status',
+  selector: 'xmr-chain-status',
   templateUrl: './status.component.html',
   styleUrls: ['./status.component.scss']
 })
-export class StatusComponent implements OnInit, AfterViewInit, OnDestroy {
+export class XMRStatusComponent implements OnInit, OnDestroy {
   isFocused: boolean = false;
   isSelected: boolean = false;
   chainInfo: any;
@@ -33,30 +32,31 @@ export class StatusComponent implements OnInit, AfterViewInit, OnDestroy {
   private sub: Subscription;
   private sub2: Subscription;
 
-  constructor(private app: AppConfigService,
+  constructor(
               private ws: WebsocketService,
               private fs: FileSystemService,
-              public chain: BlockchainService) {
+              public chain: XMRBlockchainService) {
 
   }
 
-  async ngOnInit() {}
+  async ngOnInit() {
+  }
 
 
   async checkDownloads() {
 
     try {
 
-      if (await this.fs.listFiles('cli').then(res => res.length) < 3) {
+      if (this.chain.config['dir'] == undefined) {
 
         this.downloadNeeded = true;
-        this.downloadProgress()
+        //this.downloadProgress()
         this.downloaded = interval(1000).subscribe(
             async () => {
               if (await this.checkDownloaded()) {
                 this.downloadNeeded = false;
-                await this.chain.startDaemon()
-                await this.chain.getInfo()
+               // await this.chain.startDaemon()
+               // await this.chain.getInfo()
                 this.downloaded.unsubscribe();
 
 
@@ -90,11 +90,13 @@ export class StatusComponent implements OnInit, AfterViewInit, OnDestroy {
 
   async checkDownloaded() {
     console.log('checking for cli');
-    return await this.fs.listFiles('cli').then(res => res.length) > 3;
+    return await this.fs.listFiles('cli/xmr').then(res => res.length) > 3;
 
   }
 
-
+  async startDownload() {
+    await this.chain.downloadDaemons()
+  }
 
   downloadProgress(){
     let that = this;
@@ -115,56 +117,16 @@ export class StatusComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
 
-  async ngAfterViewInit() {
-    await this.checkDownloads()
-    console.log('d',this.app.getConfig('app', 'start_on_boot', false, 'daemon') == 'true' )
-    this.isSelected = this.app.getConfig('app', 'start_on_boot', false, 'daemon') == 'true'
-    if (this.isSelected) {
-      this.chain.startDaemon().catch(e => console.log(e))
-      this.sub = interval(500).subscribe(async () => {
-        this.chainInfo = await this.chain.getInfo()
-        if(this.chainInfo.height > 0){
-          this.sub.unsubscribe();
-        }
-        // this.isSelected = this.chainInfo !== undefined
-      });
-
-      this.sub2 = interval(15000).subscribe(async () => {
-        this.chainInfo = await this.chain.getInfo()
-        // this.isSelected = this.chainInfo !== undefined
-      });
-    }
-
-  }
-
   /**
    * Toggles the setting start_on_boot and stops a current running node (soon[tm])
    */
   public async toggleStart() {
     //this.isSelected = !this.isSelected;
 
-
-
-    this.app.setConfig('app', 'start_on_boot', !this.isSelected, 'daemon')
-    this.app.saveConfig('app').catch(e => console.log(e))
-    this.app.updateState('app')
-    if (this.isSelected) {
-      console.log('stop', this.isSelected)
-      this.chain.stopDaemon()
-      this.sub.unsubscribe();
-      this.sub2.unsubscribe();
-    } else {
-      this.chain.startDaemon().catch(e => console.log(e))
-      console.log('start', this.isSelected)
-      this.sub = interval(1000).subscribe(async () => {
-        this.chainInfo = await this.chain.getInfo()
-        // this.isSelected = this.chainInfo !== undefined
-      });
-    }
   }
 
   public ngOnDestroy(): void {
-    this.sub.unsubscribe();
-    this.sub2.unsubscribe();
+    if(this.sub) this.sub.unsubscribe();
+    if(this.sub2) this.sub2.unsubscribe();
   }
 }

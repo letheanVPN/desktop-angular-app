@@ -1,0 +1,80 @@
+<ngx-card
+        class="plugin-card"
+        appearance="flat"
+        [status]="chain.chainInfo != null && chain.chainInfo.status == 'OK' ? 'success' : 'error'"
+        [hideAccent]="true"
+        [selected]="this.isFocused"
+        (mouseenter)="this.isFocused = true"
+        (mouseleave)="this.isFocused = false"
+>
+    <ngx-card-header [routerLink]="['/','chain']" >
+        <ngx-card-avatar src="assets/icons/icon-96x96.png"></ngx-card-avatar>
+        <ngx-card-title> Monero Blockchain </ngx-card-title>
+        <ngx-card-subtitle>
+            <ngx-icon fontIcon="clock"></ngx-icon>
+            <span class="date-display" *ngIf="chain.chainInfo != null"> Started {{ chain.chainInfo.start_time * 1000 | amTimeAgo}} </span>
+        </ngx-card-subtitle>
+    </ngx-card-header>
+    <!-- status and bootstrap -->
+    <ngx-card-section class="ngx-card-section--description">
+        <ng-container *ngIf="downloadNeeded == true">
+            <button mat-button *ngIf="downloadStats.total ==0" (click)="startDownload()">Install Monero v0.17.3.2</button>
+            <ng-container *ngIf="downloadStats.total !==0">
+                <p>Downloading {{downloadStats.size | number}}: {{downloadStats.total | number}}</p>
+                <mat-progress-bar mode="determinate" color="accent" [value]="downloadStats.total/downloadStats.size*100" ></mat-progress-bar>
+            </ng-container>
+
+        </ng-container>
+        <ng-container *ngIf=" chain.chainInfo == null && downloadNeeded == false">
+            <p>Checking Chain Daemon</p>
+        </ng-container>
+        <ng-container *ngIf=" chain.chainInfo != null && downloadNeeded == false">
+            <ng-container *ngIf="chain.chainInfo.height < chain.chainInfo.target_height">
+                <p>Current: {{ chain.chainInfo.height }} </p>
+                <mat-progress-bar mode="determinate" color="accent" [value]="chain.chainInfo.height/chain.chainInfo.target_height*100" ></mat-progress-bar>
+                &nbsp;&nbsp;&nbsp;
+                <p>Target: {{ chain.chainInfo.target_height }}</p>
+            </ng-container>
+
+            <ng-container *ngIf="chain.chainInfo.height >= chain.chainInfo.target_height">
+                <p>Chain is synced to height: {{ chain.chainInfo.height }} </p>
+            </ng-container>
+        </ng-container>
+
+
+    </ngx-card-section>
+    <ngx-card-section class="card-toggle">
+        <ngx-toggle [(ngModel)]="isSelected" label="Enable" (click)="$event.stopPropagation(); toggleStart()"></ngx-toggle>
+    </ngx-card-section>
+    <ngx-card-section class="card-action">
+        <ng-container *ngTemplateOutlet="viewDetailsTpl"></ng-container>
+        <div class="card-gutter"></div>&nbsp;&nbsp;&nbsp;&nbsp;
+        <ng-container *ngTemplateOutlet="ellipsisTpl"></ng-container>
+    </ngx-card-section>
+</ngx-card>
+
+
+<ng-template #viewDetailsTpl>
+    <div class="view-details" (click)="$event.stopPropagation()">
+        <a [routerLink]="['/','docs']">
+            <ngx-icon fontIcon="documentation"></ngx-icon>
+            <span> View Documentation </span>
+        </a>
+    </div>
+</ng-template>
+
+<ng-template #ellipsisTpl>
+    <ngx-dropdown showCaret class="ellipsis" (click)="$event.stopPropagation()">
+        <ngx-dropdown-toggle (click)="$event.stopPropagation()">
+            <ngx-icon fontIcon="dots-vert-round"></ngx-icon>
+        </ngx-dropdown-toggle>
+        <ngx-dropdown-menu class="ngx-dropdown-dark-outline align-right">
+            <ul class="vertical-list">
+                <li><button type="button" [routerLink]="['/', 'chain', 'config']">Config</button></li>
+                <li><button type="button" [routerLink]="['/', 'chain', 'console']">Console</button></li>
+                <li><button type="button" [routerLink]="['/', 'chain', 'import']">Import</button></li>
+                <li><button type="button" [routerLink]="['/', 'chain', 'export']">Export</button></li>
+            </ul>
+        </ngx-dropdown-menu>
+    </ngx-dropdown>
+</ng-template>
