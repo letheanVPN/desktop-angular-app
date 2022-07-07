@@ -2,50 +2,67 @@
     <ngx-tab label="Dashboard" #tab1>
             <ngx-section *ngIf="(apps | keyvalue)?.length == 0">
                <p>You have no apps installed</p>
+                {{ apps | json }}
                 <button class="btn btn-primary-gradient" (click)="tabs.tabClicked(tab2)">View Installable Apps</button>
             </ngx-section>
         <ngx-section *ngIf="(apps | keyvalue)?.length > 0">
-            <lthn-chain-status *ngIf="apps['chain_lthn']"></lthn-chain-status>
-            <xmr-chain-status  *ngIf="apps['chain_xmr']"></xmr-chain-status>
+            <lthn-chain-status *ngIf="apps['blockchain-lthn']"></lthn-chain-status>
+            <xmr-chain-status  *ngIf="apps['blockchain-xmr']"></xmr-chain-status>
             <lthn-xmrig-status  *ngIf="apps['miner_xmrig']"></lthn-xmrig-status>
         </ngx-section>
     </ngx-tab>
     <ngx-tab label="Apps" #tab2>
-        <ngx-section>
-            <ngx-card>
+        <ngx-section *ngxIfTabActive >
+            <span class="tag tag-bordered" (click)="getAppMarket()" >Homepage</span>
+
+            <ng-container *ngIf="market['dirs']">
+                <span class="tag tag-bordered" (click)="getAppMarket(dir)"  *ngFor="let dir of market['dirs']">{{dir}}</span>
+            </ng-container>
+
+            <ngx-card *ngFor="let app of market['apps']">
                 <ngx-card-header>
                     <ngx-card-avatar src="assets/icons/icon-96x96.png" status="default"></ngx-card-avatar>
-                    <ngx-card-title> Lethean Blockchain</ngx-card-title>
-                    <ngx-card-subtitle> v4.0.7</ngx-card-subtitle>
+                    <ngx-card-title> {{ app['name'] }}</ngx-card-title>
+                    <ngx-card-subtitle *ngIf="app['version']"> {{ app['version'] }}</ngx-card-subtitle>
                 </ngx-card-header>
                 <ngx-card-section>
-                    <button class="btn btn-bordered" *ngIf="!apps['chain_lthn']" (click)="installApp('chain_lthn')" >Install</button>
-                    <button class="btn btn-bordered" *ngIf="apps['chain_lthn']" (click)="removeApp('chain_lthn')" >Remove</button>
+                    <button class="btn btn-bordered" *ngIf="!apps[ app['code']]" (click)="installApp( app)" >Install</button>
+                    <button class="btn btn-bordered" *ngIf="apps[ app['code']]" (click)="removeApp( app)" >Remove</button>
                 </ngx-card-section>
             </ngx-card>
+<!--            <ngx-card>-->
+<!--                <ngx-card-header>-->
+<!--                    <ngx-card-avatar src="assets/icons/icon-96x96.png" status="default"></ngx-card-avatar>-->
+<!--                    <ngx-card-title> Lethean </ngx-card-title>-->
+<!--                </ngx-card-header>-->
+<!--                <ngx-card-section>-->
+<!--                    <button class="btn btn-bordered" *ngIf="!apps[ 'chain_lthn']" (click)="installApp( 'chain_lthn')" >Install</button>-->
+<!--                    <button class="btn btn-bordered" *ngIf="apps['chain_lthn']" (click)="removeApp( 'chain_lthn')" >Remove</button>-->
+<!--                </ngx-card-section>-->
+<!--            </ngx-card>-->
 
-            <ngx-card>
-                <ngx-card-header>
-                    <ngx-card-avatar status="default"></ngx-card-avatar>
-                    <ngx-card-title> Monero Blockchain</ngx-card-title>
-                    <ngx-card-subtitle> card_subtitle</ngx-card-subtitle>
-                </ngx-card-header>
-                <ngx-card-section>
-                    <button class="btn btn-bordered" *ngIf="!apps['chain_xmr']" (click)="installApp('chain_xmr')">Install</button>
-                    <button class="btn btn-bordered" *ngIf="apps['chain_xmr']" (click)="removeApp('chain_xmr')">Remove</button>
-                </ngx-card-section>
-            </ngx-card>
-            <ngx-card>
-                <ngx-card-header>
-                    <ngx-card-avatar status="default"> XHV</ngx-card-avatar>
-                    <ngx-card-title> Xmrig Miner</ngx-card-title>
-                    <ngx-card-subtitle> card_subtitle</ngx-card-subtitle>
-                </ngx-card-header>
-                <ngx-card-section>
-                    <button class="btn btn-bordered" *ngIf="!apps['miner_xmrig']" (click)="installApp('miner_xmrig')">Install</button>
-                    <button class="btn btn-bordered" *ngIf="apps['miner_xmrig']" (click)="removeApp('miner_xmrig')">Remove</button>
-                </ngx-card-section>
-            </ngx-card>
+<!--            <ngx-card>-->
+<!--                <ngx-card-header>-->
+<!--                    <ngx-card-avatar status="default"></ngx-card-avatar>-->
+<!--                    <ngx-card-title> Monero Blockchain</ngx-card-title>-->
+<!--                    <ngx-card-subtitle> card_subtitle</ngx-card-subtitle>-->
+<!--                </ngx-card-header>-->
+<!--                <ngx-card-section>-->
+<!--                    <button class="btn btn-bordered" *ngIf="!apps['chain_xmr']" (click)="installApp('chain_xmr')">Install</button>-->
+<!--                    <button class="btn btn-bordered" *ngIf="apps['chain_xmr']" (click)="removeApp('chain_xmr')">Remove</button>-->
+<!--                </ngx-card-section>-->
+<!--            </ngx-card>-->
+<!--            <ngx-card>-->
+<!--                <ngx-card-header>-->
+<!--                    <ngx-card-avatar status="default"> XHV</ngx-card-avatar>-->
+<!--                    <ngx-card-title> Xmrig Miner</ngx-card-title>-->
+<!--                    <ngx-card-subtitle> card_subtitle</ngx-card-subtitle>-->
+<!--                </ngx-card-header>-->
+<!--                <ngx-card-section>-->
+<!--                    <button class="btn btn-bordered" *ngIf="!apps['miner_xmrig']" (click)="installApp('miner_xmrig')">Install</button>-->
+<!--                    <button class="btn btn-bordered" *ngIf="apps['miner_xmrig']" (click)="removeApp('miner_xmrig')">Remove</button>-->
+<!--                </ngx-card-section>-->
+<!--            </ngx-card>-->
         </ngx-section>
     </ngx-tab>
 

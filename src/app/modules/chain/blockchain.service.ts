@@ -34,7 +34,7 @@ export class BlockchainService {
         return this.http
             .post<any>(
                 `http://localhost:36911/daemon/start`,
-                {"configFile":"letheand.conf", "ticker": "LTHN"},
+                {"configFile":"lthn/letheand.conf", 'logDir': 'data/log/lthn/letheand.log', "dataDir": "data/lthn"},
                 options
             )
             .toPromise()

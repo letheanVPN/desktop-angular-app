@@ -8,23 +8,24 @@ export class RootComponent implements OnInit{
 	public loaded: boolean = false;
 	public code: any;
 	public apps: any = {};
+	public market: any = {};
 
 	constructor() {}
 
 	public async ngOnInit() {
 
 		await this.getAppConfig()
+		await this.getAppMarket()
 
 	}
 
 	async getAppConfig() {
 		try{
-			const containers = await fetch('http://localhost:36911/system/data/object/get', {
-				method: "POST",
+			const containers = await fetch('http://localhost:36911/apps/list', {
+				method: "GET",
 				headers: {
 					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({group:"apps", object:"installed"})
+				}
 			})
 			this.apps = await containers.json()
 			console.log(this.apps)
@@ -34,32 +35,55 @@ export class RootComponent implements OnInit{
 
 	}
 
-	async saveAppConfig() {
-		const containers = await fetch('http://localhost:36911/system/data/object/set', {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({group:"apps", object:"installed", data:this.apps})
-		})
-		return await containers.json()
+	async getAppMarket(dir :string = '') {
+		try{
+			if(dir.length > 0){
+				dir = `?dir=${dir}`
+			}
+			const containers = await fetch(`http://localhost:36911/apps/marketplace${dir}`, {
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+				}
+			})
+			this.market = await containers.json()
+			console.log(this.market)
+		}catch (e) {
+			return false
+		}
+
 	}
 
-	async installApp(name: string) {
-		if(!this.apps[name]) {
-			this.apps[name] = true
+	async installApp(app: any) {
+		if(!this.apps[app.code]) {
+			console.log(app)
+			const containers = await fetch('http://localhost:36911/apps/install', {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({code: app.code, pkg: app.pkg})
+			})
+			await containers.json()
 		}
 
 //		console.log(this.apps)
-		await this.saveAppConfig()
+		return await this.getAppConfig()
 	}
-	async removeApp(name: string) {
-		if(this.apps[name]) {
-			delete this.apps[name]
+	async removeApp(app: any) {
+		if(this.apps[app.code]) {
+			const containers = await fetch('http://localhost:36911/apps/remove', {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({code: app.code})
+			})
+		   await containers.json()
 		}
 
 //		console.log(this.apps)
-		await this.saveAppConfig()
+		return await this.getAppConfig()
 	}
 
 }
