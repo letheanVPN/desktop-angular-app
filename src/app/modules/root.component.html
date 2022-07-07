@@ -8,7 +8,7 @@
         <ngx-section *ngIf="(apps | keyvalue)?.length > 0">
             <lthn-chain-status *ngIf="apps['blockchain-lthn']"></lthn-chain-status>
             <xmr-chain-status  *ngIf="apps['blockchain-xmr']"></xmr-chain-status>
-            <lthn-xmrig-status  *ngIf="apps['miner_xmrig']"></lthn-xmrig-status>
+            <lthn-xmrig-status  *ngIf="apps['miner-xmrig']"></lthn-xmrig-status>
         </ngx-section>
     </ngx-tab>
     <ngx-tab label="Apps" #tab2>
