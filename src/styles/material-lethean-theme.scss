@@ -1,4 +1,4 @@
-@use '~@angular/material/index' as mat;
+@use '@angular/material' as mat;
 
 $lethean-typography: mat.define-typography-config(
         $font-family: "'Montserrat', sans-serif",

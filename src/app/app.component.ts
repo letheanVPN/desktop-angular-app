@@ -16,7 +16,6 @@ import {AppConfigService} from '@service/app-config.service';
 export class AppComponent implements OnInit, AfterContentInit {
 	//public menu: boolean;
 	public heading = '';
-
 	@ViewChild('sidenav') public sidenav: MatSidenav;
 	public currentFlag: any;
 	public currentLanguage$: Subscription;
@@ -26,7 +25,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 	public menuItems = [
 		{
 			'title': 'menu.text.dashboard',
-			'icon': 'apps',
+			'icon': ['fas','gauge'],
 			'url': ['/', 'dashboard'],
 			"children": [
 				{
@@ -45,22 +44,22 @@ export class AppComponent implements OnInit, AfterContentInit {
 		},
 		{
 			'title': 'menu.text.chain',
-			'icon': 'runs-outline',
+			'icon': ['fas','link'],
 			'url': ['/', 'chain']
 		},
 		{
 			'title': 'menu.text.wallet',
-			'icon': 'credit-card',
+			'icon': ['fas','wallet'],
 			'url': ['/', 'wallet']
 		},
 		{
 			'title': 'menu.text.mining',
-			'icon': 'rocket',
+			'icon': ['fas','person-digging'],
 			'url': ['/', 'mining', 'xmrig']
 		},
 		{
 			'title': 'menu.text.docker',
-			'icon': 'workstation',
+			'icon': ['fab','docker'],
 			'url': ['/', 'docker']
 		}
 	];

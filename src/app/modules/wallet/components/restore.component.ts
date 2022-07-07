@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {WalletService} from '@module/wallet/wallet.service';
 import {nameNotTakenValidator} from 'src/app/modules/wallet/validators';
 
@@ -9,22 +9,22 @@ import {nameNotTakenValidator} from 'src/app/modules/wallet/validators';
 })
 
 export class RestoreComponent implements OnInit {
-	restoreWalletForm : FormGroup;
+	restoreWalletForm : UntypedFormGroup;
 
 	constructor(private wallet: WalletService) {
 	}
 
 	ngOnInit(): void {
-		this.restoreWalletForm = new FormGroup({
-			filename: new FormControl('', [nameNotTakenValidator(this.wallet.walletList())]),
-			address: new FormControl(''),
-			restore_height: new FormControl('0'),
-			autosave_current: new FormControl(true),
-			password: new FormControl(''),
-			password_confirm: new FormControl(''),
-			spendkey: new FormControl(''),
-			viewkey: new FormControl(''),
-			viewonly_wallet: new FormControl(false),
+		this.restoreWalletForm = new UntypedFormGroup({
+			filename: new UntypedFormControl('', [nameNotTakenValidator(this.wallet.walletList())]),
+			address: new UntypedFormControl(''),
+			restore_height: new UntypedFormControl('0'),
+			autosave_current: new UntypedFormControl(true),
+			password: new UntypedFormControl(''),
+			password_confirm: new UntypedFormControl(''),
+			spendkey: new UntypedFormControl(''),
+			viewkey: new UntypedFormControl(''),
+			viewonly_wallet: new UntypedFormControl(false),
 		});
 	}
 

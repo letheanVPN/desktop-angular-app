@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {WalletRpcService} from '@service/wallet.rpc.service';
 
 import {nameNotTakenValidator} from 'src/app/modules/wallet/validators';
@@ -12,15 +12,15 @@ import {Router} from '@angular/router';
 	templateUrl: './wallet-new.component.html'
 })
 export class WalletNewComponent implements OnInit {
-	wallet_name: FormControl;
-	password: FormControl;
-	password_confirm: FormControl;
+	wallet_name: UntypedFormControl;
+	password: UntypedFormControl;
+	password_confirm: UntypedFormControl;
 	constructor(private walletRpc: WalletRpcService, private wallet: WalletService, private router: Router) {}
 
 	ngOnInit(): void {
-		this.wallet_name = new FormControl('', [nameNotTakenValidator(this.wallet.walletList())]);
-		this.password = new FormControl('')
-		this.password_confirm = new FormControl('')
+		this.wallet_name = new UntypedFormControl('', [nameNotTakenValidator(this.wallet.walletList())]);
+		this.password = new UntypedFormControl('')
+		this.password_confirm = new UntypedFormControl('')
 	}
 
 	createWallet() {

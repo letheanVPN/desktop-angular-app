@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {CryptService} from '@service/crypt.service';
 import {FileSystemService} from '@service/filesystem/file-system.service';
 import {Router} from '@angular/router';
@@ -23,15 +23,15 @@ export class UserComponent {
 		status: 'on'
 	};
 
-	userForm = new FormGroup({
-		username: new FormControl(''),
-		password: new FormControl(''),
-		passwordRepeat: new FormControl('')
+	userForm = new UntypedFormGroup({
+		username: new UntypedFormControl(''),
+		password: new UntypedFormControl(''),
+		passwordRepeat: new UntypedFormControl('')
 	});
 
-	username = new FormControl('');
-	password = new FormControl('');
-	passwordRepeat = new FormControl('');
+	username = new UntypedFormControl('');
+	password = new UntypedFormControl('');
+	passwordRepeat = new UntypedFormControl('');
 	processingForm = false;
 
 	constructor(

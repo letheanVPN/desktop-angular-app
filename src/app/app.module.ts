@@ -17,12 +17,14 @@ import {AppRoutingModule} from './app-routing.module';
 import {AuthModule} from '@module/auth/auth.module';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {ReactiveComponentModule} from '@ngrx/component';
-import {IconModule, NgxUIModule} from '@swimlane/ngx-ui';
+import { NgxUIModule} from '@swimlane/ngx-ui';
 import {ConsoleModule} from '@module/console/console.module';
 import {JwtModule} from '@auth0/angular-jwt';
 import {AuthService} from '@module/auth/auth.service';
 import {HeaderInterceptor} from '@module/auth/auth.interceptor';
+import {FaIconLibrary, FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {faGauge, faLink, faPersonDigging, faWallet} from '@fortawesome/free-solid-svg-icons';
+import {faDocker} from '@fortawesome/free-brands-svg-icons';
 
 export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http);
@@ -64,10 +66,10 @@ export function tokenGetter() {
 		MatTooltipModule,
 		FlexModule,
 		AuthModule,
-		ReactiveComponentModule,
+		FontAwesomeModule,
+		ConsoleModule,
 		NgxUIModule,
-		IconModule,
-		ConsoleModule
+  FontAwesomeModule
 
 	],
 	bootstrap: [AppComponent],
@@ -78,4 +80,9 @@ export function tokenGetter() {
 /**
  * Application shell/bootstrap
  */
-export class AppModule {}
+export class AppModule {
+	constructor(library: FaIconLibrary) {
+		// Add multiple icons to the library
+		library.addIcons(faGauge, faLink, faPersonDigging, faWallet, faDocker);
+	}
+}

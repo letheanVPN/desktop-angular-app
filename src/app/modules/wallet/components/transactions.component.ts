@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {WalletRpcService} from '@service/wallet.rpc.service';
 import {GetTransfersIn, GetTransfersOut} from '@module/wallet/interfaces';
 import {ColumnMode} from '@swimlane/ngx-datatable';
@@ -20,8 +20,8 @@ export class TransactionsComponent implements OnInit {
 		pool: true,
 	};
 
-	filename = new FormControl('');
-	password = new FormControl('');
+	filename = new UntypedFormControl('');
+	password = new UntypedFormControl('');
 
 	rows: GetTransfersOut[] = [];
 

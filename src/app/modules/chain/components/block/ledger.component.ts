@@ -4,7 +4,7 @@ import {interval, Subscription} from 'rxjs';
 import {BlockHeader} from '@module/chain/interfaces/types/blockHeader';
 import {ColumnMode} from '@swimlane/ngx-datatable';
 import {BlockchainService} from '@module/chain/blockchain.service';
-import {FormControl, Validators} from '@angular/forms';
+import {UntypedFormControl, Validators} from '@angular/forms';
 import {DrawerDirection, DrawerService} from '@swimlane/ngx-ui';
 
 @Component({
@@ -45,7 +45,7 @@ export class BlockLedgerComponent implements OnInit, OnDestroy {
 	private sub: Subscription[] = [];
 
 	status_daemon: number = 0;
-	blockSearch: FormControl;
+	blockSearch: UntypedFormControl;
 
 	constructor(
 		private chain: BlockchainService,
@@ -63,7 +63,7 @@ export class BlockLedgerComponent implements OnInit, OnDestroy {
 
 
 	async ngOnInit() {
-		this.blockSearch = new FormControl('', [Validators.required]);
+		this.blockSearch = new UntypedFormControl('', [Validators.required]);
 
 		//this.chain.getInfo()
 		this.chainInfo = await this.chain.getInfo();
