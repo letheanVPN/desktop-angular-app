@@ -118,7 +118,7 @@ export class DockerComponent implements OnInit, OnDestroy {
     }
 
   public ngOnDestroy(): void {
-    this.sub.unsubscribe()
+    if(this.sub) this.sub.unsubscribe()
   }
 
 
