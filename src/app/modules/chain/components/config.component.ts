@@ -16,7 +16,7 @@ export class BlockchainConfigComponent {
 	}
 
 	async save() {
-		await this.fs.writeFile('conf/letheand.conf', this.config)
+		await this.fs.writeFile('conf/lthn/letheand.conf', this.config)
 		this.notify.create({
 			type: NotificationType.html,
 			styleType: NotificationStyleType.success,
@@ -25,7 +25,7 @@ export class BlockchainConfigComponent {
 	}
 
 	async load() {
-		this.config = await this.fs.readFile('conf/letheand.conf')
+		this.config = await this.fs.readFile('conf/lthn/letheand.conf')
 	}
 
 }

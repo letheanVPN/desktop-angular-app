@@ -180,5 +180,18 @@ export class AppConfigService {
 		return this.fs.writeFile(`conf/${key}.ini`, AppConfigService._config[key].stringify());
 	}
 
+	async openLink(link: string) {
+		return await fetch(`${AppConfigService.apiUrl }/system/browser/openLink`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({link: link})
+		})
+
+			.then(res => res.json())
+			.then(res => res.result)
+
+	}
 
 }

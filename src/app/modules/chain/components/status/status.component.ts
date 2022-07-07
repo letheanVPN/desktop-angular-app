@@ -167,4 +167,8 @@ export class StatusComponent implements OnInit, AfterViewInit, OnDestroy {
     this.sub.unsubscribe();
     this.sub2.unsubscribe();
   }
+
+	public async openLink() {
+      await this.app.openLink("https://docs.lt.hn")
+    }
 }

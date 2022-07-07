@@ -56,7 +56,7 @@
 
 <ng-template #viewDetailsTpl>
     <div class="view-details" (click)="$event.stopPropagation()">
-        <a [routerLink]="['/','docs']">
+        <a (click)="openLink()">
             <ngx-icon fontIcon="documentation"></ngx-icon>
             <span> View Documentation </span>
         </a>
