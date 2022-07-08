@@ -75,7 +75,7 @@ export class XmrigComponent implements OnInit, OnDestroy {
 
     await this.xmrig.startXmrig({user: this.wallet, url: this.pool})
 
-    this.sub = interval(1000).subscribe(async () => {
+    this.sub = interval(3000).subscribe(async () => {
       this.xmrigData.summary =  await this.xmrig.getData()
     });
 
