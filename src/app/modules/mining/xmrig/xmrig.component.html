@@ -1,8 +1,8 @@
 <ngx-tabs class="">
    <ngx-tab label="GUI Xmrig Miner">
       <ngx-section [sectionCollapsible]="false">
-      <div fxFlex>
-         <div fxFlex="40">
+      <div fxFlex fxLayout="column">
+         <div fxFlex="40"  *ngIf="this.pool == 'pool.hashvault.pro' && wallet.length < 10" >
             <h2>You could be mining already if there is a wallet address in the wallet input... ive not added status indicators or reporting</h2>
             <p>This GUI miner uses HashVault mining pool to remove complexity, the only required information is the wallet address to mine for on any supported coin.</p>
             <p>for other coin/pools use the advanced options to make adjustments.</p>
@@ -13,10 +13,10 @@
             <span class="tag tag-bordered">KevaCoin</span>
             <span class="tag tag-bordered">Sumokoin</span>
             <span class="tag tag-bordered">Masari</span>
-
          </div>
          <div fxFlex style="padding: 8px;">
             <ngx-input
+                    fxFlex="70"
                     type="text"
                     [label]="'Wallet Address'"
                     [autofocus]="true"
@@ -26,6 +26,7 @@
             </ngx-input>
             <ngx-input
                     type="text"
+                    fxFlex="20"
                     [label]="'Mining Pool'"
                     [autofocus]="false"
                     [ngModel]="pool"
@@ -35,6 +36,13 @@
             <button mat-button (click)="this.startXmrig()">Start Xmrig</button>
 
          </div>
+         <div fxFlex="100">
+            <lthn-app-hashvault [wallet]="this.wallet" *ngIf="this.pool == 'pool.hashvault.pro' && wallet.length > 10" ></lthn-app-hashvault>
+            <h1 *ngIf="this.pool !== 'pool.hashvault.pro' && wallet.length > 10">
+               Consider using HashVault Mining pool for extended statistics, mining wallet & exchange automation
+            </h1>
+         </div>
+
       </div>
       </ngx-section>
    </ngx-tab>

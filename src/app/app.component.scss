@@ -3,7 +3,7 @@
     height: 100vh;
     width: 100%;
     min-height: calc(99vh - 54px);
-    overflow: hidden;
+    overflow: scroll;
     background: radial-gradient(circle, rgba(8, 242, 181, 1) 0%, rgba(21, 130, 151, 1) 100%);
 
     mat-card {

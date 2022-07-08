@@ -12,75 +12,40 @@
             <i>Confirmed Balance: <strong>{{poolInfo['revenue']['confirmedBalance']}}</strong></i>
         </ngx-toolbar-content>
     </ngx-toolbar>
+    <div fxFlex="100">
+        <div class="flex">
+            <div class="flex-item">
+                <div style="display: block;">
+                    <canvas baseChart width="400" height="400"
+                            [data]="lineChartData"
+                            [options]="lineChartOptions"
+                            [type]="lineChartType"></canvas>
+                </div>
+            </div>
+
+        </div>
+    </div>
     <div fxFlex="50">
-        <table class="table">
-            <thead>
-            <tr>
-                <th colspan="2">Pool</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Hashrate</td>
-                <td>{{ poolInfo['collective']['hashRate']| hashrate }}</td>
-            </tr>
-            <tr>
-                <td>Avg Hashrate</td>
-                <td>{{ poolInfo['collective']['avg1hashRate']| hashrate }} | {{ poolInfo['collective']['avg3hashRate']| hashrate }}| {{ poolInfo['collective']['avg6hashRate']| hashrate }}| {{ poolInfo['collective']['avg24hashRate']| hashrate }}</td>
-            </tr>
-            <tr>
-                <td>Current Effort</td>
-                <td [style]="{color: poolInfo['collective']['currentEffort'] | effort}">{{ poolInfo['collective']['currentEffort'] }}%</td>
-            </tr>
-            <tr>
-                <td>30s Share Rate</td>
-                <td>{{ poolInfo['collective']['shareRate'] }}</td>
-            </tr>
-            <tr>
-                <td>Total Hashes</td>
-                <td>{{ poolInfo['collective']['totalHashes'] }}</td>
-            </tr>
-            <tr>
-                <td>Total Shares</td>
-                <td>{{ poolInfo['collective']['validShares'] }}</td>
-            </tr>
-            </tbody>
-        </table>
+        <mat-list dense>
+            <mat-list-item>PPLNS Payment Scheme</mat-list-item>
+            <mat-list-item><p>Hashrate:</p> <p>{{ poolInfo['collective']['hashRate']| hashrate }}</p></mat-list-item>
+            <mat-list-item><p>Avg Hashrate:</p> <p>{{ poolInfo['collective']['avg1hashRate']| hashrate }} | {{ poolInfo['collective']['avg3hashRate']| hashrate }}| {{ poolInfo['collective']['avg6hashRate']| hashrate }}| {{ poolInfo['collective']['avg24hashRate']| hashrate }}</p></mat-list-item>
+            <mat-list-item><p>Current Effort:</p> <p [style]="{color: poolInfo['collective']['currentEffort'] | effort}">{{ poolInfo['collective']['currentEffort'] }}%</p></mat-list-item>
+            <mat-list-item><p>30s Share Rate:</p> <p>{{ poolInfo['collective']['shareRate'] }}</p></mat-list-item>
+            <mat-list-item><p>Total Hashes:</p> <p>{{ poolInfo['collective']['totalHashes'] }}</p></mat-list-item>
+            <mat-list-item><p>Total Shares:</p> <p>{{ poolInfo['collective']['validShares'] }}</p></mat-list-item>
+        </mat-list>
     </div>
    <div fxFlex="50">
-       <table class="table">
-           <thead>
-           <tr>
-               <th colspan="2">Solo</th>
-           </tr>
-           </thead>
-           <tbody>
-           <tr>
-               <td>Hashrate</td>
-               <td>{{ poolInfo['solo']['hashRate']| hashrate }}</td>
-           </tr>
-           <tr>
-               <td>Avg Hashrate</td>
-               <td>{{ poolInfo['solo']['avg1hashRate']| hashrate }} | {{ poolInfo['solo']['avg3hashRate']| hashrate }}| {{ poolInfo['solo']['avg6hashRate']| hashrate }}| {{ poolInfo['solo']['avg24hashRate']| hashrate }}</td>
-           </tr>
-           <tr>
-               <td>Current Effort</td>
-               <td [style]="{color: poolInfo['solo']['currentEffort'] | effort}">{{ poolInfo['solo']['currentEffort'] }}%</td>
-           </tr>
-           <tr>
-               <td>30s Share Rate</td>
-               <td>{{ poolInfo['solo']['shareRate'] }}</td>
-           </tr>
-           <tr>
-               <td>Total Hashes</td>
-               <td>{{ poolInfo['solo']['totalHashes'] }}</td>
-           </tr>
-           <tr>
-               <td>Total Shares</td>
-               <td>{{ poolInfo['solo']['validShares'] }}</td>
-           </tr>
-           </tbody>
-       </table>
+       <mat-list dense>
+           <mat-list-item>Solo Payment Scheme</mat-list-item>
+           <mat-list-item><p>Hashrate:</p> <p>{{ poolInfo['solo']['hashRate']| hashrate }}</p></mat-list-item>
+           <mat-list-item><p>Avg Hashrate:</p> <p>{{ poolInfo['solo']['avg1hashRate']| hashrate }} | {{ poolInfo['solo']['avg3hashRate']| hashrate }}| {{ poolInfo['solo']['avg6hashRate']| hashrate }}| {{ poolInfo['solo']['avg24hashRate']| hashrate }}</p></mat-list-item>
+           <mat-list-item><p>Current Effort:</p> <p [style]="{color: poolInfo['solo']['currentEffort'] | effort}">{{ poolInfo['solo']['currentEffort'] }}%</p></mat-list-item>
+           <mat-list-item><p>30s Share Rate:</p> <p>{{ poolInfo['solo']['shareRate'] }}</p></mat-list-item>
+           <mat-list-item><p>Total Hashes:</p> <p>{{ poolInfo['solo']['totalHashes'] }}</p></mat-list-item>
+           <mat-list-item><p>Total Shares:</p> <p>{{ poolInfo['solo']['validShares'] }}</p></mat-list-item>
+       </mat-list>
    </div>
     <div fxFlex="100">
         <table class="table">

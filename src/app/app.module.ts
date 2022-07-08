@@ -25,6 +25,7 @@ import {HeaderInterceptor} from '@module/auth/auth.interceptor';
 import {FaIconLibrary, FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {faGauge, faLink, faPersonDigging, faWallet} from '@fortawesome/free-solid-svg-icons';
 import {faDocker} from '@fortawesome/free-brands-svg-icons';
+import {NgChartsModule} from 'ng2-charts';
 
 export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http);
@@ -69,7 +70,8 @@ export function tokenGetter() {
 		FontAwesomeModule,
 		ConsoleModule,
 		NgxUIModule,
-  FontAwesomeModule
+  FontAwesomeModule,
+		NgChartsModule
 
 	],
 	bootstrap: [AppComponent],

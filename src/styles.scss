@@ -60,3 +60,8 @@ background-color: #313847;
 .ngx-datatable .datatable-body .datatable-row-detail {
   overflow-y: scroll!important;
 }
+
+mat-list-item p {
+  flex: 1 1 auto;
+  margin: 0;
+}
