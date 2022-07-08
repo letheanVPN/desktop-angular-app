@@ -47,7 +47,7 @@
                         <mat-list fxFlex dense>
                            <mat-list-item>Stats</mat-list-item>
                            <mat-list-item><p>Uptime</p><p>{{ getNow() - (xmrigData.summary['uptime']*1000) | amTimeAgo}}</p></mat-list-item>
-                           <mat-list-item><p>Accepted Shares</p><p>{{xmrigData.summary['results']['shares_good']}}</p></mat-list-item>
+                           <mat-list-item><p>Accepted Shares</p><p>{{xmrigData.summary['results']['shares_total']}}</p></mat-list-item>
                            <mat-list-item><p>Total Hashes</p><p>{{xmrigData.summary['results']['hashes_total']| hashrate}}</p></mat-list-item>
                            <mat-list-item><p>Best Share</p><p>{{xmrigData.summary['results']['best'][0] | hashrate}}</p></mat-list-item>
                            <mat-list-item><p>Hashrate 10s | 30s | 15m | Peak</p><p>
