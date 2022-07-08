@@ -39,7 +39,7 @@ export class XmrigComponent implements OnInit, OnDestroy {
     try{
       this.xmrigData.summary =  await this.xmrig.getData()
       if(this.xmrigData.summary['id'] !== undefined){
-        this.sub = interval(1000).subscribe(async () => {
+        this.sub = interval(3000).subscribe(async () => {
           this.xmrigData.summary =  await this.xmrig.getData()
         });
       }
