@@ -37,23 +37,79 @@
 
          </div>
          <div fxFlex="100">
-            <lthn-app-hashvault [wallet]="this.wallet" *ngIf="this.pool == 'pool.hashvault.pro' && wallet.length > 10" ></lthn-app-hashvault>
-            <h1 *ngIf="this.pool !== 'pool.hashvault.pro' && wallet.length > 10">
-               Consider using HashVault Mining pool for extended statistics, mining wallet & exchange automation
-            </h1>
+            <mat-tab-group >
+               <mat-tab label="Xmrig API Stats">
+                  <h1 *ngIf="this.pool !== 'pool.hashvault.pro' && wallet.length > 10">
+                     Consider using HashVault Mining pool for extended statistics, mining wallet & exchange automation
+                  </h1>
+                  <ng-container   *ngIf="xmrigData.summary['uptime']">
+                     <div fxFlex="100" >
+                        <mat-list fxFlex dense>
+                           <mat-list-item>Stats</mat-list-item>
+                           <mat-list-item><p>Uptime</p><p>{{ getNow() - (xmrigData.summary['uptime']*1000) | amTimeAgo}}</p></mat-list-item>
+                           <mat-list-item><p>Accepted Shares</p><p>{{xmrigData.summary['results']['shares_good']}}</p></mat-list-item>
+                           <mat-list-item><p>Total Hashes</p><p>{{xmrigData.summary['results']['hashes_total']| hashrate}}</p></mat-list-item>
+                           <mat-list-item><p>Best Share</p><p>{{xmrigData.summary['results']['best'][0] | hashrate}}</p></mat-list-item>
+                           <mat-list-item><p>Hashrate 10s | 30s | 15m | Peak</p><p>
+                              {{xmrigData.summary['hashrate']['total'][0] | hashrate }} |
+                              {{xmrigData.summary['hashrate']['total'][1] | hashrate }} |
+                              {{xmrigData.summary['hashrate']['total'][2] | hashrate }} |
+                              {{xmrigData.summary['hashrate']['highest'] | hashrate }}
+                           </p></mat-list-item>
+                           <mat-list-item><p>Memory Free | Total</p><p>{{xmrigData.summary['resources']['memory']['free'] }} |
+                              {{xmrigData.summary['resources']['memory']['total'] }}
+                           </p></mat-list-item>
+                           <mat-list-item><p>Load Avg</p><p>
+                              {{xmrigData.summary['resources']['load_average'][0]  }} |
+                              {{xmrigData.summary['resources']['load_average'][1]  }} |
+                              {{xmrigData.summary['resources']['load_average'][2]  }}
+                           </p></mat-list-item>
+                        </mat-list>
+                        <mat-list fxFlex="30" dense>
+                           <mat-list-item>Rig Information</mat-list-item>
+                           <mat-list-item><p>MinerID</p><p>{{xmrigData.summary['id']}}</p></mat-list-item>
+                           <mat-list-item><p>WorkerID</p><p>{{xmrigData.summary['worker_id']}}</p></mat-list-item>
+                           <mat-list-item><p>Algo</p><p>{{xmrigData.summary['algo']}}</p></mat-list-item>
+                           <mat-list-item><p>Donate Level</p><p>{{xmrigData.summary['donate_level']}}</p></mat-list-item>
+                           <mat-list-item><p>Running</p><p>{{!xmrigData.summary['paused']}}</p></mat-list-item>
+                           <mat-list-item><p>CPU</p><p>{{xmrigData.summary['cpu']['brand']}}</p></mat-list-item>
+                           <mat-list-item><p>L2 Cache</p><p>{{xmrigData.summary['cpu']['l2']}}</p></mat-list-item>
+                        </mat-list>
+                        <mat-list fxFlex="30" dense>
+                           <mat-list-item>Pool Information</mat-list-item>
+                           <mat-list-item><p>URL</p><p>{{xmrigData.summary['connection']['pool']}}</p></mat-list-item>
+                           <mat-list-item><p>IP</p><p>{{xmrigData.summary['connection']['ip']}}</p></mat-list-item>
+                           <mat-list-item><p>Ping</p><p>{{xmrigData.summary['connection']['ping']}}ms</p></mat-list-item>
+                           <mat-list-item><p>Uptime</p><p>{{xmrigData.summary['connection']['uptime'] | amDuration:'seconds' }}</p></mat-list-item>
+                           <mat-list-item><p>Diff Target</p><p>{{xmrigData.summary['connection']['diff'] | number }}</p></mat-list-item>
+                           <mat-list-item><p>Accepted Shares</p><p>{{xmrigData.summary['connection']['accepted']  }}</p></mat-list-item>
+                           <mat-list-item><p>Rejected Shares</p><p>{{xmrigData.summary['connection']['rejected']  }}</p></mat-list-item>
+                        </mat-list>
+                     </div>
+
+
+                  </ng-container>
+
+               </mat-tab>
+
+               <mat-tab label="Mining Pool Stats" *ngIf="this.pool == 'pool.hashvault.pro' && wallet.length > 10" >
+                  <lthn-app-hashvault [wallet]="this.wallet" ></lthn-app-hashvault>
+               </mat-tab>
+
+            </mat-tab-group>
          </div>
 
       </div>
       </ngx-section>
    </ngx-tab>
-   <ngx-tab label="Pool Stats" *ngIf="this.pool == 'pool.hashvault.pro' && wallet.length > 10">
-      <ngx-section >
-         <lthn-app-hashvault [wallet]="this.wallet"></lthn-app-hashvault>
-      </ngx-section>
-   </ngx-tab>
    <ngx-tab label="Xmrig Console" *ngIf=" wallet.length > 10">
       <ngx-section *ngxIfTabActive>
          <lthn-console attach="xmrig"></lthn-console>
+      </ngx-section>
+   </ngx-tab>
+   <ngx-tab label="Xmrig Config">
+      <ngx-section *ngxIfTabActive>
+         <app-miner-xmrig-config></app-miner-xmrig-config>
       </ngx-section>
    </ngx-tab>
 </ngx-tabs>

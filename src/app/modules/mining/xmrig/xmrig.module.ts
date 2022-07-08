@@ -11,13 +11,19 @@ import {ConsoleModule} from '@module/console/console.module';
 import {FlexModule} from '@angular/flex-layout';
 import {MomentModule} from 'ngx-moment';
 import {HashvaultModule} from '@module/mining/hashvault/hashvault.module';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatListModule} from '@angular/material/list';
+import {PipesModule} from '@pipe/pipes.module';
+import {XmrigConfigComponent} from '@module/mining/xmrig/config/config.component';
+import {TranslateModule} from '@ngx-translate/core';
 
 
 
 @NgModule({
 	declarations: [
 		XmrigComponent,
-		XmrigStatusComponent
+		XmrigStatusComponent,
+		XmrigConfigComponent
 	],
 	exports: [
 		XmrigStatusComponent
@@ -32,7 +38,11 @@ import {HashvaultModule} from '@module/mining/hashvault/hashvault.module';
 		ConsoleModule,
 		FlexModule,
 		MomentModule,
-		HashvaultModule
+		HashvaultModule,
+		MatTabsModule,
+		MatListModule,
+		PipesModule,
+		TranslateModule
 	]
 })
 export class XmrigModule { }

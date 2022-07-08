@@ -1,14 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NotificationService, NotificationStyleType, NotificationType} from '@swimlane/ngx-ui';
 import {XmrigService} from '@module/mining/xmrig/xmrig.service';
+import {interval, Subscription} from 'rxjs';
 
 @Component({
   selector: 'lthn-app-xmrig',
   templateUrl: './xmrig.component.html',
   styleUrls: ['./xmrig.component.scss']
 })
-export class XmrigComponent implements OnInit {
+export class XmrigComponent implements OnInit, OnDestroy {
   public poolInfo: any;
+  private sub: Subscription;
 
   constructor(private xmrig: XmrigService, private notificationService: NotificationService) { }
 
@@ -16,6 +18,9 @@ export class XmrigComponent implements OnInit {
   public downloads: any;
   public wallet: string = '';
   public pool: string = 'pool.hashvault.pro';
+  public xmrigData = {
+    summary: {}
+  }
 
   async ngOnInit() {
    // await this.setInstallConfig()
@@ -31,6 +36,18 @@ export class XmrigComponent implements OnInit {
 //
 //      });
     }
+    try{
+      this.xmrigData.summary =  await this.xmrig.getData()
+      if(this.xmrigData.summary['id'] !== undefined){
+        this.sub = interval(1000).subscribe(async () => {
+          this.xmrigData.summary =  await this.xmrig.getData()
+        });
+      }
+
+    }catch (e) {
+
+    }
+
     //console.log(await this.getHashVaultStats())
   }
 
@@ -45,6 +62,7 @@ export class XmrigComponent implements OnInit {
       return false;
     }
 
+
     let config = this.config
 
     if(!config['wallet'] || config['wallet'] !== this.wallet){
@@ -57,7 +75,9 @@ export class XmrigComponent implements OnInit {
 
     await this.xmrig.startXmrig({user: this.wallet, url: this.pool})
 
-
+    this.sub = interval(1000).subscribe(async () => {
+      this.xmrigData.summary =  await this.xmrig.getData()
+    });
 
     this.notificationService.create({
       type: NotificationType.html,
@@ -84,6 +104,15 @@ export class XmrigComponent implements OnInit {
     const res = await fetch(`https://api.hashvault.pro/v3/lethean/wallet/${this.wallet}/stats?chart=total&inactivityThreshold=10&order=name&period=daily&poolType=false&workers=true`)
 
     return await res.json()
+  }
+
+  public ngOnDestroy(): void {
+    if(this.sub) this.sub.unsubscribe();
+  }
+
+  public getNow(){
+    console.log(new Date().getTime() *1000)
+    return new Date().getTime()
   }
 
 }
