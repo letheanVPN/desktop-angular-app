@@ -1,7 +1,7 @@
-<ngx-tabs>
+<ngx-tabs *ngIf="blockData">
     <ngx-tab label="Block Details">
         <div *ngxIfTabActive>
-            <table class="table striped">
+            <table class="table striped" >
                 <thead>
                 <tr>
                     <th>{{'app.lthn.chain.words.hash' | translate}}</th>

@@ -98,15 +98,13 @@ export class BlockchainService {
             .then((dat) => console.log(dat));
     }
 
-    chainRpc(params: any ) {
+    async chainRpc(params: any) {
         try {
-
-
             let request = {
                 "url": params['url'],
                 "req": rpcBody(params['method'])(params['params'])
             }
-            return fetch(`http://localhost:36911/daemon/json_rpc`, {
+            const req = await fetch(`http://localhost:36911/daemon/json_rpc`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -115,9 +113,13 @@ export class BlockchainService {
                 body: JSON.stringify(request)
             })
 
-                .then(res => res.json())
-                .then(res => res.result)
-        }catch (e) {
+            const res = await req.json()
+
+            if(res['result']){
+                return res['result']
+            }
+            return false
+        } catch (e) {
             return false
         }
     }
