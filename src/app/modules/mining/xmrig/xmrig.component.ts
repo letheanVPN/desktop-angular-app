@@ -111,7 +111,7 @@ export class XmrigComponent implements OnInit, OnDestroy {
   }
 
   public getNow(){
-    console.log(new Date().getTime() *1000)
+   // console.log(new Date().getTime() *1000)
     return new Date().getTime()
   }
 

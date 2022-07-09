@@ -46,20 +46,20 @@
                      <div fxFlex="100" >
                         <mat-list fxFlex dense>
                            <mat-list-item>Stats</mat-list-item>
-                           <mat-list-item><p>Uptime</p><p>{{ getNow() - (xmrigData.summary['uptime']*1000) | amTimeAgo}}</p></mat-list-item>
-                           <mat-list-item><p>Accepted Shares</p><p>{{xmrigData.summary['results']['shares_total']}}</p></mat-list-item>
-                           <mat-list-item><p>Total Hashes</p><p>{{xmrigData.summary['results']['hashes_total']| hashrate}}</p></mat-list-item>
-                           <mat-list-item><p>Best Share</p><p>{{xmrigData.summary['results']['best'][0] | hashrate}}</p></mat-list-item>
-                           <mat-list-item><p>Hashrate 10s | 30s | 15m | Peak</p><p>
+                           <mat-list-item><p>Uptime</p><p class="text-right">{{ getNow() - (xmrigData.summary['uptime']*1000) | amTimeAgo}}</p></mat-list-item>
+                           <mat-list-item><p>Accepted Shares</p><p class="text-right">{{xmrigData.summary['results']['shares_total']}}</p></mat-list-item>
+                           <mat-list-item><p>Total Hashes</p><p class="text-right">{{xmrigData.summary['results']['hashes_total']| hashrate}}</p></mat-list-item>
+                           <mat-list-item><p>Best Share</p><p class="text-right">{{xmrigData.summary['results']['best'][0] | hashrate}}</p></mat-list-item>
+                           <mat-list-item><p>Hashrate 10s | 30s | 15m | Peak</p><p class="text-right">
                               {{xmrigData.summary['hashrate']['total'][0] | hashrate }} |
                               {{xmrigData.summary['hashrate']['total'][1] | hashrate }} |
                               {{xmrigData.summary['hashrate']['total'][2] | hashrate }} |
                               {{xmrigData.summary['hashrate']['highest'] | hashrate }}
                            </p></mat-list-item>
-                           <mat-list-item><p>Memory Free | Total</p><p>{{xmrigData.summary['resources']['memory']['free'] }} |
-                              {{xmrigData.summary['resources']['memory']['total'] }}
+                           <mat-list-item><p>Memory Free | Total</p><p class="text-right">{{xmrigData.summary['resources']['memory']['free'] | filesize }} |
+                              {{xmrigData.summary['resources']['memory']['total'] | filesize }}
                            </p></mat-list-item>
-                           <mat-list-item><p>Load Avg</p><p>
+                           <mat-list-item><p>Load Avg</p><p class="text-right">
                               {{xmrigData.summary['resources']['load_average'][0]  }} |
                               {{xmrigData.summary['resources']['load_average'][1]  }} |
                               {{xmrigData.summary['resources']['load_average'][2]  }}
@@ -67,23 +67,23 @@
                         </mat-list>
                         <mat-list fxFlex="30" dense>
                            <mat-list-item>Rig Information</mat-list-item>
-                           <mat-list-item><p>MinerID</p><p>{{xmrigData.summary['id']}}</p></mat-list-item>
-                           <mat-list-item><p>WorkerID</p><p>{{xmrigData.summary['worker_id']}}</p></mat-list-item>
-                           <mat-list-item><p>Algo</p><p>{{xmrigData.summary['algo']}}</p></mat-list-item>
-                           <mat-list-item><p>Donate Level</p><p>{{xmrigData.summary['donate_level']}}</p></mat-list-item>
-                           <mat-list-item><p>Running</p><p>{{!xmrigData.summary['paused']}}</p></mat-list-item>
-                           <mat-list-item><p>CPU</p><p>{{xmrigData.summary['cpu']['brand']}}</p></mat-list-item>
-                           <mat-list-item><p>L2 Cache</p><p>{{xmrigData.summary['cpu']['l2']}}</p></mat-list-item>
+                           <mat-list-item><p>MinerID</p><p class="text-right">{{xmrigData.summary['id']}}</p></mat-list-item>
+                           <mat-list-item><p>WorkerID</p><p class="text-right">{{xmrigData.summary['worker_id']}}</p></mat-list-item>
+                           <mat-list-item><p>Algo</p><p class="text-right">{{xmrigData.summary['algo']}}</p></mat-list-item>
+                           <mat-list-item><p>Donate Level</p><p class="text-right">{{xmrigData.summary['donate_level']}}</p></mat-list-item>
+                           <mat-list-item><p>Running</p><p class="text-right">{{!xmrigData.summary['paused']}}</p></mat-list-item>
+                           <mat-list-item><p>CPU</p><p class="text-right">{{xmrigData.summary['cpu']['brand']}}</p></mat-list-item>
+                           <mat-list-item><p>L2 Cache</p><p class="text-right">{{xmrigData.summary['cpu']['l2'] | filesize}}</p></mat-list-item>
                         </mat-list>
                         <mat-list fxFlex="30" dense>
                            <mat-list-item>Pool Information</mat-list-item>
-                           <mat-list-item><p>URL</p><p>{{xmrigData.summary['connection']['pool']}}</p></mat-list-item>
-                           <mat-list-item><p>IP</p><p>{{xmrigData.summary['connection']['ip']}}</p></mat-list-item>
-                           <mat-list-item><p>Ping</p><p>{{xmrigData.summary['connection']['ping']}}ms</p></mat-list-item>
-                           <mat-list-item><p>Uptime</p><p>{{xmrigData.summary['connection']['uptime'] | amDuration:'seconds' }}</p></mat-list-item>
-                           <mat-list-item><p>Diff Target</p><p>{{xmrigData.summary['connection']['diff'] | number }}</p></mat-list-item>
-                           <mat-list-item><p>Accepted Shares</p><p>{{xmrigData.summary['connection']['accepted']  }}</p></mat-list-item>
-                           <mat-list-item><p>Rejected Shares</p><p>{{xmrigData.summary['connection']['rejected']  }}</p></mat-list-item>
+                           <mat-list-item><p>URL</p><p class="text-right">{{xmrigData.summary['connection']['pool']}}</p></mat-list-item>
+                           <mat-list-item><p>IP</p><p class="text-right">{{xmrigData.summary['connection']['ip']}}</p></mat-list-item>
+                           <mat-list-item><p>Ping</p><p class="text-right">{{xmrigData.summary['connection']['ping']}}ms</p></mat-list-item>
+                           <mat-list-item><p>Uptime</p><p class="text-right">{{xmrigData.summary['connection']['uptime'] | amDuration:'seconds' }}</p></mat-list-item>
+                           <mat-list-item><p>Diff Target</p><p class="text-right">{{xmrigData.summary['connection']['diff'] | number }}</p></mat-list-item>
+                           <mat-list-item><p>Accepted Shares</p><p class="text-right">{{xmrigData.summary['connection']['accepted']  }}</p></mat-list-item>
+                           <mat-list-item><p>Rejected Shares</p><p class="text-right">{{xmrigData.summary['connection']['rejected']  }}</p></mat-list-item>
                         </mat-list>
                      </div>
 
