@@ -1,9 +1,8 @@
 <ngx-tabs class="" #tabs>
-    <ngx-tab label="Dashboard" #tab1>
+    <ngx-tab [label]="'app.market.dashboard' | translate" #tab1>
             <ngx-section *ngIf="(apps | keyvalue)?.length == 0">
-               <p>You have no apps installed</p>
-                {{ apps | json }}
-                <button class="btn btn-primary-gradient" (click)="tabs.tabClicked(tab2)">View Installable Apps</button>
+               <p>{{ "app.market.no-apps-installed" | translate }}</p>
+                <button class="btn btn-primary-gradient" (click)="tabs.tabClicked(tab2)">{{"app.market.view-installable-apps" | translate}}</button>
             </ngx-section>
         <ngx-section *ngIf="(apps | keyvalue)?.length > 0">
             <lthn-chain-status *ngIf="apps['blockchain-lthn']"></lthn-chain-status>
@@ -11,7 +10,7 @@
             <lthn-xmrig-status  *ngIf="apps['miner-xmrig']"></lthn-xmrig-status>
         </ngx-section>
     </ngx-tab>
-    <ngx-tab label="Apps" #tab2>
+    <ngx-tab [label]="'app.market.apps' | translate"  #tab2>
         <ngx-section *ngxIfTabActive >
             <span class="tag tag-bordered" (click)="getAppMarket()" >Homepage</span>
 
@@ -26,13 +25,13 @@
                     <ngx-card-subtitle *ngIf="app['version']"> {{ app['version'] }}</ngx-card-subtitle>
                 </ngx-card-header>
                 <ngx-card-section>
-                    <button class="btn btn-bordered" *ngIf="!apps[ app['code']]" (click)="installApp( app)" >Install</button>
-                    <button class="btn btn-bordered" *ngIf="apps[ app['code']]" (click)="removeApp( app)" >Remove</button>
+                    <button class="btn btn-bordered" *ngIf="!apps[ app['code']]" (click)="installApp( app)" >{{"words.actions.install" | translate}}</button>
+                    <button class="btn btn-bordered" *ngIf="apps[ app['code']]" (click)="removeApp( app)" >{{"words.actions.remove" | translate}}</button>
                 </ngx-card-section>
             </ngx-card>
         </ngx-section>
     </ngx-tab>
-    <ngx-tab label="Installed" #tab3>
+    <ngx-tab [label]="'app.market.installed' | translate"  #tab3>
         <ngx-section *ngxIfTabActive >
             <ngx-card *ngFor="let app of apps | keyvalue">
 
@@ -42,7 +41,7 @@
                     <ngx-card-subtitle *ngIf="app.value['version']"> {{ app.value['version'] }}</ngx-card-subtitle>
                 </ngx-card-header>
                 <ngx-card-section>
-                    <button class="btn btn-bordered" (click)="removeApp( app.value)" >Remove</button>
+                    <button class="btn btn-bordered" (click)="removeApp( app.value)" >{{"words.actions.remove" | translate}}</button>
                 </ngx-card-section>
             </ngx-card>
         </ngx-section>

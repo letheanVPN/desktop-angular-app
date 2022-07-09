@@ -2,7 +2,7 @@
 <div class="main-container">
     <ngx-toolbar style="height: 58px;">
         <ngx-toolbar-title>
-            <ngx-navbar style="margin-left: 50px;" [active]="activeRoute">
+            <ngx-navbar style="margin-left: 0px;" [active]="activeRoute">
                 <ngx-navbar-item *ngFor="let menu of menuItems" [routerLink]="menu.url" title="{{ menu.title | translate }}">
                     <fa-icon [icon]=" menu.icon"></fa-icon></ngx-navbar-item>
             </ngx-navbar>
@@ -14,16 +14,16 @@
             <mat-menu #appMenu="matMenu">
                 <ng-template let-name="name" matMenuContent>
                     <mat-list-item>
-                        <button (click)="changeLanguage('en')" mat-button color="accent">
+                        <a (click)="changeLanguage('en')" mat-button color="accent">
                             <img src="assets/flags/1x1/en.svg" width="16"
                                  alt="{{ 'lang.en' | translate }}">&nbsp;&nbsp;{{ 'lang.en' | translate }}
-                        </button>
+                        </a>
                     </mat-list-item>
                     <mat-list-item>
-                        <button (click)="changeLanguage('ru')" mat-button color="accent">
+                        <a (click)="changeLanguage('ru')" mat-button color="accent">
                             <img src="assets/flags/1x1/ru.svg" width="16"
                                  alt="{{ 'lang.ru' | translate }}">&nbsp;&nbsp;{{ 'lang.ru' | translate }}
-                        </button>
+                        </a>
                     </mat-list-item>
                     <mat-list-item>
                         <button (click)="changeLanguage('zh')" mat-button color="accent">
@@ -32,22 +32,22 @@
                         </button>
                     </mat-list-item>
                     <mat-list-item>
-                        <button (click)="changeLanguage('es')" mat-button color="accent">
+                        <a (click)="changeLanguage('es')" mat-button color="accent">
                             <img src="assets/flags/1x1/es.svg" width="16"
                                  alt="{{ 'lang.es' | translate }}">&nbsp;&nbsp;{{ 'lang.es' | translate }}
-                        </button>
+                        </a>
                     </mat-list-item>
                     <mat-list-item>
-                        <button (click)="changeLanguage('de')" mat-button color="accent">
+                        <a (click)="changeLanguage('de')" mat-button color="accent">
                             <img src="assets/flags/1x1/de.svg" width="16"
                                  alt="{{ 'lang.de' | translate }}">&nbsp;&nbsp;{{ 'lang.de' | translate }}
-                        </button>
+                        </a>
                     </mat-list-item>
                     <mat-list-item>
-                        <button (click)="changeLanguage('fr')" mat-button color="accent">
+                        <a (click)="changeLanguage('fr')" mat-button color="accent">
                             <img src="assets/flags/1x1/fr.svg" width="16"
                                  alt="{{ 'lang.fr' | translate }}">&nbsp;&nbsp;{{ 'lang.fr' | translate }}
-                        </button>
+                        </a>
                     </mat-list-item>
 
 
