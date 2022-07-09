@@ -59,6 +59,7 @@
     "codemirror": "5.58.2",
     "config-ini-parser": "^1.5.9",
     "crypto-js": "^4.1.1",
+    "filesize": "^9.0.11",
     "fontawesome-free": "^1.0.4",
     "jszmq": "^0.1.2",
     "localstorage-polyfill": "^1.0.1",

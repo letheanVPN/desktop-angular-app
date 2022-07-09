@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {EffortPipe, EscapeHtmlPipe, HashLinkPipe, HashRatePipe, RemoveTrailingZerosPipe, ShruggiePipe, TimeAgoPipe, ToCoinPipe} from '@pipe/index';
 import {FromCoinPipe} from '@pipe/crypto/fromCoin.pipe';
+import {FileSizePipe} from '@pipe/content/filesize.pipe';
 
 @NgModule({
 	declarations: [
@@ -13,7 +14,8 @@ import {FromCoinPipe} from '@pipe/crypto/fromCoin.pipe';
 		RemoveTrailingZerosPipe,
 		ToCoinPipe,
 		FromCoinPipe,
-		HashLinkPipe
+		HashLinkPipe,
+		FileSizePipe
 	],
 	exports: [
 		HashRatePipe,
@@ -24,7 +26,8 @@ import {FromCoinPipe} from '@pipe/crypto/fromCoin.pipe';
 		RemoveTrailingZerosPipe,
 		ToCoinPipe,
 		HashLinkPipe,
-		FromCoinPipe
+		FromCoinPipe,
+		FileSizePipe
 	],
 	imports: [CommonModule]
 })
