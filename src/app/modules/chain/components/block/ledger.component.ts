@@ -6,7 +6,6 @@ import {ColumnMode} from '@swimlane/ngx-datatable';
 import {BlockchainService} from '@module/chain/blockchain.service';
 import {UntypedFormControl, Validators} from '@angular/forms';
 import {DrawerDirection, DrawerService} from '@swimlane/ngx-ui';
-
 @Component({
 	selector: 'lthn-chain-ledger',
 	templateUrl: './ledger.component.html'
@@ -51,14 +50,40 @@ export class BlockLedgerComponent implements OnInit, OnDestroy {
 		private chain: BlockchainService,
 		private drawerService: DrawerService) {
 
-		this.allColumns.forEach((col) => {
-			if (col.default) {
+	}
 
-				this.columns.push(
-					col
-				);
-			}
-		});
+	step = 0;
+
+	setStep(index: number) {
+		this.step = index;
+	}
+
+	nextStep() {
+		this.step++;
+	}
+
+	prevStep() {
+		this.step--;
+	}
+
+	async nextPage() {
+
+		this.page.pageNumber = this.page.pageNumber + 1
+
+		return await this.getBlocks()
+	}
+
+	async numPage(num: number) {
+
+		this.page.pageNumber = num
+
+		return await this.getBlocks()
+	}
+
+	async prevPage() {
+		this.page.pageNumber = this.page.pageNumber - 1
+
+		return await this.getBlocks()
 	}
 
 
@@ -76,6 +101,7 @@ export class BlockLedgerComponent implements OnInit, OnDestroy {
 				this.status_daemon = 2;
 			}
 			this.page.totalElements = this.chainInfo.height
+			this.page.totalPages = Math.floor(this.page.totalElements/this.page.size)
 		} else {
 			this.status_daemon = 0;
 		}
@@ -89,7 +115,9 @@ export class BlockLedgerComponent implements OnInit, OnDestroy {
 		let start_height = this.page.totalElements - this.page.pageNumber * this.page.size - 1
 		let end_height = this.page.totalElements - this.page.size - this.page.pageNumber * this.page.size
 
-		this.blocks = await this.chain.getBlocks(Math.max(0, end_height), Math.max(0, start_height));
+		 this.blocks = await this.chain.getBlocks(Math.max(0, end_height), Math.max(0, start_height));
+
+		return this.blocks['headers']= this.blocks['headers'].reverse()
 	}
 
 

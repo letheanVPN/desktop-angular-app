@@ -1,76 +1,42 @@
 <ng-container *ngIf="blocks">
-<ngx-datatable
-    #blocksTable
-        class="material expandable"
-        [rows]="blocks['headers']"
-        [loadingIndicator]="false"
-        [columns]="columns"
-        [columnMode]="ColumnMode.force"
-        [headerHeight]="30"
-        [footerHeight]="50"
-    [rowHeight]="'auto'"
-        [externalPaging]="true"
-        [count]="page.totalElements"
-        [offset]="page.pageNumber"
-        [limit]="page.size"
-        [sorts]="[{ prop: 'timestamp', dir: 'desc' }]"
-        (page)="page.pageNumber = $event.offset;getBlocks();"
->
-    <ngx-datatable-row-detail [rowHeight]="500" #blocksTable (toggle)="onDetailToggle($event)" >
-        <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
-            <lthn-chain-block-details [id]="row.hash"></lthn-chain-block-details>
-        </ng-template>
-    </ngx-datatable-row-detail>
-    <ngx-datatable-column
-            [width]="50"
-            [resizeable]="false"
-            [sortable]="false"
-            [draggable]="false"
-            [canAutoResize]="false"
-    >
-        <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
-            <a
-                    href="javascript:void(0)"
-                    [class.datatable-icon-right]="!expanded"
-                    [class.datatable-icon-down]="expanded"
-                    title="Expand/Collapse Row"
-                    (click)="toggleExpandRow(row)"
-            >
-            </a>
-        </ng-template>
-    </ngx-datatable-column>
-    <ngx-datatable-column *ngFor="let col of columns" [prop]="col.prop" [name]="col.name | translate">
+    <button mat-button (click)="numPage(1)" >First</button>
+    <button mat-button (click)="prevPage()" >Prev</button>
+    <ng-container *ngIf="this.page.totalPages > 2 && this.page.pageNumber < this.page.totalPages ">
+        <button mat-button (click)="numPage(this.page.pageNumber+1)">{{this.page.pageNumber+1}}</button>
+        <button mat-button (click)="numPage(this.page.pageNumber+2)">{{this.page.pageNumber+2}}</button>
+        <button mat-button (click)="numPage(this.page.pageNumber+3)">{{this.page.pageNumber+3}}</button>
+        <button mat-button (click)="numPage(this.page.pageNumber+4)">{{this.page.pageNumber+4}}</button>
+        <button mat-button (click)="numPage(this.page.pageNumber+5)">{{this.page.pageNumber+5}}</button>
+        <button mat-button (click)="numPage(this.page.pageNumber+6)">{{this.page.pageNumber+6}}</button>
+        <button mat-button (click)="numPage(this.page.pageNumber+7)">{{this.page.pageNumber+7}}</button>
+        <button mat-button (click)="numPage(this.page.pageNumber+8)">{{this.page.pageNumber+8}}</button>
+        <button mat-button (click)="numPage(this.page.pageNumber+9)">{{this.page.pageNumber+9}}</button>
+    </ng-container>
 
-        <ng-template let-value="value" ngx-datatable-cell-template>
-            <span *ngIf="col.prop === 'difficulty'">{{ value | hashrate}}</span>
-            <span *ngIf="col.prop === 'height'">{{ value | number }}</span>
-            <!--                        <a class="lthn-brand" *ngIf="col.prop === 'hash'" [routerLink]="['/', 'chain', 'block', value]">{{ value | hashLink }}</a>-->
-            <a class="lthn-brand" *ngIf="col.prop === 'hash'"
-               (click)="$event.stopPropagation();openDrawer(value);">{{ value | hashLink }}</a>
-            <span *ngIf="col.prop === 'orphan_status'">
-                                <mat-icon style="color: green" *ngIf="!value">done</mat-icon>
-                                <mat-icon style="color: red" *ngIf="value">close</mat-icon>
-                              </span>
-            <span *ngIf="col.prop === 'timestamp'">{{ value | amFromUnix }}</span>
-            <span *ngIf="col.prop === 'block_size'">{{ value | number }}</span>
-            <span *ngIf="col.prop === 'depth'">{{ value | number }}</span>
-            <span *ngIf="col.prop === 'major_version'">{{ value  }}</span>
-            <span *ngIf="col.prop === 'minor_version'">{{ value | number }}</span>
-            <span *ngIf="col.prop === 'nonce'">{{ value  }}</span>
-            <span *ngIf="col.prop === 'num_txes'">{{ value | number }}</span>
-            <span *ngIf="col.prop === 'prev_hash'">{{ value }}</span>
-        </ng-template>
+    <button mat-button (click)="nextPage()" >Next</button>
+    <button mat-button (click)="numPage(this.page.totalPages-1)" >Last</button>
+    <mat-accordion class="example-headers-align">
 
-    </ngx-datatable-column>
-</ngx-datatable>
-    <ng-template #editTmpl let-context="context">
-        <ngx-toolbar
-                [mainTitle]="'Block Information'">
-        </ngx-toolbar>
-        <section class="section">
-            <lthn-chain-block-details [id]="context.id"></lthn-chain-block-details>
-        </section>
-    </ng-template>
+        <mat-expansion-panel *ngFor="let block of blocks['headers']" [expanded]="step === block['height']" (opened)="setStep(block['height'])" hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Height: {{block['height']}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    TX: {{ block['num_txes']}} Hash: {{block['hash']}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <ng-template matExpansionPanelContent>
+                <lthn-chain-block-details [id]="block['hash']"></lthn-chain-block-details>
+            </ng-template>
+
+            <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                <button mat-button color="primary" (click)="nextStep()">Next</button>
+            </mat-action-row>
+        </mat-expansion-panel>
+    </mat-accordion>
 </ng-container>
 <ng-container *ngIf="!blocks">
     <h1>Blockchain Daemon Loading</h1>
