@@ -5,7 +5,7 @@
             [autofocus]="true"
             [ngModel]="transfer.destinations[0].address"
             [hint]="'Destination Address'"
-            (change)="transfer.destinations[0].address = $event">
+            (change)="transfer.destinations[0].address = $event.trim()">
     </ngx-input>
 
     <ngx-input
