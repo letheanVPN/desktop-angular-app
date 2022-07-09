@@ -28,23 +28,23 @@
     <div fxFlex="50">
         <mat-list dense>
             <mat-list-item>PPLNS Payment Scheme</mat-list-item>
-            <mat-list-item><p>Hashrate:</p> <p>{{ poolInfo['collective']['hashRate']| hashrate }}</p></mat-list-item>
-            <mat-list-item><p>Avg Hashrate:</p> <p>{{ poolInfo['collective']['avg1hashRate']| hashrate }} | {{ poolInfo['collective']['avg3hashRate']| hashrate }}| {{ poolInfo['collective']['avg6hashRate']| hashrate }}| {{ poolInfo['collective']['avg24hashRate']| hashrate }}</p></mat-list-item>
-            <mat-list-item><p>Current Effort:</p> <p [style]="{color: poolInfo['collective']['currentEffort'] | effort}">{{ poolInfo['collective']['currentEffort'] }}%</p></mat-list-item>
-            <mat-list-item><p>30s Share Rate:</p> <p>{{ poolInfo['collective']['shareRate'] }}</p></mat-list-item>
-            <mat-list-item><p>Total Hashes:</p> <p>{{ poolInfo['collective']['totalHashes'] }}</p></mat-list-item>
-            <mat-list-item><p>Total Shares:</p> <p>{{ poolInfo['collective']['validShares'] }}</p></mat-list-item>
+            <mat-list-item><p>Hashrate:</p> <p class="text-right">{{ poolInfo['collective']['hashRate']| hashrate }}</p></mat-list-item>
+            <mat-list-item><p>Avg Hashrate:</p> <p class="text-right">{{ poolInfo['collective']['avg1hashRate']| hashrate }} | {{ poolInfo['collective']['avg3hashRate']| hashrate }}| {{ poolInfo['collective']['avg6hashRate']| hashrate }}| {{ poolInfo['collective']['avg24hashRate']| hashrate }}</p></mat-list-item>
+            <mat-list-item><p>Current Effort:</p> <p class="text-right" [style]="{color: poolInfo['collective']['currentEffort'] | effort}">{{ poolInfo['collective']['currentEffort'] }}%</p></mat-list-item>
+            <mat-list-item><p>30s Share Rate:</p> <p class="text-right">{{ poolInfo['collective']['shareRate'] }}</p></mat-list-item>
+            <mat-list-item><p>Total Hashes:</p> <p class="text-right">{{ poolInfo['collective']['totalHashes'] }}</p></mat-list-item>
+            <mat-list-item><p>Total Shares:</p> <p class="text-right">{{ poolInfo['collective']['validShares'] }}</p></mat-list-item>
         </mat-list>
     </div>
    <div fxFlex="50">
        <mat-list dense>
            <mat-list-item>Solo Payment Scheme</mat-list-item>
-           <mat-list-item><p>Hashrate:</p> <p>{{ poolInfo['solo']['hashRate']| hashrate }}</p></mat-list-item>
-           <mat-list-item><p>Avg Hashrate:</p> <p>{{ poolInfo['solo']['avg1hashRate']| hashrate }} | {{ poolInfo['solo']['avg3hashRate']| hashrate }}| {{ poolInfo['solo']['avg6hashRate']| hashrate }}| {{ poolInfo['solo']['avg24hashRate']| hashrate }}</p></mat-list-item>
-           <mat-list-item><p>Current Effort:</p> <p [style]="{color: poolInfo['solo']['currentEffort'] | effort}">{{ poolInfo['solo']['currentEffort'] }}%</p></mat-list-item>
-           <mat-list-item><p>30s Share Rate:</p> <p>{{ poolInfo['solo']['shareRate'] }}</p></mat-list-item>
-           <mat-list-item><p>Total Hashes:</p> <p>{{ poolInfo['solo']['totalHashes'] }}</p></mat-list-item>
-           <mat-list-item><p>Total Shares:</p> <p>{{ poolInfo['solo']['validShares'] }}</p></mat-list-item>
+           <mat-list-item><p>Hashrate:</p> <p class="text-right">{{ poolInfo['solo']['hashRate']| hashrate }}</p></mat-list-item>
+           <mat-list-item><p>Avg Hashrate:</p> <p class="text-right">{{ poolInfo['solo']['avg1hashRate']| hashrate }} | {{ poolInfo['solo']['avg3hashRate']| hashrate }}| {{ poolInfo['solo']['avg6hashRate']| hashrate }}| {{ poolInfo['solo']['avg24hashRate']| hashrate }}</p></mat-list-item>
+           <mat-list-item><p>Current Effort:</p> <p class="text-right" [style]="{color: poolInfo['solo']['currentEffort'] | effort}">{{ poolInfo['solo']['currentEffort'] }}%</p></mat-list-item>
+           <mat-list-item><p>30s Share Rate:</p> <p class="text-right">{{ poolInfo['solo']['shareRate'] }}</p></mat-list-item>
+           <mat-list-item><p>Total Hashes:</p> <p class="text-right">{{ poolInfo['solo']['totalHashes'] }}</p></mat-list-item>
+           <mat-list-item><p>Total Shares:</p> <p class="text-right">{{ poolInfo['solo']['validShares'] }}</p></mat-list-item>
        </mat-list>
    </div>
     <div fxFlex="100">
