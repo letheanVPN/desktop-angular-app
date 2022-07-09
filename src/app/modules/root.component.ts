@@ -28,7 +28,6 @@ export class RootComponent implements OnInit{
 				}
 			})
 			this.apps = await containers.json()
-			console.log(this.apps)
 		}catch (e) {
 			return false
 		}
@@ -47,7 +46,6 @@ export class RootComponent implements OnInit{
 				}
 			})
 			this.market = await containers.json()
-			console.log(this.market)
 		}catch (e) {
 			return false
 		}
@@ -55,7 +53,7 @@ export class RootComponent implements OnInit{
 	}
 
 	async installApp(app: any) {
-		if(!this.apps[app.code]) {
+		if((app.pkg && app.code) && !this.apps[app.code] ) {
 			console.log(app)
 			const containers = await fetch('http://localhost:36911/apps/install', {
 				method: "POST",
@@ -71,7 +69,7 @@ export class RootComponent implements OnInit{
 		return await this.getAppConfig()
 	}
 	async removeApp(app: any) {
-		if(this.apps[app.code]) {
+		if(app.code && this.apps[app.code]) {
 			const containers = await fetch('http://localhost:36911/apps/remove', {
 				method: "POST",
 				headers: {

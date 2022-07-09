@@ -23,13 +23,18 @@ export class DockerComponent implements OnInit, OnDestroy {
   }
 
   async getContainerList(){
-    const containers = await fetch('http://localhost:36911/docker/containers', {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      }
-    })
-    this.containers = await containers.json()
+    try {
+      const containers = await fetch('http://localhost:36911/docker/containers', {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        }
+      })
+      this.containers = await containers.json()
+    }catch (e) {
+      this.containers = []
+    }
+
     return this.containers;
   }
 

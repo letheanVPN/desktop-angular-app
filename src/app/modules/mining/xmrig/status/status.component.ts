@@ -78,7 +78,7 @@ export class XmrigStatusComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
   public ngOnDestroy(): void {
-//    this.sub.unsubscribe();
-//    this.sub2.unsubscribe();
+//    if(this.sub) this.sub.unsubscribe();
+//    if(this.su2) this.sub2.unsubscribe();
   }
 }

@@ -124,7 +124,7 @@ export class StatusComponent implements OnInit, AfterViewInit, OnDestroy {
       this.sub = interval(500).subscribe(async () => {
         this.chainInfo = await this.chain.getInfo()
         if(this.chainInfo.height > 0){
-          this.sub.unsubscribe();
+          if(this.sub) this.sub.unsubscribe();
         }
         // this.isSelected = this.chainInfo !== undefined
       });
@@ -151,8 +151,8 @@ export class StatusComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.isSelected) {
       console.log('stop', this.isSelected)
       this.chain.stopDaemon()
-      this.sub.unsubscribe();
-      this.sub2.unsubscribe();
+      if(this.sub) this.sub.unsubscribe();
+      if(this.sub2) this.sub2.unsubscribe();
     } else {
       this.chain.startDaemon().catch(e => console.log(e))
       console.log('start', this.isSelected)
@@ -164,8 +164,8 @@ export class StatusComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.sub.unsubscribe();
-    this.sub2.unsubscribe();
+    if(this.sub) this.sub.unsubscribe();
+    if(this.sub2) this.sub2.unsubscribe();
   }
 
 	public async openLink() {
