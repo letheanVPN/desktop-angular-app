@@ -29,7 +29,7 @@ export class TransactionsComponent implements OnInit {
 
 	columns = [
 		{name: 'Amount'}, {name: 'Fee'}, {name: 'Height'}, {name: 'Note'}, {name: 'Payment ID'},
-		{name: 'Timestamp'}, {name: 'txid'}, {name: 'Type'}, {name: 'Unlock Time'}];
+		{name: 'Timestamp'}, {name: 'txid'}, {name: 'Type'}, {name: 'Unlock Time', prop: "unlock_time"}];
 
 	ColumnMode = ColumnMode;
 

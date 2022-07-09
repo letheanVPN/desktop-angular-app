@@ -10,11 +10,9 @@
                 [trackByProp]="'timestamp'"
                 [sorts]="[{ prop: 'timestamp', dir: 'desc' }]"
         >
-            <ngx-datatable-column name="Type"></ngx-datatable-column>
+            <ngx-datatable-column name="Height"></ngx-datatable-column>
+            <ngx-datatable-column prop="unlock_time"></ngx-datatable-column>
             <ngx-datatable-column name="Txid">
-                <ng-template let-value="value" ngx-datatable-cell-template>
-                    <span [innerHTML]="value | hashLink:'txn' | keepHtml"></span>
-                </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="Amount">
                 <ng-template let-value="value" ngx-datatable-cell-template>
