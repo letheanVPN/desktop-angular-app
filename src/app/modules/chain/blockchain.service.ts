@@ -99,21 +99,27 @@ export class BlockchainService {
     }
 
     chainRpc(params: any ) {
-        let request = {
-            "url": params['url'] ,
-            "req": rpcBody(params['method'])(params['params'])
-        }
-        return fetch(`http://localhost:36911/daemon/json_rpc`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization':  AuthService.token.access_token
-            },
-            body: JSON.stringify(request)
-        })
+        try {
 
-            .then(res => res.json())
-            .then(res => res.result)
+
+            let request = {
+                "url": params['url'],
+                "req": rpcBody(params['method'])(params['params'])
+            }
+            return fetch(`http://localhost:36911/daemon/json_rpc`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': AuthService.token.access_token
+                },
+                body: JSON.stringify(request)
+            })
+
+                .then(res => res.json())
+                .then(res => res.result)
+        }catch (e) {
+            return false
+        }
     }
 
     async getInfo() {

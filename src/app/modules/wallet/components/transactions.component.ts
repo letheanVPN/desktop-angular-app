@@ -37,8 +37,13 @@ export class TransactionsComponent implements OnInit {
 		this.name = this.route.snapshot.paramMap.get('id')
 	}
 
-	ngOnInit(): void {
-		this.loadTransactions().catch((err) => console.error(err));
+	async ngOnInit() {
+		try {
+			await this.loadTransactions()
+		} catch (e) {
+
+		}
+
 	}
 
 	async loadTransactions() {

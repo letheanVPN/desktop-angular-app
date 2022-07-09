@@ -8,15 +8,19 @@ export const rpcBody = (method) => (params) => ({
 });
 export const request =
 	(url) =>
-	 (method, params = {}) =>
-		 axios.post(url, JSON.stringify(rpcBody(method)(params))).then((data) => {
-			 console.log(data)
-			 if(data['data'].error){
+	 (method, params = {}) => {
+	try {
+		return axios.post(url, JSON.stringify(rpcBody(method)(params))).then((data) => {
+			if (data['data'].error) {
 				return data['data']
-			 } else if(data['data']) {
-				 return data['data'].result
-			 }else{
-				 return data
-			 }
-		 });
+			} else if (data['data']) {
+				return data['data'].result
+			} else {
+				return data
+			}
+		});
+	}catch (e) {
+		
+	}
+	 }
 
