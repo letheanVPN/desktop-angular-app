@@ -124,12 +124,23 @@ export class AppComponent implements OnInit, AfterContentInit {
 
 	public async ngAfterContentInit() {
 
+		try {
+			await this.app.fetchServerPublicKey()
 
-		// setup language watcher
-//		this.currentLanguage$ = this.store.pipe(select(selectLanguage)).subscribe((lang) => {
-//			this.currentLanguage = lang;
-//			this.translate.use(lang);
-//		});
+			await this.app.loadConfig('conf/app.ini')
+
+		} catch (e) {
+			if ('HttpErrorResponse' === e.name) {
+				if (e.status === 401) {
+
+				}else if(e.status === 404){
+
+					await this.app.makeDefault()
+					await this.app.loadConfig('conf/app.ini')
+
+				}
+			}
+		}
 
 		this.updateMeta();
 	}
@@ -141,7 +152,8 @@ export class AppComponent implements OnInit, AfterContentInit {
 	 */
 	changeLanguage(lang: string) {
 		console.log(lang);
-//		this.store.dispatch(changeLanguage({language: lang}));
+		this.currentLanguage = lang;
+		this.translate.use(lang);
 	}
 
 
