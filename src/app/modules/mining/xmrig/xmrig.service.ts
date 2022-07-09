@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
+import {FileSystemService} from '@service/filesystem/file-system.service';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class XmrigService {
 
-	constructor() {
+	constructor(private fs: FileSystemService) {
 	}
 
 	async checkInstallConfig() {
@@ -65,6 +66,9 @@ export class XmrigService {
 			args['pass'] = 'Lethean-GUI-Miner';
 		}
 
+		if(!await this.fs.isFile('conf/xmrig/config.json')){
+			await this.fs.writeFile('conf/xmrig/config.json', JSON.stringify({}))
+		}
 //    args['cpuMaxThreadsHint'] = '50%'
 //    args['httpPort'] = '36979'
 //    args['httpHost'] = 'localhost'
