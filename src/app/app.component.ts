@@ -7,6 +7,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {Subscription} from 'rxjs';
 import {LoadingService} from '@swimlane/ngx-ui';
 import {AppConfigService} from '@service/app-config.service';
+import {FileSystemService} from '@service/filesystem/file-system.service';
 
 @Component({
 	selector: 'lthn-app',
@@ -22,47 +23,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 	public currentLanguage: string = 'en';
 	public navExpanded: boolean = true;
 
-	public menuItems = [
-		{
-			'title': 'menu.text.dashboard',
-			'icon': ['fas','gauge'],
-			'url': ['/', 'dashboard'],
-			"children": [
-				{
-					'title': 'menu.text.dashboard',
-					'url': ['/', 'dashboard']
-				},
-				{
-					'title': 'menu.text.market',
-					'url': ['/', 'market']
-				},
-				{
-					'title': 'menu.text.developer',
-					'url': ['/', 'developer']
-				}
-		]
-		},
-		{
-			'title': 'menu.text.chain',
-			'icon': ['fas','link'],
-			'url': ['/', 'chain']
-		},
-		{
-			'title': 'menu.text.wallet',
-			'icon': ['fas','wallet'],
-			'url': ['/', 'wallet']
-		},
-		{
-			'title': 'menu.text.mining',
-			'icon': ['fas','person-digging'],
-			'url': ['/', 'mining', 'xmrig']
-		},
-		{
-			'title': 'menu.text.docker',
-			'icon': ['fab','docker'],
-			'url': ['/', 'docker']
-		}
-	];
+	public menuItems = [];
 
 	/**
 	 * Starts the Angular framework and configures system plugins
@@ -72,10 +33,9 @@ export class AppComponent implements OnInit, AfterContentInit {
 	 * @param {Title} titleService
 	 * @param {Meta} metaService
 	 * @param {TranslateService} translate
-	 * @param {Store} store
-	 * @param {BlockchainService} chain
 	 * @param app
 	 * @param loadingService
+	 * @param fs
 	 */
 	constructor(
 		private router: Router,
@@ -84,7 +44,8 @@ export class AppComponent implements OnInit, AfterContentInit {
 		private metaService: Meta,
 		private translate: TranslateService,
 		private loadingService: LoadingService,
-		public app: AppConfigService
+		public app: AppConfigService,
+		private fs: FileSystemService
 	) {
 	}
 
@@ -103,6 +64,8 @@ export class AppComponent implements OnInit, AfterContentInit {
 				this.loadingService.complete();
 			}
 		});
+		await this.getMenuConfig()
+
 
 	}
 
@@ -125,22 +88,47 @@ export class AppComponent implements OnInit, AfterContentInit {
 	public async ngAfterContentInit() {
 
 		try {
-			await this.app.fetchServerPublicKey()
+			await this.app.fetchServerPublicKey();
 
-			await this.app.loadConfig('conf/app.ini')
+			await this.app.loadConfig('conf/app.ini');
 
 		} catch (e) {
 			if ('HttpErrorResponse' === e.name) {
 				if (e.status === 401) {
 
-				}else if(e.status === 404){
+				} else if (e.status === 404) {
 
-					await this.app.makeDefault()
-					await this.app.loadConfig('conf/app.ini')
+					await this.app.makeDefault();
+					await this.app.loadConfig('conf/app.ini');
 
 				}
 			}
 		}
+
+		if (!await this.fs.isFile('data/objects/apps/menu.json')) {
+
+			try {
+				this.menuItems = [
+					{'title': 'menu.text.dashboard', 'icon': ['fas', 'gauge'], 'url': ['/', 'dashboard']},
+					{'title': 'menu.text.chain', 'icon': ['fas', 'link'], 'url': ['/', 'chain']},
+					{'title': 'menu.text.wallet', 'icon': ['fas', 'wallet'], 'url': ['/', 'wallet']},
+					{'title': 'menu.text.mining', 'icon': ['fas', 'person-digging'], 'url': ['/', 'mining', 'xmrig']}
+				];
+
+				const containers = await fetch('http://localhost:36911/system/data/object/set', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({group: 'apps', object: 'menu', data: this.menuItems})
+				});
+				await containers.json();
+			} catch (e) {
+				//return false;
+			}
+
+		}
+
 
 		this.updateMeta();
 	}
@@ -215,6 +203,22 @@ export class AppComponent implements OnInit, AfterContentInit {
 	}
 
 	public getChildItems() {
-console.log(this.activatedRoute.url);
+		console.log(this.activatedRoute.url);
+	}
+
+	async getMenuConfig() {
+		try {
+			const containers = await fetch('http://localhost:36911/system/data/object/get', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({group: 'apps', object: 'menu'})
+			});
+			return this.menuItems = await containers.json();
+		} catch (e) {
+			return false;
+		}
+
 	}
 }

@@ -16,13 +16,13 @@ import {MatCardModule} from '@angular/material/card';
 import {WalletModule} from '@module/wallet/wallet.module';
 import {BlockchainModule} from '@module/chain/blockchain.module';
 import {
-    CardModule,
-    CodeEditorModule,
-    DropdownModule,
-    IconModule,
-    SectionModule,
-    TabsModule,
-    ToggleModule
+	CardModule,
+	CodeEditorModule,
+	DropdownModule,
+	IconModule,
+	SectionModule, SplitModule,
+	TabsModule,
+	ToggleModule
 } from '@swimlane/ngx-ui';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from "@angular/router";
@@ -31,40 +31,46 @@ import {EditorModule} from '@module/devkit/editor/editor.module';
 import {DockerModule} from '@module/docker/docker.module';
 import {MiningModule} from '@module/mining/mining.module';
 import {XmrigModule} from '@module/mining/xmrig/xmrig.module';
+import {NgxIframeMessengerModule} from 'ngx-iframe-messenger';
+import {NgMagicIframeModule} from '@sebgroup/ng-magic-iframe';
+import { LoadAppComponent } from './load-app/load-app.component';
 
 @NgModule({
-	declarations: [RootComponent],
-    imports: [
-        CommonModule,
-        MatButtonModule,
-        FlexModule,
-        MatTabsModule,
-        WalletModule,
-        TranslateModule,
-        MatDividerModule,
-        MatProgressSpinnerModule,
-        MatListModule,
-        ReactiveComponentModule,
-        PipesModule,
-        NgxDatatableModule,
-        MatIconModule,
-        MatCardModule,
-        BlockchainModule,
-        DockerModule,
-        MiningModule,
-        CodeEditorModule,
-        FormsModule,
-        CardModule,
-        IconModule,
-        ToggleModule,
-        DropdownModule,
-        SectionModule,
-        RouterModule,
-        TabsModule,
-        MatProgressBarModule,
-        EditorModule,
-        XmrigModule
-    ]
+	declarations: [RootComponent, LoadAppComponent],
+	imports: [
+		CommonModule,
+		MatButtonModule,
+		FlexModule,
+		MatTabsModule,
+		WalletModule,
+		TranslateModule,
+		MatDividerModule,
+		MatProgressSpinnerModule,
+		MatListModule,
+		ReactiveComponentModule,
+		PipesModule,
+		NgxDatatableModule,
+		MatIconModule,
+		MatCardModule,
+		BlockchainModule,
+		DockerModule,
+		MiningModule,
+		CodeEditorModule,
+		FormsModule,
+		CardModule,
+		IconModule,
+		ToggleModule,
+		DropdownModule,
+		SectionModule,
+		RouterModule,
+		TabsModule,
+		MatProgressBarModule,
+		EditorModule,
+		XmrigModule,
+		NgxIframeMessengerModule,
+		NgMagicIframeModule,
+		SplitModule
+	]
 })
 export class RootModule {
 }

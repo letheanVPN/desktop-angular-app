@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {BehaviorSubject} from 'rxjs';
 @Component({
 	selector: 'lthn-root',
 	templateUrl: './root.component.html'
@@ -9,8 +11,9 @@ export class RootComponent implements OnInit{
 	public code: any;
 	public apps: any = {};
 	public market: any = {};
+	public url: BehaviorSubject<string> ;
 
-	constructor() {}
+	constructor(public router: Router) {}
 
 	public async ngOnInit() {
 
@@ -84,4 +87,7 @@ export class RootComponent implements OnInit{
 		return await this.getAppConfig()
 	}
 
+	public onPayloadReceived($event: any) {
+		console.log($event)
+	}
 }

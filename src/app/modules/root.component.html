@@ -1,38 +1,43 @@
 <ngx-tabs class="" #tabs>
     <ngx-tab [label]="'app.market.dashboard' | translate" #tab1>
-            <ngx-section *ngIf="(apps | keyvalue)?.length == 0">
-               <p>{{ "app.market.no-apps-installed" | translate }}</p>
-                <button class="btn btn-primary-gradient" (click)="tabs.tabClicked(tab2)">{{"app.market.view-installable-apps" | translate}}</button>
-            </ngx-section>
+        <ngx-section *ngIf="(apps | keyvalue)?.length == 0">
+            <p>{{ "app.market.no-apps-installed" | translate }}</p>
+            <button class="btn btn-primary-gradient"
+                    (click)="tabs.tabClicked(tab2)">{{"app.market.view-installable-apps" | translate}}</button>
+        </ngx-section>
         <ngx-section *ngIf="(apps | keyvalue)?.length > 0">
             <lthn-chain-status *ngIf="apps['blockchain-lthn']"></lthn-chain-status>
-            <xmr-chain-status  *ngIf="apps['blockchain-xmr']"></xmr-chain-status>
-            <lthn-xmrig-status  *ngIf="apps['miner-xmrig']"></lthn-xmrig-status>
+            <xmr-chain-status *ngIf="apps['blockchain-xmr']"></xmr-chain-status>
+            <lthn-xmrig-status *ngIf="apps['miner-xmrig']"></lthn-xmrig-status>
         </ngx-section>
     </ngx-tab>
-    <ngx-tab [label]="'app.market.apps' | translate"  #tab2>
-        <ngx-section *ngxIfTabActive >
-            <span class="tag tag-bordered" (click)="getAppMarket()" >Homepage</span>
+    <ngx-tab [label]="'app.market.apps' | translate" #tab2>
+        <ngx-section *ngxIfTabActive>
+            <span class="tag tag-bordered" (click)="getAppMarket()">Homepage</span>
 
             <ng-container *ngIf="market['dirs']">
-                <span class="tag tag-bordered" (click)="getAppMarket(dir)"  *ngFor="let dir of market['dirs']">{{dir}}</span>
+                <span class="tag tag-bordered" (click)="getAppMarket(dir)"
+                      *ngFor="let dir of market['dirs']">{{dir}}</span>
             </ng-container>
 
             <ngx-card *ngFor="let app of market['apps']">
                 <ngx-card-header>
-                    <ngx-card-avatar src="assets/icons/icon-96x96.png" [status]="apps[ app['code']] ? 'success' : 'disabled' "></ngx-card-avatar>
+                    <ngx-card-avatar src="assets/icons/icon-96x96.png"
+                                     [status]="apps[ app['code']] ? 'success' : 'disabled' "></ngx-card-avatar>
                     <ngx-card-title> {{ app['name'] }}</ngx-card-title>
                     <ngx-card-subtitle *ngIf="app['version']"> {{ app['version'] }}</ngx-card-subtitle>
                 </ngx-card-header>
                 <ngx-card-section>
-                    <button class="btn btn-bordered" *ngIf="!apps[ app['code']]" (click)="installApp( app)" >{{"words.actions.install" | translate}}</button>
-                    <button class="btn btn-bordered" *ngIf="apps[ app['code']]" (click)="removeApp( app)" >{{"words.actions.remove" | translate}}</button>
+                    <button class="btn btn-bordered" *ngIf="!apps[ app['code']]"
+                            (click)="installApp( app)">{{"words.actions.install" | translate}}</button>
+                    <button class="btn btn-bordered" *ngIf="apps[ app['code']]"
+                            (click)="removeApp( app)">{{"words.actions.remove" | translate}}</button>
                 </ngx-card-section>
             </ngx-card>
         </ngx-section>
     </ngx-tab>
-    <ngx-tab [label]="'app.market.installed' | translate"  #tab3>
-        <ngx-section *ngxIfTabActive >
+    <ngx-tab [label]="'app.market.installed' | translate" #tab3>
+        <ngx-section *ngxIfTabActive>
             <ngx-card *ngFor="let app of apps | keyvalue">
 
                 <ngx-card-header>
@@ -41,9 +46,19 @@
                     <ngx-card-subtitle *ngIf="app.value['version']"> {{ app.value['version'] }}</ngx-card-subtitle>
                 </ngx-card-header>
                 <ngx-card-section>
-                    <button class="btn btn-bordered" (click)="removeApp( app.value)" >{{"words.actions.remove" | translate}}</button>
+                    <button class="btn btn-bordered"
+                            (click)="removeApp( app.value)">{{"words.actions.remove" | translate}}</button>
                 </ngx-card-section>
             </ngx-card>
+        </ngx-section>
+    </ngx-tab>
+    <ngx-tab [label]="'File Manager'" *ngIf="apps['app-directory-browser']" #tab4>
+        <ngx-section *ngxIfTabActive>
+            <seb-ng-magic-iframe
+                    [styles]="'body { height: 100%!important; }'"
+                    [source]="'http://localhost:36911/app/directory/browser/index.html'"
+                    [styleUrls]="['/styles.css', '/assets/css/fonts.css']"
+            ></seb-ng-magic-iframe>
         </ngx-section>
     </ngx-tab>
 

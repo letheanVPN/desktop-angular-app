@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {RootComponent} from '@module/root.component';
 import {RootModule} from '@module/root.module';
-import {TerminalComponent} from '@module/console/terminal.component';
 import {AuthGuard} from '@module/auth/route.guard';
 
 const routes: Routes = [
@@ -17,19 +16,7 @@ const routes: Routes = [
 			description: 'view.dashboard.description',
 			robots: true
 		}
-	},
-	{
-		path: 'terminal',
-		component: TerminalComponent,
-		canActivate: [AuthGuard],
-		pathMatch: 'full',
-		data: {
-			title: 'view.terminal.title',
-			heading: 'view.terminal.heading',
-			description: 'view.terminal.description',
-			robots: true
-		}
-	},
+	}
 
 ];
 

@@ -9,6 +9,7 @@ import {AuthGuard} from '@module/auth/route.guard';
 import {DocsRoutingModule} from "@module/docs/docs-routing.module";
 import {DockerRoutingModule} from '@module/docker/docker-routing.module';
 import {XmrigRoutingModule} from '@module/mining/xmrig/xmrig-routing.module';
+import {LoadAppComponent} from '@module/load-app/load-app.component';
 
 const routes: Routes = [
 	{
@@ -21,6 +22,10 @@ const routes: Routes = [
 			description: 'Lethean (LTHN) Login',
 			robots: true
 		}
+	},
+	{
+		path: "app/:id",
+		component: LoadAppComponent
 	},
 	{
 		path: "",

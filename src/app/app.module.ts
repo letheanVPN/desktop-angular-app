@@ -23,9 +23,12 @@ import {JwtModule} from '@auth0/angular-jwt';
 import {AuthService} from '@module/auth/auth.service';
 import {HeaderInterceptor} from '@module/auth/auth.interceptor';
 import {FaIconLibrary, FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {faGauge, faLink, faPersonDigging, faWallet} from '@fortawesome/free-solid-svg-icons';
-import {faDocker} from '@fortawesome/free-brands-svg-icons';
+
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons'
 import {NgChartsModule} from 'ng2-charts';
+import {NgMagicIframeModule} from '@sebgroup/ng-magic-iframe';
 
 export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http);
@@ -71,7 +74,8 @@ export function tokenGetter() {
 		ConsoleModule,
 		NgxUIModule,
   FontAwesomeModule,
-		NgChartsModule
+		NgChartsModule,
+		NgMagicIframeModule
 
 	],
 	bootstrap: [AppComponent],
@@ -85,6 +89,6 @@ export function tokenGetter() {
 export class AppModule {
 	constructor(library: FaIconLibrary) {
 		// Add multiple icons to the library
-		library.addIcons(faGauge, faLink, faPersonDigging, faWallet, faDocker);
+		library.addIconPacks(fas, fab, far);
 	}
 }
