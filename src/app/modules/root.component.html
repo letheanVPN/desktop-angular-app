@@ -1,11 +1,11 @@
 <ngx-tabs class="" #tabs>
     <ngx-tab [label]="'app.market.dashboard' | translate" #tab1>
-        <ngx-section *ngIf="!(apps['blockchain-lthn'] || apps['blockchain-xmr'] || apps['miner-xmrig'])">
-            <p>{{ "app.market.no-apps-installed" | translate }}</p>
+        <ngx-section *ngIf="apps && !(apps['blockchain-lthn'] || apps['blockchain-xmr'] || apps['miner-xmrig'])">
+            <p>Please wait while we download Lethean Blockchain</p>
             <button class="btn btn-primary-gradient"
                     (click)="tabs.tabClicked(tab2)">{{"app.market.view-installable-apps" | translate}}</button>
         </ngx-section>
-        <ngx-section *ngIf="apps['blockchain-lthn'] || apps['blockchain-xmr'] || apps['miner-xmrig'] ">
+        <ngx-section *ngIf="apps && (apps['blockchain-lthn'] || apps['blockchain-xmr'] || apps['miner-xmrig']) ">
             <lthn-chain-status *ngIf="apps['blockchain-lthn']"></lthn-chain-status>
             <xmr-chain-status *ngIf="apps['blockchain-xmr']"></xmr-chain-status>
             <lthn-xmrig-status *ngIf="apps['miner-xmrig']"></lthn-xmrig-status>
@@ -23,7 +23,7 @@
             <ngx-card *ngFor="let app of market['apps']">
                 <ngx-card-header>
                     <ngx-card-avatar src="assets/icons/icon-96x96.png"
-                                     [status]="apps[ app['code']] ? 'success' : 'disabled' "></ngx-card-avatar>
+                                     [status]="(apps && apps[ app['code']]) ? 'success' : 'disabled' "></ngx-card-avatar>
                     <ngx-card-title> {{ app['name'] }}</ngx-card-title>
                     <ngx-card-subtitle *ngIf="app['version']"> {{ app['version'] }}</ngx-card-subtitle>
                 </ngx-card-header>

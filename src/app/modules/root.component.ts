@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {BehaviorSubject} from 'rxjs';
+import {FileSystemService} from '@service/filesystem/file-system.service';
 @Component({
 	selector: 'lthn-root',
 	templateUrl: './root.component.html'
@@ -9,15 +10,16 @@ export class RootComponent implements OnInit{
 
 	public loaded: boolean = false;
 	public code: any;
-	public apps: any = {};
+	public apps: any ;
 	public market: any = {};
 	public url: BehaviorSubject<string> ;
 
-	constructor(public router: Router) {}
+	constructor(public router: Router, private fs: FileSystemService) {}
 
 	public async ngOnInit() {
 
-		await this.getAppConfig()
+		this.apps = await this.getAppConfig()
+		await this.firstLoad()
 		await this.getAppMarket()
 
 	}
@@ -30,7 +32,7 @@ export class RootComponent implements OnInit{
 					"Content-Type": "application/json",
 				}
 			})
-			this.apps = await containers.json()
+			return await containers.json()
 		}catch (e) {
 			return false
 		}
@@ -56,8 +58,11 @@ export class RootComponent implements OnInit{
 	}
 
 	async installApp(app: any) {
+		if(this.apps == undefined){
+			this.apps = {}
+		}
 		if((app.pkg && app.code) && !this.apps[app.code] ) {
-			console.log(app)
+
 			const containers = await fetch('http://localhost:36911/apps/install', {
 				method: "POST",
 				headers: {
@@ -85,6 +90,15 @@ export class RootComponent implements OnInit{
 
 //		console.log(this.apps)
 		return await this.getAppConfig()
+	}
+
+	async firstLoad() {
+		if(!await this.fs.isFile('data/objects/apps/installed.json')){
+
+			await this.installApp({code: 'server', pkg: 'https://raw.githubusercontent.com/dAppServer/server/main/.itw3.json'})
+			await this.installApp({code: 'blockchain-lthn', pkg: 'https://raw.githubusercontent.com/letheanVPN/blockchain-iz/main/.itw3.json'})
+			this.apps = await this.getAppConfig()
+		}
 	}
 
 	public onPayloadReceived($event: any) {
