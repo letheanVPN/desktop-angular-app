@@ -1,9 +1,9 @@
 <div class="main-container">
     <ngx-toolbar style="height: 58px;">
         <ngx-toolbar-title>
-            <ngx-navbar style="margin-left: 0px;" [active]="activeRoute">
+            <ngx-navbar *ngIf="menuItems.length > 0" style="margin-left: 0px;" [active]="activeRoute">
 
-                    <ngx-navbar-item *ngFor="let menu of menuItems" [routerLink]="menu.app ? ['/', 'app', menu.app] : menu.url" title="{{ menu.title | translate }}">
+                    <ngx-navbar-item  *ngFor="let menu of menuItems" [routerLink]="menu.app ? ['/', 'app', menu.app] : menu.url" title="{{ menu.title | translate }}">
                         <fa-icon [icon]=" menu.icon"></fa-icon>
                     </ngx-navbar-item>
 

@@ -64,25 +64,19 @@ export class AppComponent implements OnInit, AfterContentInit {
 				this.loadingService.complete();
 			}
 		});
-		await this.getMenuConfig()
+		await this.getMenuConfig();
 
 
 	}
 
 	get activeRoute(): number {
-		switch (this.router.url) {
-			case '/':
-				return 0;
-			case '/chain':
-				return 1;
-			case '/wallet':
-				return 2;
-			case '/mining/xmrig':
-				return 3;
-			case '/docker':
-				return 4;
-
-		}
+		return this.menuItems.findIndex(x => {
+			if (x['url']) {
+				return x.url.join('/').endsWith(this.router.url);
+			} else if (x['app']) {
+				return this.router.url.endsWith(x.app);
+			}
+		});
 	}
 
 	public async ngAfterContentInit() {
