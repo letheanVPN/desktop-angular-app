@@ -1,11 +1,11 @@
 <ngx-tabs class="" #tabs>
     <ngx-tab [label]="'app.market.dashboard' | translate" #tab1>
-        <ngx-section *ngIf="(apps | keyvalue)?.length == 0">
+        <ngx-section *ngIf="!(apps['blockchain-lthn'] || apps['blockchain-xmr'] || apps['miner-xmrig'])">
             <p>{{ "app.market.no-apps-installed" | translate }}</p>
             <button class="btn btn-primary-gradient"
                     (click)="tabs.tabClicked(tab2)">{{"app.market.view-installable-apps" | translate}}</button>
         </ngx-section>
-        <ngx-section *ngIf="(apps | keyvalue)?.length > 0">
+        <ngx-section *ngIf="apps['blockchain-lthn'] || apps['blockchain-xmr'] || apps['miner-xmrig'] ">
             <lthn-chain-status *ngIf="apps['blockchain-lthn']"></lthn-chain-status>
             <xmr-chain-status *ngIf="apps['blockchain-xmr']"></xmr-chain-status>
             <lthn-xmrig-status *ngIf="apps['miner-xmrig']"></lthn-xmrig-status>
@@ -52,14 +52,6 @@
             </ngx-card>
         </ngx-section>
     </ngx-tab>
-    <ngx-tab [label]="'File Manager'" *ngIf="apps['app-directory-browser']" #tab4>
-        <ngx-section *ngxIfTabActive>
-            <seb-ng-magic-iframe
-                    [styles]="'body { height: 100%!important; }'"
-                    [source]="'http://localhost:36911/app/directory/browser/index.html'"
-                    [styleUrls]="['/styles.css', '/assets/css/fonts.css']"
-            ></seb-ng-magic-iframe>
-        </ngx-section>
-    </ngx-tab>
+
 
 </ngx-tabs>
