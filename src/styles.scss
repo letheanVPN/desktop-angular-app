@@ -70,3 +70,25 @@ mat-list-item p {
   height: 100vh;
   background: white;
 }
+
+.language-menu-container {
+	.mat-menu-content {
+
+		padding: 4px !important;
+		> div {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+	.mat-list-item {
+		flex: 1 100%;
+		a {
+			width:100%;
+		}
+		/* For some reason some mat-list-items are generated as <a>,
+		  some as <button> */
+		button {
+			width:100%;
+		}
+	}
+}

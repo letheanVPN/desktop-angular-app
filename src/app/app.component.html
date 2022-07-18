@@ -13,7 +13,7 @@
         <ngx-toolbar-content>
 
             &nbsp;
-            <mat-menu #appMenu="matMenu">
+            <mat-menu #appMenu="matMenu" class="language-menu-container">
                 <ng-template let-name="name" matMenuContent>
                     <mat-list-item>
                         <a (click)="changeLanguage('en')" mat-button color="accent">
