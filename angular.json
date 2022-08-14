@@ -43,7 +43,10 @@
               "camelcase",
               "xterm-addon-fit",
               "config-ini-parser",
-              "crypto-js"
+              "crypto-js",
+              "filesize",
+              "element-resize-detector",
+              "moment"
             ],
             "scripts": []
           },
