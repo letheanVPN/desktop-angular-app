@@ -31,7 +31,6 @@ import {EditorModule} from '@module/devkit/editor/editor.module';
 import {DockerModule} from '@module/docker/docker.module';
 import {MiningModule} from '@module/mining/mining.module';
 import {XmrigModule} from '@module/mining/xmrig/xmrig.module';
-import {NgxIframeMessengerModule} from 'ngx-iframe-messenger';
 import {NgMagicIframeModule} from '@sebgroup/ng-magic-iframe';
 import { LoadAppComponent } from './load-app/load-app.component';
 
@@ -67,7 +66,6 @@ import { LoadAppComponent } from './load-app/load-app.component';
 		MatProgressBarModule,
 		EditorModule,
 		XmrigModule,
-		NgxIframeMessengerModule,
 		NgMagicIframeModule,
 		SplitModule
 	]
