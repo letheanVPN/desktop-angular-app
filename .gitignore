@@ -11,4 +11,5 @@ out-tsc
 /users
 /conf
 /wallets
+/apps
 package.json.md5
