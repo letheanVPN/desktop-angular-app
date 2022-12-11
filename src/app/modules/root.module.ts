@@ -1,18 +1,18 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RootComponent} from './root.component';
-import {MatButtonModule} from '@angular/material/button';
+import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
 import {FlexModule} from '@angular/flex-layout';
-import {MatTabsModule} from '@angular/material/tabs';
+import {MatLegacyTabsModule as MatTabsModule} from '@angular/material/legacy-tabs';
 import {TranslateModule} from '@ngx-translate/core';
 import {MatDividerModule} from '@angular/material/divider';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatListModule} from '@angular/material/list';
-import {ReactiveComponentModule} from '@ngrx/component';
+import {MatLegacyProgressSpinnerModule as MatProgressSpinnerModule} from '@angular/material/legacy-progress-spinner';
+import {MatLegacyListModule as MatListModule} from '@angular/material/legacy-list';
+import {LetModule, PushModule} from '@ngrx/component';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {MatIconModule} from '@angular/material/icon';
 import {PipesModule} from '@pipe/pipes.module';
-import {MatCardModule} from '@angular/material/card';
+import {MatLegacyCardModule as MatCardModule} from '@angular/material/legacy-card';
 import {WalletModule} from '@module/wallet/wallet.module';
 import {BlockchainModule} from '@module/chain/blockchain.module';
 import {
@@ -26,7 +26,7 @@ import {
 } from '@swimlane/ngx-ui';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from "@angular/router";
-import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MatLegacyProgressBarModule as MatProgressBarModule} from "@angular/material/legacy-progress-bar";
 import {EditorModule} from '@module/devkit/editor/editor.module';
 import {DockerModule} from '@module/docker/docker.module';
 import {MiningModule} from '@module/mining/mining.module';
@@ -46,7 +46,7 @@ import { LoadAppComponent } from './load-app/load-app.component';
 		MatDividerModule,
 		MatProgressSpinnerModule,
 		MatListModule,
-		ReactiveComponentModule,
+		LetModule, PushModule,
 		PipesModule,
 		NgxDatatableModule,
 		MatIconModule,

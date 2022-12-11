@@ -35,7 +35,7 @@ const routes: Routes = [
 
 @NgModule({
 	imports: [
-		RouterModule.forRoot(routes, { useHash: true, relativeLinkResolution: 'legacy', initialNavigation: 'enabledBlocking' }),
+		RouterModule.forRoot(routes, { useHash: true, initialNavigation: 'enabledBlocking' }),
 		BlockchainRoutingModule,
 		UserRoutingModule,
 		//SettingsRoutingModule,

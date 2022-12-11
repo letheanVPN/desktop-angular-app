@@ -6,7 +6,7 @@ import {MomentModule} from 'ngx-moment';
 import {PipesModule} from '@pipe/pipes.module';
 import {FlexModule} from '@angular/flex-layout';
 import {NgChartsModule} from 'ng2-charts';
-import {MatListModule} from '@angular/material/list';
+import {MatLegacyListModule as MatListModule} from '@angular/material/legacy-list';
 
 
 

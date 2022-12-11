@@ -95,5 +95,13 @@
   "defaultProject": "lethean-desktop",
   "cli": {
     "analytics": "c8decdb2-ac37-4e92-abe4-7547f6e6b9b1"
+  },
+  "schematics": {
+    "@angular-eslint/schematics:application": {
+      "setParserOptionsProject": true
+    },
+    "@angular-eslint/schematics:library": {
+      "setParserOptionsProject": true
+    }
   }
 }

@@ -1,6 +1,6 @@
 @use '@angular/material' as mat;
 
-$lethean-typography: mat.define-typography-config(
+$lethean-typography: mat.define-legacy-typography-config(
         $font-family: "'Montserrat', sans-serif",
         $display-4: mat.define-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
         $display-3: mat.define-typography-level(56px, 56px, 400, $letter-spacing: -0.02em),
@@ -18,7 +18,16 @@ $lethean-typography: mat.define-typography-config(
         $input: mat.define-typography-level(inherit, 1.125, 400)
 );
 
-@include mat.core($lethean-typography);
+// TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
+//  The following line adds:
+//    1. Default typography styles for all components
+//    2. Styles for typography hierarchy classes (e.g. .mat-headline-1)
+//  If you specify typography styles for the components you use elsewhere, you should delete this line.
+//  If you don't need the default component typographies but still want the hierarchy styles,
+//  you can delete this line and instead use:
+//    `@include mat.legacy-typography-hierarchy($lethean-typography);`
+@include mat.all-legacy-component-typographies($lethean-typography);
+@include mat.legacy-core();
 
 // http://mcg.mbitson.com/
 $md-lethean: (
@@ -134,7 +143,7 @@ $lethean-theme: mat.define-dark-theme((
 ));
 
 
-@include mat.all-component-themes($lethean-theme);
+@include mat.all-legacy-component-themes($lethean-theme);
 
 .no-pad {
   padding:0!important;
