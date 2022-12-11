@@ -52,7 +52,7 @@
     "@sebgroup/ng-magic-iframe": "^1.0.2",
     "@swimlane/ngx-datatable": "^20.0.0",
     "@swimlane/ngx-ui": "^43.0.0",
-    "@xmldom/xmldom": "^0.8.3",
+    "@xmldom/xmldom": "^0.8.6",
     "axios": "^0.24.0",
     "big.js": "^6.1.1",
     "chart.js": "^3.8.0",
