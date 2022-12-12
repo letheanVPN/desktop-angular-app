@@ -10,8 +10,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTabsModule} from '@angular/material/tabs';
-import {LogsModule} from './logs/logs.module';
 import {SettingsComponent} from './settings.component';
+import {SectionModule, TabsModule} from '@swimlane/ngx-ui';
 
 const routes: Routes = [
 	{
@@ -23,11 +23,6 @@ const routes: Routes = [
 			description: 'Lethean (LTHN) Blockchain Stats',
 			robots: false
 		}
-	},
-	{
-		path: 'logs',
-		loadChildren: () =>
-			import('./logs/logs.module').then((m) => m.LogsModule)
 	}
 ];
 
@@ -45,7 +40,8 @@ const routes: Routes = [
 		MatButtonModule,
 		MatIconModule,
 		MatTabsModule,
-		LogsModule
+		TabsModule,
+		SectionModule
 	],
 	exports: [RouterModule]
 })
