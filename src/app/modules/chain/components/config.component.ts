@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BlockchainService} from '@module/chain/blockchain.service';
 import {FileSystemService} from '@service/filesystem/file-system.service';
 import {NotificationService, NotificationStyleType, NotificationType} from '@swimlane/ngx-ui';
@@ -7,12 +7,16 @@ import 'codemirror/mode/properties/properties.js';
 	selector: 'lthn-chain-config',
 	templateUrl: './config.component.html'
 })
-export class BlockchainConfigComponent {
+export class BlockchainConfigComponent implements OnInit {
 
 	public config = ''
 
 	constructor(public chain: BlockchainService, private fs: FileSystemService, private notify: NotificationService) {
-		this.load().then(() => console.log('loaded'));
+
+	}
+
+	async ngOnInit() {
+		this.load();
 	}
 
 	async save() {
