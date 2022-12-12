@@ -91,8 +91,26 @@ export class BlockLedgerComponent implements OnInit, OnDestroy {
 		this.blockSearch = new UntypedFormControl('', [Validators.required]);
 
 		//this.chain.getInfo()
-		this.chainInfo = await this.chain.getInfo();
-		if (this.chainInfo) {
+		await this.getChainInfo()
+
+		if(this.chainInfo){
+			await this.getBlocks()
+		}
+
+		this.sub['interval'] = interval(5000).subscribe(async () => {
+			await this.getChainInfo()
+			await this.getBlocks()
+		});
+
+	}
+
+	async getChainInfo() {
+		const chainInfo = await this.chain.getInfo()
+		if (chainInfo) {
+
+			if(chainInfo !== this.chainInfo){
+				this.chainInfo = chainInfo
+			}
 			// we have chain data, and it talks to us set to amber
 			this.status_daemon = 1;
 			//console.log(data)
@@ -102,20 +120,19 @@ export class BlockLedgerComponent implements OnInit, OnDestroy {
 			}
 			this.page.totalElements = this.chainInfo.height
 			this.page.totalPages = Math.floor(this.page.totalElements/this.page.size)
+
+
+
 		} else {
 			this.status_daemon = 0;
 		}
-		await this.getBlocks()
-
-		this.sub['interval'] = interval(5000).subscribe(async () => this.chainInfo = await this.chain.getInfo());
-
 	}
 
 	async getBlocks() {
 		let start_height = this.page.totalElements - this.page.pageNumber * this.page.size - 1
 		let end_height = this.page.totalElements - this.page.size - this.page.pageNumber * this.page.size
 
-		 this.blocks = await this.chain.getBlocks(Math.max(0, end_height), Math.max(0, start_height));
+		this.blocks = await this.chain.getBlocks(Math.max(0, end_height), Math.max(0, start_height));
 
 		return this.blocks['headers']= this.blocks['headers'].reverse()
 	}
