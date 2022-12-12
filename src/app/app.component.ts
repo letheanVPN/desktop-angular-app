@@ -44,7 +44,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 		private metaService: Meta,
 		private translate: TranslateService,
 		private loadingService: LoadingService,
-		public app: AppConfigService,
+		public config: AppConfigService,
 		private fs: FileSystemService
 	) {
 	}
@@ -52,10 +52,27 @@ export class AppComponent implements OnInit, AfterContentInit {
 
 	public async ngOnInit() {
 
+		try {
+			await this.config.fetchServerPublicKey();
+
+			await this.config.loadConfig('conf/app.ini');
+
+		} catch (e) {
+			if ('HttpErrorResponse' === e.name) {
+				if (e.status === 401) {
+
+				} else if (e.status === 404) {
+
+					await this.config.makeDefault();
+					await this.config.loadConfig('conf/app.ini');
+
+				}
+			}
+		}
 		this.translate.setDefaultLang('en');
-		let lang = this.translate.getBrowserLang();
+		this.currentLanguage = this.config.getConfig('app', 'lang') ;
 		// the lang to use, if the lang isn't available, it will use the current loader to get them
-		this.translate.use(lang ? lang : 'en');
+		this.translate.use(this.currentLanguage ? this.currentLanguage :this.translate.getBrowserLang());
 
 		this.router.events.subscribe((event) => {
 			if (event instanceof NavigationStart) {
@@ -81,23 +98,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 
 	public async ngAfterContentInit() {
 
-		try {
-			await this.app.fetchServerPublicKey();
 
-			await this.app.loadConfig('conf/app.ini');
-
-		} catch (e) {
-			if ('HttpErrorResponse' === e.name) {
-				if (e.status === 401) {
-
-				} else if (e.status === 404) {
-
-					await this.app.makeDefault();
-					await this.app.loadConfig('conf/app.ini');
-
-				}
-			}
-		}
 
 		if (!await this.fs.isFile('data/objects/apps/menu.json')) {
 
@@ -133,7 +134,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 	 * @param {string} lang
 	 */
 	changeLanguage(lang: string) {
-		console.log(lang);
+		this.config.setConfig('app', 'lang', lang)
 		this.currentLanguage = lang;
 		this.translate.use(lang);
 	}

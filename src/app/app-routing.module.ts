@@ -10,6 +10,7 @@ import {DocsRoutingModule} from "@module/docs/docs-routing.module";
 import {DockerRoutingModule} from '@module/docker/docker-routing.module';
 import {XmrigRoutingModule} from '@module/mining/xmrig/xmrig-routing.module';
 import {LoadAppComponent} from '@module/load-app/load-app.component';
+import {SettingsRoutingModule} from '@module/settings/settings-routing.module';
 
 const routes: Routes = [
 	{
@@ -38,7 +39,7 @@ const routes: Routes = [
 		RouterModule.forRoot(routes, { useHash: true, initialNavigation: 'enabledBlocking' }),
 		BlockchainRoutingModule,
 		UserRoutingModule,
-		//SettingsRoutingModule,
+		SettingsRoutingModule,
 		WalletRoutingModule,
 		DocsRoutingModule,
 		DockerRoutingModule,

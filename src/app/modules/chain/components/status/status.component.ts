@@ -117,8 +117,8 @@ export class StatusComponent implements OnInit, AfterViewInit, OnDestroy {
 
   async ngAfterViewInit() {
     await this.checkDownloads()
-    console.log('d',this.app.getConfig('app', 'start_on_boot', false, 'daemon') == 'true' )
-    this.isSelected = this.app.getConfig('app', 'start_on_boot', false, 'daemon') == 'true'
+    console.log('d',this.app.getConfig('app', 'start_on_boot',  'daemon', false) == 'true' )
+    this.isSelected = this.app.getConfig('app', 'start_on_boot', 'daemon', false) == 'true'
     if (this.isSelected) {
       this.chain.startDaemon().catch(e => console.log(e))
       this.sub = interval(500).subscribe(async () => {

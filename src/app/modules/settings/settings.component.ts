@@ -1,4 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
+//import {AppConfigService} from '@service/app-config.service';
 
 @Component({
 	selector: 'lthn-settings',
@@ -8,7 +9,9 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 export class SettingsComponent implements OnInit, OnDestroy {
 	setting_tab = 'general';
 
-	constructor() {}
+	constructor(
+		//private config: AppConfigService
+	) {}
 
 	ngOnInit(): void {
 		console.log('SettingsComponent INIT');

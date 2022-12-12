@@ -22,7 +22,7 @@ export class AppConfigService {
 	public static serverPublicKey;
 	private static _config: { [key:string]: ConfigIniParser} = {  };
 
-	public static settings:  any = {}; // too "drunk" rn
+	public static settings:  any = {};
 	openpgp: any;
 	crypto: any;
 	online: boolean = false
@@ -81,8 +81,6 @@ export class AppConfigService {
 			 AppConfigService.settings[key][item[0]] = item[1]
 		});
 		AppConfigService._config[key].sections().forEach((section: string) => {
-			// if the section is not in the state yet, add it
-			if(AppConfigService.settings[key][section] == undefined){AppConfigService.settings[key][section] = {};}
 			AppConfigService._config[key].items(section).forEach((item: any[]) => {
 				// if the section is not in the state yet, add it
 				if(AppConfigService.settings[key][section] == undefined){AppConfigService.settings[key][section] = {};}
@@ -115,6 +113,7 @@ export class AppConfigService {
 		try {
 
 			p.setOptionInDefaultSection('api_url', 'http://localhost:36911');
+			p.setOptionInDefaultSection('lang', 'en');
 
 			p.addSection('daemon');
 			p.set('daemon', 'start_on_boot', 'true');
@@ -140,20 +139,23 @@ export class AppConfigService {
 	 * @param {string} defaultValue
 	 * @returns {any}
 	 */
-	getConfig(key: string, option?: string, defaultValue?: any, section?: string) {
+	getConfig(key: string, option?: string, section?: string, defaultValue?: any) {
+
 		if(section){
-				return AppConfigService._config[key].get(section, option, defaultValue);
-
+			if(!AppConfigService.settings[key][section][option] && defaultValue){
+				return defaultValue
+			}else{
+				return AppConfigService.settings[key][section][option];
+			}
 		}
-
 		try {
-			return AppConfigService._config[key].getOptionFromDefaultSection(option)
+			return AppConfigService.settings[key][option]
 
 		}catch (e) {
 			this.fs.isFile(`conf/${key}.ini`).then((exists) => {
 				if(exists) {
 					this.loadConfig(key, `conf/${key}.ini`);
-					return AppConfigService._config[key].getOptionFromDefaultSection(option)
+					return AppConfigService.settings[key][option]
 				}
 			})
 		}
@@ -168,7 +170,13 @@ export class AppConfigService {
 	 * @param {string} value
 	 */
 	setConfig(key: string, option: string, value: any, section?: string ) {
-		AppConfigService._config[key].set(section, option, value);
+		if(section){
+			AppConfigService._config[key].set(section, option, value);
+		}else{
+			AppConfigService._config[key].setOptionInDefaultSection(option, value)
+		}
+
+		 this.saveConfig(key).then(() => console.log())
 	}
 
 	/**
