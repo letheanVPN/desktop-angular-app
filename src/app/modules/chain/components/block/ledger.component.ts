@@ -37,7 +37,7 @@ export class BlockLedgerComponent implements OnInit, OnDestroy {
 		//	{ prop: 'prev_hash', name: 'Last Hash', default: true },
 	];
 	ColumnMode = ColumnMode;
-	blocks: BlockHeader[] ;
+	blocks: BlockHeader[] = undefined;
 	chainInfo: ChainGetInfo;
 	@ViewChild('blocksTable') table: any;
 	@ViewChild('editTmpl', { static: false }) editTmpl: TemplateRef<any>;
@@ -51,6 +51,81 @@ export class BlockLedgerComponent implements OnInit, OnDestroy {
 		private drawerService: DrawerService) {
 
 	}
+
+	async ngOnInit() {
+		this.blockSearch = new UntypedFormControl('', [Validators.required]);
+
+		//this.chain.getInfo()
+		await this.getChainInfo()
+
+		if(this.chainInfo){
+			await this.getBlocks()
+		}
+
+		this.sub['interval'] = interval(5000).subscribe(async () => {
+			await this.getChainInfo()
+			await this.getBlocks()
+		});
+
+	}
+
+	async getChainInfo() {
+		const chainInfo = await this.chain.getInfo()
+		if (chainInfo) {
+			// if the chain data has changed
+			if(chainInfo !== this.chainInfo){
+				this.chainInfo = chainInfo
+			}
+			// we have chain data, and it talks to us set to amber
+			this.status_daemon = 1;
+			//console.log(data)
+			// if chain height + 4 to give 2~ blocks to be considered healthy
+			if (this.chainInfo.height + 4 > this.chainInfo.target_height) {
+				this.status_daemon = 2;
+			}
+			this.page.totalElements = this.chainInfo.height
+			this.page.totalPages = Math.floor(this.page.totalElements/this.page.size)
+
+		} else {
+			this.status_daemon = 0;
+		}
+	}
+
+	async getBlocks() {
+		let start_height = this.page.totalElements - this.page.pageNumber * this.page.size - 1
+		let end_height = this.page.totalElements - this.page.size - this.page.pageNumber * this.page.size
+
+		const blocks = await this.chain.getBlocks(Math.max(0, end_height), Math.max(0, start_height));
+		blocks['headers'] = blocks['headers'].reverse()
+
+		if(this.blocks === undefined || blocks['headers'][0]['hash'] !== this.blocks['headers'][0]['hash']){
+			this.blocks = blocks
+		}
+	}
+
+
+	public ngOnDestroy() {
+		this.sub.forEach((s) => s.unsubscribe());
+	}
+	openDrawer(id) {
+		this.drawerService.create({
+			direction: DrawerDirection.Left,
+			template: this.editTmpl,
+			closeOnOutsideClick: true,
+			context: { id}
+
+		});
+	}
+
+	toggleExpandRow(row) {
+		console.log('Toggled Expand Row!', row);
+		this.table.rowDetail.toggleExpandRow(row);
+	}
+
+	onDetailToggle(event) {
+		console.log('Detail Toggled', event);
+	}
+
 
 	step = 0;
 
@@ -84,80 +159,6 @@ export class BlockLedgerComponent implements OnInit, OnDestroy {
 		this.page.pageNumber = this.page.pageNumber - 1
 
 		return await this.getBlocks()
-	}
-
-
-	async ngOnInit() {
-		this.blockSearch = new UntypedFormControl('', [Validators.required]);
-
-		//this.chain.getInfo()
-		await this.getChainInfo()
-
-		if(this.chainInfo){
-			await this.getBlocks()
-		}
-
-		this.sub['interval'] = interval(5000).subscribe(async () => {
-			await this.getChainInfo()
-			await this.getBlocks()
-		});
-
-	}
-
-	async getChainInfo() {
-		const chainInfo = await this.chain.getInfo()
-		if (chainInfo) {
-
-			if(chainInfo !== this.chainInfo){
-				this.chainInfo = chainInfo
-			}
-			// we have chain data, and it talks to us set to amber
-			this.status_daemon = 1;
-			//console.log(data)
-			// if chain height + 4 to give 2~ blocks to be considered healthy
-			if (this.chainInfo.height + 4 > this.chainInfo.target_height) {
-				this.status_daemon = 2;
-			}
-			this.page.totalElements = this.chainInfo.height
-			this.page.totalPages = Math.floor(this.page.totalElements/this.page.size)
-
-
-
-		} else {
-			this.status_daemon = 0;
-		}
-	}
-
-	async getBlocks() {
-		let start_height = this.page.totalElements - this.page.pageNumber * this.page.size - 1
-		let end_height = this.page.totalElements - this.page.size - this.page.pageNumber * this.page.size
-
-		this.blocks = await this.chain.getBlocks(Math.max(0, end_height), Math.max(0, start_height));
-
-		return this.blocks['headers']= this.blocks['headers'].reverse()
-	}
-
-
-	public ngOnDestroy() {
-		this.sub.forEach((s) => s.unsubscribe());
-	}
-	openDrawer(id) {
-		this.drawerService.create({
-			direction: DrawerDirection.Left,
-			template: this.editTmpl,
-			closeOnOutsideClick: true,
-			context: { id}
-
-		});
-	}
-
-	toggleExpandRow(row) {
-		console.log('Toggled Expand Row!', row);
-		this.table.rowDetail.toggleExpandRow(row);
-	}
-
-	onDetailToggle(event) {
-		console.log('Detail Toggled', event);
 	}
 
 }
