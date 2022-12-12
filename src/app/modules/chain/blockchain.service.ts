@@ -10,15 +10,22 @@ import {WebsocketService} from '@service/websocket.service';
 })
 export class BlockchainService {
     public chainInfo: ChainGetInfo = null;
-    private _stdStream;
+    private _stdStream = undefined;
     constructor(private http: HttpClient, private ws: WebsocketService) {
 
+
+    }
+
+    connectProcessWebsocket(){
         this._stdStream = this.ws.connect().subscribe()
 //
         this.ws.sendMessage(`daemon:letheand`)
     }
 
     stopDaemon() {
+        if(this._stdStream === undefined){
+            return true
+        }
         this.ws.sendMessage('cmd:letheand:stop_daemon')
         this._stdStream.unsubscribe()
     }
