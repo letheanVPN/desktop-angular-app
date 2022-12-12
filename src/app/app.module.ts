@@ -73,7 +73,6 @@ export function tokenGetter() {
 		FontAwesomeModule,
 		ConsoleModule,
 		NgxUIModule,
-  FontAwesomeModule,
 		NgChartsModule,
 		NgMagicIframeModule
 
