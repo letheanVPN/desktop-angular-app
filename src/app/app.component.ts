@@ -100,7 +100,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 
 
 
-		if (!await this.fs.isFile('data/objects/apps/menu.json')) {
+		if (!await this.fs.isFile('data/objects/conf/menu.json')) {
 
 			try {
 				this.menuItems = [
@@ -115,7 +115,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 					headers: {
 						'Content-Type': 'application/json'
 					},
-					body: JSON.stringify({group: 'apps', object: 'menu', data: this.menuItems})
+					body: JSON.stringify({group: 'conf', object: 'menu', data: this.menuItems})
 				});
 				await containers.json();
 			} catch (e) {
@@ -208,7 +208,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify({group: 'apps', object: 'menu'})
+				body: JSON.stringify({group: 'conf', object: 'menu'})
 			});
 			return this.menuItems = await containers.json();
 		} catch (e) {
