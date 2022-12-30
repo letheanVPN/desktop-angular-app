@@ -80,7 +80,6 @@
     "rxjs": "^7.5.5",
     "tslib": "^2.4.0",
     "url-polyfill": "^1.1.12",
-    "webpack": "^5.75.0",
     "xterm-addon-serialize": "^0.7.0",
     "zone.js": "^0.11.6"
   },
@@ -119,6 +118,7 @@
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-prettier": "^4.0.0",
     "jest": "*",
+    "webpack": "^5.75.0",
     "jest-preset-angular": "^11.1.1",
     "loader-utils": "^2.0.4",
     "moment-timezone-data-webpack-plugin": "^1.5.0",
