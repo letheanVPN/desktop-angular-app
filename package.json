@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:dev": "ng build --configuration development",
-    "serve": "ng serve -c development -o",
+    "serve": "ng serve -c development",
     "watch": "ng build --watch --configuration development",
     "clean": "rimraf node_modules",
     "dev": "npm run be:serve",
