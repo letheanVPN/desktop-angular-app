@@ -99,9 +99,13 @@ export class AppConfigService {
 		try{
 			this.fs.readFile(filename).then((data) => {
 				this.updateState(key, data);
+			}).catch(async () => {
+				await this.makeDefault();
+				this.fs.readFile(filename).then((data) => {
+					this.updateState(key, data);
+				})
 			})
 		}catch (e) {
-
 			console.log(e)
 		}
 
