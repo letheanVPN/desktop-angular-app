@@ -104,10 +104,10 @@ export class AppComponent implements OnInit, AfterContentInit {
 
 			try {
 				this.menuItems = [
-					{'title': 'menu.text.dashboard', 'icon': ['fas', 'gauge'], 'url': ['/', 'dashboard']},
+//					{'title': 'menu.text.dashboard', 'icon': ['fas', 'gauge'], 'url': ['/', 'dashboard']},
 					{'title': 'menu.text.chain', 'icon': ['fas', 'link'], 'url': ['/', 'chain']},
 					{'title': 'menu.text.wallet', 'icon': ['fas', 'wallet'], 'url': ['/', 'wallet']},
-					{'title': 'menu.text.mining', 'icon': ['fas', 'person-digging'], 'url': ['/', 'mining', 'xmrig']}
+//					{'title': 'menu.text.mining', 'icon': ['fas', 'person-digging'], 'url': ['/', 'mining', 'xmrig']}
 				];
 
 				const containers = await fetch('http://localhost:36911/system/data/object/set', {
