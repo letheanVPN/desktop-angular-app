@@ -6,11 +6,10 @@ import {FileSystemInterface} from '@interface/file-system.interface';
 })
 export class FileSystemWebService implements FileSystemInterface {
 
-	public apiUrl: string = 'http://localhost:36911';
+	public apiUrl: string = 'http://localhost:36911/io/filesystem';
 
 
 	constructor(private http: HttpClient) {
-		this.apiUrl = this.apiUrl + '/system/files'
 	}
 
 	public exists(pathname): boolean {
@@ -47,14 +46,16 @@ export class FileSystemWebService implements FileSystemInterface {
 
 		const options = {
 			headers: new HttpHeaders({
+				'accept': '*/*',
 				'Content-Type': 'application/json'
 			}),
 			responseType: 'text' as 'json'
 		};
+		console.log(`${this.apiUrl}/read`, {path: filename}, options)
 		return await this.http
 			.post<any>(`${this.apiUrl}/read`, {path: filename}, options)
 			.toPromise()
-			.then((dat) => atob(dat));
+			.then((dat) =>  atob(dat));
 	}
 
 	public async write(filename, data) {
@@ -82,7 +83,7 @@ export class FileSystemWebService implements FileSystemInterface {
 			responseType: 'text' as 'json'
 		};
 		return await this.http
-			.post<any>(`${this.apiUrl}/file-check`, {path: filename}, options)
+			.post<any>(`${this.apiUrl}/is-file`, {path: filename}, options)
 			.toPromise()
 			.then((dat) => JSON.parse(dat))
 			.then((dat) => dat.result);
@@ -96,7 +97,7 @@ export class FileSystemWebService implements FileSystemInterface {
 			responseType: 'text' as 'json'
 		};
 		return await this.http
-			.post<any>(`${this.apiUrl}/dir-check`, {path: filename}, options)
+			.post<any>(`${this.apiUrl}/is-dir`, {path: filename}, options)
 			.toPromise()
 			.then((dat) => JSON.parse(dat))
 			.then((dat) => dat.result);

@@ -83,7 +83,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 		});
 		await this.getMenuConfig();
 
-
+		
 	}
 
 	get activeRoute(): number {
@@ -110,7 +110,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 //					{'title': 'menu.text.mining', 'icon': ['fas', 'person-digging'], 'url': ['/', 'mining', 'xmrig']}
 				];
 
-				const containers = await fetch('http://localhost:36911/system/data/object/set', {
+				const containers = await fetch('http://localhost:36911/config/object/set', {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json'
@@ -203,7 +203,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 
 	async getMenuConfig() {
 		try {
-			const containers = await fetch('http://localhost:36911/system/data/object/get', {
+			const containers = await fetch('http://localhost:36911/config/object/get', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'

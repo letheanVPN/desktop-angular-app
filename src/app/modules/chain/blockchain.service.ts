@@ -40,7 +40,7 @@ export class BlockchainService {
         };
         return this.http
             .post<any>(
-                `http://localhost:36911/daemon/start`,
+                `http://localhost:36911/blockchain/lethean/daemon/start`,
                 {"configFile":"letheand.conf", 'logDir': 'data/log/lthn/letheand.log', "dataDir": "data/lthn"},
                 options
             )
@@ -76,7 +76,7 @@ export class BlockchainService {
         };
         return this.http
             .post<any>(
-                `http://localhost:36911/daemon/chain/export`,
+                `http://localhost:36911/blockchain/lethean/daemon/export`,
                 {},
                 options
             )
@@ -97,7 +97,7 @@ export class BlockchainService {
         };
         return this.http
             .post<any>(
-                `http://localhost:36911/daemon/chain/import`,
+                `http://localhost:36911/blockchain/lethean/daemon/import`,
                 {},
                 options
             )
@@ -111,7 +111,7 @@ export class BlockchainService {
                 "url": params['url'],
                 "req": rpcBody(params['method'])(params['params'])
             }
-            const req = await fetch(`http://localhost:36911/daemon/json_rpc`, {
+            const req = await fetch(`http://localhost:36911/blockchain/lethean/daemon/json_rpc`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

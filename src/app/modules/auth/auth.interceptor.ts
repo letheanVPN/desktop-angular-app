@@ -6,7 +6,6 @@ import {AuthService} from '@module/auth/auth.service';
 @Injectable()
 export class HeaderInterceptor implements HttpInterceptor {
 	intercept(httpRequest: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
 		if(AuthService.token.access_token) {
 			return next.handle( httpRequest.clone({
 				setHeaders: { 'Authorization': AuthService.token.access_token }

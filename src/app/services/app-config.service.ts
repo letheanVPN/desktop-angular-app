@@ -46,14 +46,21 @@ export class AppConfigService {
 	}
 
 
+	/**
+	 * Get Server Public Key
+	 */
 	async fetchServerPublicKey() {
-
-		return await fetch(AppConfigService.apiUrl + '/cert')
-			.then(response =>  response.text())
-			.then(text => {
-				return AppConfigService.serverPublicKey = text;
-			});
-
+		if(AppConfigService.serverPublicKey === undefined) {
+			AppConfigService.serverPublicKey = false;
+			return await fetch(AppConfigService.apiUrl + '/system/cert')
+				.then(response => response.text())
+				.then(text => {
+					return AppConfigService.serverPublicKey = text;
+				}).catch((err) => {
+					console.log(err);
+					return AppConfigService.serverPublicKey = undefined;
+				});
+		}
 	}
 
 	syncStates(){

@@ -11,7 +11,7 @@ export class XmrigService {
 
 	async checkInstallConfig() {
 		try {
-			const containers = await fetch('http://localhost:36911/system/data/object/get', {
+			const containers = await fetch('http://localhost:36911/config/object/get', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -26,7 +26,7 @@ export class XmrigService {
 	}
 
 	async setInstallConfig(config: any) {
-		const containers = await fetch('http://localhost:36911/system/data/object/set', {
+		const containers = await fetch('http://localhost:36911/config/object/set', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'

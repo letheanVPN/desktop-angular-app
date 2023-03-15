@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnChanges, SimpleChanges} from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {ChainGetInfo} from '@module/chain/interfaces/props/get_info';
 import {BlockHeader} from '@module/chain/interfaces/types/blockHeader';
 import {BlockchainService} from '@module/chain/blockchain.service';
@@ -7,7 +7,7 @@ import {AppConfigService} from "@service/app-config.service";
 	selector: 'lthn-chain',
 	templateUrl: './blockchain.component.html'
 })
-export class BlockchainComponent implements AfterViewInit, OnChanges{
+export class BlockchainComponent implements OnInit, OnChanges{
 
 	blocks: BlockHeader[];
 	public chainInfo: ChainGetInfo;
@@ -16,15 +16,16 @@ export class BlockchainComponent implements AfterViewInit, OnChanges{
 	public cmd: string = '';
 	constructor(public chain: BlockchainService, public app: AppConfigService) {}
 
-	async ngAfterViewInit() {
+	async ngOnInit() {
 
 		try {
 			await this.app.fetchServerPublicKey()
 
 			await this.app.loadConfig('conf/app.ini')
-
-			if (this.app.getConfig('app', 'start_on_boot', 'daemon', true)) {
+			this.startChain();
+			if (this.app.getConfig('app', 'start_on_boot', 'daemon')) {
 				// we can get to here, without the cli...
+				console.log('start on boot')
 				if (await this.app.fs.isDir('cli')) {
 					this.startChain();
 				} else {
