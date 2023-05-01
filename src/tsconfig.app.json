@@ -10,5 +10,7 @@
     "enableIvy": true
   },
   "files": ["main.ts", "polyfills.ts"],
-
+  "include": [
+    "**/*.d.ts"
+  ]
 }

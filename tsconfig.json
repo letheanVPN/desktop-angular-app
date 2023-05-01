@@ -7,8 +7,6 @@
     "outDir": "./dist/out-tsc",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "sourceMap": true,
     "strict": false,
     "declaration": false,
@@ -16,17 +14,24 @@
     "importHelpers": true,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
-    "target": "ES2022",
+    "target": "es2020",
     "module": "es2020",
     "lib": [
       "es2019",
       "es2018",
+      "es2017",
       "dom"
     ],
     "typeRoots": [
       "node_modules/@types"
     ],
+    "plugins": [
+      { "name": "tslint-language-service"}
+    ],
     "paths": {
+      "@ui/*": [
+        "src/ui-kit/*"
+      ],
       "@service/*": [
         "src/app/services/*"
       ],

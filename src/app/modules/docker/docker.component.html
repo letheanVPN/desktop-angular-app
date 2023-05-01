@@ -1,32 +1,32 @@
-<ngx-tabs>
+<!--<ngx-tabs>-->
 
-    <ngx-tab label="Containers">
-        <ngx-section>
-            <button mat-button (click)="createChainDaemon()">Create Lethean Chain Daemon</button>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Container ID</th>
-                    <th>Image</th>
-                    <th>State</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let container of containers">
-                    <td>{{container.Id}}</td>
-                    <td>{{container.Image}}</td>
-                    <td>{{container.State}}</td>
-                    <td>
-                        <button class="btn btn-primary" (click)="startContainer(container.Id)">Start</button>
-                        <button class="btn btn-warning" (click)="restartContainer(container.Id)">Restart</button>
-                        <button class="btn btn-danger" (click)="stopContainer(container.Id)">Stop</button>
-                        <button class="btn btn-warning" (click)="removeContainer(container.Id)">Kill</button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </ngx-section>
-    </ngx-tab>
-</ngx-tabs>
+<!--    <ngx-tab label="Containers">-->
+<!--        <ngx-section>-->
+<!--            <button mat-button (click)="createChainDaemon()">Create Lethean Chain Daemon</button>-->
+<!--            <table class="table">-->
+<!--                <thead>-->
+<!--                <tr>-->
+<!--                    <th>Container ID</th>-->
+<!--                    <th>Image</th>-->
+<!--                    <th>State</th>-->
+<!--                    <th>Actions</th>-->
+<!--                </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                <tr *ngFor="let container of containers">-->
+<!--                    <td>{{container.Id}}</td>-->
+<!--                    <td>{{container.Image}}</td>-->
+<!--                    <td>{{container.State}}</td>-->
+<!--                    <td>-->
+<!--                        <button class="btn btn-primary" (click)="startContainer(container.Id)">Start</button>-->
+<!--                        <button class="btn btn-warning" (click)="restartContainer(container.Id)">Restart</button>-->
+<!--                        <button class="btn btn-danger" (click)="stopContainer(container.Id)">Stop</button>-->
+<!--                        <button class="btn btn-warning" (click)="removeContainer(container.Id)">Kill</button>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+<!--            </table>-->
+<!--        </ngx-section>-->
+<!--    </ngx-tab>-->
+<!--</ngx-tabs>-->
 

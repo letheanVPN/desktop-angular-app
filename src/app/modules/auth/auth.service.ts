@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {CryptService} from '@service/crypt.service';
 import {AppConfigService} from '@service/app-config.service';
-import {NotificationService, NotificationStyleType, NotificationType} from '@swimlane/ngx-ui';
 
 @Injectable({
 	providedIn: 'root'
@@ -15,8 +14,7 @@ export class AuthService {
 	};
 
 	constructor(
-		private cryptService: CryptService,
-		private notificationService: NotificationService
+		private cryptService: CryptService
 	) {
 this.getAuthStatus()
 	}
@@ -81,7 +79,7 @@ this.getAuthStatus()
 					.then(async res => {
 						console.log(res)
 						if (res['result'] == false) {
-							this.notificationService.create({type: NotificationType.html, styleType: NotificationStyleType.error, body: 'Failed to login'});
+							// this.notificationService.create({type: NotificationType.html, styleType: NotificationStyleType.error, body: 'Failed to login'});
 						} else {
 
 							AuthService.token = JSON.parse(await this.cryptService.decryptPGP(atob(res['result']), privateKey))

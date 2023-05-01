@@ -10,7 +10,7 @@ import {AppConfigService} from '@service/app-config.service';
   templateUrl: './status.component.html',
   styleUrls: ['./status.component.scss']
 })
-export class StatusComponent implements OnInit, AfterViewInit, OnDestroy {
+export class StatusComponent implements AfterViewInit, OnDestroy {
   isFocused: boolean = false;
   isSelected: boolean = false;
   chainInfo: any;
@@ -39,8 +39,6 @@ export class StatusComponent implements OnInit, AfterViewInit, OnDestroy {
               public chain: BlockchainService) {
 
   }
-
-  async ngOnInit() {}
 
 
   async checkDownloads() {

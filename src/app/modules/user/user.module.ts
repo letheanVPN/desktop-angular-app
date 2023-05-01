@@ -15,8 +15,6 @@ import {FlexModule} from '@angular/flex-layout';
 import {MatLegacyCheckboxModule as MatCheckboxModule} from '@angular/material/legacy-checkbox';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatLegacyProgressBarModule as MatProgressBarModule} from '@angular/material/legacy-progress-bar';
-import {AuthModule} from '@module/auth/auth.module';
-import {SectionModule, ToolbarModule} from '@swimlane/ngx-ui';
 
 const routes: Routes = [
 	{
@@ -48,10 +46,7 @@ const routes: Routes = [
 		FlexModule,
 		MatCheckboxModule,
 		ReactiveFormsModule,
-		MatProgressBarModule,
-		AuthModule,
-		ToolbarModule,
-		SectionModule
+		MatProgressBarModule
 	]
 })
 export class UserModule {

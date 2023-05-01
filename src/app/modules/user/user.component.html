@@ -8,41 +8,41 @@
             </mat-toolbar>
         </div>
         <mat-divider></mat-divider>
-        <ngx-section *ngIf="!processingForm">
-            <div fxLayout="row">
-                <mat-card fxFlex="50" >
-                    <mat-card-title>Please Login</mat-card-title>
-                    <mat-card-content>
-                        <lthn-login></lthn-login>
-                    </mat-card-content>
+<!--        <ngx-section *ngIf="!processingForm">-->
+<!--            <div fxLayout="row">-->
+<!--                <mat-card fxFlex="50" >-->
+<!--                    <mat-card-title>Please Login</mat-card-title>-->
+<!--                    <mat-card-content>-->
+<!--                        <lthn-login></lthn-login>-->
+<!--                    </mat-card-content>-->
 
-                </mat-card>
-                <mat-card fxFlex="50">
-                    <mat-card-title>New User</mat-card-title>
-                    <mat-card-content>
-                        <form fxLayout="column">
-                            <mat-form-field appearance="standard" fxFlex="100">
-                                <mat-label>Username</mat-label>
-                                <input [formControl]="username" autocomplete="off" matInput>
-                            </mat-form-field>
-                            <mat-form-field appearance="standard" fxFlex="100">
-                                <mat-label>Password</mat-label>
-                                <input [formControl]="password" autocomplete="off" matInput>
-                            </mat-form-field>
-                            <mat-form-field appearance="standard" fxFlex="100">
-                                <mat-label>Password (Confirm)</mat-label>
-                                <input [formControl]="passwordRepeat" autocomplete="off" matInput>
-                            </mat-form-field>
+<!--                </mat-card>-->
+<!--                <mat-card fxFlex="50">-->
+<!--                    <mat-card-title>New User</mat-card-title>-->
+<!--                    <mat-card-content>-->
+<!--                        <form fxLayout="column">-->
+<!--                            <mat-form-field appearance="standard" fxFlex="100">-->
+<!--                                <mat-label>Username</mat-label>-->
+<!--                                <input [formControl]="username" autocomplete="off" matInput>-->
+<!--                            </mat-form-field>-->
+<!--                            <mat-form-field appearance="standard" fxFlex="100">-->
+<!--                                <mat-label>Password</mat-label>-->
+<!--                                <input [formControl]="password" autocomplete="off" matInput>-->
+<!--                            </mat-form-field>-->
+<!--                            <mat-form-field appearance="standard" fxFlex="100">-->
+<!--                                <mat-label>Password (Confirm)</mat-label>-->
+<!--                                <input [formControl]="passwordRepeat" autocomplete="off" matInput>-->
+<!--                            </mat-form-field>-->
 
-                        </form>
-                        <button (click)="addUser()" color="accent" mat-button>Create User</button>
-                    </mat-card-content>
-                </mat-card>
+<!--                        </form>-->
+<!--                        <button (click)="addUser()" color="accent" mat-button>Create User</button>-->
+<!--                    </mat-card-content>-->
+<!--                </mat-card>-->
 
 
-            </div>
+<!--            </div>-->
 
-        </ngx-section>
+<!--        </ngx-section>-->
         <div *ngIf="processingForm" fxLayout="row" fxLayoutGap="2px">
             <mat-card fxFlex="100">
                 <mat-card-title>Building Your Encryption Keys</mat-card-title>

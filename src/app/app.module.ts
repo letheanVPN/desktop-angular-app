@@ -17,7 +17,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {AuthModule} from '@module/auth/auth.module';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { NgxUIModule} from '@swimlane/ngx-ui';
 import {ConsoleModule} from '@module/console/console.module';
 import {JwtModule} from '@auth0/angular-jwt';
 import {AuthService} from '@module/auth/auth.service';
@@ -27,8 +26,17 @@ import {FaIconLibrary, FontAwesomeModule} from '@fortawesome/angular-fontawesome
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import {NgChartsModule} from 'ng2-charts';
-import {NgMagicIframeModule} from '@sebgroup/ng-magic-iframe';
+import {UiKitModule} from "@ui/ui-kit.module";
+import {ThemeModule} from "@ui/@theme/theme.module";
+import {CoreModule} from "@ui/@core/core.module";
+import {
+	NbDatepickerModule,
+	NbDialogModule,
+	NbMenuModule,
+	NbSidebarModule,
+	NbToastrModule,
+	NbWindowModule
+} from "@nebular/theme";
 
 export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http);
@@ -72,10 +80,15 @@ export function tokenGetter() {
 		AuthModule,
 		FontAwesomeModule,
 		ConsoleModule,
-		NgxUIModule,
-		NgChartsModule,
-		NgMagicIframeModule
-
+		NbSidebarModule.forRoot(),
+		NbMenuModule.forRoot(),
+		NbDatepickerModule.forRoot(),
+		NbDialogModule.forRoot(),
+		NbWindowModule.forRoot(),
+		NbToastrModule.forRoot(),
+		CoreModule.forRoot(),
+		ThemeModule.forRoot(),
+		UiKitModule,
 	],
 	bootstrap: [AppComponent],
 	providers: [

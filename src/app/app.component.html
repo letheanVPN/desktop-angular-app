@@ -1,67 +1,72 @@
-<div class="main-container">
-    <ngx-toolbar style="height: 58px;">
-        <ngx-toolbar-title>
-            <ngx-navbar *ngIf="menuItems.length > 0" style="margin-left: 0px;" [active]="activeRoute">
+<lthn-ui-one-column-layout>
+    <nb-menu [items]="menu"></nb-menu>
+    <router-outlet></router-outlet>
+</lthn-ui-one-column-layout>
 
-                    <ngx-navbar-item  *ngFor="let menu of menuItems" [routerLink]="menu.app ? ['/', 'app', menu.app] : menu.url" title="{{ menu.title | translate }}">
-                        <fa-icon [icon]=" menu.icon"></fa-icon>
-                    </ngx-navbar-item>
+<!--<div class="main-container">-->
+<!--&lt;!&ndash;    <ngx-toolbar style="height: 58px;">&ndash;&gt;-->
+<!--&lt;!&ndash;        <ngx-toolbar-title>&ndash;&gt;-->
+<!--&lt;!&ndash;            <ngx-navbar *ngIf="menuItems.length > 0" style="margin-left: 0px;" [active]="activeRoute">&ndash;&gt;-->
 
-            </ngx-navbar>
-        </ngx-toolbar-title>
+<!--&lt;!&ndash;                    <ngx-navbar-item  *ngFor="let menu of menuItems" [routerLink]="menu.app ? ['/', 'app', menu.app] : menu.url" title="{{ menu.title | translate }}">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <fa-icon [icon]=" menu.icon"></fa-icon>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </ngx-navbar-item>&ndash;&gt;-->
 
-        <ngx-toolbar-content>
+<!--&lt;!&ndash;            </ngx-navbar>&ndash;&gt;-->
+<!--&lt;!&ndash;        </ngx-toolbar-title>&ndash;&gt;-->
 
-            <button mat-button [routerLink]="['/', 'settings']"><fa-icon [icon]="['fas', 'gears']"></fa-icon></button>
-            <mat-menu #appMenu="matMenu" class="language-menu-container">
-                <ng-template let-name="name" matMenuContent>
-                    <mat-list-item>
-                        <a (click)="changeLanguage('en')" mat-button color="accent">
-                            <img src="assets/flags/1x1/en.svg" width="16"
-                                 alt="{{ 'lang.en' | translate }}">&nbsp;&nbsp;{{ 'lang.en' | translate }}
-                        </a>
-                    </mat-list-item>
-                    <mat-list-item>
-                        <a (click)="changeLanguage('ru')" mat-button color="accent">
-                            <img src="assets/flags/1x1/ru.svg" width="16"
-                                 alt="{{ 'lang.ru' | translate }}">&nbsp;&nbsp;{{ 'lang.ru' | translate }}
-                        </a>
-                    </mat-list-item>
-                    <mat-list-item>
-                        <button (click)="changeLanguage('zh')" mat-button color="accent">
-                            <img src="assets/flags/1x1/zh.svg" width="16"
-                                 alt="{{ 'lang.zh' | translate }}">&nbsp;&nbsp;{{ 'lang.zh' | translate }}
-                        </button>
-                    </mat-list-item>
-                    <mat-list-item>
-                        <a (click)="changeLanguage('es')" mat-button color="accent">
-                            <img src="assets/flags/1x1/es.svg" width="16"
-                                 alt="{{ 'lang.es' | translate }}">&nbsp;&nbsp;{{ 'lang.es' | translate }}
-                        </a>
-                    </mat-list-item>
-                    <mat-list-item>
-                        <a (click)="changeLanguage('de')" mat-button color="accent">
-                            <img src="assets/flags/1x1/de.svg" width="16"
-                                 alt="{{ 'lang.de' | translate }}">&nbsp;&nbsp;{{ 'lang.de' | translate }}
-                        </a>
-                    </mat-list-item>
-                    <mat-list-item>
-                        <a (click)="changeLanguage('fr')" mat-button color="accent">
-                            <img src="assets/flags/1x1/fr.svg" width="16"
-                                 alt="{{ 'lang.fr' | translate }}">&nbsp;&nbsp;{{ 'lang.fr' | translate }}
-                        </a>
-                    </mat-list-item>
-                </ng-template>
-            </mat-menu>
+<!--&lt;!&ndash;        <ngx-toolbar-content>&ndash;&gt;-->
 
-            <button [matMenuTriggerFor]="appMenu"
-                    mat-icon-button>
-                <img src="assets/flags/1x1/{{ this.currentLanguage  }}.svg" width="24">
-            </button>
-        </ngx-toolbar-content>
-    </ngx-toolbar>
-    <div class="page">
-        <router-outlet></router-outlet>
-    </div>
-</div>
+<!--&lt;!&ndash;            <button mat-button [routerLink]="['/', 'settings']"><fa-icon [icon]="['fas', 'gears']"></fa-icon></button>&ndash;&gt;-->
+<!--&lt;!&ndash;            <mat-menu #appMenu="matMenu" class="language-menu-container">&ndash;&gt;-->
+<!--&lt;!&ndash;                <ng-template let-name="name" matMenuContent>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <mat-list-item>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <a (click)="changeLanguage('en')" mat-button color="accent">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <img src="assets/flags/1x1/en.svg" width="16"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 alt="{{ 'lang.en' | translate }}">&nbsp;&nbsp;{{ 'lang.en' | translate }}&ndash;&gt;-->
+<!--&lt;!&ndash;                        </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </mat-list-item>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <mat-list-item>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <a (click)="changeLanguage('ru')" mat-button color="accent">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <img src="assets/flags/1x1/ru.svg" width="16"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 alt="{{ 'lang.ru' | translate }}">&nbsp;&nbsp;{{ 'lang.ru' | translate }}&ndash;&gt;-->
+<!--&lt;!&ndash;                        </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </mat-list-item>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <mat-list-item>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <button (click)="changeLanguage('zh')" mat-button color="accent">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <img src="assets/flags/1x1/zh.svg" width="16"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 alt="{{ 'lang.zh' | translate }}">&nbsp;&nbsp;{{ 'lang.zh' | translate }}&ndash;&gt;-->
+<!--&lt;!&ndash;                        </button>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </mat-list-item>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <mat-list-item>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <a (click)="changeLanguage('es')" mat-button color="accent">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <img src="assets/flags/1x1/es.svg" width="16"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 alt="{{ 'lang.es' | translate }}">&nbsp;&nbsp;{{ 'lang.es' | translate }}&ndash;&gt;-->
+<!--&lt;!&ndash;                        </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </mat-list-item>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <mat-list-item>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <a (click)="changeLanguage('de')" mat-button color="accent">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <img src="assets/flags/1x1/de.svg" width="16"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 alt="{{ 'lang.de' | translate }}">&nbsp;&nbsp;{{ 'lang.de' | translate }}&ndash;&gt;-->
+<!--&lt;!&ndash;                        </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </mat-list-item>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <mat-list-item>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <a (click)="changeLanguage('fr')" mat-button color="accent">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <img src="assets/flags/1x1/fr.svg" width="16"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 alt="{{ 'lang.fr' | translate }}">&nbsp;&nbsp;{{ 'lang.fr' | translate }}&ndash;&gt;-->
+<!--&lt;!&ndash;                        </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </mat-list-item>&ndash;&gt;-->
+<!--&lt;!&ndash;                </ng-template>&ndash;&gt;-->
+<!--&lt;!&ndash;            </mat-menu>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <button [matMenuTriggerFor]="appMenu"&ndash;&gt;-->
+<!--&lt;!&ndash;                    mat-icon-button>&ndash;&gt;-->
+<!--&lt;!&ndash;                <img src="assets/flags/1x1/{{ this.currentLanguage  }}.svg" width="24">&ndash;&gt;-->
+<!--&lt;!&ndash;            </button>&ndash;&gt;-->
+<!--&lt;!&ndash;        </ngx-toolbar-content>&ndash;&gt;-->
+<!--&lt;!&ndash;    </ngx-toolbar>&ndash;&gt;-->
+<!--    <div class="page">-->
+<!--        <router-outlet></router-outlet>-->
+<!--    </div>-->
+<!--</div>-->
 

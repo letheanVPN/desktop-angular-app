@@ -1,72 +1,72 @@
-<ngx-card
-        class="plugin-card"
-        appearance="flat"
-        [status]="'success' "
-        [hideAccent]="true"
-        [selected]="this.isFocused"
-        (mouseenter)="this.isFocused = true"
-        (mouseleave)="this.isFocused = false"
->
-    <ngx-card-header [routerLink]="['/','mining', 'xmrig']" >
-        <ngx-card-avatar src="assets/icons/xmrig.svg"></ngx-card-avatar>
-        <ngx-card-title> Xmrig </ngx-card-title>
-        <ngx-card-subtitle>
-            <ngx-icon fontIcon="clock"></ngx-icon>
-            <span class="date-display" >l </span>
-        </ngx-card-subtitle>
-    </ngx-card-header>
-    <!-- status and bootstrap -->
-    <ngx-card-section class="ngx-card-section--description">
-        <ng-container *ngIf=" downloadNeeded == true">
-            <ng-container *ngIf="downloads">
+<!--<ngx-card-->
+<!--        class="plugin-card"-->
+<!--        appearance="flat"-->
+<!--        [status]="'success' "-->
+<!--        [hideAccent]="true"-->
+<!--        [selected]="this.isFocused"-->
+<!--        (mouseenter)="this.isFocused = true"-->
+<!--        (mouseleave)="this.isFocused = false"-->
+<!--&gt;-->
+<!--    <ngx-card-header [routerLink]="['/','mining', 'xmrig']" >-->
+<!--        <ngx-card-avatar src="assets/icons/xmrig.svg"></ngx-card-avatar>-->
+<!--        <ngx-card-title> Xmrig </ngx-card-title>-->
+<!--        <ngx-card-subtitle>-->
+<!--            <ngx-icon fontIcon="clock"></ngx-icon>-->
+<!--            <span class="date-display" >l </span>-->
+<!--        </ngx-card-subtitle>-->
+<!--    </ngx-card-header>-->
+<!--    &lt;!&ndash; status and bootstrap &ndash;&gt;-->
+<!--    <ngx-card-section class="ngx-card-section&#45;&#45;description">-->
+<!--        <ng-container *ngIf=" downloadNeeded == true">-->
+<!--            <ng-container *ngIf="downloads">-->
 
-                <button mat-button [matMenuTriggerFor]="menu">Install v{{ downloads['version'] }}</button>
-                <mat-menu #menu="matMenu">
-                    <button *ngFor="let download of downloads['assets']" mat-menu-item (click)="downloadXmrig(download['id'])" >{{download['id']}}</button>
-                </mat-menu>
-            </ng-container>
-
-
-        </ng-container>
-        <ng-container *ngIf=" downloadNeeded == false">
-            <button mat-button [routerLink]="['/','mining','xmrig']" >Open Xmrig</button>
-        </ng-container>
+<!--                <button mat-button [matMenuTriggerFor]="menu">Install v{{ downloads['version'] }}</button>-->
+<!--                <mat-menu #menu="matMenu">-->
+<!--                    <button *ngFor="let download of downloads['assets']" mat-menu-item (click)="downloadXmrig(download['id'])" >{{download['id']}}</button>-->
+<!--                </mat-menu>-->
+<!--            </ng-container>-->
 
 
-
-    </ngx-card-section>
-    <ngx-card-section class="card-toggle">
-        <ngx-toggle [(ngModel)]="isSelected" label="Enable" (click)="$event.stopPropagation(); toggleStart()"></ngx-toggle>
-    </ngx-card-section>
-    <ngx-card-section class="card-action">
-        <ng-container *ngTemplateOutlet="viewDetailsTpl"></ng-container>
-        <div class="card-gutter"></div>&nbsp;&nbsp;&nbsp;&nbsp;
-        <ng-container *ngTemplateOutlet="ellipsisTpl"></ng-container>
-    </ngx-card-section>
-</ngx-card>
+<!--        </ng-container>-->
+<!--        <ng-container *ngIf=" downloadNeeded == false">-->
+<!--            <button mat-button [routerLink]="['/','mining','xmrig']" >Open Xmrig</button>-->
+<!--        </ng-container>-->
 
 
-<ng-template #viewDetailsTpl>
-    <div class="view-details" (click)="$event.stopPropagation()">
-        <a [routerLink]="['/','docs']">
-            <ngx-icon fontIcon="documentation"></ngx-icon>
-            <span> View Documentation </span>
-        </a>
-    </div>
-</ng-template>
 
-<ng-template #ellipsisTpl>
-    <ngx-dropdown showCaret class="ellipsis" (click)="$event.stopPropagation()">
-        <ngx-dropdown-toggle (click)="$event.stopPropagation()">
-            <ngx-icon fontIcon="dots-vert-round"></ngx-icon>
-        </ngx-dropdown-toggle>
-        <ngx-dropdown-menu class="ngx-dropdown-dark-outline align-right">
-            <ul class="vertical-list">
-                <li><button type="button" [routerLink]="['/', 'chain', 'config']">Config</button></li>
-                <li><button type="button" [routerLink]="['/', 'chain', 'console']">Console</button></li>
-                <li><button type="button" [routerLink]="['/', 'chain', 'import']">Import</button></li>
-                <li><button type="button" [routerLink]="['/', 'chain', 'export']">Export</button></li>
-            </ul>
-        </ngx-dropdown-menu>
-    </ngx-dropdown>
-</ng-template>
+<!--    </ngx-card-section>-->
+<!--    <ngx-card-section class="card-toggle">-->
+<!--        <ngx-toggle [(ngModel)]="isSelected" label="Enable" (click)="$event.stopPropagation(); toggleStart()"></ngx-toggle>-->
+<!--    </ngx-card-section>-->
+<!--    <ngx-card-section class="card-action">-->
+<!--        <ng-container *ngTemplateOutlet="viewDetailsTpl"></ng-container>-->
+<!--        <div class="card-gutter"></div>&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--        <ng-container *ngTemplateOutlet="ellipsisTpl"></ng-container>-->
+<!--    </ngx-card-section>-->
+<!--</ngx-card>-->
+
+
+<!--<ng-template #viewDetailsTpl>-->
+<!--    <div class="view-details" (click)="$event.stopPropagation()">-->
+<!--        <a [routerLink]="['/','docs']">-->
+<!--            <ngx-icon fontIcon="documentation"></ngx-icon>-->
+<!--            <span> View Documentation </span>-->
+<!--        </a>-->
+<!--    </div>-->
+<!--</ng-template>-->
+
+<!--<ng-template #ellipsisTpl>-->
+<!--    <ngx-dropdown showCaret class="ellipsis" (click)="$event.stopPropagation()">-->
+<!--        <ngx-dropdown-toggle (click)="$event.stopPropagation()">-->
+<!--            <ngx-icon fontIcon="dots-vert-round"></ngx-icon>-->
+<!--        </ngx-dropdown-toggle>-->
+<!--        <ngx-dropdown-menu class="ngx-dropdown-dark-outline align-right">-->
+<!--            <ul class="vertical-list">-->
+<!--                <li><button type="button" [routerLink]="['/', 'chain', 'config']">Config</button></li>-->
+<!--                <li><button type="button" [routerLink]="['/', 'chain', 'console']">Console</button></li>-->
+<!--                <li><button type="button" [routerLink]="['/', 'chain', 'import']">Import</button></li>-->
+<!--                <li><button type="button" [routerLink]="['/', 'chain', 'export']">Export</button></li>-->
+<!--            </ul>-->
+<!--        </ngx-dropdown-menu>-->
+<!--    </ngx-dropdown>-->
+<!--</ng-template>-->

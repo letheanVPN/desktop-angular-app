@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { XmrigComponent } from './xmrig.component';
-import {NgxUIModule} from '@swimlane/ngx-ui';
 import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
 import {MatLegacyMenuModule as MatMenuModule} from '@angular/material/legacy-menu';
 import {XmrigStatusComponent} from '@module/mining/xmrig/status/status.component';
@@ -30,7 +29,6 @@ import {TranslateModule} from '@ngx-translate/core';
 	],
 	imports: [
 		CommonModule,
-		NgxUIModule,
 		MatButtonModule,
 		MatMenuModule,
 		RouterModule,

@@ -14,7 +14,6 @@ import {MatLegacyTabsModule as MatTabsModule} from '@angular/material/legacy-tab
 import {MatLegacyInputModule as MatInputModule} from '@angular/material/legacy-input';
 import {ReactiveFormsModule} from '@angular/forms';
 import {TranslateModule} from '@ngx-translate/core';
-import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {MatLegacySelectModule as MatSelectModule} from '@angular/material/legacy-select';
 import {PipesModule} from '@pipe/pipes.module';
 import {RouterModule} from '@angular/router';
@@ -22,7 +21,6 @@ import {WalletNewComponent} from '@module/wallet/components/wallet-new.component
 import {TransactionsComponent} from '@module/wallet/components/transactions.component';
 import {SettingsComponent} from '@module/wallet/components/settings.component';
 import {RestoreComponent} from '@module/wallet/components/restore.component';
-import {CardModule, NgxUIModule, SectionModule, SelectModule, TabsModule} from '@swimlane/ngx-ui';
 import {DetailsComponent} from '@module/wallet/components/details.component';
 import {AddComponent} from '@module/wallet/components/add.component';
 import {OpenComponent} from '@module/wallet/components/open.component';
@@ -59,17 +57,10 @@ import {ConsoleModule} from '@module/console/console.module';
 		MatTooltipModule,
 		MatInputModule,
 		TranslateModule,
-		NgxDatatableModule,
 		MatSelectModule,
 		MatTabsModule,
 		PipesModule,
-		RouterModule,
-		SelectModule,
-		TabsModule,
-		SectionModule,
-		CardModule,
-		NgxUIModule,
-		ConsoleModule
+		RouterModule
 	]
 })
 export class WalletModule {}

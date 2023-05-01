@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EditorComponent } from './editor.component';
-import {CodeEditorModule} from '@swimlane/ngx-ui';
 
 
 
@@ -13,8 +12,7 @@ import {CodeEditorModule} from '@swimlane/ngx-ui';
 		EditorComponent
 	],
 	imports: [
-		CommonModule,
-		CodeEditorModule
+		CommonModule
 	]
 })
 export class EditorModule { }

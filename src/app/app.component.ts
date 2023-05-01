@@ -5,12 +5,14 @@ import {Meta, Title} from '@angular/platform-browser';
 import {filter} from 'rxjs/operators';
 import {TranslateService} from '@ngx-translate/core';
 import {Subscription} from 'rxjs';
-import {LoadingService} from '@swimlane/ngx-ui';
 import {AppConfigService} from '@service/app-config.service';
 import {FileSystemService} from '@service/filesystem/file-system.service';
+import {MENU_ITEMS} from "@ui/pages/pages-menu";
+import {APP_MENU_ITEMS} from "./app-menu";
 
 @Component({
-	selector: 'lthn-app',
+	// eslint-disable-next-line @angular-eslint/component-selector
+	selector: 'lthn',
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss']
 })
@@ -24,6 +26,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 	public navExpanded: boolean = true;
 
 	public menuItems = [];
+	public menu = APP_MENU_ITEMS
 
 	/**
 	 * Starts the Angular framework and configures system plugins
@@ -43,7 +46,6 @@ export class AppComponent implements OnInit, AfterContentInit {
 		private titleService: Title,
 		private metaService: Meta,
 		private translate: TranslateService,
-		private loadingService: LoadingService,
 		public config: AppConfigService,
 		private fs: FileSystemService
 	) {
@@ -76,56 +78,46 @@ export class AppComponent implements OnInit, AfterContentInit {
 
 		this.router.events.subscribe((event) => {
 			if (event instanceof NavigationStart) {
-				this.loadingService.start();
+				// this.loadingService.start();
 			} else if (event instanceof NavigationEnd) {
-				this.loadingService.complete();
+				// this.loadingService.complete();
 			}
 		});
 		await this.getMenuConfig();
 
-		
-	}
 
-	get activeRoute(): number {
-		return this.menuItems.findIndex(x => {
-			if (x['url']) {
-				return x.url.join('/').endsWith(this.router.url);
-			} else if (x['app']) {
-				return this.router.url.endsWith(x.app);
-			}
-		});
 	}
 
 	public async ngAfterContentInit() {
 
 
 
-		if (!await this.fs.isFile('data/objects/conf/menu.json')) {
-
-			try {
-				this.menuItems = [
-//					{'title': 'menu.text.dashboard', 'icon': ['fas', 'gauge'], 'url': ['/', 'dashboard']},
-					{'title': 'menu.text.chain', 'icon': ['fas', 'link'], 'url': ['/', 'chain']},
-					{'title': 'menu.text.wallet', 'icon': ['fas', 'wallet'], 'url': ['/', 'wallet']},
-//					{'title': 'menu.text.mining', 'icon': ['fas', 'person-digging'], 'url': ['/', 'mining', 'xmrig']}
-				];
-
-				const containers = await fetch('http://localhost:36911/config/object/set', {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					body: JSON.stringify({group: 'conf', object: 'menu', data: this.menuItems})
-				});
-				await containers.json();
-			} catch (e) {
-				//return false;
-			}
-
-		}
-
-
-		this.updateMeta();
+// 		if (!await this.fs.isFile('data/objects/conf/menu.json')) {
+//
+// 			try {
+// 				this.menuItems = [
+// //					{'title': 'menu.text.dashboard', 'icon': ['fas', 'gauge'], 'url': ['/', 'dashboard']},
+// 					{'title': 'menu.text.chain', 'icon': ['fas', 'link'], 'url': ['/', 'chain']},
+// 					{'title': 'menu.text.wallet', 'icon': ['fas', 'wallet'], 'url': ['/', 'wallet']},
+// //					{'title': 'menu.text.mining', 'icon': ['fas', 'person-digging'], 'url': ['/', 'mining', 'xmrig']}
+// 				];
+//
+// 				const containers = await fetch('http://localhost:36911/config/object/set', {
+// 					method: 'POST',
+// 					headers: {
+// 						'Content-Type': 'application/json'
+// 					},
+// 					body: JSON.stringify({group: 'conf', object: 'menu', data: this.menuItems})
+// 				});
+// 				await containers.json();
+// 			} catch (e) {
+// 				//return false;
+// 			}
+//
+// 		}
+//
+//
+ 		this.updateMeta();
 	}
 
 	/**
@@ -216,4 +208,6 @@ export class AppComponent implements OnInit, AfterContentInit {
 		}
 
 	}
+
+    protected readonly MENU_ITEMS = MENU_ITEMS;
 }

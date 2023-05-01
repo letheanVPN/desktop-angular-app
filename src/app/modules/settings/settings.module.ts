@@ -11,7 +11,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTabsModule} from '@angular/material/tabs';
 import {SettingsComponent} from './settings.component';
-import {SectionModule, TabsModule} from '@swimlane/ngx-ui';
+import {NbCardModule} from "@nebular/theme";
 
 const routes: Routes = [
 	{
@@ -40,8 +40,7 @@ const routes: Routes = [
 		MatButtonModule,
 		MatIconModule,
 		MatTabsModule,
-		TabsModule,
-		SectionModule
+		NbCardModule
 	],
 	exports: [RouterModule]
 })

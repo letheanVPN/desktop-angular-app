@@ -1,5 +1,4 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {NotificationService, NotificationStyleType, NotificationType} from '@swimlane/ngx-ui';
 import {XmrigService} from '@module/mining/xmrig/xmrig.service';
 import {interval, Subscription} from 'rxjs';
 
@@ -12,7 +11,7 @@ export class XmrigComponent implements OnInit, OnDestroy {
   public poolInfo: any;
   private sub: Subscription;
 
-  constructor(private xmrig: XmrigService, private notificationService: NotificationService) { }
+  constructor(private xmrig: XmrigService) { }
 
   public config: any;
   public downloads: any;
@@ -53,12 +52,12 @@ export class XmrigComponent implements OnInit, OnDestroy {
 
   public async startXmrig() {
     if(this.wallet.length < 10){
-      this.notificationService.create({
-        type: NotificationType.html,
-        styleType: NotificationStyleType.error,
-        title: 'Error',
-        body: "Wallet address not set"
-      })
+      // this.notificationService.create({
+      //   type: NotificationType.html,
+      //   styleType: NotificationStyleType.error,
+      //   title: 'Error',
+      //   body: "Wallet address not set"
+      // })
       return false;
     }
 
@@ -79,22 +78,22 @@ export class XmrigComponent implements OnInit, OnDestroy {
       this.xmrigData.summary =  await this.xmrig.getData()
     });
 
-    this.notificationService.create({
-      type: NotificationType.html,
-      styleType: NotificationStyleType.success,
-      title: 'Xmrig started!',
-      body: "Make it so"
-    })
+    // this.notificationService.create({
+    //   type: NotificationType.html,
+    //   styleType: NotificationStyleType.success,
+    //   title: 'Xmrig started!',
+    //   body: "Make it so"
+    // })
   }
 
   async downloadXmrig(id: string) {
     await this.xmrig.downloadXmrig(id)
-    this.notificationService.create({
-      type: NotificationType.html,
-      styleType: NotificationStyleType.success,
-      title: 'Download Requested!',
-      body: id
-    })
+    // this.notificationService.create({
+    //   type: NotificationType.html,
+    //   styleType: NotificationStyleType.success,
+    //   title: 'Download Requested!',
+    //   body: id
+    // })
   }
 
   async getHashVaultStats(){

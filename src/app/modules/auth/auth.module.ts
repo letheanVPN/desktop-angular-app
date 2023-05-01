@@ -7,7 +7,6 @@ import {MatLegacyInputModule as MatInputModule} from '@angular/material/legacy-i
 import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
 import {TranslateModule} from '@ngx-translate/core';
 import {MatIconModule} from '@angular/material/icon';
-import {InputModule} from '@swimlane/ngx-ui';
 
 @NgModule({
 	declarations: [LoginComponent],
@@ -22,7 +21,6 @@ import {InputModule} from '@swimlane/ngx-ui';
 		MatButtonModule,
 		TranslateModule,
 		MatIconModule,
-		InputModule,
 		FormsModule
 	]
 })

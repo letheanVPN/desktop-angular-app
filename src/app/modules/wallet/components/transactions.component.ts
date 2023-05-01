@@ -3,7 +3,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {UntypedFormControl} from '@angular/forms';
 import {WalletRpcService} from '@service/wallet.rpc.service';
 import {GetTransfersIn, GetTransfersOut} from '@module/wallet/interfaces';
-import {ColumnMode} from '@swimlane/ngx-datatable';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -31,7 +30,7 @@ export class TransactionsComponent implements OnInit {
 		{name: 'Amount'}, {name: 'Fee'}, {name: 'Height'}, {name: 'Note'}, {name: 'Payment ID'},
 		{name: 'Timestamp'}, {name: 'txid'}, {name: 'Type', prop: 'type'}, {name: 'Unlock Time', prop: "unlock_time"}];
 
-	ColumnMode = ColumnMode;
+	// ColumnMode = ColumnMode;
 
 	constructor(private wallet: WalletRpcService, private route: ActivatedRoute) {
 		this.name = this.route.snapshot.paramMap.get('id')

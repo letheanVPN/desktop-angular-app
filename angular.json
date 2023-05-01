@@ -15,7 +15,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "lthn-app",
+      "prefix": "lthn",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -28,11 +28,24 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/leaflet/dist/images",
+                "output": "/assets/img/markers"
+              }
             ],
             "styles": [
-              "src/styles.scss",
-              "node_modules/@swimlane/ngx-ui/index.css"
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/typeface-exo/index.css",
+              "node_modules/roboto-fontface/css/roboto/roboto-fontface.css",
+              "node_modules/ionicons/scss/ionicons.scss",
+              "node_modules/@fortawesome/fontawesome-free/css/all.css",
+              "node_modules/socicon/css/socicon.css",
+              "node_modules/nebular-icons/scss/nebular-icons.scss",
+              "node_modules/pace-js/templates/pace-theme-flash.tmpl.css",
+              "node_modules/leaflet/dist/leaflet.css",
+              "src/ui-kit/@theme/styles/styles.scss"
             ],
             "allowedCommonJsDependencies": [
               "moment-timezone",
@@ -46,9 +59,24 @@
               "crypto-js",
               "filesize",
               "element-resize-detector",
-              "moment"
+              "moment",
+              "angular2-chartjs",
+              "echarts",
+              "lodash",
+              "zrender/lib/svg/svg",
+              "zrender/lib/vml/vml"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/pace-js/pace.min.js",
+              "node_modules/tinymce/tinymce.min.js",
+              "node_modules/tinymce/themes/modern/theme.min.js",
+              "node_modules/tinymce/plugins/link/plugin.min.js",
+              "node_modules/tinymce/plugins/paste/plugin.min.js",
+              "node_modules/tinymce/plugins/table/plugin.min.js",
+              "node_modules/echarts/dist/echarts.min.js",
+              "node_modules/echarts/dist/extension/bmap.min.js",
+              "node_modules/chart.js/dist/Chart.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -73,13 +101,13 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-            "options": {
-              "headers": {
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS, HEAD",
-                "Access-Control-Allow-Headers": "*"
-              }
-            },
+          "options": {
+            "headers": {
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS, HEAD",
+              "Access-Control-Allow-Headers": "*"
+            }
+          },
           "configurations": {
             "production": {
               "browserTarget": "lethean-desktop:build:production"
@@ -95,13 +123,25 @@
           "options": {
             "browserTarget": "lethean-desktop:build"
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "defaultProject": "lethean-desktop",
   "cli": {
-    "analytics": "c8decdb2-ac37-4e92-abe4-7547f6e6b9b1"
+    "analytics": "c8decdb2-ac37-4e92-abe4-7547f6e6b9b1",
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   },
   "schematics": {
     "@angular-eslint/schematics:application": {

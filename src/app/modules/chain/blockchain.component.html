@@ -1,44 +1,69 @@
-<ngx-tabs class="">
-    <ngx-tab label="Chain Explorer" >
-        <ngx-section>
-            <lthn-chain-ledger></lthn-chain-ledger>
-        </ngx-section>
-    </ngx-tab>
-    <ngx-tab label="Daemon Stats">
-        <ngx-section>
-            <lthn-chain-stats></lthn-chain-stats>
-        </ngx-section>
-    </ngx-tab>
-    <ngx-tab label="Config">
-        <ngx-section>
-            <lthn-chain-config></lthn-chain-config>
-        </ngx-section>
-    </ngx-tab>
-    <ngx-tab label="Console" #consoleTab>
-        <ngx-section *ngxIfTabActive>
+<div class="row">
+    <div class="col-xxl-12">
+        <div class="row">
+            <div class="col-md-8">
+                <nb-card>
+                    <nb-card-header>Chain Explorer</nb-card-header>
+                    <nb-card-body>
+                        <lthn-chain-ledger></lthn-chain-ledger>
+                    </nb-card-body>
+                </nb-card>
+            </div>
+            <div class="col-md-4">
+                <nb-card>
+                    <nb-card-header>Chain Stats</nb-card-header>
+                    <nb-card-body>
+                        <lthn-chain-stats></lthn-chain-stats>
+                    </nb-card-body>
+                </nb-card>
 
-            <p>Live feed, output might take a few seconds. if chain synced, type the word <i>help</i> and press enter</p>
-            <span class="tag tag-bordered" (click)="this.cmd='help';">Help</span>
-            <span class="tag tag-bordered" (click)="this.cmd='status';">Status</span>
-            <span class="tag tag-bordered" (click)="this.cmd='hard_fork_info';">Sync Information</span>
-            <span class="tag tag-bordered" (click)="this.cmd='print_pl_stats';">Peer Information</span>
-            <span class="tag tag-bordered" (click)="this.cmd='print_pool_stats';">Tx Pool Information</span>
-            <lthn-console attach="letheand" [cmd]="this.cmd" ></lthn-console>
-        </ngx-section>
-    </ngx-tab>
-<!--    <ngx-tab label="Export" #exportTab>-->
-<!--        <ngx-section *ngxIfTabActive>-->
-<!--            <button (click)="exportChain()"  class="btn btn-bordered">Start Export</button>-->
-<!--            <lthn-console attach="lethean-blockchain-export"></lthn-console>-->
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<!--<ngx-tabs class="">-->
+<!--    <ngx-tab label="Chain Explorer" >-->
+<!--        <ngx-section>-->
+<!--            <lthn-chain-ledger></lthn-chain-ledger>-->
 <!--        </ngx-section>-->
 <!--    </ngx-tab>-->
-<!--    <ngx-tab label="Import"#importTab>-->
-<!--        <ngx-section *ngxIfTabActive>-->
-<!--            <p>Download https://seed.lethean.io/blockchain.raw > data/export/blockchain.raw</p>-->
-
-<!--            <button (click)="importChain()" class="btn btn-bordered">Start Import</button>-->
-<!--            <lthn-console attach="lethean-blockchain-import"></lthn-console>-->
+<!--    <ngx-tab label="Daemon Stats">-->
+<!--        <ngx-section>-->
+<!--            <lthn-chain-stats></lthn-chain-stats>-->
 <!--        </ngx-section>-->
 <!--    </ngx-tab>-->
+<!--    <ngx-tab label="Config">-->
+<!--        <ngx-section>-->
+<!--            <lthn-chain-config></lthn-chain-config>-->
+<!--        </ngx-section>-->
+<!--    </ngx-tab>-->
+<!--    <ngx-tab label="Console" #consoleTab>-->
+<!--        <ngx-section *ngxIfTabActive>-->
 
-</ngx-tabs>
+<!--            <p>Live feed, output might take a few seconds. if chain synced, type the word <i>help</i> and press enter</p>-->
+<!--            <span class="tag tag-bordered" (click)="this.cmd='help';">Help</span>-->
+<!--            <span class="tag tag-bordered" (click)="this.cmd='status';">Status</span>-->
+<!--            <span class="tag tag-bordered" (click)="this.cmd='hard_fork_info';">Sync Information</span>-->
+<!--            <span class="tag tag-bordered" (click)="this.cmd='print_pl_stats';">Peer Information</span>-->
+<!--            <span class="tag tag-bordered" (click)="this.cmd='print_pool_stats';">Tx Pool Information</span>-->
+<!--            <lthn-console attach="letheand" [cmd]="this.cmd" ></lthn-console>-->
+<!--        </ngx-section>-->
+<!--    </ngx-tab>-->
+<!--&lt;!&ndash;    <ngx-tab label="Export" #exportTab>&ndash;&gt;-->
+<!--&lt;!&ndash;        <ngx-section *ngxIfTabActive>&ndash;&gt;-->
+<!--&lt;!&ndash;            <button (click)="exportChain()"  class="btn btn-bordered">Start Export</button>&ndash;&gt;-->
+<!--&lt;!&ndash;            <lthn-console attach="lethean-blockchain-export"></lthn-console>&ndash;&gt;-->
+<!--&lt;!&ndash;        </ngx-section>&ndash;&gt;-->
+<!--&lt;!&ndash;    </ngx-tab>&ndash;&gt;-->
+<!--&lt;!&ndash;    <ngx-tab label="Import"#importTab>&ndash;&gt;-->
+<!--&lt;!&ndash;        <ngx-section *ngxIfTabActive>&ndash;&gt;-->
+<!--&lt;!&ndash;            <p>Download https://seed.lethean.io/blockchain.raw > data/export/blockchain.raw</p>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <button (click)="importChain()" class="btn btn-bordered">Start Import</button>&ndash;&gt;-->
+<!--&lt;!&ndash;            <lthn-console attach="lethean-blockchain-import"></lthn-console>&ndash;&gt;-->
+<!--&lt;!&ndash;        </ngx-section>&ndash;&gt;-->
+<!--&lt;!&ndash;    </ngx-tab>&ndash;&gt;-->
+
+<!--</ngx-tabs>-->

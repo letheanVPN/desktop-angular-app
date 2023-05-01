@@ -13,15 +13,20 @@
     </tr>
     <tr>
         <td>{{ 'app.lthn.chain.words.height' | translate}}</td>
-        <td>{{ info.height | number }}</td>
+        <td>{{ info.height }}</td>
     </tr>
+    <tr>
+        <td>Blocks Missing</td>
+        <td>{{ info.target_height - info.height}}</td>
+    </tr>
+
     <tr>
         <td>{{ 'app.lthn.chain.words.start_time' | translate}}</td>
         <td>{{info.start_time * 1000 | amTimeAgo }}</td>
     </tr>
     <tr>
         <td>{{ 'app.lthn.chain.words.target_height' | translate}}</td>
-        <td>{{info.target_height }}</td>
+        <td>{{info.target_height }} </td>
     </tr>
     <tr>
         <td>{{ 'app.lthn.chain.words.top_height' | translate}}</td>

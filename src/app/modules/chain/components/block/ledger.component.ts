@@ -2,10 +2,8 @@ import {Component, OnDestroy, OnInit, TemplateRef, ViewChild} from '@angular/cor
 import {ChainGetInfo} from '@module/chain/interfaces/props/get_info';
 import {interval, Subscription} from 'rxjs';
 import {BlockHeader} from '@module/chain/interfaces/types/blockHeader';
-import {ColumnMode} from '@swimlane/ngx-datatable';
 import {BlockchainService} from '@module/chain/blockchain.service';
 import {UntypedFormControl, Validators} from '@angular/forms';
-import {DrawerDirection, DrawerService} from '@swimlane/ngx-ui';
 @Component({
 	selector: 'lthn-chain-ledger',
 	templateUrl: './ledger.component.html'
@@ -36,7 +34,7 @@ export class BlockLedgerComponent implements OnInit, OnDestroy {
 			{ prop: 'num_txes', name: 'app.lthn.chain.words.tx_count', default: true },
 		//	{ prop: 'prev_hash', name: 'Last Hash', default: true },
 	];
-	ColumnMode = ColumnMode;
+	// ColumnMode = ColumnMode;
 	blocks: BlockHeader[] = undefined;
 	chainInfo: ChainGetInfo;
 	@ViewChild('blocksTable') table: any;
@@ -47,8 +45,7 @@ export class BlockLedgerComponent implements OnInit, OnDestroy {
 	blockSearch: UntypedFormControl;
 
 	constructor(
-		private chain: BlockchainService,
-		private drawerService: DrawerService) {
+		private chain: BlockchainService) {
 
 	}
 
@@ -108,13 +105,13 @@ export class BlockLedgerComponent implements OnInit, OnDestroy {
 		this.sub.forEach((s) => s.unsubscribe());
 	}
 	openDrawer(id) {
-		this.drawerService.create({
-			direction: DrawerDirection.Left,
-			template: this.editTmpl,
-			closeOnOutsideClick: true,
-			context: { id}
-
-		});
+		// this.drawerService.create({
+		// 	direction: DrawerDirection.Left,
+		// 	template: this.editTmpl,
+		// 	closeOnOutsideClick: true,
+		// 	context: { id}
+		//
+		// });
 	}
 
 	toggleExpandRow(row) {
@@ -161,4 +158,5 @@ export class BlockLedgerComponent implements OnInit, OnDestroy {
 		return await this.getBlocks()
 	}
 
+	protected readonly undefined = undefined;
 }

@@ -6,7 +6,6 @@ import {MatLegacyListModule as MatListModule} from '@angular/material/legacy-lis
 import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
 import {FlexModule} from '@angular/flex-layout';
 import {TranslateModule} from '@ngx-translate/core';
-import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {LetModule, PushModule} from '@ngrx/component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -20,29 +19,17 @@ import {RouterModule} from '@angular/router';
 import {MatLegacyFormFieldModule as MatFormFieldModule} from '@angular/material/legacy-form-field';
 import {MatLegacyInputModule as MatInputModule} from '@angular/material/legacy-input';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {
-	ButtonModule, CardModule,
-	CodeEditorModule,
-	DropdownModule,
-	IconModule,
-	JSONTreeModule,
-	SectionModule,
-	TabsModule, ToggleModule,
-	ToolbarModule,
-	TreeModule
-} from '@swimlane/ngx-ui';
 import {BlockDetailsComponent} from '@module/chain/components/block/details.component';
 import {BlockLedgerComponent} from '@module/chain/components/block/ledger.component';
 import {BlockchainStatsComponent} from '@module/chain/components/stats.component';
 import {BlockchainConfigComponent} from '@module/chain/components/config.component';
 import {BlockTransactionsComponent} from '@module/chain/components/block/transactions.component';
-import {ConsoleModule} from '@module/console/console.module';
 import { StatusComponent } from './components/status/status.component';
 import {MatExpansionModule} from "@angular/material/expansion";
-import {XMRStatusComponent} from '@module/chain/xmr/status.component';
+import {NbCardModule, NbListModule, NbUserModule} from "@nebular/theme";
 
 @NgModule({
-	declarations: [XMRStatusComponent, BlockchainComponent, BlockDetailsComponent, BlockLedgerComponent, BlockchainStatsComponent, BlockchainConfigComponent, BlockTransactionsComponent, StatusComponent],
+	declarations: [ BlockchainComponent, BlockDetailsComponent, BlockLedgerComponent, BlockchainStatsComponent, BlockchainConfigComponent, BlockTransactionsComponent, StatusComponent],
     imports: [
         CommonModule,
         MatCardModule,
@@ -50,7 +37,6 @@ import {XMRStatusComponent} from '@module/chain/xmr/status.component';
         MatButtonModule,
         FlexModule,
         TranslateModule,
-        NgxDatatableModule,
         LetModule, PushModule,
         PipesModule,
         MatIconModule,
@@ -63,22 +49,11 @@ import {XMRStatusComponent} from '@module/chain/xmr/status.component';
         MatFormFieldModule,
         MatInputModule,
         ReactiveFormsModule,
-        SectionModule,
-        ToolbarModule,
-        TabsModule,
-        CodeEditorModule,
         FormsModule,
-        ButtonModule,
-        TreeModule,
-        JSONTreeModule,
-        IconModule,
-        ConsoleModule,
-        DropdownModule,
-        CardModule,
-        ToggleModule,
-        MatExpansionModule
+
+        MatExpansionModule, NbCardModule, NbListModule, NbUserModule
     ],
-	exports: [BlockchainComponent, StatusComponent, XMRStatusComponent],
+	exports: [BlockchainComponent, StatusComponent],
 	providers: [HashRatePipe]
 })
 export class BlockchainModule {

@@ -1,6 +1,5 @@
 import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {XmrigService} from '@module/mining/xmrig/xmrig.service';
-import {NotificationService, NotificationStyleType, NotificationType} from '@swimlane/ngx-ui';
 import {Router} from '@angular/router';
 
 @Component({
@@ -8,7 +7,7 @@ import {Router} from '@angular/router';
   templateUrl: './status.component.html',
   styleUrls: ['./status.component.scss']
 })
-export class XmrigStatusComponent implements OnInit, AfterViewInit, OnDestroy {
+export class XmrigStatusComponent implements AfterViewInit {
   isFocused: boolean = false;
   isSelected: boolean = false;
   chainInfo: any;
@@ -31,11 +30,9 @@ export class XmrigStatusComponent implements OnInit, AfterViewInit, OnDestroy {
   public downloads: any;
 
 
-  constructor(private  xmrig: XmrigService,  private notificationService: NotificationService, private router: Router) {
+  constructor(private  xmrig: XmrigService, private router: Router) {
 
   }
-
-  async ngOnInit() {}
 
 
   async ngAfterViewInit() {
@@ -58,12 +55,12 @@ export class XmrigStatusComponent implements OnInit, AfterViewInit, OnDestroy {
   async downloadXmrig(id: string) {
     await this.xmrig.downloadXmrig(id)
     await this.xmrig.setInstallConfig({id: id, version: this.downloads.version, dir: `xmrig-${this.downloads.version}`})
-    this.notificationService.create({
-      type: NotificationType.html,
-      styleType: NotificationStyleType.success,
-      title: 'Download Requested!',
-      body: id
-    })
+    // this.notificationService.create({
+    //   type: NotificationType.html,
+    //   styleType: NotificationStyleType.success,
+    //   title: 'Download Requested!',
+    //   body: id
+    // })
     await this.router.navigateByUrl('/')
   }
 
@@ -77,8 +74,8 @@ export class XmrigStatusComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
 
-  public ngOnDestroy(): void {
-//    if(this.sub) this.sub.unsubscribe();
-//    if(this.su2) this.sub2.unsubscribe();
-  }
+//   public ngOnDestroy(): void {
+// //    if(this.sub) this.sub.unsubscribe();
+// //    if(this.su2) this.sub2.unsubscribe();
+//   }
 }

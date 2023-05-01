@@ -1,0 +1,22 @@
+<nb-card size="large">
+  <nb-tabset fullWidth (changeTab)="changeTab($event)">
+    <nb-tab tabTitle="Orders">
+      <div class="chart-container">
+        <lthn-ui-chart-panel-summary [summary]="chartPanelSummary"></lthn-ui-chart-panel-summary>
+        <lthn-ui-chart-panel-header [type]="period"
+                                (periodChange)="setPeriodAndGetChartData($event)">
+        </lthn-ui-chart-panel-header>
+        <lthn-ui-orders-chart #ordersChart [ordersChartData]="ordersChartData"></lthn-ui-orders-chart>
+      </div>
+    </nb-tab>
+    <nb-tab tabTitle="Profit" [lazyLoad]="true">
+      <div class="chart-container">
+        <lthn-ui-chart-panel-summary [summary]="chartPanelSummary"></lthn-ui-chart-panel-summary>
+        <lthn-ui-chart-panel-header [type]="period"
+                                (periodChange)="setPeriodAndGetChartData($event)">
+        </lthn-ui-chart-panel-header>
+        <lthn-ui-profit-chart #profitChart [profitChartData]="profitChartData"></lthn-ui-profit-chart>
+      </div>
+    </nb-tab>
+  </nb-tabset>
+</nb-card>

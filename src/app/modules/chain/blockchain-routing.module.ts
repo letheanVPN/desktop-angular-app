@@ -12,7 +12,6 @@ const routes: Routes = [
 	{
 		path: 'chain/stats',
 		component: BlockchainStatsComponent,
-		canActivate: [AuthGuard],
 		data: {
 			title: 'view.chain.title',
 			heading: 'view.chain.heading',

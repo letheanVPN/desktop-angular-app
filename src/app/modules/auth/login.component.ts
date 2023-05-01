@@ -1,20 +1,19 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from './auth.service';
 import {Router} from '@angular/router';
-import {NotificationService, NotificationType} from '@swimlane/ngx-ui';
 
 @Component({
 	selector: 'lthn-login',
 	templateUrl: './login.component.html',
 	styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 	key: string;
 	error = '';
 	fileName = '';
 	public password: any;
 
-	constructor(private authService: AuthService, private router: Router, private notificationService: NotificationService) {
+	constructor(private authService: AuthService, private router: Router) {
 
 	}
 
@@ -45,10 +44,6 @@ export class LoginComponent implements OnInit {
 		}
 	}
 
-	public ngOnInit(): void {
-
-	}
-
 	onFileSelected(event) {
 
 		const file: File = event.target.files[0];
@@ -72,11 +67,11 @@ export class LoginComponent implements OnInit {
 
 			// event fired when file reading failed
 			reader.addEventListener('error', function () {
-				that.notificationService.create({
-					title: 'Error',
-					body: 'Could not read file',
-					type: NotificationType.html
-				});
+				// that.notificationService.create({
+				// 	title: 'Error',
+				// 	body: 'Could not read file',
+				// 	type: NotificationType.html
+				// });
 			});
 
 			// read file as text file

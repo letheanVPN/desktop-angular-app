@@ -1,5 +1,4 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {NotificationService, NotificationStyleType, NotificationType} from '@swimlane/ngx-ui';
 import {interval, Subscription} from 'rxjs';
 
 @Component({
@@ -12,7 +11,7 @@ export class DockerComponent implements OnInit, OnDestroy {
 	public containers = [];
 	private sub: Subscription;
 
-	constructor(private notificationService: NotificationService) {
+	constructor() {
 	}
 
 	async ngOnInit() {
@@ -62,21 +61,21 @@ export class DockerComponent implements OnInit, OnDestroy {
 				body: JSON.stringify({id: containerId})
 			});
 		}catch (e) {
-			this.notificationService.create({
-				type: NotificationType.html,
-				styleType: NotificationStyleType.error,
-				title: 'FAILED: Start Container',
-				body: containerId
-			});
+			// this.notificationService.create({
+			// 	type: NotificationType.html,
+			// 	styleType: NotificationStyleType.error,
+			// 	title: 'FAILED: Start Container',
+			// 	body: containerId
+			// });
 			return false;
 		}
 
-		this.notificationService.create({
-			type: NotificationType.html,
-			styleType: NotificationStyleType.success,
-			title: 'Start Requested!',
-			body: containerId
-		});
+		// this.notificationService.create({
+		// 	type: NotificationType.html,
+		// 	styleType: NotificationStyleType.success,
+		// 	title: 'Start Requested!',
+		// 	body: containerId
+		// });
 		await this.getContainerList();
 	}
 
@@ -99,21 +98,21 @@ export class DockerComponent implements OnInit, OnDestroy {
 			//this.containers = await containers.json()
 			await containers.json();
 		}catch (e) {
-			this.notificationService.create({
-				type: NotificationType.html,
-				styleType: NotificationStyleType.error,
-				title: 'FAILED: Stop Container',
-				body: containerId
-			});
+			// this.notificationService.create({
+			// 	type: NotificationType.html,
+			// 	styleType: NotificationStyleType.error,
+			// 	title: 'FAILED: Stop Container',
+			// 	body: containerId
+			// });
 			return false
 		}
 
-		this.notificationService.create({
-			type: NotificationType.html,
-			styleType: NotificationStyleType.success,
-			title: 'Stop Requested!',
-			body: containerId
-		});
+		// this.notificationService.create({
+		// 	type: NotificationType.html,
+		// 	styleType: NotificationStyleType.success,
+		// 	title: 'Stop Requested!',
+		// 	body: containerId
+		// });
 		await this.getContainerList();
 	}
 
@@ -135,21 +134,21 @@ export class DockerComponent implements OnInit, OnDestroy {
 
 			await containers.json();
 		}catch (e) {
-			this.notificationService.create({
-				type: NotificationType.html,
-				styleType: NotificationStyleType.error,
-				title: 'FAILED: Restart Container',
-				body: containerId
-			});
+			// this.notificationService.create({
+			// 	type: NotificationType.html,
+			// 	styleType: NotificationStyleType.error,
+			// 	title: 'FAILED: Restart Container',
+			// 	body: containerId
+			// });
 			return false
 		}
 
-		this.notificationService.create({
-			type: NotificationType.html,
-			styleType: NotificationStyleType.success,
-			title: 'Restart Requested!',
-			body: containerId
-		});
+		// this.notificationService.create({
+		// 	type: NotificationType.html,
+		// 	styleType: NotificationStyleType.success,
+		// 	title: 'Restart Requested!',
+		// 	body: containerId
+		// });
 		await this.getContainerList();
 	}
 
@@ -179,12 +178,12 @@ export class DockerComponent implements OnInit, OnDestroy {
 		});
 		//this.containers = await containers.json()
 		console.log(await containers.json());
-		this.notificationService.create({
-			type: NotificationType.html,
-			styleType: NotificationStyleType.success,
-			title: 'Container Create Requested!',
-			body: ''
-		});
+		// this.notificationService.create({
+		// 	type: NotificationType.html,
+		// 	styleType: NotificationStyleType.success,
+		// 	title: 'Container Create Requested!',
+		// 	body: ''
+		// });
 		await this.getContainerList();
 	}
 
@@ -204,12 +203,12 @@ export class DockerComponent implements OnInit, OnDestroy {
 		});
 		//this.containers = await containers.json()
 		console.log(await containers.json());
-		this.notificationService.create({
-			type: NotificationType.html,
-			styleType: NotificationStyleType.success,
-			title: 'Restart Requested!',
-			body: containerId
-		});
+		// this.notificationService.create({
+		// 	type: NotificationType.html,
+		// 	styleType: NotificationStyleType.success,
+		// 	title: 'Restart Requested!',
+		// 	body: containerId
+		// });
 		await this.getContainerList();
 	}
 

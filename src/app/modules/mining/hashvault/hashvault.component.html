@@ -1,25 +1,25 @@
 
 <div fxFlex="100" *ngIf="poolInfo" fxLayout="column, wrap">
-    <ngx-toolbar >
-        <ngx-toolbar-title>
-            <span class="tag">HashVault Reported Stats</span>
-        </ngx-toolbar-title>
-        <ngx-toolbar-content>
-            <i>Hourly AVG Hashrate: <strong>{{poolInfo['collective']['avg1hashRate']}}</strong></i>
+<!--    <ngx-toolbar >-->
+<!--        <ngx-toolbar-title>-->
+<!--            <span class="tag">HashVault Reported Stats</span>-->
+<!--        </ngx-toolbar-title>-->
+<!--        <ngx-toolbar-content>-->
+<!--            <i>Hourly AVG Hashrate: <strong>{{poolInfo['collective']['avg1hashRate']}}</strong></i>-->
 
-            <i>Last Share: <strong>{{poolInfo['collective']['lastShare'] | amTimeAgo }}</strong></i>
-            <i>Unconfirmed Balance: <strong>{{poolInfo['revenue']['unconfirmedBalance']['collective'].total}}</strong></i>
-            <i>Confirmed Balance: <strong>{{poolInfo['revenue']['confirmedBalance']}}</strong></i>
-        </ngx-toolbar-content>
-    </ngx-toolbar>
+<!--            <i>Last Share: <strong>{{poolInfo['collective']['lastShare'] | amTimeAgo }}</strong></i>-->
+<!--            <i>Unconfirmed Balance: <strong>{{poolInfo['revenue']['unconfirmedBalance']['collective'].total}}</strong></i>-->
+<!--            <i>Confirmed Balance: <strong>{{poolInfo['revenue']['confirmedBalance']}}</strong></i>-->
+<!--        </ngx-toolbar-content>-->
+<!--    </ngx-toolbar>-->
     <div fxFlex="100">
         <div class="flex">
             <div class="flex-item">
                 <div style="display: block;">
-                    <canvas baseChart width="400" height="400"
-                            [data]="lineChartData"
-                            [options]="lineChartOptions"
-                            [type]="lineChartType"></canvas>
+<!--                    <canvas baseChart width="400" height="400"-->
+<!--                            [data]="lineChartData"-->
+<!--                            [options]="lineChartOptions"-->
+<!--                            [type]="lineChartType"></canvas>-->
                 </div>
             </div>
 

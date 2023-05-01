@@ -1,34 +1,35 @@
-<ngx-tabs class="">
-    <ngx-tab label="Wallets" >
-        <ngx-section *ngxIfTabActive>
-            <lthn-wallet-details *ngIf="wallet.address"></lthn-wallet-details>
-            <div fxFlex="100">
-                <div fxFlex="50" fxLayout="row, wrap">
-                    <lthn-wallet-open></lthn-wallet-open>
-                </div>
-                <div fxFlex="50">
-                    <lthn-wallet-add></lthn-wallet-add>
-                </div>
-            </div>
+wallets
+<!--<ngx-tabs class="">-->
+<!--    <ngx-tab label="Wallets" >-->
+<!--        <ngx-section *ngxIfTabActive>-->
+<!--            <lthn-wallet-details *ngIf="wallet.address"></lthn-wallet-details>-->
+<!--            <div fxFlex="100">-->
+<!--                <div fxFlex="50" fxLayout="row, wrap">-->
+<!--                    <lthn-wallet-open></lthn-wallet-open>-->
+<!--                </div>-->
+<!--                <div fxFlex="50">-->
+<!--                    <lthn-wallet-add></lthn-wallet-add>-->
+<!--                </div>-->
+<!--            </div>-->
 
-        </ngx-section>
-    </ngx-tab>
-    <ngx-tab label="Transactions" *ngIf="wallet.address" #consoleTab>
-        <ngx-section *ngxIfTabActive>
+<!--        </ngx-section>-->
+<!--    </ngx-tab>-->
+<!--    <ngx-tab label="Transactions" *ngIf="wallet.address" #consoleTab>-->
+<!--        <ngx-section *ngxIfTabActive>-->
 
-                <lthn-wallet-transactions></lthn-wallet-transactions>
+<!--                <lthn-wallet-transactions></lthn-wallet-transactions>-->
 
-        </ngx-section>
-    </ngx-tab>
-    <ngx-tab label="Transfer" *ngIf="wallet.address" #consoleTab>
-        <ngx-section *ngxIfTabActive>
+<!--        </ngx-section>-->
+<!--    </ngx-tab>-->
+<!--    <ngx-tab label="Transfer" *ngIf="wallet.address" #consoleTab>-->
+<!--        <ngx-section *ngxIfTabActive>-->
 
-            <h3>Balance: {{ wallet.balance.unlocked_balance | toCoin}}</h3>
-            <h4 *ngIf="wallet.balance.unlocked_balance != wallet.balance.balance">Locked Balance: {{wallet.balance.balance-wallet.balance.unlocked_balance|toCoin}}</h4>
-            <lthn-wallet-transfer></lthn-wallet-transfer>
+<!--            <h3>Balance: {{ wallet.balance.unlocked_balance | toCoin}}</h3>-->
+<!--            <h4 *ngIf="wallet.balance.unlocked_balance != wallet.balance.balance">Locked Balance: {{wallet.balance.balance-wallet.balance.unlocked_balance|toCoin}}</h4>-->
+<!--            <lthn-wallet-transfer></lthn-wallet-transfer>-->
 
-        </ngx-section>
-    </ngx-tab>
+<!--        </ngx-section>-->
+<!--    </ngx-tab>-->
 
-</ngx-tabs>
+<!--</ngx-tabs>-->
 
