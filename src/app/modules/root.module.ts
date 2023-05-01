@@ -22,6 +22,7 @@ import {DockerModule} from '@module/docker/docker.module';
 import {MiningModule} from '@module/mining/mining.module';
 import {XmrigModule} from '@module/mining/xmrig/xmrig.module';
 import { LoadAppComponent } from './load-app/load-app.component';
+import {AppsModule} from "@module/apps/apps.module";
 
 @NgModule({
 	declarations: [RootComponent, LoadAppComponent],
@@ -39,6 +40,7 @@ import { LoadAppComponent } from './load-app/load-app.component';
 		PipesModule,
 		MatIconModule,
 		MatCardModule,
+		AppsModule,
 		BlockchainModule,
 		DockerModule,
 		MiningModule,

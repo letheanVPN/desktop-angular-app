@@ -1,0 +1,26 @@
+<nb-card>
+    <ul *ngFor="let dir of market['dirs']">
+        <li><a (click)="getAppMarket(dir)">{{ dir }}</a></li>
+    </ul>
+    <button nbButton (click)="getAppMarket()">Back</button>
+</nb-card>
+
+<nb-card>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>App</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody *ngIf="market['apps'] && market['apps'].length > 0">
+        <tr *ngFor="let app of market['apps']">
+            <td>{{ app['name'] }}</td>
+            <td>
+
+                <button (click)="installApp({code: app['code'], pkg: app['pkg']})" nbButton>Install</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</nb-card>

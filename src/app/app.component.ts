@@ -140,37 +140,37 @@ export class AppComponent implements OnInit, AfterContentInit {
 			.pipe(filter((event) => event instanceof NavigationEnd))
 			.subscribe(() => {
 				const rt = this.getChild(this.activatedRoute);
-				rt.data.subscribe((data) => {
-					this.translate.get(data.title).subscribe((res: string) => {
-						this.titleService.setTitle(res);
-					});
-
-					this.heading = data.heading;
-					if (data.description) {
-
-						this.translate.get(data.description).subscribe(() => {
-							this.metaService.updateTag({
-								name: 'description',
-								content: data.description
-							});
-						});
-
-					} else {
-						this.metaService.removeTag('name=\'description\'');
-					}
-
-					if (!data.robots) {
-						this.metaService.updateTag({
-							name: 'robots',
-							content: 'nofollow,noindex'
-						});
-					} else {
-						this.metaService.updateTag({
-							name: 'robots',
-							content: 'follow,index'
-						});
-					}
-				});
+				// rt.data.subscribe((data) => {
+				// 	this.translate.get(data.title).subscribe((res: string) => {
+				// 		this.titleService.setTitle(res);
+				// 	});
+				//
+				// 	this.heading = data.heading;
+				// 	if (data.description) {
+				//
+				// 		this.translate.get(data.description).subscribe(() => {
+				// 			this.metaService.updateTag({
+				// 				name: 'description',
+				// 				content: data.description
+				// 			});
+				// 		});
+				//
+				// 	} else {
+				// 		this.metaService.removeTag('name=\'description\'');
+				// 	}
+				//
+				// 	if (!data.robots) {
+				// 		this.metaService.updateTag({
+				// 			name: 'robots',
+				// 			content: 'nofollow,noindex'
+				// 		});
+				// 	} else {
+				// 		this.metaService.updateTag({
+				// 			name: 'robots',
+				// 			content: 'follow,index'
+				// 		});
+				// 	}
+				// });
 			});
 	}
 

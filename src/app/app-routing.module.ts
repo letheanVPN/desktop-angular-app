@@ -10,6 +10,7 @@ import {DockerRoutingModule} from '@module/docker/docker-routing.module';
 import {XmrigRoutingModule} from '@module/mining/xmrig/xmrig-routing.module';
 import {LoadAppComponent} from '@module/load-app/load-app.component';
 import {SettingsRoutingModule} from '@module/settings/settings-routing.module';
+import {AppsRoutingModule} from "@module/apps/apps-routing.module";
 
 const routes: Routes = [
 	{
@@ -40,6 +41,7 @@ const routes: Routes = [
 @NgModule({
 	imports: [
 		RouterModule.forRoot(routes, { useHash: true, initialNavigation: 'enabledBlocking' }),
+		AppsRoutingModule,
 		BlockchainRoutingModule,
 		UserRoutingModule,
 		SettingsRoutingModule,
