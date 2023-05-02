@@ -112,36 +112,9 @@ export class AppComponent implements OnInit, AfterContentInit {
 				rt.data.subscribe((data) => {
 					if (data.layout){
 						that.appLayout = data.layout;
+					} else {
+						that.appLayout = 'default';
 					}
-				// 	this.translate.get(data.title).subscribe((res: string) => {
-				// 		this.titleService.setTitle(res);
-				// 	});
-				//
-				// 	this.heading = data.heading;
-				// 	if (data.description) {
-				//
-				// 		this.translate.get(data.description).subscribe(() => {
-				// 			this.metaService.updateTag({
-				// 				name: 'description',
-				// 				content: data.description
-				// 			});
-				// 		});
-				//
-				// 	} else {
-				// 		this.metaService.removeTag('name=\'description\'');
-				// 	}
-				//
-				// 	if (!data.robots) {
-				// 		this.metaService.updateTag({
-				// 			name: 'robots',
-				// 			content: 'nofollow,noindex'
-				// 		});
-				// 	} else {
-				// 		this.metaService.updateTag({
-				// 			name: 'robots',
-				// 			content: 'follow,index'
-				// 		});
-				// 	}
 				});
 			});
 	}

@@ -26,7 +26,7 @@ import {BlockchainConfigComponent} from '@module/chain/components/config.compone
 import {BlockTransactionsComponent} from '@module/chain/components/block/transactions.component';
 import { StatusComponent } from './components/status/status.component';
 import {MatExpansionModule} from "@angular/material/expansion";
-import {NbCardModule, NbListModule, NbUserModule} from "@nebular/theme";
+import {NbButtonModule, NbCardModule, NbIconModule, NbInputModule, NbListModule, NbUserModule} from "@nebular/theme";
 
 @NgModule({
 	declarations: [ BlockchainComponent, BlockDetailsComponent, BlockLedgerComponent, BlockchainStatsComponent, BlockchainConfigComponent, BlockTransactionsComponent, StatusComponent],
@@ -51,7 +51,7 @@ import {NbCardModule, NbListModule, NbUserModule} from "@nebular/theme";
         ReactiveFormsModule,
         FormsModule,
 
-        MatExpansionModule, NbCardModule, NbListModule, NbUserModule
+        MatExpansionModule, NbCardModule, NbListModule, NbUserModule, NbIconModule, NbButtonModule, NbInputModule
     ],
 	exports: [BlockchainComponent, StatusComponent],
 	providers: [HashRatePipe]

@@ -13,15 +13,19 @@ const routes: Routes = [{
   children: [ {
     path: 'grid',
     component: GridComponent,
+    data: {layout: 'full'}
   }, {
     path: 'icons',
     component: IconsComponent,
+    data: {layout: 'full'}
   }, {
     path: 'typography',
     component: TypographyComponent,
+    data: {layout: 'full'}
   }, {
     path: 'search-fields',
     component: SearchComponent,
+    data: {layout: 'full'}
   }],
 }];
 

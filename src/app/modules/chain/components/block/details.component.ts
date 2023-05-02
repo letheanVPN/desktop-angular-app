@@ -2,6 +2,7 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {BlockchainService} from '@module/chain/blockchain.service';
 import {BlockHeader} from '@module/chain/interfaces/types/blockHeader';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
 	selector: 'lthn-chain-block-details',
@@ -16,16 +17,17 @@ export class BlockDetailsComponent implements OnInit, OnDestroy {
 	@Input() id: string = '';
 
 
-	constructor(private chain: BlockchainService) {
+	constructor(private chain: BlockchainService, private route: ActivatedRoute) {
 	}
 
 	async ngOnInit() {
 
+		this.id = this.route.snapshot.paramMap.get('id')
 		if (this.id.length > 0) {
 			const data = await this.chain.getBlock(this.id);
 			this.block = data['block_header'];
 			this.blockData = JSON.parse(data['json']);
-
+// console.log(this.blockData)
 		}
 
 	}

@@ -1,85 +1,80 @@
-<div class="row">
-    <nb-card>
-        <table class="table table-striped table-responsive" *ngIf="chain.chainInfo as info" >
-            <tbody>
-            <tr>
-                <td>{{ 'app.lthn.chain.words.status' | translate}}</td>
-                <td>{{ info.status }}</td>
-            </tr>
-            <tr>
-                <td>{{ 'app.lthn.chain.words.height' | translate}}</td>
-                <td>{{ info.height }}</td>
-            </tr>
-            <tr>
-                <td>Blocks Missing</td>
-                <td>{{ info.target_height - info.height}}</td>
-            </tr>
+<nb-card>
+    <table class="table table-striped" *ngIf="chain.chainInfo as info">
+        <tbody>
+        <tr>
+            <td>{{ 'app.lthn.chain.words.status' | translate}}</td>
+            <td>{{ info.status }}</td>
+        </tr>
+        <tr>
+            <td>{{ 'app.lthn.chain.words.height' | translate}}</td>
+            <td>{{ info.height }}</td>
+        </tr>
+        <tr>
+            <td>Blocks Missing</td>
+            <td *ngIf="info.target_height > info.height">{{ info.target_height - info.height}}</td>
+            <td *ngIf="info.target_height < info.height">0</td>
+        </tr>
 
-            <tr>
-                <td>{{ 'app.lthn.chain.words.start_time' | translate}}</td>
-                <td>{{info.start_time * 1000 | amTimeAgo }}</td>
-            </tr>
-            <tr>
-                <td>{{ 'app.lthn.chain.words.target_height' | translate}}</td>
-                <td>{{info.target_height }} </td>
-            </tr>
-            <tr>
-                <td>{{ 'app.lthn.chain.words.top_height' | translate}}</td>
-                <td><span [innerHTML]="info.top_block_hash | hashLink | keepHtml" ></span></td>
-            </tr>
-            <tr>
-                <td>{{ 'app.lthn.chain.words.white_peerlist_size' | translate}}</td>
-                <td>{{info.white_peerlist_size }}</td>
-            </tr>
-            <tr>
-                <td>{{ 'app.lthn.chain.words.grey_peerlist_size' | translate}}</td>
-                <td>{{info.grey_peerlist_size }}</td>
-            </tr>
-            <tr>
-                <td>{{ 'app.lthn.chain.words.difficulty' | translate}}</td>
-                <td>{{info.difficulty | hashrate }}</td>
-            </tr>
-            <tr>
-                <td>{{ 'app.lthn.chain.words.cumulative_difficulty' | translate}}</td>
-                <td>{{info.cumulative_difficulty | hashrate }}</td>
-            </tr>
-            <tr>
-                <td>{{ 'app.lthn.chain.words.incoming_connections_count' | translate}}</td>
-                <td>{{info.incoming_connections_count }}</td>
-            </tr>
-            <tr>
-                <td>{{ 'app.lthn.chain.words.tx_count' | translate}}</td>
-                <td>{{info.tx_count }}</td>
-            </tr>
-            <tr>
-                <td>{{ 'app.lthn.chain.words.tx_pool_size' | translate}}</td>
-                <td>{{info.tx_pool_size }}</td>
-            </tr>
-            <tr>
-                <td>{{ 'app.lthn.chain.words.testnet' | translate}}</td>
-                <td>{{info.testnet }}</td>
-            </tr>
-            <tr>
-                <td>{{ 'app.lthn.chain.words.outgoing_connections_count' | translate}}</td>
-                <td>{{info.outgoing_connections_count }}</td>
-            </tr>
-            <tr>
-                <td>{{ 'app.lthn.chain.words.target' | translate}}</td>
-                <td>{{info.target }}</td>
-            </tr>
-            <tr>
-                <td>{{ 'app.lthn.chain.words.alt_blocks_count' | translate}}</td>
-                <td>{{info.alt_blocks_count }}</td>
-            </tr>
-            <tr>
-                <td>{{ 'app.lthn.chain.words.block_size_limit' | translate}}</td>
-                <td>{{info.block_size_limit }}</td>
-            </tr>
-            </tbody>
-        </table>
-    </nb-card>
-</div>
-
-
-
-
+        <tr>
+            <td>{{ 'app.lthn.chain.words.start_time' | translate}}</td>
+            <td>{{info.start_time * 1000 | amTimeAgo }}</td>
+        </tr>
+        <tr>
+            <td>{{ 'app.lthn.chain.words.target_height' | translate}}</td>
+            <td>{{info.target_height }} </td>
+        </tr>
+        <tr>
+            <td>{{ 'app.lthn.chain.words.top_height' | translate}}</td>
+            <td><span [innerHTML]="info.top_block_hash | hashLink | keepHtml"></span></td>
+        </tr>
+        <tr>
+            <td>{{ 'app.lthn.chain.words.white_peerlist_size' | translate}}</td>
+            <td>{{info.white_peerlist_size }}</td>
+        </tr>
+        <tr>
+            <td>{{ 'app.lthn.chain.words.grey_peerlist_size' | translate}}</td>
+            <td>{{info.grey_peerlist_size }}</td>
+        </tr>
+        <tr>
+            <td>{{ 'app.lthn.chain.words.difficulty' | translate}}</td>
+            <td>{{info.difficulty | hashrate }}</td>
+        </tr>
+        <tr>
+            <td>{{ 'app.lthn.chain.words.cumulative_difficulty' | translate}}</td>
+            <td>{{info.cumulative_difficulty | hashrate }}</td>
+        </tr>
+        <tr>
+            <td>{{ 'app.lthn.chain.words.incoming_connections_count' | translate}}</td>
+            <td>{{info.incoming_connections_count }}</td>
+        </tr>
+        <tr>
+            <td>{{ 'app.lthn.chain.words.tx_count' | translate}}</td>
+            <td>{{info.tx_count }}</td>
+        </tr>
+        <tr>
+            <td>{{ 'app.lthn.chain.words.tx_pool_size' | translate}}</td>
+            <td>{{info.tx_pool_size }}</td>
+        </tr>
+        <tr>
+            <td>{{ 'app.lthn.chain.words.testnet' | translate}}</td>
+            <td>{{info.testnet }}</td>
+        </tr>
+        <tr>
+            <td>{{ 'app.lthn.chain.words.outgoing_connections_count' | translate}}</td>
+            <td>{{info.outgoing_connections_count }}</td>
+        </tr>
+        <tr>
+            <td>{{ 'app.lthn.chain.words.target' | translate}}</td>
+            <td>{{info.target }}</td>
+        </tr>
+        <tr>
+            <td>{{ 'app.lthn.chain.words.alt_blocks_count' | translate}}</td>
+            <td>{{info.alt_blocks_count }}</td>
+        </tr>
+        <tr>
+            <td>{{ 'app.lthn.chain.words.block_size_limit' | translate}}</td>
+            <td>{{info.block_size_limit }}</td>
+        </tr>
+        </tbody>
+    </table>
+</nb-card>

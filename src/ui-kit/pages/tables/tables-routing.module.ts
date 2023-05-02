@@ -12,10 +12,12 @@ const routes: Routes = [{
     {
       path: 'smart-table',
       component: SmartTableComponent,
+      data: {layout: 'full'}
     },
     {
       path: 'tree-grid',
       component: TreeGridComponent,
+      data: {layout: 'full'}
     },
   ],
 }];

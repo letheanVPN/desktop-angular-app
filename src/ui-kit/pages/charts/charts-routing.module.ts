@@ -12,12 +12,15 @@ const routes: Routes = [{
   children: [{
     path: 'echarts',
     component: EchartsComponent,
+    data: {layout: 'full'}
   }, {
     path: 'd3',
     component: D3Component,
+    data: {layout: 'full'}
   }, {
     path: 'chartjs',
     component: ChartjsComponent,
+    data: {layout: 'full'}
   }],
 }];
 

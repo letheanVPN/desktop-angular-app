@@ -1,83 +1,87 @@
-<!--<ngx-tabs *ngIf="blockData">-->
-<!--    <ngx-tab label="Block Details">-->
-<!--        <div *ngxIfTabActive>-->
-<!--            <table class="table striped" >-->
-<!--                <thead>-->
-<!--                <tr>-->
-<!--                    <th>{{'app.lthn.chain.words.hash' | translate}}</th>-->
-<!--                    <th>{{ id }}</th>-->
-<!--                </tr>-->
-<!--                </thead>-->
-<!--                <tbody>-->
-<!--                <tr>-->
-<!--                    <td>{{'app.lthn.chain.words.valid' | translate}}</td>-->
-<!--                    <td>-->
-<!--                        <ngx-icon *ngIf="!block.orphan_status" style="color: green;" fontIcon="thumb-up-outline-large"></ngx-icon>-->
-<!--                        <ngx-icon *ngIf="block.orphan_status" style="color: red;" fontIcon="thumb-down-outline-large"></ngx-icon>-->
-<!--                    </td>-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <td>{{'app.lthn.chain.words.tx_count' | translate}}</td>-->
-<!--                    <td>{{ block.num_txes }}</td>-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <td>{{'app.lthn.chain.words.miner_tx' | translate}}</td>-->
-<!--                    <td>{{ blockData['miner_tx']['vout'][0]['target']['key'] }}</td>-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <td>{{'app.lthn.chain.words.height' | translate}}</td>-->
-<!--                    <td>{{ block.height }}</td>-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <td>{{'app.lthn.chain.words.reward' | translate}}</td>-->
-<!--                    <td>{{ block.reward |toCoin  }}</td>-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <td>{{'app.lthn.chain.words.depth' | translate}}</td>-->
-<!--                    <td>{{ block.depth }}</td>-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <td>{{'app.lthn.chain.words.timestamp' | translate}}</td>-->
-<!--                    <td>{{ block.timestamp | amFromUnix  }}</td>-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <td>{{'app.lthn.chain.words.difficulty' | translate}}</td>-->
-<!--                    <td>{{ block.difficulty }}</td>-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <td>{{'app.lthn.chain.words.block_size' | translate}}</td>-->
-<!--                    <td>{{ block.block_size }}</td>-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <td>{{'app.lthn.chain.words.version' | translate}}</td>-->
-<!--                    <td>{{ block.major_version }}.{{ block.minor_version}}</td>-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <td>{{'app.lthn.chain.words.nonce' | translate}}</td>-->
-<!--                    <td>{{ block.nonce }}</td>-->
-<!--                </tr>-->
-<!--                </tbody>-->
-<!--                <tbody>-->
+<div class="row">
+    <div class="col-xxl-12">
+        <nb-card>
+            <nb-card-header>Block: {{ id }}</nb-card-header>
+            <nb-card-body>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button nbButton [routerLink]="['/', 'chain']">Back to chain</button>
+                    </div>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </div>
+    <div class="col-xl-6">
+        <nb-card>
+            <table class="table striped" *ngIf="blockData">
+                <thead>
+                <tr>
+                    <th>{{'app.lthn.chain.words.hash' | translate}}</th>
+                    <th>{{ id | hashLink }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{'app.lthn.chain.words.depth' | translate}}</td>
+                    <td>{{ block.depth }}</td>
+                </tr>
+                <tr>
+                    <td>{{'app.lthn.chain.words.height' | translate}}</td>
+                    <td>{{ block.height }}</td>
+                </tr>
+                <tr>
+                    <td>{{'app.lthn.chain.words.nonce' | translate}}</td>
+                    <td>{{ block.nonce }}</td>
+                </tr>
+                <tr>
+                    <td>{{'app.lthn.chain.words.reward' | translate}}</td>
+                    <td>{{ block.reward |toCoin  }}</td>
+                </tr>
+                <tr>
+                    <td>{{'app.lthn.chain.words.tx_count' | translate}}</td>
+                    <td>{{ block.num_txes }}</td>
+                </tr>
+                <tr>
+                    <td>{{'app.lthn.chain.words.miner_tx' | translate}}</td>
+                    <td>{{ blockData['miner_tx']['vout'][0]['target']['key'] | hashLink }}</td>
+                </tr>
 
-<!--                </tbody>-->
-<!--            </table>-->
-<!--        </div>-->
-<!--    </ngx-tab>-->
-<!--    <ngx-tab label="Transactions ({{blockData['tx_hashes'].length + 1}})">-->
-<!--        <div *ngxIfTabActive>-->
-<!--            <lthn-chain-block-transactions [blockData]="blockData"></lthn-chain-block-transactions>-->
-<!--        </div>-->
-<!--    </ngx-tab>-->
-<!--    <ngx-tab label="{{'app.lthn.chain.menu.raw_data' | translate}}">-->
-<!--        <div *ngxIfTabActive>-->
-<!--            <ngx-tree [nodes]="blockData | jsonTree">-->
-<!--                <ng-template let-label="label" let-model="model" let-expandable="expandable">-->
-<!--                    <div class="ngx-node-label" [ngClass]="model.type">-->
-<!--                        <code><strong>{{label}}:</strong><span *ngIf="!model.expandable">{{model.value}}</span></code>-->
-<!--                    </div>-->
-<!--                </ng-template>-->
-<!--            </ngx-tree>-->
-<!--        </div>-->
-<!--    </ngx-tab>-->
-<!--</ngx-tabs>-->
+                <tr>
+                    <td>{{'app.lthn.chain.words.timestamp' | translate}}</td>
+                    <td>{{ block.timestamp | amFromUnix  }}</td>
+                </tr>
+                <tr>
+                    <td>{{'app.lthn.chain.words.difficulty' | translate}}</td>
+                    <td>{{ block.difficulty }}</td>
+                </tr>
+                <tr>
+                    <td>{{'app.lthn.chain.words.block_size' | translate}}</td>
+                    <td>{{ block.block_size }}</td>
+                </tr>
+                <tr>
+                    <td>{{'app.lthn.chain.words.version' | translate}}</td>
+                    <td>{{ block.major_version }}.{{ block.minor_version}}</td>
+                </tr>
+
+                </tbody>
+                <tbody>
+
+                </tbody>
+            </table>
+        </nb-card>
+    </div>
+    <div class="col-xl-6">
+        <nb-card>
+            <lthn-chain-block-transactions [blockData]="blockData"></lthn-chain-block-transactions>
+        </nb-card>
+    </div>
+</div>
+
+
+
+
+
+
+
+
 

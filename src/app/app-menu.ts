@@ -26,7 +26,7 @@ export const APP_MENU_ITEMS: NbMenuItem[] = [
     icon: 'layout-outline',
     children: [
       {
-        title: 'Dashboard',
+        title: 'Explorer',
         link: '/chain',
       },
       {

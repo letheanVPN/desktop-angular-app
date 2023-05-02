@@ -1,6 +1,4 @@
-@import './styles/material-lethean-theme';
-@import '~@swimlane/ngx-datatable/index.css';
-@import '~@swimlane/ngx-datatable/assets/icons.css';
+
 /* Google Material Icons */
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Raleway&display=swap');
@@ -19,51 +17,6 @@ html, body {
 ::-webkit-scrollbar {
   width: 0; /* Remove scrollbar space */
   background: transparent; /*  make scrollbar invisible */
-}
-
-
-.flex-spacer {
-  flex: 1 1 auto;
-}
-
-.full_width {
-	width: 100%;
-}
-
-.mat-form-field {
-  padding-right: 10px;
-}
-
-.container-fluid {
-  .mat-card {
-    margin: 6px;
-  }
-}
-
-.datatable-row-wrapper:nth-child(odd), .mat-list-item:nth-last-child(odd){
-  margin-top: 1px;
-  margin-bottom: 1px;
-  background: rgba(26,26,26,0.9);
-}
-
-.CodeMirror {
-  min-height: 200px;
-  height: auto;
-  font-size: 13px;
-  margin-top: 0.7em;
-  margin-bottom: 0.7em;
-}
-.ngx-tabs .ngx-tabs-list {
-background-color: #313847;
-}
-
-.ngx-datatable .datatable-body .datatable-row-detail {
-  overflow-y: scroll!important;
-}
-
-mat-list-item p {
-  flex: 1 1 auto;
-  margin: 0;
 }
 
 .seb-iframe {

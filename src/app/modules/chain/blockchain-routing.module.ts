@@ -33,7 +33,6 @@ const routes: Routes = [
 	{
 		path: 'chain/block/:id',
 		component: BlockDetailsComponent,
-		canActivate: [AuthGuard],
 		data: {
 			title: 'view.chain.title',
 			heading: 'view.chain.heading',
@@ -44,7 +43,6 @@ const routes: Routes = [
 	{
 		path: 'chain/ledger',
 		component: BlockLedgerComponent,
-		canActivate: [AuthGuard],
 		data: {
 			title: 'view.chain.title',
 			heading: 'view.chain.heading',
@@ -55,7 +53,6 @@ const routes: Routes = [
 	{
 		path: 'chain',
 		component: BlockchainComponent,
-		canActivate: [AuthGuard],
 		data: {
 			title: 'view.chain.title',
 			heading: 'view.chain.heading',
