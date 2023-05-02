@@ -13,4 +13,5 @@ export class BlockchainStatsComponent {
 
 	constructor(public chain: BlockchainService) {}
 
+    protected readonly undefined = undefined;
 }

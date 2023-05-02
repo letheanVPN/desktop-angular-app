@@ -8,12 +8,15 @@ import { CKEditorComponent } from './ckeditor/ckeditor.component';
 const routes: Routes = [{
   path: '',
   component: EditorsComponent,
+  data: {layout: 'full'},
   children: [{
     path: 'tinymce',
     component: TinyMCEComponent,
+    data: {layout: 'full'}
   }, {
     path: 'ckeditor',
     component: CKEditorComponent,
+    data: {layout: 'full'}
   }],
 }];
 

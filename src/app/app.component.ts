@@ -19,14 +19,10 @@ import {APP_MENU_ITEMS} from "./app-menu";
 export class AppComponent implements OnInit, AfterContentInit {
 	//public menu: boolean;
 	public heading = '';
-	@ViewChild('sidenav') public sidenav: MatSidenav;
-	public currentFlag: any;
-	public currentLanguage$: Subscription;
-	public currentLanguage: string = 'en';
-	public navExpanded: boolean = true;
 
-	public menuItems = [];
 	public menu = APP_MENU_ITEMS
+	public currentLanguage = 'en'
+	public appLayout = 'default'
 
 	/**
 	 * Starts the Angular framework and configures system plugins
@@ -89,34 +85,6 @@ export class AppComponent implements OnInit, AfterContentInit {
 	}
 
 	public async ngAfterContentInit() {
-
-
-
-// 		if (!await this.fs.isFile('data/objects/conf/menu.json')) {
-//
-// 			try {
-// 				this.menuItems = [
-// //					{'title': 'menu.text.dashboard', 'icon': ['fas', 'gauge'], 'url': ['/', 'dashboard']},
-// 					{'title': 'menu.text.chain', 'icon': ['fas', 'link'], 'url': ['/', 'chain']},
-// 					{'title': 'menu.text.wallet', 'icon': ['fas', 'wallet'], 'url': ['/', 'wallet']},
-// //					{'title': 'menu.text.mining', 'icon': ['fas', 'person-digging'], 'url': ['/', 'mining', 'xmrig']}
-// 				];
-//
-// 				const containers = await fetch('http://localhost:36911/config/object/set', {
-// 					method: 'POST',
-// 					headers: {
-// 						'Content-Type': 'application/json'
-// 					},
-// 					body: JSON.stringify({group: 'conf', object: 'menu', data: this.menuItems})
-// 				});
-// 				await containers.json();
-// 			} catch (e) {
-// 				//return false;
-// 			}
-//
-// 		}
-//
-//
  		this.updateMeta();
 	}
 
@@ -136,11 +104,15 @@ export class AppComponent implements OnInit, AfterContentInit {
 	 * creates subscriptions for multi lingual page meta
 	 */
 	updateMeta() {
+		const that = this;
 		this.router.events
 			.pipe(filter((event) => event instanceof NavigationEnd))
 			.subscribe(() => {
 				const rt = this.getChild(this.activatedRoute);
-				// rt.data.subscribe((data) => {
+				rt.data.subscribe((data) => {
+					if (data.layout){
+						that.appLayout = data.layout;
+					}
 				// 	this.translate.get(data.title).subscribe((res: string) => {
 				// 		this.titleService.setTitle(res);
 				// 	});
@@ -170,7 +142,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 				// 			content: 'follow,index'
 				// 		});
 				// 	}
-				// });
+				});
 			});
 	}
 
@@ -194,18 +166,18 @@ export class AppComponent implements OnInit, AfterContentInit {
 	}
 
 	async getMenuConfig() {
-		try {
-			const containers = await fetch('http://localhost:36911/config/object/get', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({group: 'conf', object: 'menu'})
-			});
-			return this.menuItems = await containers.json();
-		} catch (e) {
-			return false;
-		}
+		// try {
+		// 	const containers = await fetch('http://localhost:36911/config/object/get', {
+		// 		method: 'POST',
+		// 		headers: {
+		// 			'Content-Type': 'application/json'
+		// 		},
+		// 		body: JSON.stringify({group: 'conf', object: 'menu'})
+		// 	});
+		// 	return this.menuItems = await containers.json();
+		// } catch (e) {
+		// 	return false;
+		// }
 
 	}
 

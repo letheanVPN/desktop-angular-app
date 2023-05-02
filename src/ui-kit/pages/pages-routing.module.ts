@@ -9,14 +9,17 @@ import { NotFoundComponent } from './miscellaneous/not-found/not-found.component
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
+  data: {layout: 'full'},
   children: [
     {
       path: 'dashboard',
       component: ECommerceComponent,
+      data: {layout: 'full'},
     },
     {
       path: 'iot-dashboard',
       component: DashboardComponent,
+      data: {layout: 'full'}
     },
     {
       path: 'layout',
@@ -76,6 +79,7 @@ const routes: Routes = [{
     {
       path: '**',
       component: NotFoundComponent,
+      data: {layout: 'full'}
     },
   ],
 }];

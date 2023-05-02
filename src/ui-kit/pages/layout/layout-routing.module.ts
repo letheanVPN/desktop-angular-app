@@ -11,22 +11,27 @@ import { StepperComponent } from './stepper/stepper.component';
 const routes: Routes = [{
   path: '',
   component: LayoutComponent,
+  data: {layout: 'full'},
   children: [
     {
       path: 'stepper',
       component: StepperComponent,
+      data: {layout: 'full'}
     },
     {
       path: 'list',
       component: ListComponent,
+      data: {layout: 'full'}
     },
     {
       path: 'infinite-list',
       component: InfiniteListComponent,
+      data: {layout: 'full'}
     },
     {
       path: 'accordion',
       component: AccordionComponent,
+      data: {layout: 'full'}
     },
     {
       path: 'tabs',
@@ -40,10 +45,12 @@ const routes: Routes = [{
         {
           path: 'tab1',
           component: Tab1Component,
+          data: {layout: 'full'}
         },
         {
           path: 'tab2',
           component: Tab2Component,
+          data: {layout: 'full'}
         },
       ],
     },

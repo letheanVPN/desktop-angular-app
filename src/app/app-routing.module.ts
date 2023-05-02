@@ -30,6 +30,7 @@ const routes: Routes = [
 	},
 	{
 		path: "ui-kit",
+		data: {layout: 'full'},
 		loadChildren: () => import('@ui/ui-kit.module').then(m => m.UiKitModule),
 	},
 	{

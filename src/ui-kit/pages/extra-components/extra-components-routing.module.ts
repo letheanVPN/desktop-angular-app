@@ -12,30 +12,37 @@ import { CalendarKitFullCalendarShowcaseComponent } from './calendar-kit/calenda
 const routes: Routes = [{
   path: '',
   component: ExtraComponentsComponent,
+  data: {layout: 'full'},
   children: [
     {
       path: 'calendar',
       component: CalendarComponent,
+      data: {layout: 'full'}
     },
     {
       path: 'progress-bar',
       component: ProgressBarComponent,
+      data: {layout: 'full'}
     },
     {
       path: 'spinner',
       component: SpinnerComponent,
+      data: {layout: 'full'}
     },
     {
       path: 'alert',
       component: AlertComponent,
+      data: {layout: 'full'}
     },
     {
       path: 'calendar-kit',
       component: CalendarKitFullCalendarShowcaseComponent,
+      data: {layout: 'full'}
     },
     {
       path: 'chat',
       component: ChatComponent,
+      data: {layout: 'full'}
     },
   ],
 }];

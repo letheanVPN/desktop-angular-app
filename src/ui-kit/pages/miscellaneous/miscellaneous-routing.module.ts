@@ -8,10 +8,12 @@ const routes: Routes = [
   {
     path: '',
     component: MiscellaneousComponent,
+    data: {layout: 'full'},
     children: [
       {
         path: '404',
         component: NotFoundComponent,
+        data: {layout: 'full'}
       },
     ],
   },

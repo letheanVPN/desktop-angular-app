@@ -1,7 +1,9 @@
-<lthn-ui-one-column-layout>
+<lthn-ui-one-column-layout *ngIf="appLayout === 'default'">
     <nb-menu [items]="menu"></nb-menu>
     <router-outlet></router-outlet>
 </lthn-ui-one-column-layout>
+
+<router-outlet *ngIf="appLayout === 'full'"></router-outlet>
 
 <!--<div class="main-container">-->
 <!--&lt;!&ndash;    <ngx-toolbar style="height: 58px;">&ndash;&gt;-->

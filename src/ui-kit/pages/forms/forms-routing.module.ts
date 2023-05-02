@@ -15,22 +15,27 @@ const routes: Routes = [
       {
         path: 'inputs',
         component: FormInputsComponent,
+        data: {layout: 'full'}
       },
       {
         path: 'layouts',
         component: FormLayoutsComponent,
+        data: {layout: 'full'}
       },
       {
         path: 'layouts',
         component: FormLayoutsComponent,
+        data: {layout: 'full'}
       },
       {
         path: 'buttons',
         component: ButtonsComponent,
+        data: {layout: 'full'}
       },
       {
         path: 'datepicker',
         component: DatepickerComponent,
+        data: {layout: 'full'}
       },
     ],
   },
