@@ -30,8 +30,8 @@ export const APP_MENU_ITEMS: NbMenuItem[] = [
         link: '/chain',
       },
       {
-        title: 'Wallet List',
-        link: '/wallet',
+        title: 'Wallets',
+        link: '/chain/wallet',
       }
     ],
   },

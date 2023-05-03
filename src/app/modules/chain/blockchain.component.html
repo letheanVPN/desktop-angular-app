@@ -5,13 +5,18 @@
             <nb-card-body>
                 <div class="row" *ngIf="chain.chainInfo as info">
                     <div class="col-md-4">
-                        <p>Data Sync: {{ info.height }}/{{ info.target_height }}</p>
+
+                        <p>Chain Sync Height: {{ info.height }}</p>
                     </div>
                     <div class="col-md-4">
-                        <input nbInput type="text"  fieldsize="large" placeholder="GoTo Block: hash" class="input-full-width size-large status-basic shape-rectangle nb-transition">
+                        <div class="row">
+
+                            <input nbInput type="text" fieldsize="large" placeholder="GoTo Block: hash" class="col-10  nb-transition">
+                            <button nbButton status="basic" size="large" shape="rectangle" class="col-2 nb-transition">Go</button>
+                        </div>
                     </div>
                     <div class="col-md-4">
-                        <p>stat 3</p>
+<!--                        <p>stat 3</p>-->
                     </div>
                 </div>
                 </nb-card-body>

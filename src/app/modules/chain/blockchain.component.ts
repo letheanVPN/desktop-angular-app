@@ -61,7 +61,9 @@ export class BlockchainComponent implements OnInit, OnChanges{
 			//this.wallet.startWallet().then(r => r);
 		});
 
-		this.chain.getInfo()
+		this.chain.getInfo().then((info) => {
+			console.log(this.chain.chainInfo)
+		});
 
 	}
 

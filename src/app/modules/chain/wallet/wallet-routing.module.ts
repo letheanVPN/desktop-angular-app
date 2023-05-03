@@ -9,7 +9,7 @@ import {AuthGuard} from '@module/user/auth/route.guard';
 
 const routes: Routes = [
 	{
-		path: 'wallet',
+		path: 'chain/wallet',
 		component: WalletComponent,
 		canActivate: [AuthGuard],
 		data: {
@@ -20,7 +20,7 @@ const routes: Routes = [
 		}
 	},
 	{
-		path: 'wallet/new',
+		path: 'chain/wallet/new',
 		component: WalletNewComponent,
 		canActivate: [AuthGuard],
 		data: {
@@ -31,7 +31,7 @@ const routes: Routes = [
 		}
 	},
 	{
-		path: 'wallet/backup',
+		path: 'chain/wallet/backup',
 		component: RestoreComponent,
 		canActivate: [AuthGuard],
 		data: {
@@ -42,7 +42,7 @@ const routes: Routes = [
 		}
 	},
 	{
-		path: 'wallet/restore',
+		path: 'chain/wallet/restore',
 		component: RestoreComponent,
 		canActivate: [AuthGuard],
 		data: {
@@ -53,7 +53,7 @@ const routes: Routes = [
 		}
 	},
 	{
-		path: 'wallet/settings',
+		path: 'chain/wallet/settings',
 		component: SettingsComponent,
 		canActivate: [AuthGuard],
 		data: {

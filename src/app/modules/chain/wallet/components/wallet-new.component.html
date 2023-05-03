@@ -10,7 +10,7 @@
             <input id="wallet-password-confirm" autocomplete="off" nbInput [formControl]="password_confirm" type="password"
                    [placeholder]="'app.lthn.wallet.label.wallet-password-confirm' | translate"/>
 
-            <button nbButton (click)="createWallet()">{{ 'app.lthn.wallet.button.create-wallet' | translate }}</button>
+            <button nbButton status="primary" (click)="createWallet()">{{ 'app.lthn.wallet.button.create-wallet' | translate }}</button>
         </form>
     </nb-card-body>
 </nb-card>

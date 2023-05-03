@@ -74,8 +74,7 @@ export class WalletService {
 	 * Gets the list of known wallets from the file system
 	 */
 	getWalletList() {
-		return this.fs.listFiles('/wallets').then((data) => {
-			console.log(data)
+		return this.fs.listFiles('wallets').then((data) => {
 			if (data.length > 0) {
 				for (let dat of data) {
 					if (!this.wallets.includes(dat) && !dat.endsWith('.keys') && !dat.endsWith('.txt')) {

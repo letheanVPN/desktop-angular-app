@@ -1,9 +1,12 @@
-<nb-list>
-    <nb-list-item *ngFor="let wall of wallets">
-        {{ wall }}
-        <button nbButton (click)="unlockWallet(wall)">{{ 'app.lthn.wallet.button.unlock-wallet' | translate }}</button>
-
-    </nb-list-item>
-</nb-list>
+<div class="row flex-wrap">
+    <div class="col-6 p-4" *ngFor="let wall of wallets">
+        <nb-card>
+            <nb-card-header>{{ wall }}</nb-card-header>
+            <nb-card-body>
+                <button nbButton status="primary" (click)="unlockWallet(wall)">{{ 'app.lthn.wallet.button.unlock-wallet' | translate }}</button>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
 
 

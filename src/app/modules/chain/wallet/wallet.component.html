@@ -1,14 +1,21 @@
 <lthn-wallet-details *ngIf="wallet.address"></lthn-wallet-details>
-<nb-card>
-    <div>
-        <div>
-            <lthn-wallet-open></lthn-wallet-open>
+
+    <div class="row">
+        <div class="col-4">
+            <nb-card>
+                <nb-card-header>Wallets</nb-card-header>
+                <lthn-wallet-open></lthn-wallet-open>
+            </nb-card>
+
         </div>
-        <div>
-            <lthn-wallet-add></lthn-wallet-add>
+        <div class="col-8">
+            <nb-card>
+                <nb-card-header>New Wallet</nb-card-header>
+                <lthn-wallet-add></lthn-wallet-add>
+            </nb-card>
+
         </div>
     </div>
-</nb-card>
 
 <ng-container label="Transactions" *ngIf="wallet.address" #consoleTab>
     <nb-card>
