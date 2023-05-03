@@ -20,16 +20,16 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th>App</th>
-                    <th>Actions</th>
+                    <th><p>App</p></th>
+                    <th><p>Actions</p></th>
                 </tr>
                 </thead>
                 <tbody *ngIf="market['apps'] && market['apps'].length > 0">
                 <tr *ngFor="let app of market['apps']">
-                    <td>{{ app['name'] }}</td>
+                    <td><p>{{ app['name'] }}</p></td>
                     <td>
 
-                        <button (click)="installApp({code: app['code'], pkg: app['pkg']})" nbButton>Install</button>
+                        <button nbButton status="primary" (click)="installApp({code: app['code'], pkg: app['pkg']})">Install</button>
                     </td>
                 </tr>
                 </tbody>

@@ -5,7 +5,7 @@
             <nb-card-body>
                 <div class="row">
                     <div class="col-md-4">
-                        <button nbButton [routerLink]="['/', 'chain']">Back to chain</button>
+                        <button nbButton status="primary" [routerLink]="['/', 'chain']">Back to chain</button>
                     </div>
                 </div>
             </nb-card-body>
@@ -16,51 +16,51 @@
             <table class="table striped" *ngIf="blockData">
                 <thead>
                 <tr>
-                    <th>{{'app.lthn.chain.words.hash' | translate}}</th>
-                    <th>{{ id | hashLink }}</th>
+                    <th><p>{{'app.lthn.chain.words.hash' | translate}}</p></th>
+                    <th><p>{{ id | hashLink }}</p></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td>{{'app.lthn.chain.words.depth' | translate}}</td>
-                    <td>{{ block.depth }}</td>
+                    <td><p>{{'app.lthn.chain.words.depth' | translate}}</p></td>
+                    <td><p>{{ block.depth }}</p></td>
                 </tr>
                 <tr>
-                    <td>{{'app.lthn.chain.words.height' | translate}}</td>
-                    <td>{{ block.height }}</td>
+                    <td><p>{{'app.lthn.chain.words.height' | translate}}</p></td>
+                    <td><p>{{ block.height }}</p></td>
                 </tr>
                 <tr>
-                    <td>{{'app.lthn.chain.words.nonce' | translate}}</td>
-                    <td>{{ block.nonce }}</td>
+                    <td><p>{{'app.lthn.chain.words.nonce' | translate}}</p></td>
+                    <td><p>{{ block.nonce }}</p></td>
                 </tr>
                 <tr>
-                    <td>{{'app.lthn.chain.words.reward' | translate}}</td>
-                    <td>{{ block.reward |toCoin  }}</td>
+                    <td><p>{{'app.lthn.chain.words.reward' | translate}}</p></td>
+                    <td><p>{{ block.reward |toCoin  }}</p></td>
                 </tr>
                 <tr>
-                    <td>{{'app.lthn.chain.words.tx_count' | translate}}</td>
-                    <td>{{ block.num_txes }}</td>
+                    <td><p>{{'app.lthn.chain.words.tx_count' | translate}}</p></td>
+                    <td><p>{{ block.num_txes }}</p></td>
                 </tr>
                 <tr>
-                    <td>{{'app.lthn.chain.words.miner_tx' | translate}}</td>
-                    <td>{{ blockData['miner_tx']['vout'][0]['target']['key'] | hashLink }}</td>
+                    <td><p>{{'app.lthn.chain.words.miner_tx' | translate}}</p></td>
+                    <td><p>{{ blockData['miner_tx']['vout'][0]['target']['key'] | hashLink }}</p></td>
                 </tr>
 
                 <tr>
-                    <td>{{'app.lthn.chain.words.timestamp' | translate}}</td>
-                    <td>{{ block.timestamp | amFromUnix  }}</td>
+                    <td><p>{{'app.lthn.chain.words.timestamp' | translate}}</p></td>
+                    <td><p>{{ block.timestamp | amFromUnix  }}</p></td>
                 </tr>
                 <tr>
-                    <td>{{'app.lthn.chain.words.difficulty' | translate}}</td>
-                    <td>{{ block.difficulty }}</td>
+                    <td><p>{{'app.lthn.chain.words.difficulty' | translate}}</p></td>
+                    <td><p>{{ block.difficulty }}</p></td>
                 </tr>
                 <tr>
-                    <td>{{'app.lthn.chain.words.block_size' | translate}}</td>
-                    <td>{{ block.block_size }}</td>
+                    <td><p>{{'app.lthn.chain.words.block_size' | translate}}</p></td>
+                    <td><p>{{ block.block_size }}</p></td>
                 </tr>
                 <tr>
-                    <td>{{'app.lthn.chain.words.version' | translate}}</td>
-                    <td>{{ block.major_version }}.{{ block.minor_version}}</td>
+                    <td><p>{{'app.lthn.chain.words.version' | translate}}</p></td>
+                    <td><p>{{ block.major_version }}.{{ block.minor_version}}</p></td>
                 </tr>
 
                 </tbody>
