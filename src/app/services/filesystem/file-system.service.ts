@@ -34,6 +34,19 @@ export class FileSystemService {
 	}
 
 	/**
+	 * List files in the directory
+	 * @param dirname
+	 */
+	async listFilesDetailed(dirname) {
+		try {
+			return await this.fileSystem.listDetailed(dirname);
+		} catch (e) {
+			return []
+		}
+
+	}
+
+	/**
 	 * Returns the string value of a file
 	 *
 	 * @param filename Including system path

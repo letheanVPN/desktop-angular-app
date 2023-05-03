@@ -1,0 +1,53 @@
+<nb-card>
+    <nb-card-header>{{ 'app.lthn.wallet.titles.restore-seed' | translate }}</nb-card-header>
+    <nb-card-body>
+        <form [formGroup]="restoreWalletForm" autocomplete="off">
+            <section>
+
+                    <input nbInput type="text" formControlName="filename" [placeholder]="'app.lthn.wallet.label.filename' | translate ">
+
+                    <input nbInput type="password" autocomplete="new-password" formControlName="password" [placeholder]="'app.lthn.wallet.label.wallet-password' | translate ">
+
+                    <input nbInput type="password" formControlName="password_confirm" [placeholder]="'app.lthn.wallet.label.wallet-password-confirm' | translate">
+
+            </section>
+
+            <section>
+                    <input nbInput type="text" formControlName="address" [placeholder]="'app.lthn.wallet.label.address' | translate">
+            </section>
+
+            <ng-container *ngIf="!restoreWalletForm.value['viewonly_wallet']" >
+                <input nbInput type="password" formControlName="spendkey" [placeholder]=" 'app.lthn.wallet.label.spend-key' | translate">
+            </ng-container>
+
+                <input nbInput type="password" formControlName="viewkey" [placeholder]="'app.lthn.wallet.label.view-key' | translate">
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Optional parameters
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                    <input nbInput type="text" formControlName="restore_height" [placeholder]="'app.lthn.wallet.label.restore-height' | translate">
+
+                <section>
+                    <mat-checkbox formControlName="autosave_current">{{ 'app.lthn.wallet.label.autosave' | translate }}</mat-checkbox>
+                </section>
+
+                <section>
+                    <mat-checkbox formControlName="viewonly_wallet">View only wallet</mat-checkbox>
+                </section>
+
+            </mat-expansion-panel>
+
+            <p>
+                <button mat-button (click)="restoreWallet()">{{ 'app.lthn.wallet.button.restore-wallet' | translate }}</button>
+            </p>
+
+        </form>
+    </nb-card-body>
+</nb-card>
+
+
+

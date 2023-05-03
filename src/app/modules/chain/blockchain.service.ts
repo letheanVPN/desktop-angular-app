@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {rpcBody} from '@service/json-rpc';
-import {AuthService} from '@module/auth/auth.service';
+import {AuthService} from '@module/user/auth/auth.service';
 import {ChainGetInfo} from "@module/chain/interfaces/props/get_info";
 import {WebsocketService} from '@service/websocket.service';
 

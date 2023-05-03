@@ -1,0 +1,17 @@
+<nb-card>
+    <nb-card-header>{{ 'app.lthn.wallet.titles.new-wallet' | translate }}</nb-card-header>
+    <nb-card-body>
+        <form autocomplete="off">
+
+            <input name="wallet-name" autocomplete="off" nbInput [formControl]="wallet_name" type="text"
+                   [placeholder]="'app.lthn.wallet.label.filename' | translate"/>
+            <input id="wallet-password" autocomplete="new-password" nbInput [formControl]="password" type="password"
+                   [placeholder]="'app.lthn.wallet.label.wallet-password' | translate"/>
+            <input id="wallet-password-confirm" autocomplete="off" nbInput [formControl]="password_confirm" type="password"
+                   [placeholder]="'app.lthn.wallet.label.wallet-password-confirm' | translate"/>
+
+            <button nbButton (click)="createWallet()">{{ 'app.lthn.wallet.button.create-wallet' | translate }}</button>
+        </form>
+    </nb-card-body>
+</nb-card>
+

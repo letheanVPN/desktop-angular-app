@@ -29,6 +29,19 @@ export class FileSystemWebService implements FileSystemInterface {
 			.then((dat) => JSON.parse(dat));
 	}
 
+	public async listDetailed(dirname) {
+		const options = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json'
+			}),
+			responseType: 'text' as 'json'
+		};
+		return await this.http
+			.post<any>(`${this.apiUrl}/list-detailed`, {path: dirname}, options)
+			.toPromise()
+			.then((dat) => JSON.parse(dat));
+	}
+
 	public mkdir(dirname): void {
 		console.log(dirname)
 	}

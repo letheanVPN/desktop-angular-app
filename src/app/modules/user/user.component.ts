@@ -3,7 +3,7 @@ import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {CryptService} from '@service/crypt.service';
 import {FileSystemService} from '@service/filesystem/file-system.service';
 import {Router} from '@angular/router';
-import {AuthService} from '../auth/auth.service';
+import {AuthService} from '@module/user/auth/auth.service';
 
 export interface Task {
 	name: string;

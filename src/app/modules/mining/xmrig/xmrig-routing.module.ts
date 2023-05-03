@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {AuthGuard} from '@module/auth/route.guard';
+import {AuthGuard} from '@module/user/auth/route.guard';
 import {XmrigComponent} from '@module/mining/xmrig/xmrig.component';
 
 const routes: Routes = [

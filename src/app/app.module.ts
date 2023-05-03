@@ -14,13 +14,13 @@ import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/lega
 import {FlexModule} from '@angular/flex-layout';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
-import {AuthModule} from '@module/auth/auth.module';
+import {AuthModule} from '@module/user/auth/auth.module';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {ConsoleModule} from '@module/console/console.module';
+import {ConsoleModule} from '@module/system/console/console.module';
 import {JwtModule} from '@auth0/angular-jwt';
-import {AuthService} from '@module/auth/auth.service';
-import {HeaderInterceptor} from '@module/auth/auth.interceptor';
+import {AuthService} from '@module/user/auth/auth.service';
+import {HeaderInterceptor} from '@module/user/auth/auth.interceptor';
 import {FaIconLibrary, FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 import { fas } from '@fortawesome/free-solid-svg-icons'
@@ -37,6 +37,7 @@ import {
 	NbToastrModule,
 	NbWindowModule
 } from "@nebular/theme";
+import {TreeModule} from "@circlon/angular-tree-component";
 
 export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http);
@@ -89,6 +90,7 @@ export function tokenGetter() {
 		CoreModule.forRoot(),
 		ThemeModule.forRoot(),
 		UiKitModule,
+		TreeModule
 	],
 	bootstrap: [AppComponent],
 	providers: [

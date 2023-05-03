@@ -13,9 +13,9 @@ export const APP_MENU_ITEMS: NbMenuItem[] = [
     link: '/apps',
   },
   {
-    title: 'Settings',
+    title: 'System',
     icon: 'edit-2-outline',
-    link: '/settings',
+    link: '/system',
   },
   {
     title: 'APPS',
@@ -28,10 +28,6 @@ export const APP_MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Explorer',
         link: '/chain',
-      },
-      {
-        title: 'Chain Nodes',
-        link: '/chain/nodes',
       },
       {
         title: 'Wallet List',

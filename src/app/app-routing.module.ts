@@ -1,16 +1,16 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {RootRoutingModule} from '@module/root-routing.module';
-import {LoginComponent} from '@module/auth/login.component';
+import {LoginComponent} from '@module/user/auth/login.component';
 import {BlockchainRoutingModule} from '@module/chain/blockchain-routing.module';
-import {WalletRoutingModule} from '@module/wallet/wallet-routing.module';
+import {WalletRoutingModule} from '@module/chain/wallet/wallet-routing.module';
 import {UserRoutingModule} from '@module/user/user-routing.module';
-import {AuthGuard} from '@module/auth/route.guard';
+import {AuthGuard} from '@module/user/auth/route.guard';
 import {DockerRoutingModule} from '@module/docker/docker-routing.module';
 import {XmrigRoutingModule} from '@module/mining/xmrig/xmrig-routing.module';
-import {LoadAppComponent} from '@module/load-app/load-app.component';
-import {SettingsRoutingModule} from '@module/settings/settings-routing.module';
+import {LoadAppComponent} from '@module/apps/load-app/load-app.component';
 import {AppsRoutingModule} from "@module/apps/apps-routing.module";
+import {SystemRoutingModule} from "@module/system/system-routing.module";
 
 const routes: Routes = [
 	{
@@ -45,7 +45,7 @@ const routes: Routes = [
 		AppsRoutingModule,
 		BlockchainRoutingModule,
 		UserRoutingModule,
-		SettingsRoutingModule,
+		SystemRoutingModule,
 		WalletRoutingModule,
 		DockerRoutingModule,
 		XmrigRoutingModule,

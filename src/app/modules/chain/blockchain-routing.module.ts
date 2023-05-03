@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {BlockchainComponent} from '@module/chain/blockchain.component';
 import {BlockDetailsComponent} from "@module/chain/components/block/details.component";
-import {AuthGuard} from '@module/auth/route.guard';
+import {AuthGuard} from '@module/user/auth/route.guard';
 import {BlockchainConfigComponent} from "@module/chain/components/config.component";
 import {BlockchainStatsComponent} from "@module/chain/components/stats.component";
 import {BlockLedgerComponent} from '@module/chain/components/block/ledger.component';

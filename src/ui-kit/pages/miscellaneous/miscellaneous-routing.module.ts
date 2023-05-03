@@ -13,7 +13,7 @@ const routes: Routes = [
       {
         path: '404',
         component: NotFoundComponent,
-        data: {layout: 'full'}
+        data: {layout: 'default'}
       },
     ],
   },

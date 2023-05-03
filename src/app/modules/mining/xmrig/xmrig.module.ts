@@ -6,7 +6,7 @@ import {MatLegacyMenuModule as MatMenuModule} from '@angular/material/legacy-men
 import {XmrigStatusComponent} from '@module/mining/xmrig/status/status.component';
 import {RouterModule} from '@angular/router';
 import {MatLegacyProgressBarModule as MatProgressBarModule} from '@angular/material/legacy-progress-bar';
-import {ConsoleModule} from '@module/console/console.module';
+import {ConsoleModule} from '@module/system/console/console.module';
 import {FlexModule} from '@angular/flex-layout';
 import {MomentModule} from 'ngx-moment';
 import {HashvaultModule} from '@module/mining/hashvault/hashvault.module';

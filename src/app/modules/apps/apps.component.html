@@ -1,26 +1,40 @@
-<nb-card>
-    <ul *ngFor="let dir of market['dirs']">
-        <li><a (click)="getAppMarket(dir)">{{ dir }}</a></li>
-    </ul>
-    <button nbButton (click)="getAppMarket()">Back</button>
-</nb-card>
+<div class="row">
+    <div class="col-xl-12">
+        <nb-card>
+            <nb-card-header>Desktop Plugins</nb-card-header>
+            <nb-card-body>
+                <p>You can Extend functionality by building or installing an app from the package manager to customise your Web3 Workspace</p>
+            </nb-card-body>
+        </nb-card>
+    </div>
+    <div class="col-xl-2">
+        <nb-card>
+            <nb-list >
+                <nb-list-item (click)="getAppMarket()">Back</nb-list-item>
+                <nb-list-item *ngFor="let dir of market['dirs']"><a (click)="getAppMarket(dir)">{{ dir }}</a></nb-list-item>
+            </nb-list>
+        </nb-card>
+    </div>
+    <div class="col-xl-10">
+        <nb-card>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>App</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody *ngIf="market['apps'] && market['apps'].length > 0">
+                <tr *ngFor="let app of market['apps']">
+                    <td>{{ app['name'] }}</td>
+                    <td>
 
-<nb-card>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>App</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody *ngIf="market['apps'] && market['apps'].length > 0">
-        <tr *ngFor="let app of market['apps']">
-            <td>{{ app['name'] }}</td>
-            <td>
+                        <button (click)="installApp({code: app['code'], pkg: app['pkg']})" nbButton>Install</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </nb-card>
+    </div>
+</div>
 
-                <button (click)="installApp({code: app['code'], pkg: app['pkg']})" nbButton>Install</button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</nb-card>

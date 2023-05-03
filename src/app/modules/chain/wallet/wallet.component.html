@@ -1,0 +1,30 @@
+<lthn-wallet-details *ngIf="wallet.address"></lthn-wallet-details>
+<nb-card>
+    <div>
+        <div>
+            <lthn-wallet-open></lthn-wallet-open>
+        </div>
+        <div>
+            <lthn-wallet-add></lthn-wallet-add>
+        </div>
+    </div>
+</nb-card>
+
+<ng-container label="Transactions" *ngIf="wallet.address" #consoleTab>
+    <nb-card>
+        <lthn-wallet-transactions></lthn-wallet-transactions>
+
+    </nb-card>
+
+
+</ng-container>
+<ng-container label="Transfer" *ngIf="wallet.address" #consoleTab>
+
+    <h3>Balance: {{ wallet.balance.unlocked_balance | toCoin}}</h3>
+    <h4 *ngIf="wallet.balance.unlocked_balance != wallet.balance.balance">Locked
+        Balance: {{wallet.balance.balance - wallet.balance.unlocked_balance|toCoin}}</h4>
+    <lthn-wallet-transfer></lthn-wallet-transfer>
+
+</ng-container>
+
+
