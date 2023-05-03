@@ -14,6 +14,7 @@ export class BlockchainComponent implements OnInit, OnChanges{
 
 	public offline: boolean = true;
 	public cmd: string = '';
+	public searchBlock: any;
 	constructor(public chain: BlockchainService, public app: AppConfigService) {}
 
 	async ngOnInit() {

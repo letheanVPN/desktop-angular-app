@@ -11,8 +11,8 @@
                     <div class="col-md-4">
                         <div class="row">
 
-                            <input nbInput type="text" fieldsize="large" placeholder="GoTo Block: hash" class="col-10  nb-transition">
-                            <button nbButton status="basic" size="large" shape="rectangle" class="col-2 nb-transition">Go</button>
+                            <input nbInput [(ngModel)]="searchBlock" type="text" fieldsize="large" placeholder="GoTo Block: hash" class="col-10  nb-transition">
+                            <button nbButton [routerLink]="['/','chain', 'block', this.searchBlock]" status="basic" size="large" shape="rectangle" class="col-2 nb-transition">Go</button>
                         </div>
                     </div>
                     <div class="col-md-4">
