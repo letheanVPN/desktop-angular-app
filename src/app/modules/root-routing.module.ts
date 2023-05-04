@@ -3,11 +3,13 @@ import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {RootComponent} from '@module/root.component';
 import {RootModule} from '@module/root.module';
+import {DashboardComponent} from "@module/dashboard/dashboard.component";
+import {DashboardModule} from "@module/dashboard/dashboard.module";
 
 const routes: Routes = [
 	{
 		path: 'dashboard',
-		component: RootComponent,
+		component: DashboardComponent,
 		pathMatch: 'full',
 		data: {
 			title: 'view.dashboard.title',
@@ -23,7 +25,9 @@ const routes: Routes = [
 	declarations: [],
 	imports: [CommonModule,
 		RootModule,
-		RouterModule.forChild(routes)],
+		RouterModule.forChild(routes),
+		DashboardModule],
+
 	exports: [RouterModule]
 })
 export class RootRoutingModule {

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FilesComponent } from './files.component';
 import {NbCardModule, NbIconModule, NbListModule} from "@nebular/theme";
-import {TreeModule} from "@circlon/angular-tree-component";
 
 
 
@@ -15,7 +14,6 @@ import {TreeModule} from "@circlon/angular-tree-component";
         NbCardModule,
         NbListModule,
         NbIconModule,
-        TreeModule
     ]
 })
 export class FilesModule { }

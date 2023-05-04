@@ -22,31 +22,32 @@ import {MiningModule} from '@module/mining/mining.module';
 import {XmrigModule} from '@module/mining/xmrig/xmrig.module';
 import { LoadAppComponent } from '@module/apps/load-app/load-app.component';
 import {AppsModule} from "@module/apps/apps.module";
+import {NbCardModule} from "@nebular/theme";
 
 @NgModule({
 	declarations: [RootComponent, LoadAppComponent],
-	imports: [
-		CommonModule,
-		MatButtonModule,
-		FlexModule,
-		MatTabsModule,
-		WalletModule,
-		TranslateModule,
-		MatDividerModule,
-		MatProgressSpinnerModule,
-		MatListModule,
-		LetModule, PushModule,
-		PipesModule,
-		MatIconModule,
-		MatCardModule,
-		AppsModule,
-		BlockchainModule,
-		DockerModule,
-		MiningModule,
-		RouterModule,
-		MatProgressBarModule,
-		XmrigModule
-	]
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        FlexModule,
+        MatTabsModule,
+        WalletModule,
+        TranslateModule,
+        MatDividerModule,
+        MatProgressSpinnerModule,
+        MatListModule,
+        LetModule, PushModule,
+        PipesModule,
+        MatIconModule,
+        MatCardModule,
+        AppsModule,
+        BlockchainModule,
+        DockerModule,
+        MiningModule,
+        RouterModule,
+        MatProgressBarModule,
+        XmrigModule, NbCardModule
+    ]
 })
 export class RootModule {
 }

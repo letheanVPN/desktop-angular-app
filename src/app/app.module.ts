@@ -37,7 +37,6 @@ import {
 	NbToastrModule,
 	NbWindowModule
 } from "@nebular/theme";
-import {TreeModule} from "@circlon/angular-tree-component";
 
 export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http);
@@ -89,8 +88,7 @@ export function tokenGetter() {
 		NbToastrModule.forRoot(),
 		CoreModule.forRoot(),
 		ThemeModule.forRoot(),
-		UiKitModule,
-		TreeModule
+		UiKitModule
 	],
 	bootstrap: [AppComponent],
 	providers: [

@@ -1,17 +1,7 @@
 import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
-  {
-    title: 'E-commerce',
-    icon: 'shopping-cart-outline',
-    link: '/ui-kit/dashboard',
-    home: true,
-  },
-  {
-    title: 'IoT Dashboard',
-    icon: 'home-outline',
-    link: '/ui-kit/iot-dashboard',
-  },
+
   {
     title: 'FEATURES',
     group: true,
@@ -23,6 +13,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Stepper',
         link: '/ui-kit/layout/stepper',
+        home: true
       },
       {
         title: 'List',
@@ -141,28 +132,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Chat',
         link: '/ui-kit/extra-components/chat',
-      },
-    ],
-  },
-  {
-    title: 'Maps',
-    icon: 'map-outline',
-    children: [
-      {
-        title: 'Google Maps',
-        link: '/ui-kit/maps/gmaps',
-      },
-      {
-        title: 'Leaflet Maps',
-        link: '/ui-kit/maps/leaflet',
-      },
-      {
-        title: 'Bubble Maps',
-        link: '/ui-kit/maps/bubble',
-      },
-      {
-        title: 'Search Maps',
-        link: '/ui-kit/maps/searchmap',
       },
     ],
   },

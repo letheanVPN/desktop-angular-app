@@ -35,6 +35,7 @@ import {
     NbProgressBarModule,
     NbUserModule
 } from "@nebular/theme";
+import {ConsoleModule} from "@module/system/console/console.module";
 
 @NgModule({
 	declarations: [ BlockchainComponent, BlockDetailsComponent, BlockLedgerComponent, BlockchainStatsComponent, BlockchainConfigComponent, BlockTransactionsComponent, StatusComponent],
@@ -59,7 +60,7 @@ import {
         ReactiveFormsModule,
         FormsModule,
 
-        MatExpansionModule, NbCardModule, NbListModule, NbUserModule, NbIconModule, NbButtonModule, NbInputModule, NbProgressBarModule
+        MatExpansionModule, NbCardModule, NbListModule, NbUserModule, NbIconModule, NbButtonModule, NbInputModule, NbProgressBarModule, ConsoleModule
     ],
 	exports: [BlockchainComponent, StatusComponent],
 	providers: [HashRatePipe]
