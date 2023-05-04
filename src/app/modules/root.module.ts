@@ -23,6 +23,7 @@ import {XmrigModule} from '@module/mining/xmrig/xmrig.module';
 import { LoadAppComponent } from '@module/apps/load-app/load-app.component';
 import {AppsModule} from "@module/apps/apps.module";
 import {NbCardModule} from "@nebular/theme";
+import {WizardsModule} from "@module/wizards/wizards.module";
 
 @NgModule({
 	declarations: [RootComponent, LoadAppComponent],
@@ -46,7 +47,8 @@ import {NbCardModule} from "@nebular/theme";
         MiningModule,
         RouterModule,
         MatProgressBarModule,
-        XmrigModule, NbCardModule
+        XmrigModule, NbCardModule,
+        WizardsModule
     ]
 })
 export class RootModule {
