@@ -1,7 +1,9 @@
 import {Component} from '@angular/core';
-import {FormControl, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ServerService} from "@service/server.service";
-
+import {FileSystemService} from "@service/filesystem/file-system.service";
+import {CryptService} from "@service/crypt.service";
+import {InputOutputService} from "../../../../typescript-angular";
 @Component({
     selector: 'lthn-wizard-first-user',
     templateUrl: './first-user.component.html',
@@ -9,18 +11,30 @@ import {ServerService} from "@service/server.service";
 })
 export class FirstUserComponent {
 
-    username = new FormControl('', Validators.required);
-    password = new FormControl('', Validators.required);
-    passwordConfirm = new FormControl('', Validators.required);
+    userForm = new FormGroup({
+        username : new FormControl('', [Validators.required, Validators.min(3)]),
+        password : new FormControl('', Validators.required),
+        passwordConfirm : new FormControl('', Validators.required)
+    });
+
     user: any = {};
-    constructor(private server: ServerService) {
+    constructor(private apiGateway: InputOutputService, private server: ServerService, private fs: FileSystemService, private cryptService: CryptService) {
     }
     async createUser() {
+        await this.apiGateway.isFile({'path': 'users/' + this.cryptService.sha256Salty(this.userForm.get('username').value) + '.lthn.key'})
+            .toPromise().then((exists) => {
+console.log('exists', exists);
+            })
+        console.log(this.user, this.userForm.get('username').value)
+
+        if(this.userForm.valid === false) {
+            return false;
+        }
+
         this.user = await this.server.sendPostRequest('auth/lethean/create', {
-            username: this.username.value,
-            password: this.password.value,
+            username: this.userForm.get('username').value,
+            password: this.userForm.get('password').value,
         })
-        console.log(this.user, this.username.value, this.password.value, this.passwordConfirm.value)
         return true;
     }
 }

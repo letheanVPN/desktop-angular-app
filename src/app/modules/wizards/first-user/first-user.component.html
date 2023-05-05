@@ -12,28 +12,29 @@
             </nb-step>
             <nb-step label="Create User">
                 <h3>Create User</h3>
-                <form autocomplete="off">
+                <form autocomplete="off" [formGroup]="userForm" >
                     <div class="form-group row">
                         <label for="username" class="label col-sm-3 col-form-label">Username</label>
                         <div class="col-sm-9">
-                            <input [formControl]="username" type="text" nbInput fullWidth id="username" placeholder="Username">
+                            <input formControlName="username" lthnAvailableUserName type="text" [status]="userForm.get('username').valid ? 'success' : 'danger'" nbInput fullWidth id="username" placeholder="Username">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputPassword" class="label col-sm-3 col-form-label">Password</label>
                         <div class="col-sm-9">
-                            <input [formControl]="password" autocomplete="new-password" type="password" nbInput fullWidth id="inputPassword" placeholder="Password">
+                            <input formControlName="password" autocomplete="new-password" type="password" nbInput fullWidth id="inputPassword" placeholder="Password">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputPassword2" class="label col-sm-3 col-form-label">Confirm Password</label>
                         <div class="col-sm-9">
-                            <input [formControl]="passwordConfirm" autocomplete="new-password" type="password" nbInput fullWidth id="inputPassword2" placeholder="Confirm Password">
+                            <input formControlName="passwordConfirm" autocomplete="new-password" type="password" nbInput fullWidth id="inputPassword2" placeholder="Confirm Password">
                         </div>
                     </div>
+                    <button nbButton nbStepperPrevious>prev</button>
+                    <button nbButton status="primary" (click)="createUser()" nbStepperNext [disabled]="!userForm.valid">next</button>
                 </form>
-                <button nbButton nbStepperPrevious>prev</button>
-                <button nbButton status="primary" (click)="createUser()" nbStepperNext>next</button>
+
             </nb-step>
             <nb-step label="Encryption">
                 <h3>Encryption Keys</h3>
@@ -61,17 +62,6 @@
                 <p class="lorem">
                     Keep the encryption keys safe, if you lose them you'll loose access to your desktop data.
                 </p>
-                <p>
-                    Your encryption keys are needed for the Lethean Server instance data, please keep the keys safe,
-                    by clicking the button, you accept the below conditions.
-                </p>
-                <ol>
-                    <li>Data is stored with your encryption data.</li>
-                    <li>I can decrypt my data with my encryption key</li>
-                    <li>I have saved my private key someplace safe</li>
-                    <li>I will not ask for help to access encrypted files, it's not possible</li>
-                    <li>I accept the responsibility to my data.</li>
-                </ol>
                 <button nbButton status="warning" size="large" shape="round">I ACCEPT MY DATA CONTROL</button>
             </nb-step>
         </nb-stepper>

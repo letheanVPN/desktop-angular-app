@@ -3,10 +3,12 @@
         <nb-card>
             <nb-card-header>Files</nb-card-header>
             <nb-card-body>
-<!--                <tree-node #tree ></tree-node>-->
+                <!--                <tree-node #tree ></tree-node>-->
                 <nb-list>
                     <nb-list-item *ngFor="let file of fileTree">
-                        <nb-icon *ngIf="file.isDirectory" icon="folder-outline"></nb-icon> {{file.name}}
+                        <nb-icon *ngIf="file.isDirectory" icon="folder-outline"></nb-icon>
+                        <nb-icon *ngIf="file.isFile" (click)="openFile(file);" icon="file-outline"></nb-icon>
+                        {{file.name}}
                     </nb-list-item>
                 </nb-list>
             </nb-card-body>
@@ -15,6 +17,16 @@
     <div class="col-xl-8">
         <nb-card>
             <nb-card-header>Viewer</nb-card-header>
+            <nb-card-body>
+                <ngx-codemirror
+                        [(ngModel)]="content"
+                        [options]="{
+                            lineNumbers: true,
+                            theme: 'material',
+                            mode: 'markdown'
+  }"
+                ></ngx-codemirror>
+            </nb-card-body>
         </nb-card>
     </div>
 </div>

@@ -37,6 +37,7 @@ import {
 	NbToastrModule,
 	NbWindowModule
 } from "@nebular/theme";
+import {serverSDKApiModule} from "../typescript-angular";
 
 export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http);
@@ -49,6 +50,7 @@ export function tokenGetter() {
 @NgModule({
 	declarations: [AppComponent],
 	imports: [
+		serverSDKApiModule,
 		CommonModule,
 		BrowserModule.withServerTransition({appId: 'lthn-data-sync'}),
 		BrowserAnimationsModule,

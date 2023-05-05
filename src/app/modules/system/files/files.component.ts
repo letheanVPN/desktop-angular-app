@@ -11,13 +11,17 @@ export class FilesComponent  {
   constructor(private fs: FileSystemService) {
   }
 
-  // async ngOnInit() {
-  //   // this.fileTree = await this.fs.listFilesDetailed('.')
-  //   // this.fileTree.forEach((v) => {
-  //   //     this.nodes.push({name: v.name, hasChildren: v.isDirectory})
-  //   // })
-  //   // this.tree.treeModel.update();
-  //   // console.log(this.fileTree)
-  // }
+  async ngOnInit() {
+    this.fileTree = await this.fs.listFilesDetailed('.')
+    this.fileTree.forEach((v) => {
+        this.nodes.push({name: v.name, hasChildren: v.isDirectory, file: v.isFile})
+    })
 
+    console.log(this.fileTree)
+  }
+  content: any;
+
+  async openFile(file: any) {
+    this.content = await this.fs.readFile(file.name)
+  }
 }
