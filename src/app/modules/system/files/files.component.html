@@ -1,27 +1,39 @@
 <div class="row">
     <div class="col-xl-4">
         <nb-card>
-            <nb-card-header>Files</nb-card-header>
+            <nb-card-header>Folders</nb-card-header>
             <nb-card-body>
-                <lthn-tree-menu
-                        [value]="nodes"
-                ></lthn-tree-menu>
+                <nb-list-item *ngIf="this.path.length>1" [queryParams]=""
+                              [routerLink]="['/','system','files']">
+                    <nb-icon icon="folder-outline"></nb-icon>
+                    Back
+                </nb-list-item>
+                    <ng-container *ngFor="let file of fileTree">
+                        <nb-list-item *ngIf="file.isDirectory" [queryParams]="{path: this.path + '/' +file.name}"
+                                      [routerLink]="['/','system','files']">
+                            <nb-icon icon="folder-outline"></nb-icon>
+                            {{file.name}}
+                        </nb-list-item>
+                    </ng-container>
 
-                <nb-list>
-                    <nb-list-item *ngFor="let file of fileTree">
-                        <nb-icon *ngIf="file.isDirectory" icon="folder-outline"></nb-icon>
-                        <nb-icon *ngIf="file.isFile" (click)="openFile(file);" icon="file-outline"></nb-icon>
-                        {{file.name}}
-                    </nb-list-item>
-                </nb-list>
             </nb-card-body>
         </nb-card>
     </div>
     <div class="col-xl-8">
         <nb-card>
-            <nb-card-header>Viewer</nb-card-header>
+            <nb-card-header>Files</nb-card-header>
             <nb-card-body>
-<lthn-files-edit></lthn-files-edit>
+                    <ng-container *ngFor="let file of fileTree">
+                        <nb-list-item *ngIf="file.isFile" [queryParams]="{file: this.path + '/' + file.name}"
+                                      [routerLink]="['/','system','files','edit']">
+
+                            <nb-icon icon="file-outline"></nb-icon>
+                            {{file.name}}
+
+                        </nb-list-item>
+
+                    </ng-container>
+
             </nb-card-body>
         </nb-card>
     </div>

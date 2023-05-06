@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {Location} from '@angular/common';
+import {ActivatedRoute, Router} from "@angular/router";
 import {FileSystemService} from "@service/filesystem/file-system.service";
 
 @Component({
@@ -13,7 +14,7 @@ export class EditComponent implements OnInit{
 
   mode: string = 'markdown';
 
-  constructor(private route: ActivatedRoute, private fs: FileSystemService){
+  constructor(private route: ActivatedRoute, private location: Location, private fs: FileSystemService){
     this.file = this.route.snapshot.queryParamMap.has('file')? this.route.snapshot.queryParamMap.get('file') : '';
   }
   content: any;
@@ -24,6 +25,10 @@ export class EditComponent implements OnInit{
       this.mode = 'javascript'
       this.content = await this.fs.readFile(this.file)
     }
+  }
+
+  back(): void {
+    this.location.back()
   }
 
   editorOptions(file: string){
