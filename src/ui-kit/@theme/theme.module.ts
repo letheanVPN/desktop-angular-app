@@ -39,6 +39,8 @@ import { COSMIC_THEME } from './styles/theme.cosmic';
 import { CORPORATE_THEME } from './styles/theme.corporate';
 import { DARK_THEME } from './styles/theme.dark';
 import {RouterLink} from "@angular/router";
+import { TreeMenuComponent } from './components/tree-menu/tree-menu.component';
+import {PolymorpheusModule} from "@tinkoff/ng-polymorpheus";
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -53,6 +55,7 @@ const NB_MODULES = [
   NbSelectModule,
   NbIconModule,
   NbEvaIconsModule,
+  PolymorpheusModule,
 ];
 const COMPONENTS = [
   HeaderComponent,
@@ -62,6 +65,7 @@ const COMPONENTS = [
   OneColumnLayoutComponent,
   ThreeColumnsLayoutComponent,
   TwoColumnsLayoutComponent,
+  TreeMenuComponent
 ];
 const PIPES = [
   CapitalizePipe,

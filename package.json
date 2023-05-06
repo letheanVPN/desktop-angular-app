@@ -58,6 +58,7 @@
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
     "@swimlane/ngx-charts": "^20.1.2",
+    "@tinkoff/ng-polymorpheus": "^4.1.0",
     "@xmldom/xmldom": "^0.8.6",
     "angular2-chartjs": "0.4.1",
     "axios": "^0.24.0",

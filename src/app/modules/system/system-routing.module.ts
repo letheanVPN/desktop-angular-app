@@ -7,6 +7,8 @@ import {ConsoleModule} from "@module/system/console/console.module";
 import {ConsoleComponent} from "@module/system/console/console.component";
 import {FilesComponent} from "@module/system/files/files.component";
 import {FilesModule} from "@module/system/files/files.module";
+import {ObjectsComponent} from "@module/system/objects/objects.component";
+import {EditComponent} from "@module/system/files/edit/edit.component";
 
 const routes: Routes = [
 	{
@@ -27,6 +29,14 @@ const routes: Routes = [
 	{
 		path: 'system/files',
 		component: FilesComponent,
+	},
+	{
+		path: 'system/files/edit',
+		component: EditComponent,
+	},
+	{
+		path: 'system/objects',
+		component: ObjectsComponent
 	}
 
 ];

@@ -90,7 +90,7 @@ export function tokenGetter() {
 		NbToastrModule.forRoot(),
 		CoreModule.forRoot(),
 		ThemeModule.forRoot(),
-		UiKitModule
+		UiKitModule,
 	],
 	bootstrap: [AppComponent],
 	providers: [

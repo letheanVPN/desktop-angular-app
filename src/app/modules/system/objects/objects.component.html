@@ -1,0 +1,16 @@
+<nb-card>
+    <nb-card-header>System Objects</nb-card-header>
+    <nb-card-body>
+        <p>Lethean desktop saves config data in json objects, you can customise the GUI directly via config files</p>
+    </nb-card-body>
+</nb-card>
+
+<nb-card>
+    <div class="row">
+        <nb-card *ngFor="let configObj of config">
+            <nb-card-header>{{configObj.name}}</nb-card-header>
+            <button nbButton *ngIf="configObj.isFile" [queryParams]="{file:'data/objects/' + group + '/' + configObj.name}" [routerLink]="['/','system','files','edit']">Edit</button>
+            <button nbButton *ngIf="configObj.isDirectory" [queryParams]="{group:configObj.name}" [routerLink]="['/','system','objects']" (click)="getConfig('/'+configObj.name)">Open</button>
+        </nb-card>
+    </div>
+</nb-card>

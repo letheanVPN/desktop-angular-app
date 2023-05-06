@@ -1,23 +1,41 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {FileSystemService} from "@service/filesystem/file-system.service";
+import {MultidimensionalArray} from "@ui/@theme/components/tree-menu/tree-menu.component";
+
+interface Node {
+  readonly title: string;
+  readonly icon: string;
+}
 @Component({
   selector: 'lthn-files',
   templateUrl: './files.component.html',
   styleUrls: ['./files.component.scss']
 })
 export class FilesComponent  {
-  public fileTree;
+  public fileTree = [];
   public nodes: any = [];
+  public options = {};
   constructor(private fs: FileSystemService) {
   }
 
   async ngOnInit() {
     this.fileTree = await this.fs.listFilesDetailed('.')
-    this.fileTree.forEach((v) => {
-        this.nodes.push({name: v.name, hasChildren: v.isDirectory, file: v.isFile})
-    })
+    for (const v of this.fileTree) {
+      if(v.isDirectory){
+        let childFileTree = await this.fs.listFilesDetailed(v.name)
+        childFileTree.forEach((v) => {
+            if(v.isDirectory){
+                this.nodes.push({title: v.name, icon: 'folder-outline', children: [{title: 'Loading...', icon: 'loader-outline'}]})
+            }else{
+                this.nodes.push({title: v.name, icon: 'file-outline'})
+            }
+        })
+        this.nodes.push({title: v.name, icon: 'folder-outline', children: [childFileTree]})
+      }else{
+        this.nodes.push({title: v.name, icon: 'file-outline'})
+      }
+    }
 
-    console.log(this.fileTree)
   }
   content: any;
 
