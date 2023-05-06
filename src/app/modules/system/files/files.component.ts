@@ -18,10 +18,10 @@ export class FilesComponent  {
   public options = {};
   public path = '';
   constructor(private fs: FileSystemService, private route: ActivatedRoute, private router:Router) {
-    this.path = this.route.snapshot.queryParamMap.has('path')? '/'+this.route.snapshot.queryParamMap.get('path') : '';
+    this.path = this.route.snapshot.queryParamMap.has('path')? this.route.snapshot.queryParamMap.get('path') : '';
     router.events.forEach((event) => {
       if(event instanceof NavigationEnd) {
-        this.path = this.route.snapshot.queryParamMap.has('path')? '/'+this.route.snapshot.queryParamMap.get('path') : '';
+        this.path = this.route.snapshot.queryParamMap.has('path')? this.route.snapshot.queryParamMap.get('path') : '';
          this.getFiles().catch(r => console.log(r))
       }
     });
