@@ -1,4 +1,7 @@
-<lthn-wallet-details *ngIf="wallet.address"></lthn-wallet-details>
+<ng-container *ngIf="wallet.address">
+    <lthn-wallet-details *ngIf="wallet.address"></lthn-wallet-details>
+</ng-container>
+
 
     <div class="row">
         <div class="col-4">

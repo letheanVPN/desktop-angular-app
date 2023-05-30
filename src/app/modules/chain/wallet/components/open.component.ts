@@ -9,6 +9,7 @@ import {WalletService} from '@module/chain/wallet/wallet.service';
 export class OpenComponent implements OnInit {
 	@Input() name?: string = '';
 
+	password: string = '';
 	/**
 	 * Lists the wallets known
 	 *
@@ -34,7 +35,12 @@ export class OpenComponent implements OnInit {
 	 * @returns {Promise<AxiosResponse<any>>}
 	 */
 	unlockWallet(name: string) {
+
+		if(this.password.length < 1) return;
 		this.wallet.startWalletService()
+		 this.wallet.openWallet({filename: name, password: this.password}).then(async () => {
+
+		 })
 		// const subject = this.alertService.prompt({
 		// 	title: 'Wallet Password',
 		// 	content: 'Please enter the wallet password.'

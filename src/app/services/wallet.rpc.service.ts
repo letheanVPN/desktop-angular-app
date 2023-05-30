@@ -10,7 +10,7 @@ import {RestoreWallet} from '@module/chain/wallet/interfaces/requests/restoreWal
 })
 export class WalletRpcService {
 	// @todo conf class is annoying me atm fix this later
-	private url =  'http://localhost:36911/daemon/wallet/json_rpc'
+	private url =  'http://localhost:36911/blockchain/lethean/wallet/json_rpc'
 
 	constructor(private http: HttpClient) {}
 
@@ -29,7 +29,7 @@ export class WalletRpcService {
 		const request = {walletDir:'wallets', rpcBindPort: '36963', disableRpcLogin: false};
 		return this.http
 			.post<any>(
-				`http://localhost:36911/daemon/wallet/rpc`,
+				`http://localhost:36911/blockchain/lethean/wallet/start`,
 				request,
 				options
 			);

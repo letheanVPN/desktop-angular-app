@@ -12,7 +12,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
 import {MatLegacyTabsModule as MatTabsModule} from '@angular/material/legacy-tabs';
 import {MatLegacyInputModule as MatInputModule} from '@angular/material/legacy-input';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TranslateModule} from '@ngx-translate/core';
 import {MatLegacySelectModule as MatSelectModule} from '@angular/material/legacy-select';
 import {PipesModule} from '@pipe/pipes.module';
@@ -65,7 +65,8 @@ import {NbButtonModule, NbCardModule, NbInputModule, NbListModule} from "@nebula
         NbCardModule,
         NbListModule,
         NbButtonModule,
-        NbInputModule
+        NbInputModule,
+        FormsModule
     ]
 })
 export class WalletModule {}

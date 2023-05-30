@@ -21,6 +21,7 @@ export class FirstUserComponent {
     constructor(private apiGateway: InputOutputService, private server: ServerService, private fs: FileSystemService, private cryptService: CryptService) {
     }
     async createUser() {
+
         await this.apiGateway.isFile({'path': 'users/' + this.cryptService.sha256Salty(this.userForm.get('username').value) + '.lthn.key'})
             .toPromise().then((exists) => {
 console.log('exists', exists);

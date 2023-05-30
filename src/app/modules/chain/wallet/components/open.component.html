@@ -1,8 +1,9 @@
 <div class="row flex-wrap">
-    <div class="col-6 p-4" *ngFor="let wall of wallets">
+    <div class="col-12 p-4" *ngFor="let wall of wallets">
         <nb-card>
             <nb-card-header>{{ wall }}</nb-card-header>
             <nb-card-body>
+                <input nbInput autocomplete="off" [(ngModel)]="password" type="password" name="password" placeholder="Password"/>
                 <button nbButton status="primary" (click)="unlockWallet(wall)">{{ 'app.lthn.wallet.button.unlock-wallet' | translate }}</button>
             </nb-card-body>
         </nb-card>
