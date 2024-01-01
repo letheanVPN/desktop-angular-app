@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {FileSystemService} from "@service/filesystem/file-system.service";
-import {MultidimensionalArray} from "@ui/@theme/components/tree-menu/tree-menu.component";
+// import {MultidimensionalArray} from "@ui/@theme/components/tree-menu/tree-menu.component";
 import {ActivatedRoute, NavigationEnd, NavigationStart, Router} from "@angular/router";
 
 interface Node {
